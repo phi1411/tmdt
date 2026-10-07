@@ -1,0 +1,18 @@
+{
+  "status": "ARTIFACT_PASS",
+  "changedMarkdownFiles": {
+    "$numberInt": "13"
+  },
+  "relativeLinksChecked": {
+    "$numberInt": "80"
+  },
+  "pythonFilesParsed": {
+    "$numberInt": "13"
+  },
+  "existingEvidenceJsonParsed": {
+    "$numberInt": "8"
+  },
+  "originalPhase03RequestPreserved": true,
+  "backendFrontendScaffoldsUntouched": true,
+  "latestDbDigestMatchesReproducibility": true
+}

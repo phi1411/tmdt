@@ -1,0 +1,33 @@
+{
+  "url": "https://dummyjson.com/products?limit=0",
+  "documentation": "https://dummyjson.com/docs/products",
+  "repository": "https://github.com/Ovi/DummyJSON",
+  "softwareLicense": "MIT (repository); external image rights are not transferred by this project",
+  "retrievedOn": "2026-10-07",
+  "sha256": "d8528cbb47dedc9ddfd769d46dd1ee680b215f850fbf631fedb979be0f02fcab",
+  "sourceProductCount": 194,
+  "mapping": {
+    "ELECTRONICS": [
+      "smartphones",
+      "laptops",
+      "tablets",
+      "mobile-accessories"
+    ],
+    "FASHION": [
+      "mens-shirts",
+      "mens-shoes",
+      "mens-watches",
+      "womens-dresses",
+      "womens-shoes",
+      "womens-bags",
+      "womens-watches",
+      "tops",
+      "sunglasses"
+    ],
+    "HOME_APPLIANCE": [
+      "furniture",
+      "kitchen-accessories"
+    ]
+  },
+  "normalization": "Internal schema only; specifications and extra catalog variants are curated demo fixtures, not manufacturer claims. Price uses fixed synthetic USD*25000, not live exchange rate. No external reviews/user fields imported."
+}

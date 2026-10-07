@@ -1,0 +1,855 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "additionalProperties": false,
+    "required": [
+      "_id",
+      "schemaVersion",
+      "createdAt",
+      "updatedAt",
+      "orderCode",
+      "userId",
+      "checkoutKey",
+      "checkoutRequestHash",
+      "customerSnapshot",
+      "shippingAddress",
+      "items",
+      "subtotal",
+      "shippingFee",
+      "discount",
+      "total",
+      "currency",
+      "paymentMethod",
+      "paymentStatus",
+      "paymentReviewRequired",
+      "orderStatus",
+      "version"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "schemaVersion": {
+        "bsonType": "int",
+        "enum": [
+          1
+        ]
+      },
+      "createdAt": {
+        "bsonType": "date"
+      },
+      "updatedAt": {
+        "bsonType": "date"
+      },
+      "orderCode": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 64,
+        "pattern": "^[A-Z0-9-]+$"
+      },
+      "userId": {
+        "bsonType": "objectId"
+      },
+      "checkoutKey": {
+        "bsonType": "string",
+        "minLength": 8,
+        "maxLength": 128
+      },
+      "checkoutRequestHash": {
+        "bsonType": "string",
+        "minLength": 64,
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "customerSnapshot": {
+        "bsonType": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "phone",
+          "email"
+        ],
+        "properties": {
+          "name": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "phone": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^\\+?[0-9]{8,15}$"
+          },
+          "email": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 254
+          }
+        }
+      },
+      "shippingAddress": {
+        "bsonType": "object",
+        "additionalProperties": false,
+        "required": [
+          "receiverName",
+          "phone",
+          "addressLine",
+          "province"
+        ],
+        "properties": {
+          "receiverName": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "phone": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^\\+?[0-9]{8,15}$"
+          },
+          "addressLine": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "province": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "ward": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "district": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        }
+      },
+      "items": {
+        "bsonType": "array",
+        "minItems": 1,
+        "maxItems": 50,
+        "items": {
+          "bsonType": "object",
+          "additionalProperties": false,
+          "required": [
+            "productId",
+            "sku",
+            "productName",
+            "image",
+            "productType",
+            "categoryId",
+            "categoryName",
+            "attributesSnapshot",
+            "selectedAttributes",
+            "priceAtPurchase",
+            "quantity",
+            "lineTotal"
+          ],
+          "properties": {
+            "productId": {
+              "bsonType": "objectId"
+            },
+            "sku": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "productName": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "image": {
+              "anyOf": [
+                {
+                  "bsonType": "string",
+                  "minLength": 1,
+                  "maxLength": 2048,
+                  "pattern": "^https?://[^\\s]+$"
+                },
+                {
+                  "bsonType": "string",
+                  "enum": [
+                    ""
+                  ]
+                }
+              ]
+            },
+            "productType": {
+              "bsonType": "string",
+              "enum": [
+                "ELECTRONICS",
+                "FASHION",
+                "HOME_APPLIANCE"
+              ]
+            },
+            "categoryId": {
+              "bsonType": "objectId"
+            },
+            "categoryName": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "attributesSnapshot": {
+              "bsonType": "object",
+              "minProperties": 1,
+              "maxProperties": 30,
+              "patternProperties": {
+                "^[A-Za-z][A-Za-z0-9_]{0,63}$": {
+                  "anyOf": [
+                    {
+                      "bsonType": "string",
+                      "minLength": 0,
+                      "maxLength": 500
+                    },
+                    {
+                      "bsonType": [
+                        "int",
+                        "long",
+                        "double",
+                        "bool",
+                        "null"
+                      ]
+                    },
+                    {
+                      "bsonType": "array",
+                      "minItems": 0,
+                      "maxItems": 30,
+                      "items": {
+                        "anyOf": [
+                          {
+                            "bsonType": "string",
+                            "minLength": 0,
+                            "maxLength": 500
+                          },
+                          {
+                            "bsonType": [
+                              "int",
+                              "long",
+                              "double",
+                              "bool",
+                              "null"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "bsonType": "object",
+                      "minProperties": 0,
+                      "maxProperties": 30,
+                      "patternProperties": {
+                        "^[A-Za-z][A-Za-z0-9_]{0,63}$": {
+                          "anyOf": [
+                            {
+                              "bsonType": "string",
+                              "minLength": 0,
+                              "maxLength": 500
+                            },
+                            {
+                              "bsonType": [
+                                "int",
+                                "long",
+                                "double",
+                                "bool",
+                                "null"
+                              ]
+                            },
+                            {
+                              "bsonType": "array",
+                              "minItems": 0,
+                              "maxItems": 30,
+                              "items": {
+                                "anyOf": [
+                                  {
+                                    "bsonType": "string",
+                                    "minLength": 0,
+                                    "maxLength": 500
+                                  },
+                                  {
+                                    "bsonType": [
+                                      "int",
+                                      "long",
+                                      "double",
+                                      "bool",
+                                      "null"
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "bsonType": "object",
+                              "minProperties": 0,
+                              "maxProperties": 30,
+                              "patternProperties": {
+                                "^[A-Za-z][A-Za-z0-9_]{0,63}$": {
+                                  "anyOf": [
+                                    {
+                                      "bsonType": "string",
+                                      "minLength": 0,
+                                      "maxLength": 500
+                                    },
+                                    {
+                                      "bsonType": [
+                                        "int",
+                                        "long",
+                                        "double",
+                                        "bool",
+                                        "null"
+                                      ]
+                                    },
+                                    {
+                                      "bsonType": "array",
+                                      "minItems": 0,
+                                      "maxItems": 30,
+                                      "items": {
+                                        "anyOf": [
+                                          {
+                                            "bsonType": "string",
+                                            "minLength": 0,
+                                            "maxLength": 500
+                                          },
+                                          {
+                                            "bsonType": [
+                                              "int",
+                                              "long",
+                                              "double",
+                                              "bool",
+                                              "null"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "selectedAttributes": {
+              "bsonType": "object",
+              "additionalProperties": false,
+              "properties": {
+                "size": {
+                  "bsonType": "string",
+                  "minLength": 1,
+                  "maxLength": 50
+                },
+                "color": {
+                  "bsonType": "string",
+                  "minLength": 1,
+                  "maxLength": 50
+                }
+              }
+            },
+            "priceAtPurchase": {
+              "bsonType": "long",
+              "minimum": 1,
+              "maximum": 1000000000
+            },
+            "quantity": {
+              "bsonType": "int",
+              "minimum": 1,
+              "maximum": 99
+            },
+            "lineTotal": {
+              "bsonType": "long",
+              "minimum": 1,
+              "maximum": 99000000000
+            }
+          }
+        }
+      },
+      "subtotal": {
+        "bsonType": "long",
+        "minimum": 1,
+        "maximum": 5000000000000
+      },
+      "shippingFee": {
+        "bsonType": "long",
+        "minimum": 0,
+        "maximum": 1000000
+      },
+      "discount": {
+        "bsonType": "long",
+        "enum": [
+          0
+        ]
+      },
+      "total": {
+        "bsonType": "long",
+        "minimum": 1,
+        "maximum": 5000000000000
+      },
+      "currency": {
+        "bsonType": "string",
+        "enum": [
+          "VND"
+        ]
+      },
+      "paymentMethod": {
+        "bsonType": "string",
+        "enum": [
+          "COD",
+          "VNPAY"
+        ]
+      },
+      "paymentStatus": {
+        "bsonType": "string",
+        "enum": [
+          "UNPAID",
+          "PENDING",
+          "PAID",
+          "FAILED",
+          "REVIEW_REQUIRED"
+        ]
+      },
+      "paymentReviewRequired": {
+        "bsonType": "bool"
+      },
+      "orderStatus": {
+        "bsonType": "string",
+        "enum": [
+          "PENDING",
+          "CONFIRMED",
+          "SHIPPING",
+          "COMPLETED",
+          "CANCELLED",
+          "EXPIRED"
+        ]
+      },
+      "version": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "stockReleasedAt": {
+        "bsonType": "date"
+      },
+      "paymentExpiresAt": {
+        "bsonType": "date"
+      },
+      "paidAt": {
+        "bsonType": "date"
+      },
+      "completedAt": {
+        "bsonType": "date"
+      },
+      "cancelledAt": {
+        "bsonType": "date"
+      },
+      "expiredAt": {
+        "bsonType": "date"
+      }
+    },
+    "allOf": [
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "orderStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "PENDING",
+                  "CONFIRMED",
+                  "SHIPPING"
+                ]
+              }
+            },
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "completedAt"
+                  ]
+                },
+                {
+                  "required": [
+                    "stockReleasedAt"
+                  ]
+                },
+                {
+                  "required": [
+                    "cancelledAt"
+                  ]
+                },
+                {
+                  "required": [
+                    "expiredAt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "properties": {
+              "orderStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "COMPLETED"
+                ]
+              },
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "PAID"
+                ]
+              }
+            },
+            "required": [
+              "completedAt",
+              "paidAt"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "stockReleasedAt"
+                  ]
+                },
+                {
+                  "required": [
+                    "cancelledAt"
+                  ]
+                },
+                {
+                  "required": [
+                    "expiredAt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "properties": {
+              "orderStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "CANCELLED"
+                ]
+              },
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "UNPAID",
+                  "FAILED",
+                  "REVIEW_REQUIRED"
+                ]
+              }
+            },
+            "required": [
+              "cancelledAt",
+              "stockReleasedAt"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "completedAt"
+                  ]
+                },
+                {
+                  "required": [
+                    "expiredAt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "properties": {
+              "orderStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "EXPIRED"
+                ]
+              },
+              "paymentMethod": {
+                "bsonType": "string",
+                "enum": [
+                  "VNPAY"
+                ]
+              },
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "FAILED",
+                  "REVIEW_REQUIRED"
+                ]
+              }
+            },
+            "required": [
+              "expiredAt",
+              "stockReleasedAt"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "completedAt"
+                  ]
+                },
+                {
+                  "required": [
+                    "cancelledAt"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "paymentMethod": {
+                "bsonType": "string",
+                "enum": [
+                  "COD"
+                ]
+              },
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "UNPAID",
+                  "PAID"
+                ]
+              },
+              "paymentReviewRequired": {
+                "enum": [
+                  false
+                ]
+              }
+            },
+            "not": {
+              "required": [
+                "paymentExpiresAt"
+              ]
+            }
+          },
+          {
+            "properties": {
+              "paymentMethod": {
+                "bsonType": "string",
+                "enum": [
+                  "VNPAY"
+                ]
+              },
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "PENDING",
+                  "PAID",
+                  "FAILED",
+                  "REVIEW_REQUIRED"
+                ]
+              },
+              "total": {
+                "bsonType": "long",
+                "minimum": 1,
+                "maximum": 9999999999
+              }
+            },
+            "required": [
+              "paymentExpiresAt"
+            ]
+          }
+        ]
+      },
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "PAID",
+                  "REVIEW_REQUIRED"
+                ]
+              }
+            },
+            "required": [
+              "paidAt"
+            ]
+          },
+          {
+            "properties": {
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "UNPAID",
+                  "PENDING",
+                  "FAILED"
+                ]
+              }
+            },
+            "not": {
+              "required": [
+                "paidAt"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "anyOf": [
+          {
+            "properties": {
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "REVIEW_REQUIRED"
+                ]
+              },
+              "paymentReviewRequired": {
+                "enum": [
+                  true
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "paymentStatus": {
+                "bsonType": "string",
+                "enum": [
+                  "UNPAID",
+                  "PENDING",
+                  "PAID",
+                  "FAILED"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "oneOf": [
+          {
+            "properties": {
+              "paymentMethod": {
+                "enum": [
+                  "COD"
+                ]
+              },
+              "orderStatus": {
+                "enum": [
+                  "COMPLETED"
+                ]
+              },
+              "paymentStatus": {
+                "enum": [
+                  "PAID"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "paymentMethod": {
+                "enum": [
+                  "COD"
+                ]
+              },
+              "orderStatus": {
+                "enum": [
+                  "PENDING",
+                  "CONFIRMED",
+                  "SHIPPING",
+                  "CANCELLED"
+                ]
+              },
+              "paymentStatus": {
+                "enum": [
+                  "UNPAID"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "paymentMethod": {
+                "enum": [
+                  "VNPAY"
+                ]
+              },
+              "orderStatus": {
+                "enum": [
+                  "PENDING"
+                ]
+              },
+              "paymentStatus": {
+                "enum": [
+                  "PENDING",
+                  "FAILED"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "paymentMethod": {
+                "enum": [
+                  "VNPAY"
+                ]
+              },
+              "orderStatus": {
+                "enum": [
+                  "CONFIRMED",
+                  "SHIPPING",
+                  "COMPLETED"
+                ]
+              },
+              "paymentStatus": {
+                "enum": [
+                  "PAID"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "paymentMethod": {
+                "enum": [
+                  "VNPAY"
+                ]
+              },
+              "orderStatus": {
+                "enum": [
+                  "CANCELLED",
+                  "EXPIRED"
+                ]
+              },
+              "paymentStatus": {
+                "enum": [
+                  "FAILED",
+                  "REVIEW_REQUIRED"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

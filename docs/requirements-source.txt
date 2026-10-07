@@ -1,0 +1,916 @@
+Bạn đang tham gia xây dựng đồ án môn NoSQL:
+
+# SÀN THƯƠNG MẠI ĐIỆN TỬ ĐA NGÀNH HÀNG — E-COMMERCE
+
+Database chính bắt buộc:
+- MongoDB Document Store
+
+Đây là đồ án học thuật nhưng sản phẩm cuối phải có trải nghiệm gần giống một website thương mại điện tử thực tế.
+
+QUAN TRỌNG:
+
+Trong PHASE này CHƯA code feature nghiệp vụ.
+
+Mục tiêu hiện tại là:
+1. Phân tích requirement.
+2. Thiết kế kiến trúc tổng thể.
+3. Thiết kế cách tổ chức repository.
+4. Tạo hệ thống tài liệu để các AI coding agent ở những session sau không phải đọc toàn bộ repository.
+5. Chuẩn bị AGENTS.md và docs đầy đủ trước khi bắt đầu implementation.
+
+==================================================
+I. YÊU CẦU BẮT BUỘC CỦA ĐỀ TÀI
+==================================================
+
+Barem:
+
+1. BÁO CÁO & THIẾT KẾ CSDL — 2.5 điểm
+
+Phải chứng minh:
+
+- MongoDB phù hợp với sản phẩm đa ngành có thuộc tính không cố định.
+- Product sử dụng Polymorphic Schema.
+- Order sử dụng Embedded Documents.
+- Có giải thích rõ khi nào embed và khi nào reference.
+
+2. CRUD NỀN TẢNG — 2.5 điểm
+
+Phải có:
+
+- CRUD Category.
+- CRUD Product.
+- Tạo Order.
+- API backend.
+- Giao diện quản lý.
+
+3. CHỨC NĂNG NÂNG CAO — 2.5 điểm
+
+Order bắt buộc phải snapshot thông tin sản phẩm tại thời điểm mua.
+
+Ví dụ order item:
+
+{
+  productId,
+  sku,
+  productName,
+  image,
+  priceAtPurchase,
+  quantity,
+  selectedAttributes,
+  lineTotal
+}
+
+Không được thiết kế kiểu chỉ lưu productId rồi sau này truy vấn Product để lấy giá hiện tại.
+
+Nếu:
+
+giá khi mua = 10.000.000
+
+sau đó Admin thay thành:
+
+12.000.000
+
+thì Order cũ vẫn phải giữ:
+
+priceAtPurchase = 10.000.000
+
+Aggregation Pipeline bắt buộc phải thể hiện:
+
+- $match
+- $unwind
+- $group
+- $sort
+
+Phải có ít nhất:
+
+- Doanh thu theo thời gian.
+- Top 5 sản phẩm bán chạy.
+
+4. KIỂM THỬ & DEMO — 2.5 điểm
+
+Dummy Data yêu cầu tối thiểu:
+
+Products:
+- >= 100 documents.
+- >= 3 ngành hàng.
+
+Orders:
+- 50–100 documents.
+- mỗi Order có 2–5 Product embedded.
+
+Phải demo trực tiếp trên MongoDB Compass và Web.
+
+==================================================
+II. MỤC TIÊU SẢN PHẨM
+==================================================
+
+Xây dựng một website thương mại điện tử đa ngành nhìn và hoạt động gần giống hệ thống thực tế.
+
+Không cần xây một Shopee hoàn chỉnh.
+
+Ưu tiên những feature giúp:
+
+- trải nghiệm người dùng tốt;
+- demo trực quan;
+- chứng minh MongoDB;
+- bám đúng barem NoSQL.
+
+Stack dự kiến:
+
+Frontend:
+- React
+- Vite
+- Tailwind CSS
+- có thể dùng shadcn/ui
+- Recharts cho Dashboard
+
+Backend:
+- Python
+- Flask
+- PyMongo
+
+Database:
+- MongoDB
+
+Authentication:
+- JWT
+- thư viện password hashing an toàn
+
+Payment:
+- COD
+- VNPAY Sandbox
+
+Development tools:
+- MongoDB Compass
+- Postman
+- Git
+
+Không sử dụng SQL làm database nghiệp vụ chính.
+
+==================================================
+III. ROLE
+==================================================
+
+Có 3 mức truy cập:
+
+GUEST
+
+Có thể:
+
+- xem sản phẩm
+- xem Category
+- search
+- filter
+- xem Product Detail
+- đăng ký
+- đăng nhập
+
+CUSTOMER
+
+Có thể:
+
+- toàn bộ chức năng Guest
+- quản lý profile
+- quản lý địa chỉ
+- thêm/xóa/cập nhật Cart
+- Checkout
+- COD
+- VNPAY Sandbox
+- xem lịch sử Order
+- xem chi tiết Order
+- hủy Order khi business rule cho phép
+- Review sản phẩm nếu feature Review được triển khai
+
+ADMIN
+
+Có thể:
+
+- Admin Dashboard
+- CRUD Category
+- CRUD Product
+- quản lý Order
+- quản lý User
+- xem thống kê
+- xem doanh thu
+- xem Top Product
+- chạy các báo cáo dựa trên MongoDB Aggregation
+
+Không thêm:
+
+- Seller
+- Shipper
+- Staff
+- role khác
+
+nếu requirement chưa thay đổi.
+
+==================================================
+IV. PRODUCT POLYMORPHIC SCHEMA
+==================================================
+
+Tất cả sản phẩm đa ngành phải nằm chung:
+
+products
+
+KHÔNG tạo:
+
+products_electronics
+products_fashion
+products_home
+...
+
+Product có phần field chung và attributes linh hoạt.
+
+Ví dụ:
+
+{
+  "_id": ObjectId,
+  "sku": String,
+  "name": String,
+  "slug": String,
+  "categoryId": ObjectId,
+  "brand": String,
+  "description": String,
+  "price": Number,
+  "stock": Number,
+  "images": [String],
+  "attributes": Object,
+  "status": String,
+  "createdAt": Date,
+  "updatedAt": Date
+}
+
+Ví dụ Electronics:
+
+attributes:
+{
+  "ram": "8GB",
+  "storage": "256GB",
+  "chip": "...",
+  "screen": "...",
+  "battery": "..."
+}
+
+Fashion:
+
+attributes:
+{
+  "sizes": ["S", "M", "L"],
+  "colors": ["Black", "White"],
+  "material": "Cotton",
+  "gender": "Men"
+}
+
+Home Appliance:
+
+attributes:
+{
+  "power": "1700W",
+  "capacity": "6L",
+  "voltage": "220V",
+  "material": "Stainless Steel"
+}
+
+Có thể có nhiều ngành hơn nếu dataset phù hợp.
+
+Tối thiểu phải thể hiện rõ:
+
+- Điện tử
+- Thời trang
+- Gia dụng
+
+==================================================
+V. ORDER & EMBEDDED DOCUMENT
+==================================================
+
+Order là một aggregate rất quan trọng.
+
+Order phải embed snapshot của sản phẩm.
+
+Ví dụ:
+
+{
+  "_id": ObjectId,
+
+  "orderCode": String,
+
+  "userId": ObjectId,
+
+  "customerSnapshot": {
+    "name": String,
+    "phone": String,
+    "email": String
+  },
+
+  "shippingAddress": {
+    "receiverName": String,
+    "phone": String,
+    "addressLine": String,
+    "ward": String,
+    "district": String,
+    "province": String
+  },
+
+  "items": [
+    {
+      "productId": ObjectId,
+      "sku": String,
+      "productName": String,
+      "image": String,
+      "priceAtPurchase": Number,
+      "quantity": Number,
+
+      "selectedAttributes": {
+        ...
+      },
+
+      "lineTotal": Number
+    }
+  ],
+
+  "subtotal": Number,
+  "shippingFee": Number,
+  "discount": Number,
+  "total": Number,
+
+  "paymentMethod": String,
+  "paymentStatus": String,
+  "orderStatus": String,
+
+  "createdAt": Date,
+  "updatedAt": Date
+}
+
+Order history phải độc lập với các thay đổi sau này trong Product.
+
+==================================================
+VI. CART
+==================================================
+
+Cart phải có business rule rõ ràng.
+
+Backend là source of truth.
+
+Frontend không được tự quyết định giá cuối cùng.
+
+Khi Add To Cart hoặc Checkout:
+
+Backend phải kiểm tra:
+
+- Product tồn tại.
+- Product đang ACTIVE.
+- quantity >= 1.
+- quantity không vượt stock.
+- Giá phải lấy lại từ Product hiện tại.
+- Không tin price được gửi từ frontend.
+
+Quyết định Cart nên:
+
+- embed trong User
+
+hoặc:
+
+- collection carts riêng
+
+phải được phân tích và ghi vào architecture/database docs.
+
+Không tự chọn mà không giải thích trade-off.
+
+==================================================
+VII. DASHBOARD & AGGREGATION
+==================================================
+
+Dashboard không được tải toàn bộ Orders lên frontend rồi dùng JavaScript tự tính báo cáo.
+
+Luồng phải là:
+
+MongoDB
+→ Aggregation Pipeline
+→ Flask
+→ REST API
+→ React Dashboard
+
+Dashboard mong muốn:
+
+- Total Revenue
+- Total Orders
+- Total Products Sold
+- Total Customers
+- Revenue by Day
+- Revenue by Month
+- Top 5 Best-selling Products
+- Revenue by Category
+- Order Status Distribution
+
+Các metric quan trọng phải được tính phía MongoDB.
+
+==================================================
+VIII. INDEX & PERFORMANCE
+==================================================
+
+Phải có chiến lược Index.
+
+Không tạo index hàng loạt chỉ để nói rằng project có index.
+
+Mỗi index phải có query pattern cụ thể.
+
+Phải chuẩn bị demo:
+
+WITHOUT INDEX
+vs
+WITH INDEX
+
+Sử dụng:
+
+explain("executionStats")
+
+Theo dõi:
+
+- winningPlan
+- COLLSCAN
+- IXSCAN
+- executionTimeMillis
+- totalDocsExamined
+- totalKeysExamined
+
+Phải có Compound Index ít nhất cho một hoặc nhiều query thực tế.
+
+==================================================
+IX. DUMMY DATA
+==================================================
+
+Target:
+
+Products:
+- khoảng 150–200 documents.
+
+Users:
+- khoảng 30–50 documents.
+
+Orders:
+- khoảng 100 documents.
+
+Mỗi Order:
+- 2–5 items.
+
+Products phải có >= 3 ngành.
+
+Có thể sử dụng public dataset/public API rồi normalize về schema của project.
+
+Không scrape website thương mại thật nếu không cần thiết.
+
+Seed data phải reproducible.
+
+Phải có script seed rõ ràng.
+
+==================================================
+X. TRIẾT LÝ TỔ CHỨC PROJECT CHO AI AGENT
+==================================================
+
+Đây là yêu cầu rất quan trọng.
+
+Project sẽ được phát triển bằng các AI coding agent như:
+
+- Codex
+- Claude Code
+- Antigravity
+- hoặc agent tương tự
+
+KHÔNG được tổ chức project theo kiểu mỗi session agent phải đọc toàn bộ repository.
+
+Mục tiêu:
+
+Agent chỉ cần đọc:
+
+AGENTS.md
++
+architecture
++
+database schema
++
+business rules nếu cần
++
+feature document liên quan
++
+source code trực tiếp liên quan
+
+là đủ hiểu task.
+
+Ví dụ:
+
+Nếu task là Shopping Cart:
+
+Agent nên đọc:
+
+AGENTS.md
+docs/architecture.md
+docs/database-schema.md
+docs/business-rules.md
+docs/features/cart.md
+
+Sau đó chỉ inspect:
+
+- Cart API
+- Cart service
+- MongoDB access liên quan
+- Cart frontend
+- dependency trực tiếp
+
+KHÔNG đọc:
+
+- Dashboard
+- Review
+- Admin Product
+- Payment implementation
+- các module không liên quan
+
+trừ khi task có dependency thật.
+
+==================================================
+XI. CẤU TRÚC REPOSITORY MONG MUỐN
+==================================================
+
+Thiết kế repo theo hướng:
+
+ecommerce/
+│
+├── AGENTS.md
+├── README.md
+├── .gitignore
+├── .env.example
+│
+├── docs/
+│   │
+│   ├── architecture.md
+│   ├── database-schema.md
+│   ├── business-rules.md
+│   ├── api-conventions.md
+│   ├── testing-strategy.md
+│   ├── seed-strategy.md
+│   ├── demo-plan.md
+│   │
+│   ├── decisions/
+│   │   ├── 001-mongodb-modeling.md
+│   │   ├── 002-embedded-vs-reference.md
+│   │   ├── 003-order-snapshot.md
+│   │   ├── 004-cart-storage.md
+│   │   └── 005-index-strategy.md
+│   │
+│   └── features/
+│       ├── auth.md
+│       ├── users.md
+│       ├── categories.md
+│       ├── products.md
+│       ├── search-filter.md
+│       ├── cart.md
+│       ├── checkout.md
+│       ├── orders.md
+│       ├── payment.md
+│       ├── reviews.md
+│       ├── admin-products.md
+│       ├── admin-orders.md
+│       ├── admin-users.md
+│       └── admin-dashboard.md
+│
+├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── services/
+│   │   ├── repositories/
+│   │   ├── schemas/
+│   │   ├── auth/
+│   │   ├── db/
+│   │   └── utils/
+│   │
+│   ├── tests/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── features/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   ├── utils/
+│   │   └── routes/
+│   │
+│   └── tests/
+│
+├── database/
+│   ├── validators/
+│   ├── indexes/
+│   ├── aggregations/
+│   └── samples/
+│
+├── scripts/
+│   ├── seed/
+│   ├── import/
+│   ├── export/
+│   └── performance/
+│
+└── tests/
+
+Có thể điều chỉnh nhẹ nếu có lý do kiến trúc rõ ràng.
+
+Không tạo folder thừa chỉ để nhìn chuyên nghiệp.
+
+==================================================
+XII. AGENTS.md PHẢI ĐƯỢC THIẾT KẾ NHƯ THẾ NÀO
+==================================================
+
+AGENTS.md là luật cao nhất dành cho coding agent.
+
+Phải chứa ít nhất:
+
+1. Project Overview
+2. Tech Stack
+3. Architecture Rules
+4. MongoDB Rules
+5. Before Coding Protocol
+6. Context Management Rules
+7. Feature Documentation Rules
+8. Naming Conventions
+9. API conventions
+10. Testing Rules
+11. Change Policy
+12. Definition of Done
+
+Before Coding Protocol phải yêu cầu:
+
+Trước mỗi task:
+
+1. Đọc AGENTS.md.
+2. Đọc architecture.md.
+3. Chỉ đọc database-schema.md nếu task liên quan dữ liệu.
+4. Chỉ đọc business-rules.md khi task liên quan nghiệp vụ.
+5. Đọc đúng docs/features/<feature>.md.
+6. Inspect source code liên quan.
+7. Xác định dependency trực tiếp.
+8. Sau đó mới code.
+
+Không quét repository toàn bộ theo thói quen.
+
+==================================================
+XIII. FEATURE DOCUMENT FORMAT
+==================================================
+
+Mọi file:
+
+docs/features/<feature>.md
+
+phải theo cấu trúc thống nhất:
+
+# Feature Name
+
+## Goal
+
+Feature giải quyết vấn đề gì?
+
+## Actors
+
+Ai được sử dụng?
+
+## Functional Requirements
+
+Chức năng cụ thể.
+
+## Business Rules
+
+Các luật nghiệp vụ.
+
+## Permission
+
+Role nào được phép làm gì?
+
+## API
+
+Endpoint.
+
+Method.
+
+Request.
+
+Response.
+
+Error.
+
+## Data
+
+Collection nào được đọc?
+
+Collection nào được ghi?
+
+Embed hay reference?
+
+## Validation
+
+Các validation bắt buộc.
+
+## Edge Cases
+
+Các tình huống biên.
+
+## Security
+
+Các vấn đề authorization/input/password/payment nếu liên quan.
+
+## UI Behavior
+
+Frontend hoạt động như thế nào?
+
+## Acceptance Criteria
+
+Điều kiện nào để feature được coi là hoàn thành?
+
+## Testing Checklist
+
+Những test quan trọng.
+
+==================================================
+XIV. DOCUMENT SOURCE OF TRUTH
+==================================================
+
+Phải xác định source of truth rõ ràng.
+
+Requirement của đề/barem:
+Ưu tiên cao nhất.
+
+Sau đó:
+
+AGENTS.md
+↓
+architecture.md
+↓
+database-schema.md
+↓
+business-rules.md
+↓
+feature docs
+↓
+implementation
+
+Nếu phát hiện:
+
+docs mâu thuẫn requirement
+
+thì requirement thắng.
+
+Nếu:
+
+implementation mâu thuẫn docs
+
+không được mặc định code hiện tại đúng.
+
+Phải phân tích trước.
+
+==================================================
+XV. CHANGE POLICY
+==================================================
+
+Không được:
+
+- tự đổi database architecture
+- tự đổi collection
+- tự đổi API contract
+- tự đổi naming convention
+- refactor module không liên quan
+- thêm dependency tùy tiện
+- thêm role tùy tiện
+- thay MongoDB bằng database khác
+- biến Document Database thành thiết kế SQL giả dạng MongoDB
+
+Nếu cần thay đổi kiến trúc lớn:
+
+1. Giải thích vấn đề.
+2. Đưa phương án.
+3. Nêu trade-off.
+4. Ghi decision document.
+5. Sau đó mới thực hiện khi requirement cho phép.
+
+==================================================
+XVI. TESTING & DEFINITION OF DONE
+==================================================
+
+Feature chỉ DONE khi:
+
+- code chạy được
+- API hoạt động
+- validation đúng
+- authorization đúng
+- không có lỗi runtime
+- test liên quan pass
+- edge cases quan trọng đã kiểm tra
+- docs được cập nhật nếu behavior thay đổi
+
+Không báo DONE nếu test đang fail.
+
+==================================================
+XVII. YÊU CẦU CHO PHASE HIỆN TẠI
+==================================================
+
+PHASE này CHƯA IMPLEMENT FEATURE.
+
+Hãy thực hiện:
+
+1. Kiểm tra repository hiện tại.
+
+2. Nếu repo mới/trống:
+   - tạo bộ khung phù hợp.
+
+3. Nếu repo đã có source:
+   - KHÔNG xóa hoặc rewrite source.
+   - phân tích structure hiện tại.
+   - điều chỉnh kế hoạch docs cho phù hợp.
+
+4. Tạo hoặc hoàn thiện:
+
+AGENTS.md
+
+README.md
+
+docs/architecture.md
+
+docs/database-schema.md
+
+docs/business-rules.md
+
+docs/api-conventions.md
+
+docs/testing-strategy.md
+
+docs/seed-strategy.md
+
+docs/demo-plan.md
+
+docs/decisions/
+
+docs/features/
+
+5. Tạo skeleton documentation cho toàn bộ các feature:
+
+- auth
+- users
+- categories
+- products
+- search-filter
+- cart
+- checkout
+- orders
+- payment
+- reviews
+- admin-products
+- admin-orders
+- admin-users
+- admin-dashboard
+
+6. Chưa cần viết code nghiệp vụ cho các feature.
+
+7. Database schema phải được phân tích kỹ, không viết placeholder vô nghĩa.
+
+8. Những quyết định chưa chắc chắn phải ghi:
+
+OPEN QUESTION
+
+hoặc:
+
+DECISION PENDING
+
+Không tự bịa requirement.
+
+==================================================
+XVIII. SAU KHI HOÀN THÀNH
+==================================================
+
+Báo cáo:
+
+1. Repository structure cuối cùng.
+
+2. Những file đã tạo/sửa.
+
+3. Kiến trúc tổng thể đã chọn.
+
+4. Danh sách collections dự kiến.
+
+5. Embed/reference strategy.
+
+6. Product Polymorphic strategy.
+
+7. Order Snapshot strategy.
+
+8. Các feature docs đã tạo.
+
+9. Những architectural decisions đã khóa.
+
+10. Những vấn đề vẫn còn OPEN.
+
+11. Những thứ PHASE tiếp theo nên làm.
+
+12. Xác nhận rõ:
+
+- Chưa implement feature nghiệp vụ.
+- Chưa tự ý thay đổi requirement.
+- Project đã sẵn sàng để coding agent làm việc theo từng feature với context nhỏ.
+
+Không bắt đầu PHASE tiếp theo cho đến khi PHASE này được review.

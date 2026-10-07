@@ -1,0 +1,563 @@
+PHASE 02 ĐÃ ĐƯỢC DUYỆT.
+
+Thiết kế MongoDB đã được khóa.
+
+Bây giờ thực hiện:
+
+# PHASE 03 — MONGODB IMPLEMENTATION + SEED DATA + VERIFICATION
+
+MỤC TIÊU:
+
+Biến toàn bộ thiết kế MongoDB từ PHASE 02 thành database thật có thể kiểm thử trên local MongoDB.
+
+PHASE này tập trung vào:
+
+- MongoDB local replica set
+- collections
+- validators
+- indexes cần thiết ở mức foundation
+- seed data
+- aggregation verification
+- import/export
+- database tests
+
+CHƯA triển khai:
+
+- Flask business API
+- Authentication API
+- Cart API
+- Checkout API
+- Order API
+- VNPAY integration
+- Frontend
+
+Không đi trước phase.
+
+==================================================
+1. CONTEXT
+==================================================
+
+Trước khi làm, đọc:
+
+- AGENTS.md
+- docs/architecture.md
+- docs/database-schema.md
+- docs/business-rules.md
+- docs/seed-strategy.md
+- docs/phase-02-review.md
+- database/validators/
+- database/indexes/
+- database/aggregations/
+
+Chỉ đọc feature docs khi cần xác minh requirement.
+
+Không quét toàn bộ repository nếu không cần.
+
+==================================================
+2. KHÔNG THAY ĐỔI THIẾT KẾ ĐÃ KHÓA
+==================================================
+
+Collections chính thức:
+
+- users
+- categories
+- products
+- carts
+- orders
+- payment_attempts
+
+Không thêm collection nghiệp vụ mới nếu không có lý do bắt buộc.
+
+Reviews vẫn DEFERRED.
+
+Không thay đổi:
+
+- Product Polymorphic Schema
+- Cart strategy
+- Order Snapshot
+- Revenue definition
+- Payment architecture
+
+Nếu phát hiện thiết kế PHASE 02 không thể chạy thực tế:
+
+KHÔNG âm thầm sửa.
+
+Phải:
+
+1. ghi rõ vấn đề;
+2. giải thích nguyên nhân;
+3. đưa minimal correction;
+4. cập nhật ADR/docs liên quan.
+
+==================================================
+3. MONGODB LOCAL
+==================================================
+
+Thiết lập môi trường MongoDB development local.
+
+Yêu cầu:
+
+- MongoDB chạy được local.
+- cấu hình replica set phục vụ transaction ở các phase sau;
+- database development riêng;
+- không hardcode credentials;
+- cấu hình phải mô tả được trong README hoặc docs setup.
+
+Có thể chuẩn bị script/bootstrap để developer khác có thể dựng lại database.
+
+Không phụ thuộc MongoDB Atlas.
+
+==================================================
+4. CREATE COLLECTIONS + VALIDATORS
+==================================================
+
+Áp dụng validator thật cho:
+
+- users
+- categories
+- products
+- carts
+- orders
+- payment_attempts
+
+Không chỉ giữ file JSON.
+
+Phải chạy validator trên MongoDB thật.
+
+Kiểm thử:
+
+- document hợp lệ → accepted
+- document sai bắt buộc → rejected
+- enum sai → rejected
+- type sai → rejected
+- Product thuộc các productType khác nhau → accepted nếu attributes đúng
+- Order Snapshot hợp lệ → accepted
+
+Ghi lại kết quả test.
+
+==================================================
+5. PRODUCT DATA SOURCE
+==================================================
+
+Tạo seed Product khoảng:
+
+180 documents.
+
+Có thể sử dụng public product API/dataset phù hợp làm nguồn đầu vào.
+
+Ưu tiên dataset có:
+
+- tên
+- category
+- price
+- images
+- brand
+- stock
+- description
+
+Sau đó NORMALIZE về schema nội bộ.
+
+Không import dữ liệu ngoài nguyên xi.
+
+Phải map thành ít nhất:
+
+- Electronics
+- Fashion
+- Home / Household
+
+Product cuối cùng phải chứng minh được Polymorphic Schema thật.
+
+Ví dụ:
+
+Electronics attributes khác Fashion.
+
+Fashion attributes khác Home.
+
+Không fake toàn bộ Product chỉ bằng vài field giống nhau.
+
+==================================================
+6. PRODUCT IMAGES
+==================================================
+
+Giữ image dưới dạng URL theo quyết định PHASE 02.
+
+Kiểm tra:
+
+- URL không rỗng với phần lớn Product.
+- frontend sau này có dữ liệu ảnh để hiển thị.
+- không download toàn bộ media nếu không cần.
+
+Seed không được phụ thuộc vào URL localhost tạm thời.
+
+==================================================
+7. CATEGORY SEED
+==================================================
+
+Seed Categories phù hợp với Product data.
+
+Category một cấp.
+
+Đảm bảo:
+
+- slug unique
+- status hợp lệ
+- mapping Product → Category hợp lệ
+
+Không tạo taxonomy quá phức tạp.
+
+==================================================
+8. USER SEED
+==================================================
+
+Target:
+
+40 Users.
+
+Bao gồm:
+
+- CUSTOMER
+- ít nhất một ADMIN
+
+Password seed phải được hash.
+
+Không lưu plain-text password trong MongoDB.
+
+Nếu cần tài khoản demo:
+
+ghi credentials demo trong tài liệu development phù hợp, không hardcode production secret.
+
+==================================================
+9. ORDER SEED
+==================================================
+
+Target:
+
+100 Orders.
+
+Mỗi Order:
+
+2–5 items.
+
+Order phải được sinh từ Product thật trong database.
+
+QUAN TRỌNG:
+
+Item phải snapshot dữ liệu Product tại thời điểm seed.
+
+Không chỉ lưu productId.
+
+Mỗi item phải có các field snapshot đã khóa trong schema.
+
+Phải có nhiều thời điểm khác nhau để Dashboard sau này có biểu đồ.
+
+Nên phân bố order qua nhiều tháng/ngày thay vì cùng một ngày.
+
+==================================================
+10. ORDER STATUS DATA
+==================================================
+
+Seed phải có các trạng thái phù hợp lifecycle.
+
+Bao gồm đủ dữ liệu cho:
+
+- PENDING
+- CONFIRMED
+- SHIPPING
+- COMPLETED
+- CANCELLED
+- EXPIRED khi phù hợp VNPAY
+
+Nhưng dữ liệu phải hợp logic.
+
+Ví dụ:
+
+COMPLETED phải có completedAt.
+
+Revenue dataset phải có đủ:
+
+COMPLETED + PAID
+
+để Aggregation Dashboard sau này có kết quả.
+
+==================================================
+11. PAYMENT DATA
+==================================================
+
+Seed payment_attempts phù hợp với Orders.
+
+Phân biệt:
+
+- COD
+- VNPAY
+
+Không cần gọi VNPAY thật trong phase này.
+
+Có thể seed metadata mô phỏng hợp lệ để kiểm thử schema.
+
+Không lưu dữ liệu nhạy cảm giả dạng thông tin thẻ.
+
+==================================================
+12. CART DATA
+==================================================
+
+Có thể seed một lượng Cart vừa phải để test.
+
+Cart phải:
+
+- thuộc User hợp lệ
+- tham chiếu Product hợp lệ
+- quantity hợp lệ
+
+Không cần tất cả User đều có Cart.
+
+==================================================
+13. SEED REPRODUCIBILITY
+==================================================
+
+Seed phải chạy lại được.
+
+Ưu tiên:
+
+- deterministic random seed
+hoặc
+- chiến lược reproducible tương đương.
+
+Phải tránh tình trạng chạy lần hai tạo thêm hàng nghìn dữ liệu ngoài ý muốn.
+
+Thiết kế một trong các cách:
+
+- reset + seed
+hoặc
+- idempotent seed
+
+và ghi rõ.
+
+==================================================
+14. AGGREGATION VERIFICATION
+==================================================
+
+Chạy pipeline thật trên MongoDB.
+
+Ít nhất phải xác minh:
+
+A. Revenue by day/month
+
+B. Top 5 best-selling Products
+
+C. Revenue by Category nếu đã thiết kế
+
+Pipeline bắt buộc của đề phải thực sự sử dụng phù hợp:
+
+- $match
+- $unwind
+- $group
+- $sort
+
+Top 5 phải có:
+
+- $limit
+
+Không chỉ để pipeline trong README.
+
+Phải chạy và lưu ví dụ output.
+
+==================================================
+15. REVENUE RULE
+==================================================
+
+Revenue chỉ tính:
+
+orderStatus = COMPLETED
+
+và
+
+paymentStatus = PAID
+
+theo:
+
+completedAt
+
+Không tính shippingFee vào revenue.
+
+Không tính:
+
+- CANCELLED
+- EXPIRED
+- unpaid orders
+
+Aggregation phải tuân thủ rule này.
+
+==================================================
+16. INDEX IMPLEMENTATION
+==================================================
+
+Hiện PHASE 02 có nhiều candidate index.
+
+KHÔNG tạo toàn bộ candidate một cách máy móc.
+
+Ở phase này:
+
+1. tạo các index bắt buộc:
+   - uniqueness
+   - integrity/query foundation rõ ràng
+
+2. Chọn một số index query quan trọng để chuẩn bị performance testing.
+
+3. Giữ các candidate khác trong specification.
+
+Không biến tất cả 18 candidate thành index thật nếu chưa chứng minh nhu cầu.
+
+Kiểm tra:
+
+- getIndexes()
+- duplicate constraint
+- query có thể dùng index
+
+Benchmark chi tiết sẽ thuộc phase performance riêng.
+
+==================================================
+17. PERFORMANCE BASELINE
+==================================================
+
+Chưa cần performance optimization toàn diện.
+
+Nhưng hãy lưu baseline cho ít nhất một query thích hợp:
+
+- explain("executionStats")
+
+Ghi:
+
+- winningPlan
+- COLLSCAN hoặc IXSCAN
+- totalDocsExamined
+- totalKeysExamined
+- executionTimeMillis
+
+Mục tiêu:
+
+chuẩn bị dữ liệu so sánh cho phase performance sau.
+
+Không cố làm đẹp con số bằng cách sửa dataset không thực tế.
+
+==================================================
+18. IMPORT / EXPORT
+==================================================
+
+Chuẩn bị cách:
+
+- export Product/Order
+- import lại dữ liệu
+
+để phục vụ demo MongoDB Compass hoặc backup.
+
+Không cần hệ thống backup production.
+
+Chỉ cần reproducible cho đồ án.
+
+==================================================
+19. DATABASE TESTS
+==================================================
+
+Tạo test hoặc validation scripts cho:
+
+- validators
+- unique indexes
+- polymorphic Product
+- embedded Order Snapshot
+- aggregation output
+- revenue rule
+- referential assumptions quan trọng
+- seed counts
+
+Kiểm tra target cuối:
+
+Products ≈ 180
+Users ≈ 40
+Orders = 100
+Order items = 2–5/order
+>= 3 product groups
+
+==================================================
+20. DEMO READINESS
+==================================================
+
+Chuẩn bị dữ liệu để sau này demo được:
+
+1. mở hai Product khác ngành trong Compass;
+2. cho thấy attributes khác nhau;
+3. mở Order;
+4. cho thấy Product Snapshot embedded;
+5. chạy Aggregation;
+6. thấy Revenue và Top 5;
+7. xem Index/Explain.
+
+Không xây frontend ở phase này.
+
+==================================================
+21. DOCUMENTATION
+==================================================
+
+Cập nhật khi cần:
+
+- README.md
+- docs/database-schema.md
+- docs/seed-strategy.md
+- docs/demo-plan.md
+- docs/phase-03-review.md
+
+Không duplicate tài liệu không cần thiết.
+
+==================================================
+22. VALIDATION TRƯỚC KHI DONE
+==================================================
+
+Trước khi báo DONE phải thực sự chạy:
+
+- MongoDB local
+- replica set health
+- collection creation
+- validator tests
+- seed
+- aggregation pipelines
+- indexes
+- database verification scripts
+
+Không báo PASS dựa trên static inspection בלבד.
+
+Nếu MongoDB local không thể chạy:
+
+báo BLOCKED rõ ràng.
+
+Không giả kết quả.
+
+==================================================
+23. OUTPUT CUỐI
+==================================================
+
+Khi hoàn thành báo:
+
+1. MongoDB version.
+2. Database name.
+3. Replica set status.
+4. Collections đã tạo.
+5. Validator test result.
+6. Actual document counts.
+7. Product distribution theo ngành.
+8. Order status distribution.
+9. Payment distribution.
+10. Aggregation results.
+11. Indexes thực sự được tạo.
+12. Explain baseline.
+13. Seed reproducibility.
+14. Files đã tạo/sửa.
+15. Bugs/issues còn lại.
+16. Những gì DEFERRED.
+
+Xác nhận rõ:
+
+- database thật đã được kiểm thử;
+- chưa implement Flask business feature;
+- chưa implement frontend;
+- chưa bắt đầu phase tiếp theo.
+
+DỪNG để review.

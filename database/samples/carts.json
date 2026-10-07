@@ -1,0 +1,34 @@
+[
+  {
+    "_id": {
+      "$oid": "00000000000000000000012d"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "version": {
+      "$numberInt": "1"
+    },
+    "items": [
+      {
+        "lineId": "b373e69a5881102995563d23b3b9b897dc12637a0e8b0ce73d0d90cf3b8bf721",
+        "productId": {
+          "$oid": "000000000000000000000065"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "selectedAttributes": {}
+      }
+    ]
+  }
+]

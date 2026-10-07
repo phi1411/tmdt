@@ -1,0 +1,68 @@
+[
+  {
+    "_id": {
+      "$oid": "000000000000000000000001"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "name": "Điện tử",
+    "slug": "dien-tu",
+    "productType": "ELECTRONICS",
+    "description": "Danh mục cho đồ án",
+    "status": "ACTIVE",
+    "version": {
+      "$numberInt": "1"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000002"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "name": "Thời trang",
+    "slug": "thoi-trang",
+    "productType": "FASHION",
+    "description": "Danh mục cho đồ án",
+    "status": "ACTIVE",
+    "version": {
+      "$numberInt": "1"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000003"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "name": "Gia dụng",
+    "slug": "gia-dung",
+    "productType": "HOME_APPLIANCE",
+    "description": "Danh mục cho đồ án",
+    "status": "ACTIVE",
+    "version": {
+      "$numberInt": "1"
+    }
+  }
+]

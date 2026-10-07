@@ -1,0 +1,262 @@
+[
+  {
+    "_id": {
+      "$oid": "0000000000000000000001f6"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-02T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-11T01:00:00Z"
+    },
+    "orderId": {
+      "$oid": "000000000000000000000192"
+    },
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "attemptKey": "design-attempt-0002",
+    "requestHash": "fa9b597310f064b877b43f45eaca0814981b9a3fd4fad098633d356db6c0229d",
+    "txnRef": "DESIGNTXN0002",
+    "provider": "VNPAY",
+    "amount": {
+      "$numberLong": "11530000"
+    },
+    "currency": "VND",
+    "status": "SUCCEEDED",
+    "version": {
+      "$numberInt": "2"
+    },
+    "expiresAt": {
+      "$date": "2026-09-02T01:15:00Z"
+    },
+    "paymentRequest": {
+      "version": "2.1.0",
+      "command": "pay",
+      "tmnCode": "DEMO0001",
+      "amountScaled": {
+        "$numberLong": "1153000000"
+      },
+      "currency": "VND",
+      "txnRef": "DESIGNTXN0002",
+      "orderInfo": "Thanh toan DESIGN0002",
+      "orderType": "other",
+      "locale": "vn",
+      "returnUrl": "http://localhost:5173/payment/return",
+      "clientIp": "127.0.0.1",
+      "createdAt": {
+        "$date": "2026-09-02T01:00:00Z"
+      },
+      "expiresAt": {
+        "$date": "2026-09-02T01:15:00Z"
+      }
+    },
+    "providerTransactionNo": "900000000000001",
+    "responseCode": "00",
+    "transactionStatus": "00",
+    "bankCode": "NCB",
+    "verifiedAt": {
+      "$date": "2026-09-02T01:05:00Z"
+    },
+    "providerPaidAt": {
+      "$date": "2026-09-02T01:05:00Z"
+    },
+    "callbackFingerprint": "bbe90f61f94cf00d6979ba450276417ad5ead01b5a851c9795a7f0d187663ce6"
+  },
+  {
+    "_id": {
+      "$oid": "0000000000000000000001f7"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-03T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-12T01:00:00Z"
+    },
+    "orderId": {
+      "$oid": "000000000000000000000193"
+    },
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "attemptKey": "design-attempt-0003",
+    "requestHash": "86495321f128542fbfd02340c7334809bb2e3a59b9a256efc16d3f0248b396de",
+    "txnRef": "DESIGNTXN0003",
+    "provider": "VNPAY",
+    "amount": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "status": "SUCCEEDED",
+    "version": {
+      "$numberInt": "2"
+    },
+    "expiresAt": {
+      "$date": "2026-09-03T01:15:00Z"
+    },
+    "paymentRequest": {
+      "version": "2.1.0",
+      "command": "pay",
+      "tmnCode": "DEMO0001",
+      "amountScaled": {
+        "$numberLong": "1043000000"
+      },
+      "currency": "VND",
+      "txnRef": "DESIGNTXN0003",
+      "orderInfo": "Thanh toan DESIGN0003",
+      "orderType": "other",
+      "locale": "vn",
+      "returnUrl": "http://localhost:5173/payment/return",
+      "clientIp": "127.0.0.1",
+      "createdAt": {
+        "$date": "2026-09-03T01:00:00Z"
+      },
+      "expiresAt": {
+        "$date": "2026-09-03T01:15:00Z"
+      }
+    },
+    "providerTransactionNo": "900000000000002",
+    "responseCode": "00",
+    "transactionStatus": "00",
+    "bankCode": "NCB",
+    "verifiedAt": {
+      "$date": "2026-09-03T01:05:00Z"
+    },
+    "providerPaidAt": {
+      "$date": "2026-09-03T01:05:00Z"
+    },
+    "callbackFingerprint": "9a504955ffc511d561f8e90550eae366e9a43a824eb23ce2003c9f14445f1581"
+  },
+  {
+    "_id": {
+      "$oid": "0000000000000000000001f9"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-05T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-14T01:00:00Z"
+    },
+    "orderId": {
+      "$oid": "000000000000000000000195"
+    },
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "attemptKey": "design-attempt-0005",
+    "requestHash": "21ae005f9a7f8a80579234d9c9052ef840907cf2e2d5a11557c45f64dd720f5e",
+    "txnRef": "DESIGNTXN0005",
+    "provider": "VNPAY",
+    "amount": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "status": "EXPIRED",
+    "version": {
+      "$numberInt": "2"
+    },
+    "expiresAt": {
+      "$date": "2026-09-05T01:15:00Z"
+    },
+    "paymentRequest": {
+      "version": "2.1.0",
+      "command": "pay",
+      "tmnCode": "DEMO0001",
+      "amountScaled": {
+        "$numberLong": "1043000000"
+      },
+      "currency": "VND",
+      "txnRef": "DESIGNTXN0005",
+      "orderInfo": "Thanh toan DESIGN0005",
+      "orderType": "other",
+      "locale": "vn",
+      "returnUrl": "http://localhost:5173/payment/return",
+      "clientIp": "127.0.0.1",
+      "createdAt": {
+        "$date": "2026-09-05T01:00:00Z"
+      },
+      "expiresAt": {
+        "$date": "2026-09-05T01:15:00Z"
+      }
+    },
+    "expiredAt": {
+      "$date": "2026-09-05T01:15:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0000000000000000000001fa"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-06T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-15T01:00:00Z"
+    },
+    "orderId": {
+      "$oid": "000000000000000000000196"
+    },
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "attemptKey": "design-attempt-0006",
+    "requestHash": "0592f9571d557b500ed412241f27d1c2dd2572b7cf063a6ff5b2edbef7c1d4dc",
+    "txnRef": "DESIGNTXN0006",
+    "provider": "VNPAY",
+    "amount": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "status": "REVIEW_REQUIRED",
+    "version": {
+      "$numberInt": "2"
+    },
+    "expiresAt": {
+      "$date": "2026-09-06T01:15:00Z"
+    },
+    "paymentRequest": {
+      "version": "2.1.0",
+      "command": "pay",
+      "tmnCode": "DEMO0001",
+      "amountScaled": {
+        "$numberLong": "1043000000"
+      },
+      "currency": "VND",
+      "txnRef": "DESIGNTXN0006",
+      "orderInfo": "Thanh toan DESIGN0006",
+      "orderType": "other",
+      "locale": "vn",
+      "returnUrl": "http://localhost:5173/payment/return",
+      "clientIp": "127.0.0.1",
+      "createdAt": {
+        "$date": "2026-09-06T01:00:00Z"
+      },
+      "expiresAt": {
+        "$date": "2026-09-06T01:15:00Z"
+      }
+    },
+    "providerTransactionNo": "900000000000005",
+    "responseCode": "00",
+    "transactionStatus": "00",
+    "bankCode": "NCB",
+    "verifiedAt": {
+      "$date": "2026-09-06T01:05:00Z"
+    },
+    "providerPaidAt": {
+      "$date": "2026-09-06T01:05:00Z"
+    },
+    "callbackFingerprint": "ce981277931dd62ffe330ec42afb618f8fd1f4bfa819d1aa0211e169d62fd4e6"
+  }
+]

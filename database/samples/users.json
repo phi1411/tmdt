@@ -1,0 +1,70 @@
+[
+  {
+    "_id": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "email": "customer01@example.test",
+    "passwordHash": "$argon2id$v=19$m=19456,t=2,p=1$c2FtcGxlc2FsdDEyMzQ1Ng$c2FtcGxlZGlnZXN0MTIzNDU2Nzg5MA",
+    "role": "CUSTOMER",
+    "status": "ACTIVE",
+    "tokenVersion": {
+      "$numberInt": "0"
+    },
+    "version": {
+      "$numberInt": "1"
+    },
+    "name": "Khách Demo",
+    "phone": "0900000001",
+    "addresses": [
+      {
+        "_id": {
+          "$oid": "0000000000000000000000d3"
+        },
+        "receiverName": "Khách Demo",
+        "phone": "0900000001",
+        "addressLine": "Địa chỉ giả lập 01",
+        "province": "Địa phương Demo"
+      }
+    ],
+    "defaultAddressId": {
+      "$oid": "0000000000000000000000d3"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0000000000000000000000ca"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "email": "admin@example.test",
+    "passwordHash": "$argon2id$v=19$m=19456,t=2,p=1$c2FtcGxlc2FsdDEyMzQ1Ng$c2FtcGxlZGlnZXN0MTIzNDU2Nzg5MA",
+    "role": "ADMIN",
+    "status": "ACTIVE",
+    "tokenVersion": {
+      "$numberInt": "0"
+    },
+    "version": {
+      "$numberInt": "1"
+    },
+    "name": "Admin Demo",
+    "phone": "0900000001",
+    "addresses": [],
+    "defaultAddressId": null
+  }
+]

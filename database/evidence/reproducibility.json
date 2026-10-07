@@ -1,0 +1,28 @@
+{
+  "status": "LIVE_RESEED_PASS",
+  "database": "ecommerce_dev",
+  "beforeDigest": "15abd857414775548c9a2575884ec95089af6ca9ef4762c825395f36d96996a4",
+  "afterDigest": "15abd857414775548c9a2575884ec95089af6ca9ef4762c825395f36d96996a4",
+  "countsAfterSecondRun": {
+    "users": {
+      "$numberInt": "40"
+    },
+    "categories": {
+      "$numberInt": "3"
+    },
+    "products": {
+      "$numberInt": "180"
+    },
+    "carts": {
+      "$numberInt": "0"
+    },
+    "orders": {
+      "$numberInt": "100"
+    },
+    "payment_attempts": {
+      "$numberInt": "30"
+    }
+  },
+  "hashSaltsExcluded": true,
+  "indexesPreserved": true
+}

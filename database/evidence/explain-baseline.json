@@ -1,0 +1,1334 @@
+{
+  "database": "ecommerce_dev",
+  "command": {
+    "find": "products",
+    "filter": {
+      "status": "ACTIVE",
+      "categoryId": {
+        "$oid": "4ad126c3ebc4fb3918f084d4"
+      },
+      "price": {
+        "$gte": {
+          "$numberLong": "1000000"
+        },
+        "$lte": {
+          "$numberLong": "20000000"
+        }
+      }
+    },
+    "sort": {
+      "price": {
+        "$numberInt": "1"
+      },
+      "_id": {
+        "$numberInt": "1"
+      }
+    },
+    "limit": {
+      "$numberInt": "10"
+    }
+  },
+  "runs": {
+    "planner": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "LIMIT",
+        "limitAmount": {
+          "$numberInt": "10"
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "status": {
+                "$numberInt": "1"
+              },
+              "categoryId": {
+                "$numberInt": "1"
+              },
+              "price": {
+                "$numberInt": "1"
+              },
+              "_id": {
+                "$numberInt": "1"
+              }
+            },
+            "indexName": "ix_products_category_price",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "status": [],
+              "categoryId": [],
+              "price": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": {
+              "$numberInt": "2"
+            },
+            "direction": "forward",
+            "indexBounds": {
+              "status": [
+                "[\"ACTIVE\", \"ACTIVE\"]"
+              ],
+              "categoryId": [
+                "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+              ],
+              "price": [
+                "[1000000, 20000000]"
+              ],
+              "_id": [
+                "[MinKey, MaxKey]"
+              ]
+            }
+          }
+        }
+      },
+      "stages": [
+        "LIMIT",
+        "FETCH",
+        "IXSCAN"
+      ],
+      "nReturned": {
+        "$numberInt": "10"
+      },
+      "totalDocsExamined": {
+        "$numberInt": "10"
+      },
+      "totalKeysExamined": {
+        "$numberInt": "10"
+      },
+      "executionTimeMillis": {
+        "$numberInt": "0"
+      },
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_dev.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": {
+                    "$numberLong": "20000000"
+                  }
+                }
+              },
+              {
+                "price": {
+                  "$gte": {
+                    "$numberLong": "1000000"
+                  }
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "365A9D47",
+          "planCacheShapeHash": "365A9D47",
+          "planCacheKey": "C69A6566",
+          "optimizationTimeMillis": {
+            "$numberInt": "0"
+          },
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "limitAmount": {
+              "$numberInt": "10"
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": {
+                    "$numberInt": "1"
+                  },
+                  "categoryId": {
+                    "$numberInt": "1"
+                  },
+                  "price": {
+                    "$numberInt": "1"
+                  },
+                  "_id": {
+                    "$numberInt": "1"
+                  }
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": {
+                  "$numberInt": "2"
+                },
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                }
+              }
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": {
+            "$numberInt": "10"
+          },
+          "executionTimeMillis": {
+            "$numberInt": "0"
+          },
+          "totalKeysExamined": {
+            "$numberInt": "10"
+          },
+          "totalDocsExamined": {
+            "$numberInt": "10"
+          },
+          "executionStages": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "nReturned": {
+              "$numberInt": "10"
+            },
+            "executionTimeMillisEstimate": {
+              "$numberInt": "0"
+            },
+            "works": {
+              "$numberInt": "11"
+            },
+            "advanced": {
+              "$numberInt": "10"
+            },
+            "needTime": {
+              "$numberInt": "0"
+            },
+            "needYield": {
+              "$numberInt": "0"
+            },
+            "saveState": {
+              "$numberInt": "0"
+            },
+            "restoreState": {
+              "$numberInt": "0"
+            },
+            "isEOF": {
+              "$numberInt": "1"
+            },
+            "limitAmount": {
+              "$numberInt": "10"
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "nReturned": {
+                "$numberInt": "10"
+              },
+              "executionTimeMillisEstimate": {
+                "$numberInt": "0"
+              },
+              "works": {
+                "$numberInt": "10"
+              },
+              "advanced": {
+                "$numberInt": "10"
+              },
+              "needTime": {
+                "$numberInt": "0"
+              },
+              "needYield": {
+                "$numberInt": "0"
+              },
+              "saveState": {
+                "$numberInt": "0"
+              },
+              "restoreState": {
+                "$numberInt": "0"
+              },
+              "isEOF": {
+                "$numberInt": "0"
+              },
+              "docsExamined": {
+                "$numberInt": "10"
+              },
+              "alreadyHasObj": {
+                "$numberInt": "0"
+              },
+              "inputStage": {
+                "stage": "IXSCAN",
+                "nReturned": {
+                  "$numberInt": "10"
+                },
+                "executionTimeMillisEstimate": {
+                  "$numberInt": "0"
+                },
+                "works": {
+                  "$numberInt": "10"
+                },
+                "advanced": {
+                  "$numberInt": "10"
+                },
+                "needTime": {
+                  "$numberInt": "0"
+                },
+                "needYield": {
+                  "$numberInt": "0"
+                },
+                "saveState": {
+                  "$numberInt": "0"
+                },
+                "restoreState": {
+                  "$numberInt": "0"
+                },
+                "isEOF": {
+                  "$numberInt": "0"
+                },
+                "keyPattern": {
+                  "status": {
+                    "$numberInt": "1"
+                  },
+                  "categoryId": {
+                    "$numberInt": "1"
+                  },
+                  "price": {
+                    "$numberInt": "1"
+                  },
+                  "_id": {
+                    "$numberInt": "1"
+                  }
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": {
+                  "$numberInt": "2"
+                },
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                },
+                "keysExamined": {
+                  "$numberInt": "10"
+                },
+                "seeks": {
+                  "$numberInt": "1"
+                },
+                "dupsTested": {
+                  "$numberInt": "0"
+                },
+                "dupsDropped": {
+                  "$numberInt": "0"
+                }
+              }
+            }
+          }
+        },
+        "queryShapeHash": "F5FD35A7F23886BFA7DF31710D7DCC80182581A83ED3BEC3592AA99A8258F670",
+        "command": {
+          "find": "products",
+          "filter": {
+            "status": "ACTIVE",
+            "categoryId": {
+              "$oid": "4ad126c3ebc4fb3918f084d4"
+            },
+            "price": {
+              "$gte": {
+                "$numberLong": "1000000"
+              },
+              "$lte": {
+                "$numberLong": "20000000"
+              }
+            }
+          },
+          "sort": {
+            "price": {
+              "$numberInt": "1"
+            },
+            "_id": {
+              "$numberInt": "1"
+            }
+          },
+          "limit": {
+            "$numberInt": "10"
+          },
+          "$db": "ecommerce_dev"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": {
+            "$numberInt": "27017"
+          },
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryFacetMaxOutputDocSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalDocumentSourceGroupMaxMemoryBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryMaxBlockingSortMemoryUsageBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryProhibitBlockingMergeOnMongoS": {
+            "$numberInt": "0"
+          },
+          "internalQueryMaxAddToSetBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": {
+            "$numberInt": "1"
+          }
+        },
+        "ok": {
+          "$numberDouble": "1.0"
+        },
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791359598,
+              "i": 50
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": {
+              "$numberLong": "0"
+            }
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791359598,
+            "i": 50
+          }
+        }
+      }
+    },
+    "natural": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "SORT",
+        "sortPattern": {
+          "price": {
+            "$numberInt": "1"
+          },
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "memLimit": {
+          "$numberInt": "104857600"
+        },
+        "limitAmount": {
+          "$numberInt": "10"
+        },
+        "type": "simple",
+        "inputStage": {
+          "stage": "COLLSCAN",
+          "filter": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": {
+                    "$numberLong": "20000000"
+                  }
+                }
+              },
+              {
+                "price": {
+                  "$gte": {
+                    "$numberLong": "1000000"
+                  }
+                }
+              }
+            ]
+          },
+          "direction": "forward"
+        }
+      },
+      "stages": [
+        "SORT",
+        "COLLSCAN"
+      ],
+      "nReturned": {
+        "$numberInt": "10"
+      },
+      "totalDocsExamined": {
+        "$numberInt": "180"
+      },
+      "totalKeysExamined": {
+        "$numberInt": "0"
+      },
+      "executionTimeMillis": {
+        "$numberInt": "0"
+      },
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_dev.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": {
+                    "$numberLong": "20000000"
+                  }
+                }
+              },
+              {
+                "price": {
+                  "$gte": {
+                    "$numberLong": "1000000"
+                  }
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "365A9D47",
+          "planCacheShapeHash": "365A9D47",
+          "planCacheKey": "C69A6566",
+          "optimizationTimeMillis": {
+            "$numberInt": "0"
+          },
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "SORT",
+            "sortPattern": {
+              "price": {
+                "$numberInt": "1"
+              },
+              "_id": {
+                "$numberInt": "1"
+              }
+            },
+            "memLimit": {
+              "$numberInt": "104857600"
+            },
+            "limitAmount": {
+              "$numberInt": "10"
+            },
+            "type": "simple",
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "categoryId": {
+                      "$eq": {
+                        "$oid": "4ad126c3ebc4fb3918f084d4"
+                      }
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": {
+                        "$numberLong": "20000000"
+                      }
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": {
+                        "$numberLong": "1000000"
+                      }
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": {
+            "$numberInt": "10"
+          },
+          "executionTimeMillis": {
+            "$numberInt": "0"
+          },
+          "totalKeysExamined": {
+            "$numberInt": "0"
+          },
+          "totalDocsExamined": {
+            "$numberInt": "180"
+          },
+          "executionStages": {
+            "isCached": false,
+            "stage": "SORT",
+            "nReturned": {
+              "$numberInt": "10"
+            },
+            "executionTimeMillisEstimate": {
+              "$numberInt": "0"
+            },
+            "works": {
+              "$numberInt": "192"
+            },
+            "advanced": {
+              "$numberInt": "10"
+            },
+            "needTime": {
+              "$numberInt": "181"
+            },
+            "needYield": {
+              "$numberInt": "0"
+            },
+            "saveState": {
+              "$numberInt": "0"
+            },
+            "restoreState": {
+              "$numberInt": "0"
+            },
+            "isEOF": {
+              "$numberInt": "1"
+            },
+            "sortPattern": {
+              "price": {
+                "$numberInt": "1"
+              },
+              "_id": {
+                "$numberInt": "1"
+              }
+            },
+            "memLimit": {
+              "$numberInt": "104857600"
+            },
+            "limitAmount": {
+              "$numberInt": "10"
+            },
+            "type": "simple",
+            "totalDataSizeSorted": {
+              "$numberInt": "12956"
+            },
+            "usedDisk": false,
+            "spills": {
+              "$numberInt": "0"
+            },
+            "spilledDataStorageSize": {
+              "$numberInt": "0"
+            },
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "categoryId": {
+                      "$eq": {
+                        "$oid": "4ad126c3ebc4fb3918f084d4"
+                      }
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": {
+                        "$numberLong": "20000000"
+                      }
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": {
+                        "$numberLong": "1000000"
+                      }
+                    }
+                  }
+                ]
+              },
+              "nReturned": {
+                "$numberInt": "38"
+              },
+              "executionTimeMillisEstimate": {
+                "$numberInt": "0"
+              },
+              "works": {
+                "$numberInt": "181"
+              },
+              "advanced": {
+                "$numberInt": "38"
+              },
+              "needTime": {
+                "$numberInt": "142"
+              },
+              "needYield": {
+                "$numberInt": "0"
+              },
+              "saveState": {
+                "$numberInt": "0"
+              },
+              "restoreState": {
+                "$numberInt": "0"
+              },
+              "isEOF": {
+                "$numberInt": "1"
+              },
+              "direction": "forward",
+              "docsExamined": {
+                "$numberInt": "180"
+              }
+            }
+          }
+        },
+        "queryShapeHash": "F5FD35A7F23886BFA7DF31710D7DCC80182581A83ED3BEC3592AA99A8258F670",
+        "command": {
+          "find": "products",
+          "filter": {
+            "status": "ACTIVE",
+            "categoryId": {
+              "$oid": "4ad126c3ebc4fb3918f084d4"
+            },
+            "price": {
+              "$gte": {
+                "$numberLong": "1000000"
+              },
+              "$lte": {
+                "$numberLong": "20000000"
+              }
+            }
+          },
+          "sort": {
+            "price": {
+              "$numberInt": "1"
+            },
+            "_id": {
+              "$numberInt": "1"
+            }
+          },
+          "limit": {
+            "$numberInt": "10"
+          },
+          "hint": {
+            "$natural": {
+              "$numberInt": "1"
+            }
+          },
+          "$db": "ecommerce_dev"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": {
+            "$numberInt": "27017"
+          },
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryFacetMaxOutputDocSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalDocumentSourceGroupMaxMemoryBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryMaxBlockingSortMemoryUsageBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryProhibitBlockingMergeOnMongoS": {
+            "$numberInt": "0"
+          },
+          "internalQueryMaxAddToSetBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": {
+            "$numberInt": "1"
+          }
+        },
+        "ok": {
+          "$numberDouble": "1.0"
+        },
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791359598,
+              "i": 50
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": {
+              "$numberLong": "0"
+            }
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791359598,
+            "i": 50
+          }
+        }
+      }
+    },
+    "namedIndex": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "LIMIT",
+        "limitAmount": {
+          "$numberInt": "10"
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "status": {
+                "$numberInt": "1"
+              },
+              "categoryId": {
+                "$numberInt": "1"
+              },
+              "price": {
+                "$numberInt": "1"
+              },
+              "_id": {
+                "$numberInt": "1"
+              }
+            },
+            "indexName": "ix_products_category_price",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "status": [],
+              "categoryId": [],
+              "price": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": {
+              "$numberInt": "2"
+            },
+            "direction": "forward",
+            "indexBounds": {
+              "status": [
+                "[\"ACTIVE\", \"ACTIVE\"]"
+              ],
+              "categoryId": [
+                "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+              ],
+              "price": [
+                "[1000000, 20000000]"
+              ],
+              "_id": [
+                "[MinKey, MaxKey]"
+              ]
+            }
+          }
+        }
+      },
+      "stages": [
+        "LIMIT",
+        "FETCH",
+        "IXSCAN"
+      ],
+      "nReturned": {
+        "$numberInt": "10"
+      },
+      "totalDocsExamined": {
+        "$numberInt": "10"
+      },
+      "totalKeysExamined": {
+        "$numberInt": "10"
+      },
+      "executionTimeMillis": {
+        "$numberInt": "0"
+      },
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_dev.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": {
+                    "$numberLong": "20000000"
+                  }
+                }
+              },
+              {
+                "price": {
+                  "$gte": {
+                    "$numberLong": "1000000"
+                  }
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "365A9D47",
+          "planCacheShapeHash": "365A9D47",
+          "planCacheKey": "C69A6566",
+          "optimizationTimeMillis": {
+            "$numberInt": "0"
+          },
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "limitAmount": {
+              "$numberInt": "10"
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": {
+                    "$numberInt": "1"
+                  },
+                  "categoryId": {
+                    "$numberInt": "1"
+                  },
+                  "price": {
+                    "$numberInt": "1"
+                  },
+                  "_id": {
+                    "$numberInt": "1"
+                  }
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": {
+                  "$numberInt": "2"
+                },
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                }
+              }
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": {
+            "$numberInt": "10"
+          },
+          "executionTimeMillis": {
+            "$numberInt": "0"
+          },
+          "totalKeysExamined": {
+            "$numberInt": "10"
+          },
+          "totalDocsExamined": {
+            "$numberInt": "10"
+          },
+          "executionStages": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "nReturned": {
+              "$numberInt": "10"
+            },
+            "executionTimeMillisEstimate": {
+              "$numberInt": "0"
+            },
+            "works": {
+              "$numberInt": "11"
+            },
+            "advanced": {
+              "$numberInt": "10"
+            },
+            "needTime": {
+              "$numberInt": "0"
+            },
+            "needYield": {
+              "$numberInt": "0"
+            },
+            "saveState": {
+              "$numberInt": "0"
+            },
+            "restoreState": {
+              "$numberInt": "0"
+            },
+            "isEOF": {
+              "$numberInt": "1"
+            },
+            "limitAmount": {
+              "$numberInt": "10"
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "nReturned": {
+                "$numberInt": "10"
+              },
+              "executionTimeMillisEstimate": {
+                "$numberInt": "0"
+              },
+              "works": {
+                "$numberInt": "10"
+              },
+              "advanced": {
+                "$numberInt": "10"
+              },
+              "needTime": {
+                "$numberInt": "0"
+              },
+              "needYield": {
+                "$numberInt": "0"
+              },
+              "saveState": {
+                "$numberInt": "0"
+              },
+              "restoreState": {
+                "$numberInt": "0"
+              },
+              "isEOF": {
+                "$numberInt": "0"
+              },
+              "docsExamined": {
+                "$numberInt": "10"
+              },
+              "alreadyHasObj": {
+                "$numberInt": "0"
+              },
+              "inputStage": {
+                "stage": "IXSCAN",
+                "nReturned": {
+                  "$numberInt": "10"
+                },
+                "executionTimeMillisEstimate": {
+                  "$numberInt": "0"
+                },
+                "works": {
+                  "$numberInt": "10"
+                },
+                "advanced": {
+                  "$numberInt": "10"
+                },
+                "needTime": {
+                  "$numberInt": "0"
+                },
+                "needYield": {
+                  "$numberInt": "0"
+                },
+                "saveState": {
+                  "$numberInt": "0"
+                },
+                "restoreState": {
+                  "$numberInt": "0"
+                },
+                "isEOF": {
+                  "$numberInt": "0"
+                },
+                "keyPattern": {
+                  "status": {
+                    "$numberInt": "1"
+                  },
+                  "categoryId": {
+                    "$numberInt": "1"
+                  },
+                  "price": {
+                    "$numberInt": "1"
+                  },
+                  "_id": {
+                    "$numberInt": "1"
+                  }
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": {
+                  "$numberInt": "2"
+                },
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                },
+                "keysExamined": {
+                  "$numberInt": "10"
+                },
+                "seeks": {
+                  "$numberInt": "1"
+                },
+                "dupsTested": {
+                  "$numberInt": "0"
+                },
+                "dupsDropped": {
+                  "$numberInt": "0"
+                }
+              }
+            }
+          }
+        },
+        "queryShapeHash": "F5FD35A7F23886BFA7DF31710D7DCC80182581A83ED3BEC3592AA99A8258F670",
+        "command": {
+          "find": "products",
+          "filter": {
+            "status": "ACTIVE",
+            "categoryId": {
+              "$oid": "4ad126c3ebc4fb3918f084d4"
+            },
+            "price": {
+              "$gte": {
+                "$numberLong": "1000000"
+              },
+              "$lte": {
+                "$numberLong": "20000000"
+              }
+            }
+          },
+          "sort": {
+            "price": {
+              "$numberInt": "1"
+            },
+            "_id": {
+              "$numberInt": "1"
+            }
+          },
+          "limit": {
+            "$numberInt": "10"
+          },
+          "hint": "ix_products_category_price",
+          "$db": "ecommerce_dev"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": {
+            "$numberInt": "27017"
+          },
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryFacetMaxOutputDocSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalDocumentSourceGroupMaxMemoryBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryMaxBlockingSortMemoryUsageBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryProhibitBlockingMergeOnMongoS": {
+            "$numberInt": "0"
+          },
+          "internalQueryMaxAddToSetBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": {
+            "$numberInt": "104857600"
+          },
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": {
+            "$numberInt": "1"
+          }
+        },
+        "ok": {
+          "$numberDouble": "1.0"
+        },
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791359598,
+              "i": 50
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": {
+              "$numberLong": "0"
+            }
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791359598,
+            "i": 50
+          }
+        }
+      }
+    }
+  },
+  "fullBenchmark": false,
+  "timingInterpretation": "Single execution on 180 documents; 0ms is timer resolution, not a latency guarantee"
+}

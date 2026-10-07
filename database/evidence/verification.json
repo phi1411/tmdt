@@ -1,0 +1,1051 @@
+{
+  "status": "LIVE_MONGODB_PASS",
+  "mongodbVersion": "8.0.32",
+  "pythonVersion": "3.12.14",
+  "database": "ecommerce_dev",
+  "replicaSet": "rs0",
+  "replicaMembers": [
+    {
+      "name": "localhost:27017",
+      "health": {
+        "$numberDouble": "1.0"
+      },
+      "stateStr": "PRIMARY"
+    }
+  ],
+  "storageEngine": "wiredTiger",
+  "collections": [
+    "users",
+    "categories",
+    "products",
+    "carts",
+    "orders",
+    "payment_attempts"
+  ],
+  "validatorsApplied": {
+    "$numberInt": "6"
+  },
+  "validatorTests": {
+    "accepted": [
+      "users:valid",
+      "categories:valid",
+      "products:valid",
+      "orders:valid",
+      "payment_attempts:valid",
+      "carts:valid",
+      "ELECTRONICS:polymorphic",
+      "FASHION:polymorphic",
+      "HOME_APPLIANCE:polymorphic"
+    ],
+    "rejected": [
+      {
+        "case": "users:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "users:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "users:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "categories:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "categories:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "categories:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "products:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "products:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "products:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "orders:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "orders:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "orders:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "payment_attempts:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "payment_attempts:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "payment_attempts:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "carts:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "carts:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "carts:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "ELECTRONICS:wrong-attribute",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "FASHION:wrong-attribute",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "HOME_APPLIANCE:wrong-attribute",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "users:business-enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "categories:business-enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "products:business-enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "orders:business-enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "payment_attempts:business-enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "missing-snapshot-price",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "missing-completedAt",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "completed-unpaid",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "price-int-instead-long",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "cart-zero-quantity",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "unsafe-attribute-key",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "payment-sensitive-field",
+        "code": {
+          "$numberInt": "121"
+        }
+      }
+    ],
+    "uniqueRejected": [
+      {
+        "index": "uq_users_email",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_categories_slug",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_products_sku",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_products_slug",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_carts_user",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_orders_code",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_orders_checkout",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_attempts_txn_ref",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_attempts_order_key",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_attempts_provider_txn",
+        "code": {
+          "$numberInt": "11000"
+        }
+      },
+      {
+        "index": "uq_attempts_pending_order",
+        "code": {
+          "$numberInt": "11000"
+        }
+      }
+    ],
+    "probesRolledBack": true
+  },
+  "counts": {
+    "users": {
+      "$numberInt": "40"
+    },
+    "categories": {
+      "$numberInt": "3"
+    },
+    "products": {
+      "$numberInt": "180"
+    },
+    "carts": {
+      "$numberInt": "0"
+    },
+    "orders": {
+      "$numberInt": "100"
+    },
+    "payment_attempts": {
+      "$numberInt": "30"
+    }
+  },
+  "productDistribution": {
+    "FASHION": {
+      "$numberInt": "60"
+    },
+    "ELECTRONICS": {
+      "$numberInt": "60"
+    },
+    "HOME_APPLIANCE": {
+      "$numberInt": "60"
+    }
+  },
+  "orderStatusDistribution": {
+    "COMPLETED": {
+      "$numberInt": "60"
+    },
+    "CANCELLED": {
+      "$numberInt": "5"
+    },
+    "SHIPPING": {
+      "$numberInt": "10"
+    },
+    "CONFIRMED": {
+      "$numberInt": "10"
+    },
+    "PENDING": {
+      "$numberInt": "10"
+    },
+    "EXPIRED": {
+      "$numberInt": "5"
+    }
+  },
+  "paymentMethodDistribution": {
+    "COD": {
+      "$numberInt": "70"
+    },
+    "VNPAY": {
+      "$numberInt": "30"
+    }
+  },
+  "paymentStatusDistribution": {
+    "PAID": {
+      "$numberInt": "60"
+    },
+    "UNPAID": {
+      "$numberInt": "30"
+    },
+    "PENDING": {
+      "$numberInt": "5"
+    },
+    "FAILED": {
+      "$numberInt": "5"
+    }
+  },
+  "attemptStatusDistribution": {
+    "SUCCEEDED": {
+      "$numberInt": "20"
+    },
+    "PENDING": {
+      "$numberInt": "5"
+    },
+    "EXPIRED": {
+      "$numberInt": "5"
+    }
+  },
+  "orderItemCountDistribution": {
+    "3": {
+      "$numberInt": "21"
+    },
+    "5": {
+      "$numberInt": "34"
+    },
+    "2": {
+      "$numberInt": "25"
+    },
+    "4": {
+      "$numberInt": "20"
+    }
+  },
+  "productsWithImages": {
+    "$numberInt": "180"
+  },
+  "passwordsVerified": {
+    "$numberInt": "40"
+  },
+  "snapshotOriginVerified": true,
+  "stockReconciled": true,
+  "aggregationsExecuted": {
+    "$numberInt": "8"
+  },
+  "salesSummary": [
+    {
+      "totalRevenue": {
+        "$numberLong": "10103259022"
+      },
+      "qualifiedOrders": {
+        "$numberInt": "60"
+      },
+      "totalProductsSold": {
+        "$numberInt": "434"
+      }
+    }
+  ],
+  "revenueByMonth": [
+    {
+      "_id": {
+        "$date": {
+          "$numberLong": "1782838800000"
+        }
+      },
+      "revenue": {
+        "$numberLong": "3423072936"
+      },
+      "orders": {
+        "$numberInt": "17"
+      }
+    },
+    {
+      "_id": {
+        "$date": {
+          "$numberLong": "1785517200000"
+        }
+      },
+      "revenue": {
+        "$numberLong": "3883307042"
+      },
+      "orders": {
+        "$numberInt": "25"
+      }
+    },
+    {
+      "_id": {
+        "$date": {
+          "$numberLong": "1788195600000"
+        }
+      },
+      "revenue": {
+        "$numberLong": "2796879044"
+      },
+      "orders": {
+        "$numberInt": "18"
+      }
+    }
+  ],
+  "top5": [
+    {
+      "productName": "Longines Master Collection — bản demo 02",
+      "quantity": {
+        "$numberInt": "12"
+      },
+      "revenue": {
+        "$numberLong": "472496856"
+      },
+      "productId": {
+        "$oid": "f289cf75b48de99d416e2384"
+      }
+    },
+    {
+      "productName": "Carbon Steel Wok",
+      "quantity": {
+        "$numberInt": "9"
+      },
+      "revenue": {
+        "$numberLong": "6747750"
+      },
+      "productId": {
+        "$oid": "7aa753942825a61fdcaa59b9"
+      }
+    },
+    {
+      "productName": "Selfie Lamp with iPhone — bản demo 02",
+      "quantity": {
+        "$numberInt": "9"
+      },
+      "revenue": {
+        "$numberLong": "3541392"
+      },
+      "productId": {
+        "$oid": "87409a4cc4c77501f8ef10e8"
+      }
+    },
+    {
+      "productName": "Samsung Galaxy S8",
+      "quantity": {
+        "$numberInt": "8"
+      },
+      "revenue": {
+        "$numberLong": "99998000"
+      },
+      "productId": {
+        "$oid": "d9a8bcc197f31c3f0fa1084a"
+      }
+    },
+    {
+      "productName": "Apple Airpods",
+      "quantity": {
+        "$numberInt": "8"
+      },
+      "revenue": {
+        "$numberLong": "25998000"
+      },
+      "productId": {
+        "$oid": "05c4109a3f04b06c864ff88e"
+      }
+    }
+  ],
+  "actualIndexes": {
+    "users": [
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "_id_"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "email": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_users_email",
+        "unique": true
+      }
+    ],
+    "categories": [
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "_id_"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "slug": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_categories_slug",
+        "unique": true
+      }
+    ],
+    "products": [
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "_id_"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "sku": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_products_sku",
+        "unique": true
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "slug": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_products_slug",
+        "unique": true
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "status": {
+            "$numberInt": "1"
+          },
+          "categoryId": {
+            "$numberInt": "1"
+          },
+          "price": {
+            "$numberInt": "1"
+          },
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "ix_products_category_price"
+      }
+    ],
+    "carts": [
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "_id_"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "userId": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_carts_user",
+        "unique": true
+      }
+    ],
+    "orders": [
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "_id_"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "orderCode": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_orders_code",
+        "unique": true
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "userId": {
+            "$numberInt": "1"
+          },
+          "checkoutKey": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_orders_checkout",
+        "unique": true
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "userId": {
+            "$numberInt": "1"
+          },
+          "createdAt": {
+            "$numberInt": "-1"
+          },
+          "_id": {
+            "$numberInt": "-1"
+          }
+        },
+        "name": "ix_orders_user_history"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "orderStatus": {
+            "$numberInt": "1"
+          },
+          "paymentStatus": {
+            "$numberInt": "1"
+          },
+          "completedAt": {
+            "$numberInt": "-1"
+          },
+          "_id": {
+            "$numberInt": "-1"
+          }
+        },
+        "name": "ix_orders_qualified_completed"
+      }
+    ],
+    "payment_attempts": [
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "_id_"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "txnRef": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_attempts_txn_ref",
+        "unique": true
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "orderId": {
+            "$numberInt": "1"
+          },
+          "attemptKey": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_attempts_order_key",
+        "unique": true
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "providerTransactionNo": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_attempts_provider_txn",
+        "unique": true,
+        "partialFilterExpression": {
+          "providerTransactionNo": {
+            "$type": "string"
+          }
+        }
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "orderId": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_attempts_pending_order",
+        "unique": true,
+        "partialFilterExpression": {
+          "status": "PENDING"
+        }
+      }
+    ]
+  },
+  "declaredIndexes": {
+    "$numberInt": "14"
+  },
+  "automaticIdIndexes": {
+    "$numberInt": "6"
+  },
+  "explain": {
+    "planner": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "LIMIT",
+        "limitAmount": {
+          "$numberInt": "10"
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "status": {
+                "$numberInt": "1"
+              },
+              "categoryId": {
+                "$numberInt": "1"
+              },
+              "price": {
+                "$numberInt": "1"
+              },
+              "_id": {
+                "$numberInt": "1"
+              }
+            },
+            "indexName": "ix_products_category_price",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "status": [],
+              "categoryId": [],
+              "price": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": {
+              "$numberInt": "2"
+            },
+            "direction": "forward",
+            "indexBounds": {
+              "status": [
+                "[\"ACTIVE\", \"ACTIVE\"]"
+              ],
+              "categoryId": [
+                "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+              ],
+              "price": [
+                "[1000000, 20000000]"
+              ],
+              "_id": [
+                "[MinKey, MaxKey]"
+              ]
+            }
+          }
+        }
+      },
+      "stages": [
+        "LIMIT",
+        "FETCH",
+        "IXSCAN"
+      ],
+      "nReturned": {
+        "$numberInt": "10"
+      },
+      "totalDocsExamined": {
+        "$numberInt": "10"
+      },
+      "totalKeysExamined": {
+        "$numberInt": "10"
+      },
+      "executionTimeMillis": {
+        "$numberInt": "0"
+      }
+    },
+    "natural": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "SORT",
+        "sortPattern": {
+          "price": {
+            "$numberInt": "1"
+          },
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "memLimit": {
+          "$numberInt": "104857600"
+        },
+        "limitAmount": {
+          "$numberInt": "10"
+        },
+        "type": "simple",
+        "inputStage": {
+          "stage": "COLLSCAN",
+          "filter": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": {
+                    "$numberLong": "20000000"
+                  }
+                }
+              },
+              {
+                "price": {
+                  "$gte": {
+                    "$numberLong": "1000000"
+                  }
+                }
+              }
+            ]
+          },
+          "direction": "forward"
+        }
+      },
+      "stages": [
+        "SORT",
+        "COLLSCAN"
+      ],
+      "nReturned": {
+        "$numberInt": "10"
+      },
+      "totalDocsExamined": {
+        "$numberInt": "180"
+      },
+      "totalKeysExamined": {
+        "$numberInt": "0"
+      },
+      "executionTimeMillis": {
+        "$numberInt": "0"
+      }
+    },
+    "namedIndex": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "LIMIT",
+        "limitAmount": {
+          "$numberInt": "10"
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "status": {
+                "$numberInt": "1"
+              },
+              "categoryId": {
+                "$numberInt": "1"
+              },
+              "price": {
+                "$numberInt": "1"
+              },
+              "_id": {
+                "$numberInt": "1"
+              }
+            },
+            "indexName": "ix_products_category_price",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "status": [],
+              "categoryId": [],
+              "price": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": {
+              "$numberInt": "2"
+            },
+            "direction": "forward",
+            "indexBounds": {
+              "status": [
+                "[\"ACTIVE\", \"ACTIVE\"]"
+              ],
+              "categoryId": [
+                "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+              ],
+              "price": [
+                "[1000000, 20000000]"
+              ],
+              "_id": [
+                "[MinKey, MaxKey]"
+              ]
+            }
+          }
+        }
+      },
+      "stages": [
+        "LIMIT",
+        "FETCH",
+        "IXSCAN"
+      ],
+      "nReturned": {
+        "$numberInt": "10"
+      },
+      "totalDocsExamined": {
+        "$numberInt": "10"
+      },
+      "totalKeysExamined": {
+        "$numberInt": "10"
+      },
+      "executionTimeMillis": {
+        "$numberInt": "0"
+      }
+    }
+  },
+  "contentDigestExcludingSaltedPasswords": "15abd857414775548c9a2575884ec95089af6ca9ef4762c825395f36d96996a4",
+  "businessFeaturesImplemented": false,
+  "frontendImplemented": false,
+  "fullBenchmarkRun": false
+}

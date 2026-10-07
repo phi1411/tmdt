@@ -1,0 +1,142 @@
+[
+  {
+    "_id": {
+      "$oid": "000000000000000000000065"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "sku": "EL-001",
+    "name": "Điện thoại Demo A",
+    "slug": "dien-thoai-demo-a",
+    "productType": "ELECTRONICS",
+    "categoryId": {
+      "$oid": "000000000000000000000001"
+    },
+    "brand": "DemoTech",
+    "description": "Sản phẩm giả lập",
+    "nameNormalized": "dien thoai demo a",
+    "brandNormalized": "demotech",
+    "price": {
+      "$numberLong": "12000000"
+    },
+    "stock": {
+      "$numberInt": "50"
+    },
+    "images": [
+      "https://assets.example.test/el-001.webp"
+    ],
+    "attributes": {
+      "ram": "8GB",
+      "storage": "256GB",
+      "chip": "Demo Chip",
+      "screen": "6.5 inch",
+      "battery": "5000mAh"
+    },
+    "status": "ACTIVE",
+    "version": {
+      "$numberInt": "1"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000066"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "sku": "FA-001",
+    "name": "Áo thun Demo",
+    "slug": "ao-thun-demo",
+    "productType": "FASHION",
+    "categoryId": {
+      "$oid": "000000000000000000000002"
+    },
+    "brand": "DemoWear",
+    "description": "Sản phẩm giả lập",
+    "nameNormalized": "ao thun demo",
+    "brandNormalized": "demowear",
+    "price": {
+      "$numberLong": "200000"
+    },
+    "stock": {
+      "$numberInt": "50"
+    },
+    "images": [
+      "https://assets.example.test/fa-001.webp"
+    ],
+    "attributes": {
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "material": "Cotton",
+      "gender": "Unisex"
+    },
+    "status": "ACTIVE",
+    "version": {
+      "$numberInt": "1"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000067"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "sku": "HO-001",
+    "name": "Nồi chiên Demo",
+    "slug": "noi-chien-demo",
+    "productType": "HOME_APPLIANCE",
+    "categoryId": {
+      "$oid": "000000000000000000000003"
+    },
+    "brand": "DemoHome",
+    "description": "Sản phẩm giả lập",
+    "nameNormalized": "noi chien demo",
+    "brandNormalized": "demohome",
+    "price": {
+      "$numberLong": "1500000"
+    },
+    "stock": {
+      "$numberInt": "50"
+    },
+    "images": [
+      "https://assets.example.test/ho-001.webp"
+    ],
+    "attributes": {
+      "power": "1700W",
+      "capacity": "6L",
+      "voltage": "220V",
+      "material": "Stainless Steel"
+    },
+    "status": "ACTIVE",
+    "version": {
+      "$numberInt": "1"
+    }
+  }
+]

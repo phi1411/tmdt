@@ -1,0 +1,139 @@
+{
+  "status": "PHASE05A_HTTP_PASS",
+  "httpChecks": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/register",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/users/me/addresses",
+      "status": 201
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/me/addresses/6ac611c2f986747dcf10c80b",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/me/default-address",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/me/addresses/6ac611c2f986747dcf10c80b",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users?pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users/6ac611c1f986747dcf10c80a",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/admin/users/6ac611c1f986747dcf10c80a/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 401
+    },
+    {
+      "method": "PATCH",
+      "path": "/admin/users/6ac611c1f986747dcf10c80a/status",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/auth/password",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 401
+    }
+  ],
+  "counts": {
+    "users": 40,
+    "categories": 3,
+    "products": 180,
+    "carts": 0,
+    "orders": 100,
+    "payment_attempts": 30
+  },
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "213",
+    "time": "23.776",
+    "timestamp": "2026-10-07T16:26:56.259203+07:00",
+    "hostname": "DESKTOP-KMNS09Q"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "Flask": "3.1.3",
+    "pymongo": "4.15.3",
+    "pytest": "9.1.1",
+    "argon2-cffi": "25.1.0",
+    "PyJWT": "2.15.1",
+    "mongodb": "8.0.32",
+    "replicaSet": "rs0"
+  },
+  "databaseFingerprintBefore": "3cb02b86dae359fe469356c818205b8ddc2e83768862d9f3c47776a79657c6a6",
+  "databaseFingerprintAfter": "3cb02b86dae359fe469356c818205b8ddc2e83768862d9f3c47776a79657c6a6",
+  "devDataValidatorsIndexesUnchanged": true,
+  "testDatabaseEmptyAfterCleanup": true,
+  "frontendCreatedByThisWorker": false,
+  "workerScope": "AUTH_USERS_ONLY"
+}

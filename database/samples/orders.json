@@ -1,0 +1,772 @@
+[
+  {
+    "_id": {
+      "$oid": "000000000000000000000191"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-01T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-10T01:00:00Z"
+    },
+    "orderCode": "DESIGN-0001",
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "checkoutKey": "design-order-0001",
+    "checkoutRequestHash": "ebd2440d5aa033a79468385de5538ce4a7c296d38e7bfc54bf07885e5ebd8837",
+    "customerSnapshot": {
+      "name": "Khách Demo",
+      "phone": "0900000001",
+      "email": "customer01@example.test"
+    },
+    "shippingAddress": {
+      "receiverName": "Khách Demo",
+      "phone": "0900000001",
+      "addressLine": "Địa chỉ giả lập 01",
+      "province": "Địa phương Demo"
+    },
+    "items": [
+      {
+        "productId": {
+          "$oid": "000000000000000000000065"
+        },
+        "sku": "EL-001",
+        "productName": "Điện thoại Demo A",
+        "image": "https://assets.example.test/el-001.webp",
+        "productType": "ELECTRONICS",
+        "categoryId": {
+          "$oid": "000000000000000000000001"
+        },
+        "categoryName": "Điện tử",
+        "attributesSnapshot": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo Chip",
+          "screen": "6.5 inch",
+          "battery": "5000mAh"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": {
+          "$numberLong": "10000000"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "lineTotal": {
+          "$numberLong": "10000000"
+        }
+      },
+      {
+        "productId": {
+          "$oid": "000000000000000000000066"
+        },
+        "sku": "FA-001",
+        "productName": "Áo thun Demo",
+        "image": "https://assets.example.test/fa-001.webp",
+        "productType": "FASHION",
+        "categoryId": {
+          "$oid": "000000000000000000000002"
+        },
+        "categoryName": "Thời trang",
+        "attributesSnapshot": {
+          "sizes": [
+            "S",
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black",
+            "White"
+          ],
+          "material": "Cotton",
+          "gender": "Unisex"
+        },
+        "selectedAttributes": {
+          "size": "M",
+          "color": "Black"
+        },
+        "priceAtPurchase": {
+          "$numberLong": "200000"
+        },
+        "quantity": {
+          "$numberInt": "2"
+        },
+        "lineTotal": {
+          "$numberLong": "400000"
+        }
+      }
+    ],
+    "subtotal": {
+      "$numberLong": "10400000"
+    },
+    "shippingFee": {
+      "$numberLong": "30000"
+    },
+    "discount": {
+      "$numberLong": "0"
+    },
+    "total": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "paymentMethod": "COD",
+    "paymentStatus": "PAID",
+    "paymentReviewRequired": false,
+    "orderStatus": "COMPLETED",
+    "version": {
+      "$numberInt": "4"
+    },
+    "paidAt": {
+      "$date": "2026-09-10T01:00:00Z"
+    },
+    "completedAt": {
+      "$date": "2026-09-10T01:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000192"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-02T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-11T01:00:00Z"
+    },
+    "orderCode": "DESIGN-0002",
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "checkoutKey": "design-order-0002",
+    "checkoutRequestHash": "0a78619f329dc945d522669719e460a935d8543aa4038346245e7926fd950bf5",
+    "customerSnapshot": {
+      "name": "Khách Demo",
+      "phone": "0900000001",
+      "email": "customer01@example.test"
+    },
+    "shippingAddress": {
+      "receiverName": "Khách Demo",
+      "phone": "0900000001",
+      "addressLine": "Địa chỉ giả lập 01",
+      "province": "Địa phương Demo"
+    },
+    "items": [
+      {
+        "productId": {
+          "$oid": "000000000000000000000065"
+        },
+        "sku": "EL-001",
+        "productName": "Điện thoại Demo A",
+        "image": "https://assets.example.test/el-001.webp",
+        "productType": "ELECTRONICS",
+        "categoryId": {
+          "$oid": "000000000000000000000001"
+        },
+        "categoryName": "Điện tử",
+        "attributesSnapshot": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo Chip",
+          "screen": "6.5 inch",
+          "battery": "5000mAh"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": {
+          "$numberLong": "10000000"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "lineTotal": {
+          "$numberLong": "10000000"
+        }
+      },
+      {
+        "productId": {
+          "$oid": "000000000000000000000067"
+        },
+        "sku": "HO-001",
+        "productName": "Nồi chiên Demo",
+        "image": "https://assets.example.test/ho-001.webp",
+        "productType": "HOME_APPLIANCE",
+        "categoryId": {
+          "$oid": "000000000000000000000003"
+        },
+        "categoryName": "Gia dụng",
+        "attributesSnapshot": {
+          "power": "1700W",
+          "capacity": "6L",
+          "voltage": "220V",
+          "material": "Stainless Steel"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": {
+          "$numberLong": "1500000"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "lineTotal": {
+          "$numberLong": "1500000"
+        }
+      }
+    ],
+    "subtotal": {
+      "$numberLong": "11500000"
+    },
+    "shippingFee": {
+      "$numberLong": "30000"
+    },
+    "discount": {
+      "$numberLong": "0"
+    },
+    "total": {
+      "$numberLong": "11530000"
+    },
+    "currency": "VND",
+    "paymentMethod": "VNPAY",
+    "paymentStatus": "PAID",
+    "paymentReviewRequired": false,
+    "orderStatus": "COMPLETED",
+    "version": {
+      "$numberInt": "4"
+    },
+    "paymentExpiresAt": {
+      "$date": "2026-09-02T01:15:00Z"
+    },
+    "paidAt": {
+      "$date": "2026-09-02T01:05:00Z"
+    },
+    "completedAt": {
+      "$date": "2026-09-11T01:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000193"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-03T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-12T01:00:00Z"
+    },
+    "orderCode": "DESIGN-0003",
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "checkoutKey": "design-order-0003",
+    "checkoutRequestHash": "0a78619f329dc945d522669719e460a935d8543aa4038346245e7926fd950bf5",
+    "customerSnapshot": {
+      "name": "Khách Demo",
+      "phone": "0900000001",
+      "email": "customer01@example.test"
+    },
+    "shippingAddress": {
+      "receiverName": "Khách Demo",
+      "phone": "0900000001",
+      "addressLine": "Địa chỉ giả lập 01",
+      "province": "Địa phương Demo"
+    },
+    "items": [
+      {
+        "productId": {
+          "$oid": "000000000000000000000065"
+        },
+        "sku": "EL-001",
+        "productName": "Điện thoại Demo A",
+        "image": "https://assets.example.test/el-001.webp",
+        "productType": "ELECTRONICS",
+        "categoryId": {
+          "$oid": "000000000000000000000001"
+        },
+        "categoryName": "Điện tử",
+        "attributesSnapshot": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo Chip",
+          "screen": "6.5 inch",
+          "battery": "5000mAh"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": {
+          "$numberLong": "10000000"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "lineTotal": {
+          "$numberLong": "10000000"
+        }
+      },
+      {
+        "productId": {
+          "$oid": "000000000000000000000066"
+        },
+        "sku": "FA-001",
+        "productName": "Áo thun Demo",
+        "image": "https://assets.example.test/fa-001.webp",
+        "productType": "FASHION",
+        "categoryId": {
+          "$oid": "000000000000000000000002"
+        },
+        "categoryName": "Thời trang",
+        "attributesSnapshot": {
+          "sizes": [
+            "S",
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black",
+            "White"
+          ],
+          "material": "Cotton",
+          "gender": "Unisex"
+        },
+        "selectedAttributes": {
+          "size": "M",
+          "color": "Black"
+        },
+        "priceAtPurchase": {
+          "$numberLong": "200000"
+        },
+        "quantity": {
+          "$numberInt": "2"
+        },
+        "lineTotal": {
+          "$numberLong": "400000"
+        }
+      }
+    ],
+    "subtotal": {
+      "$numberLong": "10400000"
+    },
+    "shippingFee": {
+      "$numberLong": "30000"
+    },
+    "discount": {
+      "$numberLong": "0"
+    },
+    "total": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "paymentMethod": "VNPAY",
+    "paymentStatus": "PAID",
+    "paymentReviewRequired": false,
+    "orderStatus": "CONFIRMED",
+    "version": {
+      "$numberInt": "4"
+    },
+    "paymentExpiresAt": {
+      "$date": "2026-09-03T01:15:00Z"
+    },
+    "paidAt": {
+      "$date": "2026-09-03T01:05:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000194"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-04T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-13T01:00:00Z"
+    },
+    "orderCode": "DESIGN-0004",
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "checkoutKey": "design-order-0004",
+    "checkoutRequestHash": "ebd2440d5aa033a79468385de5538ce4a7c296d38e7bfc54bf07885e5ebd8837",
+    "customerSnapshot": {
+      "name": "Khách Demo",
+      "phone": "0900000001",
+      "email": "customer01@example.test"
+    },
+    "shippingAddress": {
+      "receiverName": "Khách Demo",
+      "phone": "0900000001",
+      "addressLine": "Địa chỉ giả lập 01",
+      "province": "Địa phương Demo"
+    },
+    "items": [
+      {
+        "productId": {
+          "$oid": "000000000000000000000065"
+        },
+        "sku": "EL-001",
+        "productName": "Điện thoại Demo A",
+        "image": "https://assets.example.test/el-001.webp",
+        "productType": "ELECTRONICS",
+        "categoryId": {
+          "$oid": "000000000000000000000001"
+        },
+        "categoryName": "Điện tử",
+        "attributesSnapshot": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo Chip",
+          "screen": "6.5 inch",
+          "battery": "5000mAh"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": {
+          "$numberLong": "10000000"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "lineTotal": {
+          "$numberLong": "10000000"
+        }
+      },
+      {
+        "productId": {
+          "$oid": "000000000000000000000066"
+        },
+        "sku": "FA-001",
+        "productName": "Áo thun Demo",
+        "image": "https://assets.example.test/fa-001.webp",
+        "productType": "FASHION",
+        "categoryId": {
+          "$oid": "000000000000000000000002"
+        },
+        "categoryName": "Thời trang",
+        "attributesSnapshot": {
+          "sizes": [
+            "S",
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black",
+            "White"
+          ],
+          "material": "Cotton",
+          "gender": "Unisex"
+        },
+        "selectedAttributes": {
+          "size": "M",
+          "color": "Black"
+        },
+        "priceAtPurchase": {
+          "$numberLong": "200000"
+        },
+        "quantity": {
+          "$numberInt": "2"
+        },
+        "lineTotal": {
+          "$numberLong": "400000"
+        }
+      }
+    ],
+    "subtotal": {
+      "$numberLong": "10400000"
+    },
+    "shippingFee": {
+      "$numberLong": "30000"
+    },
+    "discount": {
+      "$numberLong": "0"
+    },
+    "total": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "paymentMethod": "COD",
+    "paymentStatus": "UNPAID",
+    "paymentReviewRequired": false,
+    "orderStatus": "CANCELLED",
+    "version": {
+      "$numberInt": "4"
+    },
+    "stockReleasedAt": {
+      "$date": "2026-09-04T01:02:00Z"
+    },
+    "cancelledAt": {
+      "$date": "2026-09-04T01:02:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000195"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-05T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-14T01:00:00Z"
+    },
+    "orderCode": "DESIGN-0005",
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "checkoutKey": "design-order-0005",
+    "checkoutRequestHash": "0a78619f329dc945d522669719e460a935d8543aa4038346245e7926fd950bf5",
+    "customerSnapshot": {
+      "name": "Khách Demo",
+      "phone": "0900000001",
+      "email": "customer01@example.test"
+    },
+    "shippingAddress": {
+      "receiverName": "Khách Demo",
+      "phone": "0900000001",
+      "addressLine": "Địa chỉ giả lập 01",
+      "province": "Địa phương Demo"
+    },
+    "items": [
+      {
+        "productId": {
+          "$oid": "000000000000000000000065"
+        },
+        "sku": "EL-001",
+        "productName": "Điện thoại Demo A",
+        "image": "https://assets.example.test/el-001.webp",
+        "productType": "ELECTRONICS",
+        "categoryId": {
+          "$oid": "000000000000000000000001"
+        },
+        "categoryName": "Điện tử",
+        "attributesSnapshot": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo Chip",
+          "screen": "6.5 inch",
+          "battery": "5000mAh"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": {
+          "$numberLong": "10000000"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "lineTotal": {
+          "$numberLong": "10000000"
+        }
+      },
+      {
+        "productId": {
+          "$oid": "000000000000000000000066"
+        },
+        "sku": "FA-001",
+        "productName": "Áo thun Demo",
+        "image": "https://assets.example.test/fa-001.webp",
+        "productType": "FASHION",
+        "categoryId": {
+          "$oid": "000000000000000000000002"
+        },
+        "categoryName": "Thời trang",
+        "attributesSnapshot": {
+          "sizes": [
+            "S",
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black",
+            "White"
+          ],
+          "material": "Cotton",
+          "gender": "Unisex"
+        },
+        "selectedAttributes": {
+          "size": "M",
+          "color": "Black"
+        },
+        "priceAtPurchase": {
+          "$numberLong": "200000"
+        },
+        "quantity": {
+          "$numberInt": "2"
+        },
+        "lineTotal": {
+          "$numberLong": "400000"
+        }
+      }
+    ],
+    "subtotal": {
+      "$numberLong": "10400000"
+    },
+    "shippingFee": {
+      "$numberLong": "30000"
+    },
+    "discount": {
+      "$numberLong": "0"
+    },
+    "total": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "paymentMethod": "VNPAY",
+    "paymentStatus": "FAILED",
+    "paymentReviewRequired": false,
+    "orderStatus": "EXPIRED",
+    "version": {
+      "$numberInt": "4"
+    },
+    "paymentExpiresAt": {
+      "$date": "2026-09-05T01:15:00Z"
+    },
+    "stockReleasedAt": {
+      "$date": "2026-09-05T01:15:00Z"
+    },
+    "expiredAt": {
+      "$date": "2026-09-05T01:15:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "000000000000000000000196"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-06T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-15T01:00:00Z"
+    },
+    "orderCode": "DESIGN-0006",
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "checkoutKey": "design-order-0006",
+    "checkoutRequestHash": "0a78619f329dc945d522669719e460a935d8543aa4038346245e7926fd950bf5",
+    "customerSnapshot": {
+      "name": "Khách Demo",
+      "phone": "0900000001",
+      "email": "customer01@example.test"
+    },
+    "shippingAddress": {
+      "receiverName": "Khách Demo",
+      "phone": "0900000001",
+      "addressLine": "Địa chỉ giả lập 01",
+      "province": "Địa phương Demo"
+    },
+    "items": [
+      {
+        "productId": {
+          "$oid": "000000000000000000000065"
+        },
+        "sku": "EL-001",
+        "productName": "Điện thoại Demo A",
+        "image": "https://assets.example.test/el-001.webp",
+        "productType": "ELECTRONICS",
+        "categoryId": {
+          "$oid": "000000000000000000000001"
+        },
+        "categoryName": "Điện tử",
+        "attributesSnapshot": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo Chip",
+          "screen": "6.5 inch",
+          "battery": "5000mAh"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": {
+          "$numberLong": "10000000"
+        },
+        "quantity": {
+          "$numberInt": "1"
+        },
+        "lineTotal": {
+          "$numberLong": "10000000"
+        }
+      },
+      {
+        "productId": {
+          "$oid": "000000000000000000000066"
+        },
+        "sku": "FA-001",
+        "productName": "Áo thun Demo",
+        "image": "https://assets.example.test/fa-001.webp",
+        "productType": "FASHION",
+        "categoryId": {
+          "$oid": "000000000000000000000002"
+        },
+        "categoryName": "Thời trang",
+        "attributesSnapshot": {
+          "sizes": [
+            "S",
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black",
+            "White"
+          ],
+          "material": "Cotton",
+          "gender": "Unisex"
+        },
+        "selectedAttributes": {
+          "size": "M",
+          "color": "Black"
+        },
+        "priceAtPurchase": {
+          "$numberLong": "200000"
+        },
+        "quantity": {
+          "$numberInt": "2"
+        },
+        "lineTotal": {
+          "$numberLong": "400000"
+        }
+      }
+    ],
+    "subtotal": {
+      "$numberLong": "10400000"
+    },
+    "shippingFee": {
+      "$numberLong": "30000"
+    },
+    "discount": {
+      "$numberLong": "0"
+    },
+    "total": {
+      "$numberLong": "10430000"
+    },
+    "currency": "VND",
+    "paymentMethod": "VNPAY",
+    "paymentStatus": "REVIEW_REQUIRED",
+    "paymentReviewRequired": true,
+    "orderStatus": "CANCELLED",
+    "version": {
+      "$numberInt": "4"
+    },
+    "paymentExpiresAt": {
+      "$date": "2026-09-06T01:15:00Z"
+    },
+    "paidAt": {
+      "$date": "2026-09-06T01:05:00Z"
+    },
+    "stockReleasedAt": {
+      "$date": "2026-09-06T01:02:00Z"
+    },
+    "cancelledAt": {
+      "$date": "2026-09-06T01:02:00Z"
+    }
+  }
+]

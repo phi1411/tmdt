@@ -1,0 +1,71 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "additionalProperties": false,
+    "required": [
+      "_id",
+      "schemaVersion",
+      "createdAt",
+      "updatedAt",
+      "name",
+      "slug",
+      "productType",
+      "description",
+      "status",
+      "version"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "schemaVersion": {
+        "bsonType": "int",
+        "enum": [
+          1
+        ]
+      },
+      "createdAt": {
+        "bsonType": "date"
+      },
+      "updatedAt": {
+        "bsonType": "date"
+      },
+      "name": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "slug": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 120,
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "productType": {
+        "bsonType": "string",
+        "enum": [
+          "ELECTRONICS",
+          "FASHION",
+          "HOME_APPLIANCE"
+        ]
+      },
+      "description": {
+        "bsonType": "string",
+        "minLength": 0,
+        "maxLength": 2000
+      },
+      "status": {
+        "bsonType": "string",
+        "enum": [
+          "ACTIVE",
+          "ARCHIVED"
+        ]
+      },
+      "version": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 2147483647
+      }
+    }
+  }
+}

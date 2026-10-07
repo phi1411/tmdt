@@ -1,0 +1,87 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "additionalProperties": false,
+    "required": [
+      "_id",
+      "schemaVersion",
+      "createdAt",
+      "updatedAt",
+      "userId",
+      "version",
+      "items"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "schemaVersion": {
+        "bsonType": "int",
+        "enum": [
+          1
+        ]
+      },
+      "createdAt": {
+        "bsonType": "date"
+      },
+      "updatedAt": {
+        "bsonType": "date"
+      },
+      "userId": {
+        "bsonType": "objectId"
+      },
+      "version": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "items": {
+        "bsonType": "array",
+        "minItems": 0,
+        "maxItems": 50,
+        "items": {
+          "bsonType": "object",
+          "additionalProperties": false,
+          "required": [
+            "lineId",
+            "productId",
+            "quantity",
+            "selectedAttributes"
+          ],
+          "properties": {
+            "lineId": {
+              "bsonType": "string",
+              "minLength": 64,
+              "maxLength": 64,
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "productId": {
+              "bsonType": "objectId"
+            },
+            "quantity": {
+              "bsonType": "int",
+              "minimum": 1,
+              "maximum": 99
+            },
+            "selectedAttributes": {
+              "bsonType": "object",
+              "additionalProperties": false,
+              "properties": {
+                "size": {
+                  "bsonType": "string",
+                  "minLength": 1,
+                  "maxLength": 50
+                },
+                "color": {
+                  "bsonType": "string",
+                  "minLength": 1,
+                  "maxLength": 50
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

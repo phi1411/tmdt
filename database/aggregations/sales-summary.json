@@ -1,0 +1,51 @@
+[
+  {
+    "$match": {
+      "orderStatus": "COMPLETED",
+      "paymentStatus": "PAID",
+      "completedAt": {
+        "$gte": {
+          "$date": "2026-08-31T17:00:00Z"
+        },
+        "$lt": {
+          "$date": "2026-09-30T17:00:00Z"
+        }
+      }
+    }
+  },
+  {
+    "$group": {
+      "_id": null,
+      "totalRevenue": {
+        "$sum": {
+          "$subtract": [
+            "$subtotal",
+            "$discount"
+          ]
+        }
+      },
+      "qualifiedOrders": {
+        "$sum": 1
+      },
+      "totalProductsSold": {
+        "$sum": {
+          "$sum": {
+            "$map": {
+              "input": "$items",
+              "as": "item",
+              "in": "$$item.quantity"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "$project": {
+      "_id": 0,
+      "totalRevenue": 1,
+      "qualifiedOrders": 1,
+      "totalProductsSold": 1
+    }
+  }
+]

@@ -1,0 +1,560 @@
+PHASE 03 ĐÃ ĐƯỢC DUYỆT.
+
+MongoDB thật đã kiểm thử thành công:
+
+- MongoDB 8.0.32
+- replica set rs0 PRIMARY
+- database ecommerce_dev
+- 180 products
+- 40 users
+- 100 orders
+- validators/indexes/aggregations đã chạy thật
+- seed reproducible
+
+Bây giờ thực hiện:
+
+# PHASE 04 — FLASK BACKEND FOUNDATION
+
+MỤC TIÊU:
+
+Dựng nền tảng backend Flask hoàn chỉnh để các feature backend ở những phase/session sau có thể phát triển độc lập.
+
+PHASE này tập trung vào:
+
+- Flask application structure
+- configuration
+- MongoDB connection
+- app factory
+- API conventions
+- common error format
+- authentication foundation
+- service/repository structure
+- validation utilities
+- logging
+- health check
+- test foundation
+- API contract foundation
+
+CHƯA implement đầy đủ nghiệp vụ:
+
+- Auth/Register/Login hoàn chỉnh
+- Product CRUD
+- Cart
+- Checkout
+- Orders
+- VNPAY
+- Admin Dashboard
+- Frontend
+
+Không đi trước phase.
+
+==================================================
+1. CONTEXT
+==================================================
+
+Trước khi code đọc:
+
+- AGENTS.md
+- docs/architecture.md
+- docs/database-schema.md
+- docs/business-rules.md
+- docs/api-conventions.md
+- docs/testing-strategy.md
+- docs/phase-02-review.md
+- docs/phase-03-review.md
+
+Inspect:
+
+- backend/
+- database config cần thiết
+
+Không quét frontend.
+Không đọc toàn bộ feature docs.
+
+==================================================
+2. GIỮ NGUYÊN DATABASE CONTRACT
+==================================================
+
+Không thay đổi:
+
+- collections
+- validators
+- Product Polymorphic Schema
+- Cart strategy
+- Order Snapshot
+- status enums
+- revenue definition
+- indexes
+
+Backend phải thích nghi với database đã khóa.
+
+Không sửa database để code Flask dễ hơn.
+
+==================================================
+3. BACKEND ARCHITECTURE
+==================================================
+
+Sử dụng modular monolith.
+
+Ưu tiên cấu trúc tương tự:
+
+backend/
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   │
+│   ├── api/
+│   ├── services/
+│   ├── repositories/
+│   ├── schemas/
+│   ├── auth/
+│   ├── db/
+│   ├── errors/
+│   └── utils/
+│
+├── tests/
+├── requirements.txt
+└── run.py hoặc entrypoint phù hợp
+
+Có thể điều chỉnh nếu architecture docs đã quy định khác.
+
+Không tạo abstraction thừa.
+
+==================================================
+4. APP FACTORY
+==================================================
+
+Dùng Flask Application Factory nếu phù hợp architecture hiện tại.
+
+Backend phải hỗ trợ ít nhất:
+
+- development
+- testing
+
+Không hardcode:
+
+- MongoDB URI
+- JWT secret
+- VNPAY secrets
+- environment-specific config
+
+Đọc từ environment.
+
+.env không commit.
+
+.env.example phải có key name nhưng không chứa secret thật.
+
+==================================================
+5. MONGODB CONNECTION
+==================================================
+
+Dùng PyMongo.
+
+Connection phải sử dụng database ecommerce_dev trong development theo config.
+
+Replica set phải hoạt động.
+
+Thiết kế connection lifecycle rõ ràng.
+
+Có health check xác nhận:
+
+- Flask running
+- MongoDB reachable
+- replica set usable
+
+Không tạo một MongoClient mới cho mỗi request nếu không cần.
+
+==================================================
+6. LAYER RESPONSIBILITY
+==================================================
+
+API / Controller:
+
+- nhận request
+- parse input
+- gọi service
+- trả response
+
+Không chứa business logic phức tạp.
+
+Service:
+
+- business rules
+- orchestration
+- transaction boundaries khi cần
+
+Repository:
+
+- MongoDB access
+- query
+- insert/update
+- aggregation invocation khi phù hợp
+
+Schema / Validation:
+
+- request/response validation hoặc mapping theo strategy đã chọn
+
+Không để frontend concern trong backend.
+
+==================================================
+7. OBJECTID HANDLING
+==================================================
+
+Tạo cách xử lý ObjectId thống nhất.
+
+API JSON không được làm frontend nhận BSON ObjectId trực tiếp không serialize được.
+
+Quy định rõ:
+
+MongoDB:
+ObjectId
+
+API:
+string
+
+Không mỗi endpoint convert theo một kiểu khác nhau.
+
+==================================================
+8. API RESPONSE CONVENTION
+==================================================
+
+Khóa response format nhất quán.
+
+Ví dụ thành công có thể theo:
+
+{
+  "data": ...
+}
+
+hoặc format đã được docs/api-conventions.md quy định.
+
+Error phải có cấu trúc ổn định, ví dụ:
+
+{
+  "error": {
+    "code": "...",
+    "message": "...",
+    "details": ...
+  }
+}
+
+Không trả traceback cho client.
+
+Không để endpoint mỗi nơi một kiểu.
+
+==================================================
+9. HTTP STATUS
+==================================================
+
+Chuẩn hóa ít nhất:
+
+200
+201
+204
+400
+401
+403
+404
+409
+422 nếu architecture chọn dùng
+500
+
+Không dùng 200 cho mọi trường hợp lỗi.
+
+==================================================
+10. GLOBAL ERROR HANDLING
+==================================================
+
+Chuẩn bị error hierarchy hoặc cơ chế tương đương:
+
+- validation error
+- authentication error
+- authorization error
+- not found
+- conflict
+- business rule violation
+- internal server error
+
+Unexpected error phải được log.
+
+Client không được thấy stack trace production-style.
+
+==================================================
+11. AUTH FOUNDATION
+==================================================
+
+Chưa cần implement full Auth feature.
+
+Nhưng dựng foundation cho:
+
+- JWT
+- get current user
+- role authorization
+- CUSTOMER
+- ADMIN
+
+Password hashing hiện tại là Argon2id.
+
+Không chuyển sang plain SHA/bcrypt nếu không có lý do.
+
+Không duplicate authentication logic trong từng endpoint.
+
+==================================================
+12. REQUEST VALIDATION
+==================================================
+
+Chọn strategy rõ ràng và nhất quán cho request validation.
+
+Có thể dùng library hợp lý nếu project chưa khóa.
+
+Nhưng không thêm dependency nặng không cần thiết.
+
+Phải hỗ trợ sau này:
+
+- type validation
+- required fields
+- enum
+- nested payload
+- clear validation errors
+
+MongoDB validator KHÔNG thay thế API input validation.
+
+==================================================
+13. PAGINATION CONTRACT
+==================================================
+
+Chuẩn bị convention cho list endpoint:
+
+Ví dụ:
+
+?page=
+&limit=
+
+Phải có:
+
+- giới hạn maximum page size
+- metadata response
+
+Ví dụ:
+
+{
+  "data": [...],
+  "meta": {
+    "page": 1,
+    "limit": 20,
+    "total": 180,
+    "totalPages": 9
+  }
+}
+
+Có thể theo convention docs hiện tại.
+
+==================================================
+14. FILTER / SORT CONTRACT
+==================================================
+
+Chuẩn hóa naming trước khi Product API được viết.
+
+Ví dụ:
+
+search
+category
+productType
+brand
+minPrice
+maxPrice
+sort
+page
+limit
+
+Chưa implement Product search hoàn chỉnh.
+
+Chỉ khóa convention để frontend sau này không phải đoán.
+
+==================================================
+15. API VERSIONING
+==================================================
+
+Dùng API prefix nhất quán.
+
+Ví dụ:
+
+/api/v1
+
+Nếu architecture hiện tại đã khóa convention khác thì tuân theo docs.
+
+Không tạo endpoint rải rác.
+
+==================================================
+16. HEALTH ENDPOINT
+==================================================
+
+Implement endpoint đơn giản:
+
+GET /api/v1/health
+
+hoặc convention tương ứng.
+
+Response phải cho biết backend và database có hoạt động.
+
+Không expose credential hoặc sensitive server info.
+
+==================================================
+17. SECURITY FOUNDATION
+==================================================
+
+Chuẩn bị:
+
+- CORS phù hợp môi trường development
+- JSON request size hợp lý nếu cần
+- secure error handling
+- password không serialize
+- secret từ env
+
+Không over-engineer security production.
+
+Nhưng tránh lỗi cơ bản.
+
+==================================================
+18. LOGGING
+==================================================
+
+Thiết lập logging đủ cho development/debugging.
+
+Log:
+
+- server errors
+- database errors
+- useful request context khi phù hợp
+
+Không log:
+
+- password
+- JWT raw token
+- VNPAY secret
+- sensitive payment data
+
+==================================================
+19. TEST FOUNDATION
+==================================================
+
+Dựng pytest hoặc test stack đã chọn.
+
+Có fixture cho:
+
+- Flask app
+- test client
+- database connection/test environment
+
+Test ít nhất:
+
+- app startup
+- health endpoint
+- MongoDB connection
+- error response convention
+- ObjectId serialization nếu có utility
+- config loading
+
+Không phá ecommerce_dev bằng test destructive.
+
+==================================================
+20. API CONTRACT DOCUMENT
+==================================================
+
+Tạo foundation cho contract mà Frontend sau này sử dụng.
+
+Ưu tiên:
+
+docs/api-contract.md
+
+hoặc OpenAPI nếu project đã chọn.
+
+Ở phase này chưa cần mô tả endpoint chưa implement như đã hoàn thành.
+
+Có thể liệt kê:
+
+PLANNED
+
+và chỉ endpoint thực tế có trạng thái:
+
+IMPLEMENTED
+
+Phải giúp Frontend agent sau này không cần đọc backend internals.
+
+==================================================
+21. BACKEND CONTEXT FOR FUTURE AGENTS
+==================================================
+
+Sau PHASE này, backend feature agent phải có thể làm việc bằng cách đọc:
+
+- AGENTS.md
+- architecture.md
+- database-schema.md
+- business-rules.md khi cần
+- api-contract
+- feature doc tương ứng
+- code module liên quan
+
+Không buộc đọc toàn backend.
+
+==================================================
+22. KHÔNG IMPLEMENT FEATURE TRƯỚC
+==================================================
+
+Đặc biệt không tự tiện xây hoàn chỉnh:
+
+- login/register
+- Products CRUD
+- Cart
+- Orders
+- Payment
+- Dashboard
+
+Nếu cần skeleton/blueprint để chứng minh architecture thì được.
+
+Nhưng business feature implementation để phase sau.
+
+==================================================
+23. VALIDATION
+==================================================
+
+Trước khi DONE:
+
+- backend khởi động thật
+- health API gọi được
+- MongoDB thật kết nối được
+- test suite foundation pass
+- env config hoạt động
+- lỗi được serialize đúng
+- không commit secret
+- không thay schema MongoDB
+
+==================================================
+24. OUTPUT
+==================================================
+
+Khi hoàn thành báo:
+
+1. Backend structure.
+2. Packages/dependencies đã thêm.
+3. Config strategy.
+4. MongoDB connection strategy.
+5. API prefix.
+6. Response/error convention.
+7. Auth foundation.
+8. Validation strategy.
+9. Test result.
+10. Health endpoint result.
+11. API contract file.
+12. Files đã tạo/sửa.
+13. Issue/DEFERRED còn lại.
+
+Xác nhận:
+
+- Backend foundation hoạt động.
+- Chưa implement business feature đầy đủ.
+- Chưa sửa database design.
+- Chưa tạo frontend.
+- Chưa bắt đầu phase tiếp theo.
+
+DỪNG để review.

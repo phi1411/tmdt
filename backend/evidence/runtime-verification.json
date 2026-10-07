@@ -1,0 +1,77 @@
+{
+  "status": "LIVE_BACKEND_FOUNDATION_PASS",
+  "database": "ecommerce_dev",
+  "replicaSet": "rs0",
+  "health": {
+    "status": 200,
+    "body": {
+      "data": {
+        "status": "ok",
+        "checks": {
+          "backend": "ok",
+          "database": "ok",
+          "replicaSet": "ok"
+        }
+      },
+      "meta": {
+        "requestId": "e5c3f6ce2da04715921bb2287be12ab2"
+      }
+    },
+    "requestId": "e5c3f6ce2da04715921bb2287be12ab2"
+  },
+  "notFound": {
+    "status": 404,
+    "body": {
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "Không tìm thấy tài nguyên",
+        "details": []
+      },
+      "meta": {
+        "requestId": "64c8b9be553a42d0b4df053e5d1bcb5d"
+      }
+    },
+    "requestId": "64c8b9be553a42d0b4df053e5d1bcb5d"
+  },
+  "methodNotAllowed": {
+    "status": 405,
+    "body": {
+      "error": {
+        "code": "METHOD_NOT_ALLOWED",
+        "message": "Phương thức không được hỗ trợ",
+        "details": []
+      },
+      "meta": {
+        "requestId": "88a49c3eb1c044398f83c0e549e8f17c"
+      }
+    },
+    "requestId": "88a49c3eb1c044398f83c0e549e8f17c"
+  },
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "80",
+    "time": "3.282",
+    "timestamp": "2026-10-07T15:46:41.850321+07:00",
+    "hostname": "DESKTOP-KMNS09Q"
+  },
+  "counts": {
+    "users": 40,
+    "categories": 3,
+    "products": 180,
+    "carts": 0,
+    "orders": 100,
+    "payment_attempts": 30
+  },
+  "databaseFingerprintBefore": "3cb02b86dae359fe469356c818205b8ddc2e83768862d9f3c47776a79657c6a6",
+  "databaseFingerprintAfter": "3cb02b86dae359fe469356c818205b8ddc2e83768862d9f3c47776a79657c6a6",
+  "devDataValidatorsIndexesUnchanged": true,
+  "testDatabaseEmptyAfterCleanup": true,
+  "implementedRoutes": [
+    "/api/v1/health"
+  ],
+  "fullBusinessFeaturesImplemented": false,
+  "frontendCreated": false
+}

@@ -1,0 +1,241 @@
+{
+  "status": "PHASE05B_CATALOG_PASS",
+  "http": {
+    "health": 200,
+    "publicCategories": 200,
+    "publicProducts": 200,
+    "publicDetail": 200,
+    "adminProducts": 200,
+    "adminCategoryDetail": 200,
+    "adminProductDetail": 200,
+    "guestWrite": 401,
+    "customerWrite": 403
+  },
+  "httpListener": "temporary localhost WSGI server, current source",
+  "persistentServerSmoke": {
+    "status": "PASS",
+    "baseUrl": "http://127.0.0.1:5001/api/v1",
+    "productList": 200,
+    "unknownDetailQuery": 422
+  },
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "325",
+    "time": "71.781",
+    "timestamp": "2026-10-07T16:30:26.417837+07:00",
+    "hostname": "DESKTOP-KMNS09Q"
+  },
+  "databaseCounts": {
+    "users": 40,
+    "categories": 3,
+    "products": 180,
+    "carts": 0,
+    "orders": 100,
+    "payment_attempts": 30
+  },
+  "publicProductTotal": 180,
+  "databaseFingerprintBefore": "3cb02b86dae359fe469356c818205b8ddc2e83768862d9f3c47776a79657c6a6",
+  "databaseFingerprintAfter": "3cb02b86dae359fe469356c818205b8ddc2e83768862d9f3c47776a79657c6a6",
+  "devDocumentsValidatorsIndexesUnchanged": true,
+  "catalogTestFixturesCleaned": true,
+  "explain": {
+    "categoryPrice": {
+      "planner": {
+        "hint": null,
+        "winningPlan": {
+          "isCached": false,
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "status": 1,
+              "categoryId": 1,
+              "price": 1,
+              "_id": 1
+            },
+            "indexName": "ix_products_category_price",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "status": [],
+              "categoryId": [],
+              "price": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "status": [
+                "[\"ACTIVE\", \"ACTIVE\"]"
+              ],
+              "categoryId": [
+                "[ObjectId('24aaeea4c694b3035dbabd07'), ObjectId('24aaeea4c694b3035dbabd07')]"
+              ],
+              "price": [
+                "[1, inf.0]"
+              ],
+              "_id": [
+                "[MinKey, MaxKey]"
+              ]
+            }
+          }
+        },
+        "nReturned": 60,
+        "totalDocsExamined": 60,
+        "totalKeysExamined": 60,
+        "executionTimeMillis": 10,
+        "lookupIndexes": [
+          [
+            "_id_"
+          ]
+        ]
+      },
+      "candidate": {
+        "hint": "ix_products_category_price",
+        "winningPlan": {
+          "isCached": false,
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "status": 1,
+              "categoryId": 1,
+              "price": 1,
+              "_id": 1
+            },
+            "indexName": "ix_products_category_price",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "status": [],
+              "categoryId": [],
+              "price": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "status": [
+                "[\"ACTIVE\", \"ACTIVE\"]"
+              ],
+              "categoryId": [
+                "[ObjectId('24aaeea4c694b3035dbabd07'), ObjectId('24aaeea4c694b3035dbabd07')]"
+              ],
+              "price": [
+                "[1, inf.0]"
+              ],
+              "_id": [
+                "[MinKey, MaxKey]"
+              ]
+            }
+          }
+        },
+        "nReturned": 60,
+        "totalDocsExamined": 60,
+        "totalKeysExamined": 60,
+        "executionTimeMillis": 10,
+        "lookupIndexes": [
+          [
+            "_id_"
+          ]
+        ]
+      }
+    },
+    "typePrice": {
+      "planner": {
+        "hint": null,
+        "winningPlan": {
+          "isCached": false,
+          "stage": "SORT",
+          "sortPattern": {
+            "price": 1,
+            "_id": 1
+          },
+          "memLimit": 104857600,
+          "type": "simple",
+          "inputStage": {
+            "stage": "FETCH",
+            "filter": {
+              "productType": {
+                "$eq": "FASHION"
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "status": 1,
+                "categoryId": 1,
+                "price": 1,
+                "_id": 1
+              },
+              "indexName": "ix_products_category_price",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "status": [],
+                "categoryId": [],
+                "price": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "status": [
+                  "[\"ACTIVE\", \"ACTIVE\"]"
+                ],
+                "categoryId": [
+                  "[MinKey, MaxKey]"
+                ],
+                "price": [
+                  "[1, inf.0]"
+                ],
+                "_id": [
+                  "[MinKey, MaxKey]"
+                ]
+              }
+            }
+          }
+        },
+        "nReturned": 60,
+        "totalDocsExamined": 180,
+        "totalKeysExamined": 180,
+        "executionTimeMillis": 11,
+        "lookupIndexes": [
+          [
+            "_id_"
+          ]
+        ]
+      },
+      "candidate": {
+        "name": "ix_products_type_price",
+        "status": "DECLARED_NOT_APPLIED"
+      }
+    }
+  },
+  "fullBenchmarkPerformed": false,
+  "catalogRoutes": [
+    "/api/v1/categories",
+    "/api/v1/categories/<slug>",
+    "/api/v1/admin/categories",
+    "/api/v1/admin/categories/<category_id>",
+    "/api/v1/admin/categories",
+    "/api/v1/admin/categories/<category_id>",
+    "/api/v1/admin/categories/<category_id>",
+    "/api/v1/products",
+    "/api/v1/products/<slug>",
+    "/api/v1/admin/products",
+    "/api/v1/admin/products/<product_id>",
+    "/api/v1/admin/products",
+    "/api/v1/admin/products/<product_id>",
+    "/api/v1/admin/products/<product_id>"
+  ]
+}

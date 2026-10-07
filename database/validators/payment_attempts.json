@@ -1,0 +1,339 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "additionalProperties": false,
+    "required": [
+      "_id",
+      "schemaVersion",
+      "createdAt",
+      "updatedAt",
+      "orderId",
+      "userId",
+      "attemptKey",
+      "requestHash",
+      "txnRef",
+      "provider",
+      "amount",
+      "currency",
+      "status",
+      "version",
+      "expiresAt",
+      "paymentRequest"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "schemaVersion": {
+        "bsonType": "int",
+        "enum": [
+          1
+        ]
+      },
+      "createdAt": {
+        "bsonType": "date"
+      },
+      "updatedAt": {
+        "bsonType": "date"
+      },
+      "orderId": {
+        "bsonType": "objectId"
+      },
+      "userId": {
+        "bsonType": "objectId"
+      },
+      "attemptKey": {
+        "bsonType": "string",
+        "minLength": 8,
+        "maxLength": 128
+      },
+      "requestHash": {
+        "bsonType": "string",
+        "minLength": 64,
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "txnRef": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "pattern": "^[A-Za-z0-9]{1,100}$"
+      },
+      "provider": {
+        "bsonType": "string",
+        "enum": [
+          "VNPAY"
+        ]
+      },
+      "amount": {
+        "bsonType": "long",
+        "minimum": 1,
+        "maximum": 9999999999
+      },
+      "currency": {
+        "bsonType": "string",
+        "enum": [
+          "VND"
+        ]
+      },
+      "status": {
+        "bsonType": "string",
+        "enum": [
+          "PENDING",
+          "SUCCEEDED",
+          "FAILED",
+          "EXPIRED",
+          "REVIEW_REQUIRED"
+        ]
+      },
+      "version": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "expiresAt": {
+        "bsonType": "date"
+      },
+      "paymentRequest": {
+        "bsonType": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "command",
+          "tmnCode",
+          "amountScaled",
+          "currency",
+          "txnRef",
+          "orderInfo",
+          "orderType",
+          "locale",
+          "returnUrl",
+          "clientIp",
+          "createdAt",
+          "expiresAt"
+        ],
+        "properties": {
+          "version": {
+            "bsonType": "string",
+            "enum": [
+              "2.1.0"
+            ]
+          },
+          "command": {
+            "bsonType": "string",
+            "enum": [
+              "pay"
+            ]
+          },
+          "tmnCode": {
+            "bsonType": "string",
+            "minLength": 8,
+            "maxLength": 8,
+            "pattern": "^[A-Za-z0-9]{8}$"
+          },
+          "amountScaled": {
+            "bsonType": "long",
+            "minimum": 100,
+            "maximum": 999999999900
+          },
+          "currency": {
+            "bsonType": "string",
+            "enum": [
+              "VND"
+            ]
+          },
+          "txnRef": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9]{1,100}$"
+          },
+          "orderInfo": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 255,
+            "pattern": "^[A-Za-z0-9 ]+$"
+          },
+          "orderType": {
+            "bsonType": "string",
+            "enum": [
+              "other"
+            ]
+          },
+          "locale": {
+            "bsonType": "string",
+            "enum": [
+              "vn"
+            ]
+          },
+          "returnUrl": {
+            "bsonType": "string",
+            "minLength": 10,
+            "maxLength": 255,
+            "pattern": "^https?://[^\\s]+$"
+          },
+          "clientIp": {
+            "bsonType": "string",
+            "minLength": 7,
+            "maxLength": 45
+          },
+          "createdAt": {
+            "bsonType": "date"
+          },
+          "expiresAt": {
+            "bsonType": "date"
+          }
+        }
+      },
+      "providerTransactionNo": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 15,
+        "pattern": "^[1-9][0-9]{0,14}$"
+      },
+      "responseCode": {
+        "bsonType": "string",
+        "minLength": 2,
+        "maxLength": 2,
+        "pattern": "^[0-9]{2}$"
+      },
+      "transactionStatus": {
+        "bsonType": "string",
+        "minLength": 2,
+        "maxLength": 2,
+        "pattern": "^[0-9]{2}$"
+      },
+      "bankCode": {
+        "bsonType": "string",
+        "minLength": 3,
+        "maxLength": 20
+      },
+      "verifiedAt": {
+        "bsonType": "date"
+      },
+      "providerPaidAt": {
+        "bsonType": "date"
+      },
+      "callbackFingerprint": {
+        "bsonType": "string",
+        "minLength": 64,
+        "maxLength": 64,
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "expiredAt": {
+        "bsonType": "date"
+      }
+    },
+    "oneOf": [
+      {
+        "properties": {
+          "status": {
+            "bsonType": "string",
+            "enum": [
+              "PENDING"
+            ]
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "verifiedAt"
+              ]
+            },
+            {
+              "required": [
+                "providerTransactionNo"
+              ]
+            },
+            {
+              "required": [
+                "callbackFingerprint"
+              ]
+            },
+            {
+              "required": [
+                "expiredAt"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "properties": {
+          "status": {
+            "bsonType": "string",
+            "enum": [
+              "SUCCEEDED",
+              "REVIEW_REQUIRED"
+            ]
+          },
+          "responseCode": {
+            "bsonType": "string",
+            "enum": [
+              "00"
+            ]
+          },
+          "transactionStatus": {
+            "bsonType": "string",
+            "enum": [
+              "00"
+            ]
+          }
+        },
+        "required": [
+          "verifiedAt",
+          "providerTransactionNo",
+          "responseCode",
+          "transactionStatus",
+          "callbackFingerprint"
+        ]
+      },
+      {
+        "properties": {
+          "status": {
+            "bsonType": "string",
+            "enum": [
+              "FAILED"
+            ]
+          }
+        },
+        "required": [
+          "verifiedAt",
+          "responseCode",
+          "transactionStatus",
+          "callbackFingerprint"
+        ],
+        "not": {
+          "properties": {
+            "responseCode": {
+              "bsonType": "string",
+              "enum": [
+                "00"
+              ]
+            },
+            "transactionStatus": {
+              "bsonType": "string",
+              "enum": [
+                "00"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "properties": {
+          "status": {
+            "bsonType": "string",
+            "enum": [
+              "EXPIRED"
+            ]
+          }
+        },
+        "required": [
+          "expiredAt"
+        ]
+      }
+    ]
+  }
+}

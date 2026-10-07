@@ -1,0 +1,10 @@
+[
+  {
+    "$match": {
+      "role": "CUSTOMER"
+    }
+  },
+  {
+    "$count": "totalCustomers"
+  }
+]

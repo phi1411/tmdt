@@ -1,0 +1,406 @@
+PHASE 01 ĐÃ ĐƯỢC REVIEW VÀ CHẤP NHẬN VỀ MẶT CẤU TRÚC.
+
+Bây giờ thực hiện:
+
+# PHASE 02 — LOCK MONGODB DESIGN & FOUNDATION DECISIONS
+
+Mục tiêu của phase này là khóa thiết kế dữ liệu và các quyết định nền tảng trước khi viết backend nghiệp vụ.
+
+CHƯA triển khai:
+- Auth
+- Product API
+- Cart API
+- Checkout
+- Order API
+- Payment
+- Frontend
+
+Không đi trước phase.
+
+==================================================
+1. ĐỌC CONTEXT
+==================================================
+
+Trước khi làm:
+
+- AGENTS.md
+- docs/requirements.md
+- docs/architecture.md
+- docs/database-schema.md
+- docs/business-rules.md
+- docs/seed-strategy.md
+- các ADR trong docs/decisions/
+
+Chỉ đọc feature docs nếu cần để xác minh business requirement.
+
+Không quét source không liên quan.
+
+==================================================
+2. KHÓA CÁC QUYẾT ĐỊNH SAU
+==================================================
+
+Sử dụng collection names tiếng Anh:
+
+- users
+- categories
+- products
+- carts
+- orders
+- payment_attempts
+
+reviews là optional và chưa thuộc MVP bắt buộc.
+
+MongoDB:
+- Local là môi trường development/demo chính.
+- Atlas chỉ là lựa chọn deployment về sau.
+- Không thiết kế hệ thống phụ thuộc Atlas-only feature nếu không cần.
+
+Frontend contract:
+- React + Vite + TypeScript + Tailwind CSS.
+- Frontend sẽ do agent khác phụ trách sau này.
+
+Media:
+- Product images trước mắt lưu bằng URL.
+- Không triển khai hệ thống upload/cloud media trong phase này.
+
+Cart:
+- Giữ collection carts riêng theo User nếu ADR hiện tại không có lỗi nghiêm trọng.
+
+Payment:
+- COD
+- VNPAY Sandbox
+- payment_attempts dùng để lưu lịch sử/callback/payment metadata.
+- Phải tính đến idempotency khi xử lý payment callback.
+
+Reviews:
+- DEFER.
+- Không để Review làm blocker cho MVP.
+
+==================================================
+3. PRODUCT SCHEMA
+==================================================
+
+Khóa Product Polymorphic Schema.
+
+Tất cả sản phẩm phải chung collection:
+
+products
+
+Phải có phần field chung và attributes linh hoạt.
+
+Kiểm tra lại:
+
+- _id
+- sku
+- name
+- slug
+- productType
+- categoryId
+- brand
+- description
+- price
+- stock
+- images
+- attributes
+- status
+- createdAt
+- updatedAt
+
+Thiết kế phải thể hiện rõ ít nhất:
+
+Electronics
+Fashion
+Home / Household
+
+Ví dụ attributes của mỗi nhóm phải khác nhau.
+
+Không tạo collection riêng theo ngành hàng.
+
+==================================================
+4. CATEGORY
+==================================================
+
+Khóa Category Schema.
+
+Phân tích:
+
+- category hierarchy có cần parentId hay không
+- slug unique
+- status
+- productType/category compatibility nếu cần
+
+Không over-engineer taxonomy.
+
+==================================================
+5. ORDER SCHEMA
+==================================================
+
+Đây là phần quan trọng nhất.
+
+Khóa Order Schema hoàn chỉnh.
+
+Order phải embed:
+
+- customerSnapshot
+- shippingAddress
+- items[]
+
+Mỗi item phải snapshot tối thiểu:
+
+- productId
+- sku
+- productName
+- image
+- productType/category snapshot nếu cần báo cáo
+- priceAtPurchase
+- quantity
+- selectedAttributes
+- lineTotal
+
+Order history không được lấy giá hiện tại từ Product.
+
+Kiểm tra thiết kế để Aggregation Dashboard có thể chạy mà không cần JOIN không cần thiết.
+
+==================================================
+6. ORDER STATUS
+==================================================
+
+Chốt lifecycle đơn hàng đơn giản nhưng thực tế.
+
+Không tạo workflow quá phức tạp.
+
+Đề xuất kiểu:
+
+PENDING
+CONFIRMED
+PROCESSING
+SHIPPING
+COMPLETED
+CANCELLED
+
+Phải ghi rõ transition hợp lệ.
+
+Customer chỉ được cancel trong những trạng thái được cho phép.
+
+==================================================
+7. PAYMENT
+==================================================
+
+Khóa:
+
+paymentMethod:
+- COD
+- VNPAY
+
+paymentStatus phù hợp.
+
+Xác định rõ quan hệ giữa:
+
+orders
+và
+payment_attempts
+
+Không lưu thông tin nhạy cảm không cần thiết.
+
+Không giả lập xử lý tiền thật.
+
+VNPAY chỉ Sandbox.
+
+==================================================
+8. REVENUE DEFINITION
+==================================================
+
+Đây phải trở thành business rule rõ ràng.
+
+Dashboard không được tùy ý cộng tất cả Orders.
+
+Khóa chính xác:
+
+- trạng thái nào được tính doanh thu
+- cancelled có bị loại không
+- COD được tính ở thời điểm nào
+- VNPAY được tính ở thời điểm nào
+
+Ưu tiên một định nghĩa đơn giản, nhất quán và dễ bảo vệ.
+
+Ghi decision/document rõ ràng.
+
+==================================================
+9. SEARCH
+==================================================
+
+Không xây search engine phức tạp.
+
+Thiết kế search/filter đủ cho đồ án:
+
+- name
+- category
+- productType
+- price range
+- brand
+- status
+- một số attributes phù hợp
+
+Đối với tiếng Việt:
+
+đề xuất cách normalize field phục vụ search nếu cần.
+
+Không phụ thuộc Atlas Search cho MVP local.
+
+==================================================
+10. JSON SCHEMA VALIDATION
+==================================================
+
+Hoàn thiện MongoDB JSON Schema validator cho các collection quan trọng.
+
+Ít nhất:
+
+- users
+- categories
+- products
+- carts
+- orders
+- payment_attempts
+
+Product validator phải cho phép Polymorphic attributes.
+
+Không làm validator quá cứng khiến mất lợi ích Document Store.
+
+==================================================
+11. INDEX DESIGN
+==================================================
+
+Chưa benchmark thật ở phase này.
+
+Nhưng phải khóa candidate indexes dựa trên query pattern.
+
+Với mỗi index:
+
+ghi rõ:
+
+- query nào dùng
+- equality field
+- sort field
+- range field
+- lý do thứ tự field
+
+Không tạo index không có use case.
+
+Chuẩn bị cho phase performance sau này:
+
+explain("executionStats")
+COLLSCAN
+IXSCAN
+totalDocsExamined
+totalKeysExamined
+executionTimeMillis
+
+==================================================
+12. AGGREGATION DESIGN
+==================================================
+
+Thiết kế pipeline trên giấy/docs trước.
+
+Bắt buộc có:
+
+A. Revenue over time
+
+Phải thể hiện hợp lý:
+- $match
+- $group
+- $sort
+
+B. Top 5 best-selling products
+
+Phải thể hiện:
+- $match
+- $unwind
+- $group
+- $sort
+- $limit
+
+Nếu có Revenue by Category thì thiết kế thêm.
+
+Chưa cần xây Dashboard frontend.
+
+==================================================
+13. SEED STRATEGY
+==================================================
+
+Khóa target:
+
+- 150–200 products
+- >= 3 ngành hàng
+- 30–50 users
+- khoảng 100 orders
+- 2–5 items/order
+
+Product source có thể lấy từ public API/dataset sau đó normalize.
+
+Orders phải được generate từ chính Product data để snapshot hợp lệ.
+
+Seed phải reproducible.
+
+==================================================
+14. CẬP NHẬT DOCS
+==================================================
+
+Sau khi khóa quyết định:
+
+cập nhật các file liên quan:
+
+- docs/database-schema.md
+- docs/business-rules.md
+- docs/seed-strategy.md
+- docs/architecture.md nếu cần
+- ADR tương ứng
+- feature docs chịu ảnh hưởng
+
+Không duplicate cùng một specification ở quá nhiều file.
+
+Phải giữ source of truth rõ ràng.
+
+==================================================
+15. VALIDATION CỦA PHASE
+==================================================
+
+Trước khi báo DONE:
+
+kiểm tra:
+
+- schema examples hợp lệ
+- field naming nhất quán
+- enum nhất quán
+- embed/reference hợp lý
+- order snapshot đủ dữ liệu
+- Product thật sự polymorphic
+- aggregation có thể chạy trên schema đã thiết kế
+- index phù hợp query
+- không còn OPEN QUESTION nào có thể block backend
+
+Những vấn đề không block implementation có thể để DEFERRED.
+
+==================================================
+16. OUTPUT
+==================================================
+
+Khi hoàn thành, báo:
+
+1. Các quyết định đã khóa.
+2. Collection cuối cùng.
+3. Schema chính thức từng collection.
+4. Product polymorphic strategy.
+5. Order embedded/snapshot strategy.
+6. Cart strategy.
+7. Payment strategy.
+8. Revenue definition.
+9. Candidate indexes.
+10. Aggregation pipelines dự kiến.
+11. Seed target.
+12. File docs đã sửa.
+13. OPEN/DEFERRED còn lại.
+14. Xác nhận chưa implement feature nghiệp vụ.
+
+KHÔNG tự bắt đầu PHASE tiếp theo.
+
+Dừng lại để review.

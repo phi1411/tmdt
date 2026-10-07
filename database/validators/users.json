@@ -1,0 +1,149 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "additionalProperties": false,
+    "required": [
+      "_id",
+      "schemaVersion",
+      "createdAt",
+      "updatedAt",
+      "email",
+      "passwordHash",
+      "role",
+      "status",
+      "tokenVersion",
+      "version",
+      "name",
+      "phone",
+      "addresses",
+      "defaultAddressId"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "schemaVersion": {
+        "bsonType": "int",
+        "enum": [
+          1
+        ]
+      },
+      "createdAt": {
+        "bsonType": "date"
+      },
+      "updatedAt": {
+        "bsonType": "date"
+      },
+      "email": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 254,
+        "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+      },
+      "passwordHash": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "pattern": "^\\$argon2id\\$"
+      },
+      "role": {
+        "bsonType": "string",
+        "enum": [
+          "CUSTOMER",
+          "ADMIN"
+        ]
+      },
+      "status": {
+        "bsonType": "string",
+        "enum": [
+          "ACTIVE",
+          "BLOCKED"
+        ]
+      },
+      "tokenVersion": {
+        "bsonType": "int",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "version": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "name": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "phone": {
+        "bsonType": "string",
+        "minLength": 0,
+        "maxLength": 16,
+        "pattern": "^(?:\\+?[0-9]{8,15})?$"
+      },
+      "addresses": {
+        "bsonType": "array",
+        "minItems": 0,
+        "maxItems": 10,
+        "items": {
+          "bsonType": "object",
+          "additionalProperties": false,
+          "required": [
+            "_id",
+            "receiverName",
+            "phone",
+            "addressLine",
+            "province"
+          ],
+          "properties": {
+            "_id": {
+              "bsonType": "objectId"
+            },
+            "receiverName": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "phone": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 16,
+              "pattern": "^\\+?[0-9]{8,15}$"
+            },
+            "addressLine": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "province": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "ward": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "district": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "label": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 50
+            }
+          }
+        }
+      },
+      "defaultAddressId": {
+        "bsonType": [
+          "objectId",
+          "null"
+        ]
+      }
+    }
+  }
+}

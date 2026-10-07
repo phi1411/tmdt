@@ -1,0 +1,6358 @@
+{
+  "database": "ecommerce_dev",
+  "randomSeed": {
+    "$numberInt": "20261007"
+  },
+  "anchor": {
+    "$date": {
+      "$numberLong": "1790812800000"
+    }
+  },
+  "windowStart": {
+    "$date": {
+      "$numberLong": "1783036800000"
+    }
+  },
+  "source": "Cached DummyJSON + explicitly curated demo specifications/variants; USD * fixed 25000 for synthetic VND prices",
+  "productsReadFromMongoInsideTransaction": true,
+  "paymentFixturesOnly": true,
+  "origins": [
+    {
+      "productId": {
+        "$oid": "ee2399e8ca31f310f6ef0b0f"
+      },
+      "sourceId": {
+        "$numberInt": "78"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "10000000"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b141ecc100c715323ffc4b61"
+      },
+      "sourceId": {
+        "$numberInt": "79"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "44999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2a8fa8b10945707b0bb4573f"
+      },
+      "sourceId": {
+        "$numberInt": "80"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "34999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ebf8603d25b8fac16ee33a84"
+      },
+      "sourceId": {
+        "$numberInt": "81"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "27499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "54ee124fc84f993f81815494"
+      },
+      "sourceId": {
+        "$numberInt": "82"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "37499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4dc6ecb9e6a7e22ce90257a6"
+      },
+      "sourceId": {
+        "$numberInt": "99"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "05c4109a3f04b06c864ff88e"
+      },
+      "sourceId": {
+        "$numberInt": "100"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e1323bc9311d8e145dc8b5e1"
+      },
+      "sourceId": {
+        "$numberInt": "101"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "13749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "07e01df82b267f0c77a23271"
+      },
+      "sourceId": {
+        "$numberInt": "102"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7874809dbc578b438e96da39"
+      },
+      "sourceId": {
+        "$numberInt": "103"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7cc4802560139f7ab0607520"
+      },
+      "sourceId": {
+        "$numberInt": "104"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f994e81eff16052af4c14797"
+      },
+      "sourceId": {
+        "$numberInt": "105"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "138c0dc74b2162057efb2f5d"
+      },
+      "sourceId": {
+        "$numberInt": "106"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "8749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1cfaa5df6bb9bc1194a1cce6"
+      },
+      "sourceId": {
+        "$numberInt": "107"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "40484e7bdacd87b0c1ae18bf"
+      },
+      "sourceId": {
+        "$numberInt": "108"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "62f5dfaa7a9de7bbdb270fad"
+      },
+      "sourceId": {
+        "$numberInt": "109"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "16c71fd53020bcf5aa73d0c8"
+      },
+      "sourceId": {
+        "$numberInt": "110"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "374750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "da280f7167f39808291b42b0"
+      },
+      "sourceId": {
+        "$numberInt": "111"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "324750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "52c88055d26c6699baf55985"
+      },
+      "sourceId": {
+        "$numberInt": "112"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "12499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d198596259b1415e8c37f32e"
+      },
+      "sourceId": {
+        "$numberInt": "121"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "4999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a9c3109af7b704fae97e9f63"
+      },
+      "sourceId": {
+        "$numberInt": "122"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7befcbfbab87c1c2f7dbef9e"
+      },
+      "sourceId": {
+        "$numberInt": "123"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "27499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "053e56902694dbdb0dbc2448"
+      },
+      "sourceId": {
+        "$numberInt": "124"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "22499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "045e74d4d725b71e42fd3ebb"
+      },
+      "sourceId": {
+        "$numberInt": "125"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "6249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "3d2f40d54e666a16296014ad"
+      },
+      "sourceId": {
+        "$numberInt": "126"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "9999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a8d173b722455b665f6b7d80"
+      },
+      "sourceId": {
+        "$numberInt": "127"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a63ef93bb2c12d18194179a8"
+      },
+      "sourceId": {
+        "$numberInt": "128"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "926f4cd66cfad1dfbe619321"
+      },
+      "sourceId": {
+        "$numberInt": "129"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c85dcc293fb4a4bc8c5f5323"
+      },
+      "sourceId": {
+        "$numberInt": "130"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "8749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "21fd9a6fce6fdba686c0544b"
+      },
+      "sourceId": {
+        "$numberInt": "131"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d9a8bcc197f31c3f0fa1084a"
+      },
+      "sourceId": {
+        "$numberInt": "132"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "12499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "70f885a1868acae4a04ab54f"
+      },
+      "sourceId": {
+        "$numberInt": "133"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "17499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6aea96b1842b8c419c691b72"
+      },
+      "sourceId": {
+        "$numberInt": "134"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "6249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "65bb2fef4108f25c73901809"
+      },
+      "sourceId": {
+        "$numberInt": "135"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1e47df009d725af4c9097a8e"
+      },
+      "sourceId": {
+        "$numberInt": "136"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "12499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6564957acd0610d00686aebb"
+      },
+      "sourceId": {
+        "$numberInt": "159"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "12499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a9a15a40e5c1082f74f286d0"
+      },
+      "sourceId": {
+        "$numberInt": "160"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "14999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "315301c4c4c092e47c9507c0"
+      },
+      "sourceId": {
+        "$numberInt": "161"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "8749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "161c1ed743e0e08c9fdbaeed"
+      },
+      "sourceId": {
+        "$numberInt": "78"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "52499738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "57fe63b3073982cc0130c7d7"
+      },
+      "sourceId": {
+        "$numberInt": "79"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "47249738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2e0a04d868129ad2f9a1d4bd"
+      },
+      "sourceId": {
+        "$numberInt": "80"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "36749738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b4dcae7c28f6feb43495bf0e"
+      },
+      "sourceId": {
+        "$numberInt": "81"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "28874738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "24e973f250a00c14971dac8e"
+      },
+      "sourceId": {
+        "$numberInt": "82"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "39374738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "cff9c55514d0625fc964b014"
+      },
+      "sourceId": {
+        "$numberInt": "99"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2624738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fe04f59ee1201a636cdd1bca"
+      },
+      "sourceId": {
+        "$numberInt": "100"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3412238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fb31d2b7d57f1ed73ae671e8"
+      },
+      "sourceId": {
+        "$numberInt": "101"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "14437238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c50280028bb206119f13db2b"
+      },
+      "sourceId": {
+        "$numberInt": "102"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2099738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c3600958cf03ca0b4232f551"
+      },
+      "sourceId": {
+        "$numberInt": "103"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2624738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e5d43eb6393930fdc4092ba7"
+      },
+      "sourceId": {
+        "$numberInt": "104"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "524738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "333bdca2026a5d13dec585f1"
+      },
+      "sourceId": {
+        "$numberInt": "105"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2624738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "578fdee1e21397a6bf1be538"
+      },
+      "sourceId": {
+        "$numberInt": "106"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "9187238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "11993a813768cc569eff12ff"
+      },
+      "sourceId": {
+        "$numberInt": "107"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1312238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b569e8d62378ec58050deea1"
+      },
+      "sourceId": {
+        "$numberInt": "108"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "787238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "99e5b274de76e37ec49ecc5d"
+      },
+      "sourceId": {
+        "$numberInt": "109"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "524738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "87409a4cc4c77501f8ef10e8"
+      },
+      "sourceId": {
+        "$numberInt": "110"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "393488"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c477144702459d1670367599"
+      },
+      "sourceId": {
+        "$numberInt": "111"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "340988"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6fab0d6944ec250007a8dab4"
+      },
+      "sourceId": {
+        "$numberInt": "112"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "13124738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "14e8b13d1994764708d9003a"
+      },
+      "sourceId": {
+        "$numberInt": "121"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "5249738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c203116a54dfa320e3cb7dde"
+      },
+      "sourceId": {
+        "$numberInt": "122"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7874738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "23057a0d1c4b7be635f2b2bc"
+      },
+      "sourceId": {
+        "$numberInt": "123"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "28874738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "989a012c7b19a75f9a857b78"
+      },
+      "sourceId": {
+        "$numberInt": "83"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "338020203e2fd7a49010be04"
+      },
+      "sourceId": {
+        "$numberInt": "84"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "624750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ecde95869bc766037973f00b"
+      },
+      "sourceId": {
+        "$numberInt": "85"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "874750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2db768da385e92ff56f35f50"
+      },
+      "sourceId": {
+        "$numberInt": "86"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2abea3134f3ba57fae422e5d"
+      },
+      "sourceId": {
+        "$numberInt": "87"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "699750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fda49b55b5e6e97b9ba9ea69"
+      },
+      "sourceId": {
+        "$numberInt": "88"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7a9f481a5f9aae34cb1d12ea"
+      },
+      "sourceId": {
+        "$numberInt": "89"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2330f5079ec25c9fcfac0f8b"
+      },
+      "sourceId": {
+        "$numberInt": "90"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "729879bcfedbcb5d9d4d2c96"
+      },
+      "sourceId": {
+        "$numberInt": "91"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "80ebdee6dde0e62f90bede26"
+      },
+      "sourceId": {
+        "$numberInt": "92"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6b5d0a5d6d04daccb68a6bfd"
+      },
+      "sourceId": {
+        "$numberInt": "93"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e32e00d1357cc61f34b431e0"
+      },
+      "sourceId": {
+        "$numberInt": "94"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "37499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ceb156335783a595611ac708"
+      },
+      "sourceId": {
+        "$numberInt": "95"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "224999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8e8f6b74b69cc6e9e82a394e"
+      },
+      "sourceId": {
+        "$numberInt": "96"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "324999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d35583a7866b6b578100b218"
+      },
+      "sourceId": {
+        "$numberInt": "97"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "274999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "da67cb61bd3abfbc481f1e82"
+      },
+      "sourceId": {
+        "$numberInt": "98"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "349999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a450c90863a010584dd20b01"
+      },
+      "sourceId": {
+        "$numberInt": "154"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "85c31ad101f42ee6240a372b"
+      },
+      "sourceId": {
+        "$numberInt": "155"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "624750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b2bf44f3a28b240fd2e53b01"
+      },
+      "sourceId": {
+        "$numberInt": "156"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "874750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0cc3820b77eb6c6c0e5d07f4"
+      },
+      "sourceId": {
+        "$numberInt": "157"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ceca2b73336c86e9b402bbf6"
+      },
+      "sourceId": {
+        "$numberInt": "158"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "574750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f33d46cd5683dafe3b055346"
+      },
+      "sourceId": {
+        "$numberInt": "162"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c6779522181565e6024b50be"
+      },
+      "sourceId": {
+        "$numberInt": "163"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "386ac4a7435e06894d2b5852"
+      },
+      "sourceId": {
+        "$numberInt": "164"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "874750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4c79ee79780bb6a452d0d2c6"
+      },
+      "sourceId": {
+        "$numberInt": "165"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "624750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "59e75ef2900978c9ef26a662"
+      },
+      "sourceId": {
+        "$numberInt": "166"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "33263c6eabd6c01daa5bf927"
+      },
+      "sourceId": {
+        "$numberInt": "172"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "377db9b2950b71bc77b83985"
+      },
+      "sourceId": {
+        "$numberInt": "173"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2faee80f50eb185b67138170"
+      },
+      "sourceId": {
+        "$numberInt": "174"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "14999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "01fa472e82a56a0fbae38ec4"
+      },
+      "sourceId": {
+        "$numberInt": "175"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8a381af2210cb235de50a8ba"
+      },
+      "sourceId": {
+        "$numberInt": "176"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1205be0a9dfd8d408d4b8d32"
+      },
+      "sourceId": {
+        "$numberInt": "177"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "772ba51229f4d9d2e51790bb"
+      },
+      "sourceId": {
+        "$numberInt": "178"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "dabfc094cf33d19bea30666f"
+      },
+      "sourceId": {
+        "$numberInt": "179"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0de5fcadf126b914afcfff55"
+      },
+      "sourceId": {
+        "$numberInt": "180"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b35effef5cb88b309f621979"
+      },
+      "sourceId": {
+        "$numberInt": "181"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "4499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d65125f3de4da569cc89e21a"
+      },
+      "sourceId": {
+        "$numberInt": "185"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c4dde47e513d4ec13c937970"
+      },
+      "sourceId": {
+        "$numberInt": "186"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "bbdf89639447c117c8b71d04"
+      },
+      "sourceId": {
+        "$numberInt": "187"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a8ea32a3d77ed0036f35c0b6"
+      },
+      "sourceId": {
+        "$numberInt": "188"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "410c1b74c50cad0a64f91922"
+      },
+      "sourceId": {
+        "$numberInt": "189"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "874750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1a8f18c13e22ef80dd1dd1c1"
+      },
+      "sourceId": {
+        "$numberInt": "190"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "124999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8032f9e8d9b7e1ae6ada25f3"
+      },
+      "sourceId": {
+        "$numberInt": "191"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "399999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "dc96c65f96283c5be18dd3a9"
+      },
+      "sourceId": {
+        "$numberInt": "192"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "274999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "20dec60018249f26fa485d1d"
+      },
+      "sourceId": {
+        "$numberInt": "193"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "19999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d181d96f6d6b796f7e843394"
+      },
+      "sourceId": {
+        "$numberInt": "194"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "9e796d9029c0224b6211f1c3"
+      },
+      "sourceId": {
+        "$numberInt": "83"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "787238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5e33433c60dfbc7a278d1627"
+      },
+      "sourceId": {
+        "$numberInt": "84"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "655988"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a87391c65982d774dcce82d3"
+      },
+      "sourceId": {
+        "$numberInt": "85"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "918488"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7f8886562f903a81f2ae1236"
+      },
+      "sourceId": {
+        "$numberInt": "86"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "524738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d2cc5ce306533940c844d5b5"
+      },
+      "sourceId": {
+        "$numberInt": "87"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "734738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e0a4fffb151df51903e6ef62"
+      },
+      "sourceId": {
+        "$numberInt": "88"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3937238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f7d13f85186bb55fac3347b8"
+      },
+      "sourceId": {
+        "$numberInt": "89"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2099738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6b7893aab99a395951dfdf2b"
+      },
+      "sourceId": {
+        "$numberInt": "90"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2362238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b72b5f84d29949cb3f4674d0"
+      },
+      "sourceId": {
+        "$numberInt": "91"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "3149738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ea137ad0b5bea1744b85f32b"
+      },
+      "sourceId": {
+        "$numberInt": "92"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2887238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "abad559fd0224165ab63e69f"
+      },
+      "sourceId": {
+        "$numberInt": "93"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2362238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f289cf75b48de99d416e2384"
+      },
+      "sourceId": {
+        "$numberInt": "94"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "39374738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e48e6624f28b1ca780d6cf1c"
+      },
+      "sourceId": {
+        "$numberInt": "95"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "236249738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0f40834671a9902f9b8a40fc"
+      },
+      "sourceId": {
+        "$numberInt": "96"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "341249738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "05c2ae4b3765f8912ba64829"
+      },
+      "sourceId": {
+        "$numberInt": "11"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "47499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "cbb4017c8b8472b48eeb03a5"
+      },
+      "sourceId": {
+        "$numberInt": "12"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "62499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4ab3bf443ea2ede15b52d5df"
+      },
+      "sourceId": {
+        "$numberInt": "13"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "19a9d94576e028cebf866028"
+      },
+      "sourceId": {
+        "$numberInt": "14"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "12499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2e50dbc06794da6500a8671c"
+      },
+      "sourceId": {
+        "$numberInt": "15"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "19999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1541d712a17205601d2f2fb3"
+      },
+      "sourceId": {
+        "$numberInt": "48"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "199750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e340c87c96408fd0231fe76a"
+      },
+      "sourceId": {
+        "$numberInt": "49"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "149750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "eb8f1104845eb780ea34a194"
+      },
+      "sourceId": {
+        "$numberInt": "50"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "77f465deec6915db52f54a10"
+      },
+      "sourceId": {
+        "$numberInt": "51"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7aa753942825a61fdcaa59b9"
+      },
+      "sourceId": {
+        "$numberInt": "52"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "749750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b4763d5679d3be8e845ef7f9"
+      },
+      "sourceId": {
+        "$numberInt": "53"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "324750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "65e284570c1cccf7f10882c5"
+      },
+      "sourceId": {
+        "$numberInt": "54"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "224750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "10da08c34251eb2d83be68c8"
+      },
+      "sourceId": {
+        "$numberInt": "55"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "174750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5cbd0f43f3d660c2e4f8b189"
+      },
+      "sourceId": {
+        "$numberInt": "56"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2e085e202ede27113697bf61"
+      },
+      "sourceId": {
+        "$numberInt": "57"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7c420bdf29d71c1c88cdf10e"
+      },
+      "sourceId": {
+        "$numberInt": "58"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "99750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e0765db1254dce14ad47a933"
+      },
+      "sourceId": {
+        "$numberInt": "59"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "124750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "95d8218e942f5b1071959e3a"
+      },
+      "sourceId": {
+        "$numberInt": "60"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "274750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "75d9f2be9dcca46d0f23c82b"
+      },
+      "sourceId": {
+        "$numberInt": "61"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "874750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5a2c7f5a74e142fd1679470c"
+      },
+      "sourceId": {
+        "$numberInt": "62"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "149750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8b8b741fd50683c9f32122b4"
+      },
+      "sourceId": {
+        "$numberInt": "63"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "199750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8363b6a39e3385a76f35c8df"
+      },
+      "sourceId": {
+        "$numberInt": "64"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "374750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0df3c8ace9143f17e7790a01"
+      },
+      "sourceId": {
+        "$numberInt": "65"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "324750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d8f833c8a5af5171d8b74937"
+      },
+      "sourceId": {
+        "$numberInt": "66"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2249750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "279a03928f6a8c0c3f07734e"
+      },
+      "sourceId": {
+        "$numberInt": "67"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "399750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0836c739ce88a7abbe1b9f89"
+      },
+      "sourceId": {
+        "$numberInt": "68"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "624750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d551634183d9f21325199c6c"
+      },
+      "sourceId": {
+        "$numberInt": "69"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "99750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "25243f0f5c9a96dc23de2a0c"
+      },
+      "sourceId": {
+        "$numberInt": "70"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "174750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fccf6cac7ecfce2486e5eb09"
+      },
+      "sourceId": {
+        "$numberInt": "71"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "999750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68e0ae63c8c13220667baf9b"
+      },
+      "sourceId": {
+        "$numberInt": "72"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "224750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4bb0b08b077ff6be84eb86e2"
+      },
+      "sourceId": {
+        "$numberInt": "73"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "499750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "cd70ac87fa72a85b987ca564"
+      },
+      "sourceId": {
+        "$numberInt": "74"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "124750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "9d79376364b3bfd78dca0910"
+      },
+      "sourceId": {
+        "$numberInt": "75"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "424750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5d45a2428aa79b257267d237"
+      },
+      "sourceId": {
+        "$numberInt": "76"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "299750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "637d1776ea44c3d4b8981fd5"
+      },
+      "sourceId": {
+        "$numberInt": "77"
+      },
+      "variant": {
+        "$numberInt": "1"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "149750"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "af21b1afd922c721d0de1879"
+      },
+      "sourceId": {
+        "$numberInt": "11"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "49874738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ae83eb7e899cd32241a30afc"
+      },
+      "sourceId": {
+        "$numberInt": "12"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "65624738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c6e41ad79a6c4e3840fe1654"
+      },
+      "sourceId": {
+        "$numberInt": "13"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "7874738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "46e1020e773afaa7c089db67"
+      },
+      "sourceId": {
+        "$numberInt": "14"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "13124738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5b4c9d6750d72fd08eb75503"
+      },
+      "sourceId": {
+        "$numberInt": "15"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "20999738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "835b7be1dd8d269a19c46c0a"
+      },
+      "sourceId": {
+        "$numberInt": "48"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "209738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7f48718bdbb9d462fcc1f3fa"
+      },
+      "sourceId": {
+        "$numberInt": "49"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "157238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "508b2cd179b22d684f352514"
+      },
+      "sourceId": {
+        "$numberInt": "50"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "262238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "16e8e24983a17cecb46aac00"
+      },
+      "sourceId": {
+        "$numberInt": "51"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1049738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4a3173370be82a977e9b2056"
+      },
+      "sourceId": {
+        "$numberInt": "52"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "787238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d4135f0f87f935120c25d2ec"
+      },
+      "sourceId": {
+        "$numberInt": "53"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "340988"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "508a3186890d269334b7c587"
+      },
+      "sourceId": {
+        "$numberInt": "54"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "235988"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "9d5276523e08b05cc6403dd0"
+      },
+      "sourceId": {
+        "$numberInt": "55"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "183488"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7e7f116b311337d5dff7b6cc"
+      },
+      "sourceId": {
+        "$numberInt": "56"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "1312238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7826068e189f9de73732c1f5"
+      },
+      "sourceId": {
+        "$numberInt": "57"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "262238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "84bc8bf1e65f0e897fafaf26"
+      },
+      "sourceId": {
+        "$numberInt": "58"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "104738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "76d0ea58cd6f9d3446ff46b6"
+      },
+      "sourceId": {
+        "$numberInt": "59"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "130988"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "55a017fa42cc29272ce95424"
+      },
+      "sourceId": {
+        "$numberInt": "60"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "288488"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2cd42fba08390c09c1dab709"
+      },
+      "sourceId": {
+        "$numberInt": "61"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "918488"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ee9dcceca4e88454405734e7"
+      },
+      "sourceId": {
+        "$numberInt": "62"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "157238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "81b071fd30e6a98b0db6c0c0"
+      },
+      "sourceId": {
+        "$numberInt": "63"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "209738"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f16aa8b2d141d8254e05f6df"
+      },
+      "sourceId": {
+        "$numberInt": "64"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "393488"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c60cc04d59e789c91fe52cc4"
+      },
+      "sourceId": {
+        "$numberInt": "65"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "340988"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d532c4471871354a2b389cdf"
+      },
+      "sourceId": {
+        "$numberInt": "66"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "2362238"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b5bf516e0fecec5d7981181e"
+      },
+      "sourceId": {
+        "$numberInt": "67"
+      },
+      "variant": {
+        "$numberInt": "2"
+      },
+      "specifications": "CURATED_DEMO",
+      "basePrice": {
+        "$numberLong": "419738"
+      }
+    }
+  ],
+  "inventory": [
+    {
+      "productId": {
+        "$oid": "01fa472e82a56a0fbae38ec4"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "045e74d4d725b71e42fd3ebb"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "053e56902694dbdb0dbc2448"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "05c2ae4b3765f8912ba64829"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "05c4109a3f04b06c864ff88e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "8"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "92"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "07e01df82b267f0c77a23271"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0836c739ce88a7abbe1b9f89"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0cc3820b77eb6c6c0e5d07f4"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0de5fcadf126b914afcfff55"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "3"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0df3c8ace9143f17e7790a01"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "0f40834671a9902f9b8a40fc"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "6"
+      },
+      "reserved": {
+        "$numberInt": "7"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "87"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "10da08c34251eb2d83be68c8"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "11993a813768cc569eff12ff"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "6"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "90"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1205be0a9dfd8d408d4b8d32"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "138c0dc74b2162057efb2f5d"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "14e8b13d1994764708d9003a"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1541d712a17205601d2f2fb3"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "161c1ed743e0e08c9fdbaeed"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "16c71fd53020bcf5aa73d0c8"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "16e8e24983a17cecb46aac00"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "92"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "19a9d94576e028cebf866028"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1a8f18c13e22ef80dd1dd1c1"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1cfaa5df6bb9bc1194a1cce6"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "1e47df009d725af4c9097a8e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "20dec60018249f26fa485d1d"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "7"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "88"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "21fd9a6fce6fdba686c0544b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "23057a0d1c4b7be635f2b2bc"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2330f5079ec25c9fcfac0f8b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "24e973f250a00c14971dac8e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "25243f0f5c9a96dc23de2a0c"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "279a03928f6a8c0c3f07734e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "6"
+      },
+      "released": {
+        "$numberInt": "4"
+      },
+      "final": {
+        "$numberInt": "91"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2a8fa8b10945707b0bb4573f"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2abea3134f3ba57fae422e5d"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2cd42fba08390c09c1dab709"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2db768da385e92ff56f35f50"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "7"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2e085e202ede27113697bf61"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "8"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "91"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2e0a04d868129ad2f9a1d4bd"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2e50dbc06794da6500a8671c"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "2faee80f50eb185b67138170"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "315301c4c4c092e47c9507c0"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "33263c6eabd6c01daa5bf927"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "333bdca2026a5d13dec585f1"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "338020203e2fd7a49010be04"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "377db9b2950b71bc77b83985"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "386ac4a7435e06894d2b5852"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "3d2f40d54e666a16296014ad"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "40484e7bdacd87b0c1ae18bf"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "410c1b74c50cad0a64f91922"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "46e1020e773afaa7c089db67"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4a3173370be82a977e9b2056"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4ab3bf443ea2ede15b52d5df"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4bb0b08b077ff6be84eb86e2"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "8"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "92"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4c79ee79780bb6a452d0d2c6"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "4dc6ecb9e6a7e22ce90257a6"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "508a3186890d269334b7c587"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "508b2cd179b22d684f352514"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "3"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "52c88055d26c6699baf55985"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "54ee124fc84f993f81815494"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "55a017fa42cc29272ce95424"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "578fdee1e21397a6bf1be538"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "57fe63b3073982cc0130c7d7"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "59e75ef2900978c9ef26a662"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5a2c7f5a74e142fd1679470c"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5b4c9d6750d72fd08eb75503"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "6"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5cbd0f43f3d660c2e4f8b189"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5d45a2428aa79b257267d237"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "5e33433c60dfbc7a278d1627"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "62f5dfaa7a9de7bbdb270fad"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "637d1776ea44c3d4b8981fd5"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6564957acd0610d00686aebb"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "92"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "65bb2fef4108f25c73901809"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "65e284570c1cccf7f10882c5"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68e0ae63c8c13220667baf9b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6aea96b1842b8c419c691b72"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6b5d0a5d6d04daccb68a6bfd"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6b7893aab99a395951dfdf2b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6fab0d6944ec250007a8dab4"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "3"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "70f885a1868acae4a04ab54f"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "729879bcfedbcb5d9d4d2c96"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "75d9f2be9dcca46d0f23c82b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "76d0ea58cd6f9d3446ff46b6"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "772ba51229f4d9d2e51790bb"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "77f465deec6915db52f54a10"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7826068e189f9de73732c1f5"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7874809dbc578b438e96da39"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7a9f481a5f9aae34cb1d12ea"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7aa753942825a61fdcaa59b9"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "9"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "89"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7befcbfbab87c1c2f7dbef9e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7c420bdf29d71c1c88cdf10e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7cc4802560139f7ab0607520"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7e7f116b311337d5dff7b6cc"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7f48718bdbb9d462fcc1f3fa"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "7"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "7f8886562f903a81f2ae1236"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "6"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8032f9e8d9b7e1ae6ada25f3"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "80ebdee6dde0e62f90bede26"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "81b071fd30e6a98b0db6c0c0"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "7"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "835b7be1dd8d269a19c46c0a"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8363b6a39e3385a76f35c8df"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "3"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "84bc8bf1e65f0e897fafaf26"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "85c31ad101f42ee6240a372b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "87409a4cc4c77501f8ef10e8"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "9"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "3"
+      },
+      "final": {
+        "$numberInt": "91"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8a381af2210cb235de50a8ba"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8b8b741fd50683c9f32122b4"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "7"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "8e8f6b74b69cc6e9e82a394e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "926f4cd66cfad1dfbe619321"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "95d8218e942f5b1071959e3a"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "989a012c7b19a75f9a857b78"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "99e5b274de76e37ec49ecc5d"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "9d5276523e08b05cc6403dd0"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "9d79376364b3bfd78dca0910"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "8"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "92"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "9e796d9029c0224b6211f1c3"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a450c90863a010584dd20b01"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a63ef93bb2c12d18194179a8"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a87391c65982d774dcce82d3"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a8d173b722455b665f6b7d80"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a8ea32a3d77ed0036f35c0b6"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a9a15a40e5c1082f74f286d0"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "a9c3109af7b704fae97e9f63"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "7"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "abad559fd0224165ab63e69f"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ae83eb7e899cd32241a30afc"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "af21b1afd922c721d0de1879"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "6"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b141ecc100c715323ffc4b61"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b2bf44f3a28b240fd2e53b01"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b35effef5cb88b309f621979"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "4"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b4763d5679d3be8e845ef7f9"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "7"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b4dcae7c28f6feb43495bf0e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b569e8d62378ec58050deea1"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b5bf516e0fecec5d7981181e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "b72b5f84d29949cb3f4674d0"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "bbdf89639447c117c8b71d04"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c203116a54dfa320e3cb7dde"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c3600958cf03ca0b4232f551"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c477144702459d1670367599"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "91"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c4dde47e513d4ec13c937970"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c50280028bb206119f13db2b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "7"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c60cc04d59e789c91fe52cc4"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c6779522181565e6024b50be"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c6e41ad79a6c4e3840fe1654"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "c85dcc293fb4a4bc8c5f5323"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "cbb4017c8b8472b48eeb03a5"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "92"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "cd70ac87fa72a85b987ca564"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "6"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "91"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ceb156335783a595611ac708"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ceca2b73336c86e9b402bbf6"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "3"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "cff9c55514d0625fc964b014"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d181d96f6d6b796f7e843394"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d198596259b1415e8c37f32e"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "6"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "92"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d2cc5ce306533940c844d5b5"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d35583a7866b6b578100b218"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d4135f0f87f935120c25d2ec"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "6"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d532c4471871354a2b389cdf"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d551634183d9f21325199c6c"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d65125f3de4da569cc89e21a"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "3"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d8f833c8a5af5171d8b74937"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "d9a8bcc197f31c3f0fa1084a"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "8"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "90"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "da280f7167f39808291b42b0"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "da67cb61bd3abfbc481f1e82"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "dabfc094cf33d19bea30666f"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "7"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "dc96c65f96283c5be18dd3a9"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e0765db1254dce14ad47a933"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e0a4fffb151df51903e6ef62"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "8"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e1323bc9311d8e145dc8b5e1"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "5"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "90"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e32e00d1357cc61f34b431e0"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e340c87c96408fd0231fe76a"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "96"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e48e6624f28b1ca780d6cf1c"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "e5d43eb6393930fdc4092ba7"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "5"
+      },
+      "released": {
+        "$numberInt": "2"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ea137ad0b5bea1744b85f32b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "eb8f1104845eb780ea34a194"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "6"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "94"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ebf8603d25b8fac16ee33a84"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ecde95869bc766037973f00b"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "98"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ee2399e8ca31f310f6ef0b0f"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "2"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "95"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "ee9dcceca4e88454405734e7"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "100"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f16aa8b2d141d8254e05f6df"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "4"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "93"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f289cf75b48de99d416e2384"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "12"
+      },
+      "reserved": {
+        "$numberInt": "2"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "86"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f33d46cd5683dafe3b055346"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f7d13f85186bb55fac3347b8"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "f994e81eff16052af4c14797"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "3"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fb31d2b7d57f1ed73ae671e8"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "1"
+      },
+      "reserved": {
+        "$numberInt": "0"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fccf6cac7ecfce2486e5eb09"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "3"
+      },
+      "released": {
+        "$numberInt": "1"
+      },
+      "final": {
+        "$numberInt": "97"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fda49b55b5e6e97b9ba9ea69"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "0"
+      },
+      "reserved": {
+        "$numberInt": "1"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "99"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "fe04f59ee1201a636cdd1bca"
+      },
+      "initial": {
+        "$numberInt": "100"
+      },
+      "sold": {
+        "$numberInt": "4"
+      },
+      "reserved": {
+        "$numberInt": "6"
+      },
+      "released": {
+        "$numberInt": "0"
+      },
+      "final": {
+        "$numberInt": "90"
+      }
+    }
+  ],
+  "snapshotDemo": {
+    "productId": {
+      "$oid": "ee2399e8ca31f310f6ef0b0f"
+    },
+    "orderId": {
+      "$oid": "92e9e9332e93d45d9da50697"
+    },
+    "snapshotPrice": {
+      "$numberLong": "10000000"
+    },
+    "currentPrice": {
+      "$numberLong": "12000000"
+    }
+  },
+  "counts": {
+    "users": {
+      "$numberInt": "40"
+    },
+    "categories": {
+      "$numberInt": "3"
+    },
+    "products": {
+      "$numberInt": "180"
+    },
+    "carts": {
+      "$numberInt": "0"
+    },
+    "orders": {
+      "$numberInt": "100"
+    },
+    "payment_attempts": {
+      "$numberInt": "30"
+    }
+  },
+  "sourceSha256": "d8528cbb47dedc9ddfd769d46dd1ee680b215f850fbf631fedb979be0f02fcab"
+}

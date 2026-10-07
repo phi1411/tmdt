@@ -1,0 +1,27 @@
+{
+  "status": "STATIC_PASS",
+  "validators": 6,
+  "examples": {
+    "users": 2,
+    "categories": 3,
+    "products": 3,
+    "carts": 1,
+    "orders": 6,
+    "payment_attempts": 4
+  },
+  "negativeCasesRejected": 21,
+  "polymorphicExtensionAccepted": true,
+  "additionalLegalStatusVariants": 8,
+  "candidateIndexes": 18,
+  "aggregationDesignsChecked": 8,
+  "independentFixtureExpectations": {
+    "revenueVnd": 21900000,
+    "units": 5,
+    "qualifiedOrders": 2
+  },
+  "mongodbConnected": false,
+  "mongodbValidatorsApplied": false,
+  "mongodbPipelinesExecuted": false,
+  "benchmarkRun": false,
+  "businessFeaturesImplemented": false
+}

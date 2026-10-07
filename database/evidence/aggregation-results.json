@@ -1,0 +1,1214 @@
+{
+  "database": "ecommerce_dev",
+  "from": {
+    "$date": {
+      "$numberLong": "1783036800000"
+    }
+  },
+  "toExclusive": {
+    "$date": {
+      "$numberLong": "1790812800000"
+    }
+  },
+  "timezone": "Asia/Ho_Chi_Minh",
+  "pipelinesExecuted": {
+    "revenue-day": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": {
+                "$numberLong": "1783036800000"
+              }
+            },
+            "$lt": {
+              "$date": {
+                "$numberLong": "1790812800000"
+              }
+            }
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "$dateTrunc": {
+              "date": "$completedAt",
+              "unit": "day",
+              "timezone": "Asia/Ho_Chi_Minh"
+            }
+          },
+          "revenue": {
+            "$sum": {
+              "$subtract": [
+                "$subtotal",
+                "$discount"
+              ]
+            }
+          },
+          "orders": {
+            "$sum": {
+              "$numberInt": "1"
+            }
+          }
+        }
+      },
+      {
+        "$sort": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        }
+      }
+    ],
+    "revenue-month": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": {
+                "$numberLong": "1783036800000"
+              }
+            },
+            "$lt": {
+              "$date": {
+                "$numberLong": "1790812800000"
+              }
+            }
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "$dateTrunc": {
+              "date": "$completedAt",
+              "unit": "month",
+              "timezone": "Asia/Ho_Chi_Minh"
+            }
+          },
+          "revenue": {
+            "$sum": {
+              "$subtract": [
+                "$subtotal",
+                "$discount"
+              ]
+            }
+          },
+          "orders": {
+            "$sum": {
+              "$numberInt": "1"
+            }
+          }
+        }
+      },
+      {
+        "$sort": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        }
+      }
+    ],
+    "top-products": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": {
+                "$numberLong": "1783036800000"
+              }
+            },
+            "$lt": {
+              "$date": {
+                "$numberLong": "1790812800000"
+              }
+            }
+          }
+        }
+      },
+      {
+        "$sort": {
+          "completedAt": {
+            "$numberInt": "-1"
+          },
+          "_id": {
+            "$numberInt": "-1"
+          }
+        }
+      },
+      {
+        "$unwind": "$items"
+      },
+      {
+        "$group": {
+          "_id": "$items.productId",
+          "productName": {
+            "$first": "$items.productName"
+          },
+          "quantity": {
+            "$sum": "$items.quantity"
+          },
+          "revenue": {
+            "$sum": "$items.lineTotal"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "quantity": {
+            "$numberInt": "-1"
+          },
+          "revenue": {
+            "$numberInt": "-1"
+          },
+          "_id": {
+            "$numberInt": "1"
+          }
+        }
+      },
+      {
+        "$limit": {
+          "$numberInt": "5"
+        }
+      },
+      {
+        "$project": {
+          "_id": {
+            "$numberInt": "0"
+          },
+          "productId": "$_id",
+          "productName": {
+            "$numberInt": "1"
+          },
+          "quantity": {
+            "$numberInt": "1"
+          },
+          "revenue": {
+            "$numberInt": "1"
+          }
+        }
+      }
+    ],
+    "category-revenue": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": {
+                "$numberLong": "1783036800000"
+              }
+            },
+            "$lt": {
+              "$date": {
+                "$numberLong": "1790812800000"
+              }
+            }
+          }
+        }
+      },
+      {
+        "$sort": {
+          "completedAt": {
+            "$numberInt": "-1"
+          },
+          "_id": {
+            "$numberInt": "-1"
+          }
+        }
+      },
+      {
+        "$unwind": "$items"
+      },
+      {
+        "$group": {
+          "_id": "$items.categoryId",
+          "categoryName": {
+            "$first": "$items.categoryName"
+          },
+          "revenue": {
+            "$sum": "$items.lineTotal"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "revenue": {
+            "$numberInt": "-1"
+          },
+          "_id": {
+            "$numberInt": "1"
+          }
+        }
+      },
+      {
+        "$project": {
+          "_id": {
+            "$numberInt": "0"
+          },
+          "categoryId": "$_id",
+          "categoryName": {
+            "$numberInt": "1"
+          },
+          "revenue": {
+            "$numberInt": "1"
+          }
+        }
+      }
+    ],
+    "sales-summary": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": {
+                "$numberLong": "1783036800000"
+              }
+            },
+            "$lt": {
+              "$date": {
+                "$numberLong": "1790812800000"
+              }
+            }
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": null,
+          "totalRevenue": {
+            "$sum": {
+              "$subtract": [
+                "$subtotal",
+                "$discount"
+              ]
+            }
+          },
+          "qualifiedOrders": {
+            "$sum": {
+              "$numberInt": "1"
+            }
+          },
+          "totalProductsSold": {
+            "$sum": {
+              "$sum": {
+                "$map": {
+                  "input": "$items",
+                  "as": "item",
+                  "in": "$$item.quantity"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "$project": {
+          "_id": {
+            "$numberInt": "0"
+          },
+          "totalRevenue": {
+            "$numberInt": "1"
+          },
+          "qualifiedOrders": {
+            "$numberInt": "1"
+          },
+          "totalProductsSold": {
+            "$numberInt": "1"
+          }
+        }
+      }
+    ],
+    "order-count": [
+      {
+        "$match": {
+          "createdAt": {
+            "$gte": {
+              "$date": {
+                "$numberLong": "1783036800000"
+              }
+            },
+            "$lt": {
+              "$date": {
+                "$numberLong": "1790812800000"
+              }
+            }
+          }
+        }
+      },
+      {
+        "$count": "totalOrders"
+      }
+    ],
+    "order-status": [
+      {
+        "$match": {
+          "createdAt": {
+            "$gte": {
+              "$date": {
+                "$numberLong": "1783036800000"
+              }
+            },
+            "$lt": {
+              "$date": {
+                "$numberLong": "1790812800000"
+              }
+            }
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": "$orderStatus",
+          "count": {
+            "$sum": {
+              "$numberInt": "1"
+            }
+          }
+        }
+      },
+      {
+        "$sort": {
+          "count": {
+            "$numberInt": "-1"
+          },
+          "_id": {
+            "$numberInt": "1"
+          }
+        }
+      },
+      {
+        "$project": {
+          "_id": {
+            "$numberInt": "0"
+          },
+          "status": "$_id",
+          "count": {
+            "$numberInt": "1"
+          }
+        }
+      }
+    ],
+    "customer-count": [
+      {
+        "$match": {
+          "role": "CUSTOMER"
+        }
+      },
+      {
+        "$count": "totalCustomers"
+      }
+    ]
+  },
+  "results": {
+    "revenue-day": [
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1783270800000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "85072464"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1783616400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "379584964"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1783875600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "354070750"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1784134800000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "190419238"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1784221200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "134178868"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1784307600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "996452"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1784826000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "358322440"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1785085200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "165979154"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1785171600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "475785940"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1785258000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "1247570250"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1785344400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "31092416"
+        },
+        "orders": {
+          "$numberInt": "3"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1785690000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "134073202"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1785949200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "3279940"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786035600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "4348750"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786208400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "262499250"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786467600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "2423250"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786554000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "15355726"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786640400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "23841714"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786726800000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "19435476"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786813200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "135409892"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1786986000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "85784190"
+        },
+        "orders": {
+          "$numberInt": "3"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787072400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "15061988"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787245200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "870410488"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787418000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "226180214"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787504400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "50619964"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787590800000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "1067428952"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787677200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "134373238"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787763600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "234325928"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787850000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "33147000"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1787936400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "166872964"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1788109200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "398434916"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1788282000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "17099000"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1788454800000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "46053178"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1788541200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "2982690"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1788714000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "8249488"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1788973200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "8848726"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1789146000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "15050178"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1789405200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "24256952"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1789491600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "1028748714"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1789578000000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "76947750"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1789664400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "1027955440"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1789837200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "289533238"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1790096400000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "2949250"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1790182800000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "32770500"
+        },
+        "orders": {
+          "$numberInt": "2"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1790355600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "58685226"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1790701200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "156748714"
+        },
+        "orders": {
+          "$numberInt": "1"
+        }
+      }
+    ],
+    "revenue-month": [
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1782838800000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "3423072936"
+        },
+        "orders": {
+          "$numberInt": "17"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1785517200000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "3883307042"
+        },
+        "orders": {
+          "$numberInt": "25"
+        }
+      },
+      {
+        "_id": {
+          "$date": {
+            "$numberLong": "1788195600000"
+          }
+        },
+        "revenue": {
+          "$numberLong": "2796879044"
+        },
+        "orders": {
+          "$numberInt": "18"
+        }
+      }
+    ],
+    "top-products": [
+      {
+        "productName": "Longines Master Collection — bản demo 02",
+        "quantity": {
+          "$numberInt": "12"
+        },
+        "revenue": {
+          "$numberLong": "472496856"
+        },
+        "productId": {
+          "$oid": "f289cf75b48de99d416e2384"
+        }
+      },
+      {
+        "productName": "Carbon Steel Wok",
+        "quantity": {
+          "$numberInt": "9"
+        },
+        "revenue": {
+          "$numberLong": "6747750"
+        },
+        "productId": {
+          "$oid": "7aa753942825a61fdcaa59b9"
+        }
+      },
+      {
+        "productName": "Selfie Lamp with iPhone — bản demo 02",
+        "quantity": {
+          "$numberInt": "9"
+        },
+        "revenue": {
+          "$numberLong": "3541392"
+        },
+        "productId": {
+          "$oid": "87409a4cc4c77501f8ef10e8"
+        }
+      },
+      {
+        "productName": "Samsung Galaxy S8",
+        "quantity": {
+          "$numberInt": "8"
+        },
+        "revenue": {
+          "$numberLong": "99998000"
+        },
+        "productId": {
+          "$oid": "d9a8bcc197f31c3f0fa1084a"
+        }
+      },
+      {
+        "productName": "Apple Airpods",
+        "quantity": {
+          "$numberInt": "8"
+        },
+        "revenue": {
+          "$numberLong": "25998000"
+        },
+        "productId": {
+          "$oid": "05c4109a3f04b06c864ff88e"
+        }
+      }
+    ],
+    "category-revenue": [
+      {
+        "categoryName": "Thời trang",
+        "revenue": {
+          "$numberLong": "7879869734"
+        },
+        "categoryId": {
+          "$oid": "24aaeea4c694b3035dbabd07"
+        }
+      },
+      {
+        "categoryName": "Điện tử",
+        "revenue": {
+          "$numberLong": "1363853484"
+        },
+        "categoryId": {
+          "$oid": "4ad126c3ebc4fb3918f084d4"
+        }
+      },
+      {
+        "categoryName": "Gia dụng",
+        "revenue": {
+          "$numberLong": "859535804"
+        },
+        "categoryId": {
+          "$oid": "7197a05f34d94cd99a58f60b"
+        }
+      }
+    ],
+    "sales-summary": [
+      {
+        "totalRevenue": {
+          "$numberLong": "10103259022"
+        },
+        "qualifiedOrders": {
+          "$numberInt": "60"
+        },
+        "totalProductsSold": {
+          "$numberInt": "434"
+        }
+      }
+    ],
+    "order-count": [
+      {
+        "totalOrders": {
+          "$numberInt": "100"
+        }
+      }
+    ],
+    "order-status": [
+      {
+        "count": {
+          "$numberInt": "60"
+        },
+        "status": "COMPLETED"
+      },
+      {
+        "count": {
+          "$numberInt": "10"
+        },
+        "status": "CONFIRMED"
+      },
+      {
+        "count": {
+          "$numberInt": "10"
+        },
+        "status": "PENDING"
+      },
+      {
+        "count": {
+          "$numberInt": "10"
+        },
+        "status": "SHIPPING"
+      },
+      {
+        "count": {
+          "$numberInt": "5"
+        },
+        "status": "CANCELLED"
+      },
+      {
+        "count": {
+          "$numberInt": "5"
+        },
+        "status": "EXPIRED"
+      }
+    ],
+    "customer-count": [
+      {
+        "totalCustomers": {
+          "$numberInt": "39"
+        }
+      }
+    ]
+  },
+  "expectedIndependentlyVerified": true,
+  "snapshotPriceMutationRolledBack": true
+}

@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "productId": {
+        "$oid": "ee2399e8ca31f310f6ef0b0f"
+      },
+      "productType": "ELECTRONICS",
+      "url": "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/1.webp",
+      "method": "HEAD",
+      "status": {
+        "$numberInt": "200"
+      },
+      "contentType": "image/webp"
+    },
+    {
+      "productId": {
+        "$oid": "989a012c7b19a75f9a857b78"
+      },
+      "productType": "FASHION",
+      "url": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+      "method": "HEAD",
+      "status": {
+        "$numberInt": "200"
+      },
+      "contentType": "image/webp"
+    },
+    {
+      "productId": {
+        "$oid": "05c2ae4b3765f8912ba64829"
+      },
+      "productType": "HOME_APPLIANCE",
+      "url": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp",
+      "method": "HEAD",
+      "status": {
+        "$numberInt": "200"
+      },
+      "contentType": "image/webp"
+    }
+  ],
+  "scope": "3 representative URLs only; all180 Products separately checked nonempty HTTPS, not all media fetched"
+}

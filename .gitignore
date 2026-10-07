@@ -1,0 +1,44 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.secrets/
+secrets/
+credentials.json
+credentials.*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+cache/
+.hypothesis/
+.coverage
+htmlcov/
+
+# Frontend
+node_modules/
+dist/
+coverage/
+.vite/
+playwright-report/
+test-results/
+
+# Local data and generated artifacts
+artifacts/
+.tools/
+.local/
+database/exports/
+*.log
+.DS_Store
+Thumbs.db
+.idea/

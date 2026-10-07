@@ -1,0 +1,4 @@
+pymongo==4.15.3
+argon2-cffi==25.1.0
+tzdata==2025.2
+jsonschema==4.25.1

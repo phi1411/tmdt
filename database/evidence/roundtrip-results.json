@@ -1,0 +1,21 @@
+{
+  "status": "LIVE_ROUNDTRIP_PASS",
+  "database": "ecommerce_roundtrip",
+  "results": {
+    "products": {
+      "count": {
+        "$numberInt": "180"
+      },
+      "fullBsonEquality": true,
+      "validatorApplied": true
+    },
+    "orders": {
+      "count": {
+        "$numberInt": "100"
+      },
+      "fullBsonEquality": true,
+      "validatorApplied": true
+    }
+  },
+  "scope": "Product/Order backup slice; referenced Users/Categories intentionally not cloned. No complete application DB claim."
+}

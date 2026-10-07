@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "status": "LOCKED_CANDIDATES_NOT_APPLIED_NOT_MEASURED",
+  "indexes": [
+    {
+      "collection": "users",
+      "name": "uq_users_email",
+      "keys": {
+        "email": 1
+      },
+      "options": {
+        "name": "uq_users_email",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Login và register theo email đã lowercase/trim",
+      "equalityFields": [
+        "email"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Một equality key; unique normalized email.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "categories",
+      "name": "uq_categories_slug",
+      "keys": {
+        "slug": 1
+      },
+      "options": {
+        "name": "uq_categories_slug",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Lookup slug và uniqueness category",
+      "equalityFields": [
+        "slug"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Một equality key, kể cả ARCHIVED.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "products",
+      "name": "uq_products_sku",
+      "keys": {
+        "sku": 1
+      },
+      "options": {
+        "name": "uq_products_sku",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Lookup/uniqueness Product sku",
+      "equalityFields": [
+        "sku"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Một equality key, không reuse khi archive.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "products",
+      "name": "uq_products_slug",
+      "keys": {
+        "slug": 1
+      },
+      "options": {
+        "name": "uq_products_slug",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Lookup/uniqueness Product slug",
+      "equalityFields": [
+        "slug"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Một equality key, không reuse khi archive.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "carts",
+      "name": "uq_carts_user",
+      "keys": {
+        "userId": 1
+      },
+      "options": {
+        "name": "uq_carts_user",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "GET/mutate Cart owner",
+      "equalityFields": [
+        "userId"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Một document/User.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "orders",
+      "name": "uq_orders_code",
+      "keys": {
+        "orderCode": 1
+      },
+      "options": {
+        "name": "uq_orders_code",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Tra cứu exact orderCode",
+      "equalityFields": [
+        "orderCode"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Mã đơn unique.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "orders",
+      "name": "uq_orders_checkout",
+      "keys": {
+        "userId": 1,
+        "checkoutKey": 1
+      },
+      "options": {
+        "name": "uq_orders_checkout",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Replay checkout intent của User",
+      "equalityFields": [
+        "userId",
+        "checkoutKey"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "User prefix hỗ trợ owner lookup; key chỉ unique trong User.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_txn_ref",
+      "keys": {
+        "txnRef": 1
+      },
+      "options": {
+        "name": "uq_attempts_txn_ref",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Lookup attempt nhận IPN",
+      "equalityFields": [
+        "txnRef"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Reference provider duy nhất.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_order_key",
+      "keys": {
+        "orderId": 1,
+        "attemptKey": 1
+      },
+      "options": {
+        "name": "uq_attempts_order_key",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Replay create payment attempt trong Order",
+      "equalityFields": [
+        "orderId",
+        "attemptKey"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Order prefix lookup attempt; scoped idempotency.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_provider_txn",
+      "keys": {
+        "providerTransactionNo": 1
+      },
+      "options": {
+        "name": "uq_attempts_provider_txn",
+        "unique": true,
+        "partialFilterExpression": {
+          "providerTransactionNo": {
+            "$type": "string"
+          }
+        }
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Không gán cùng provider transaction vào hai attempt",
+      "equalityFields": [
+        "providerTransactionNo"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Partial unique chỉ khi transactionNo là string; field vắng không indexed.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_pending_order",
+      "keys": {
+        "orderId": 1
+      },
+      "options": {
+        "name": "uq_attempts_pending_order",
+        "unique": true,
+        "partialFilterExpression": {
+          "status": "PENDING"
+        }
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Chỉ một active PENDING attempt cho Order",
+      "equalityFields": [
+        "orderId"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Partial unique bảo vệ concurrent retry; expired/failed attempts không block history.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "products",
+      "name": "ix_products_category_price",
+      "keys": {
+        "status": 1,
+        "categoryId": 1,
+        "price": 1,
+        "_id": 1
+      },
+      "options": {
+        "name": "ix_products_category_price"
+      },
+      "kind": "CANDIDATE",
+      "queryPattern": "status=ACTIVE, categoryId exact, min/maxPrice, sort price asc + id asc",
+      "equalityFields": [
+        "status",
+        "categoryId"
+      ],
+      "sortFields": {
+        "price": 1,
+        "_id": 1
+      },
+      "rangeFields": [
+        "price"
+      ],
+      "fieldOrderReason": "Equality trước; price vừa range vừa sort chính; _id tie-break. Reverse scan cho price desc/id desc.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "products",
+      "name": "ix_products_type_price",
+      "keys": {
+        "status": 1,
+        "productType": 1,
+        "price": 1,
+        "_id": 1
+      },
+      "options": {
+        "name": "ix_products_type_price"
+      },
+      "kind": "CANDIDATE",
+      "queryPattern": "ACTIVE + exact productType cross-category + min/maxPrice + price sort",
+      "equalityFields": [
+        "status",
+        "productType"
+      ],
+      "sortFields": {
+        "price": 1,
+        "_id": 1
+      },
+      "rangeFields": [
+        "price"
+      ],
+      "fieldOrderReason": "Không giả định category index tối ưu type filter; equality prefix riêng cho nhóm schema.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_user_history",
+      "keys": {
+        "userId": 1,
+        "createdAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_user_history"
+      },
+      "kind": "CANDIDATE",
+      "queryPattern": "Customer history owner + createdAt range + latest sort",
+      "equalityFields": [
+        "userId"
+      ],
+      "sortFields": {
+        "createdAt": -1,
+        "_id": -1
+      },
+      "rangeFields": [
+        "createdAt"
+      ],
+      "fieldOrderReason": "Owner equality trước; createdAt vừa range vừa sort; id stable tie-break.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_admin_status",
+      "keys": {
+        "orderStatus": 1,
+        "createdAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_admin_status"
+      },
+      "kind": "CANDIDATE",
+      "queryPattern": "Admin list exact status + createdAt range + latest sort",
+      "equalityFields": [
+        "orderStatus"
+      ],
+      "sortFields": {
+        "createdAt": -1,
+        "_id": -1
+      },
+      "rangeFields": [
+        "createdAt"
+      ],
+      "fieldOrderReason": "Status equality trước sort/date range; không cam kết tối ưu khi bỏ status.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_created_at",
+      "keys": {
+        "createdAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_created_at"
+      },
+      "kind": "CANDIDATE",
+      "queryPattern": "Admin list không status; Total Orders/status distribution createdAt range",
+      "equalityFields": [],
+      "sortFields": {
+        "createdAt": -1,
+        "_id": -1
+      },
+      "rangeFields": [
+        "createdAt"
+      ],
+      "fieldOrderReason": "Date đầu vì query không equality prefix; group/status sort phía sau không dùng index này.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_qualified_completed",
+      "keys": {
+        "orderStatus": 1,
+        "paymentStatus": 1,
+        "completedAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_qualified_completed"
+      },
+      "kind": "CANDIDATE",
+      "queryPattern": "COMPLETED+PAID và completedAt range; latest snapshot before unwind",
+      "equalityFields": [
+        "orderStatus",
+        "paymentStatus"
+      ],
+      "sortFields": {
+        "completedAt": -1,
+        "_id": -1
+      },
+      "rangeFields": [
+        "completedAt"
+      ],
+      "fieldOrderReason": "Hai equality fields trước date; id tie-break giúp latest snapshot sort; group/final sort vẫn aggregate.",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_payment_expiry",
+      "keys": {
+        "paymentMethod": 1,
+        "orderStatus": 1,
+        "paymentExpiresAt": 1
+      },
+      "options": {
+        "name": "ix_orders_payment_expiry"
+      },
+      "kind": "CANDIDATE",
+      "queryPattern": "VNPAY+PENDING, paymentExpiresAt<=now; paymentStatus unpaid residual",
+      "equalityFields": [
+        "paymentMethod",
+        "orderStatus"
+      ],
+      "sortFields": {},
+      "rangeFields": [
+        "paymentExpiresAt"
+      ],
+      "fieldOrderReason": "Method/status equality trước deadline range; no TTL-delete chứng từ.",
+      "benchmarkStatus": "NOT_MEASURED"
+    }
+  ]
+}
