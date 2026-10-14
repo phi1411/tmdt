@@ -1,0 +1,31 @@
+{
+  "frontendUrl": "https://novamart-web.onrender.com",
+  "backendUrl": "https://novamart-api.onrender.com",
+  "spaRoutes": {
+    "/": {
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "ae31540d3c1b4f89ddc84ae42e6c42885c40fa83419e5d1af6cdd559371acf33"
+    },
+    "/products": {
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "ae31540d3c1b4f89ddc84ae42e6c42885c40fa83419e5d1af6cdd559371acf33"
+    },
+    "/login": {
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "ae31540d3c1b4f89ddc84ae42e6c42885c40fa83419e5d1af6cdd559371acf33"
+    },
+    "/admin/dashboard": {
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "ae31540d3c1b4f89ddc84ae42e6c42885c40fa83419e5d1af6cdd559371acf33"
+    }
+  },
+  "httpsApiBaseInBundle": true,
+  "health": {
+    "status": 200,
+    "allowedOrigin": "https://novamart-web.onrender.com"
+  }
+}

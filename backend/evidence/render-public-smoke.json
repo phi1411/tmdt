@@ -1,0 +1,314 @@
+{
+  "recordedAtUtc": "2026-10-14T08:18:45.752795+00:00",
+  "backendUrl": "https://novamart-api.onrender.com",
+  "frontendUrl": "https://novamart-web.onrender.com",
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products?productType=ELECTRONICS&pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/dien-thoai-apple-iphone-5s",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products?productType=FASHION&pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/ao-thun-nam-gigabyte-aorus",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products?productType=HOME_APPLIANCE&pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/silver-pot-with-glass-cap-149",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products?q=07C",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/register",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/users/me/addresses",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/admin/categories",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/admin/products",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/checkout/quote?addressId=6acf3a8a65c9e58d588c20b3&paymentMethod=COD",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6acf3a8b65c9e58d588c20b5",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/admin/products/6acf3a8b65c9e58d588c20b5",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/orders/6acf3a8e65c9e58d588c20b7",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/orders/6acf3a8e65c9e58d588c20b7",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/orders/6acf3a8e65c9e58d588c20b7/cancel",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders/6acf3a8e65c9e58d588c20b7/cancel",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6acf3a8b65c9e58d588c20b5",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/summary?from=2026-10-13T08%3A17%3A51.685056%2B00%3A00&to=2026-10-15T08%3A17%3A51.685056%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/checkout/quote?addressId=6acf3a8a65c9e58d588c20b3&paymentMethod=COD",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/admin/orders/6acf3ac065c9e58d588c20b9/confirm",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/admin/orders/6acf3ac065c9e58d588c20b9/ship",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/admin/orders/6acf3ac065c9e58d588c20b9/complete",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/summary?from=2026-10-13T08%3A17%3A51.685056%2B00%3A00&to=2026-10-15T08%3A17%3A51.685056%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/revenue?from=2026-10-13T08%3A17%3A51.685056%2B00%3A00&to=2026-10-15T08%3A17%3A51.685056%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/top-products?from=2026-10-13T08%3A17%3A51.685056%2B00%3A00&to=2026-10-15T08%3A17%3A51.685056%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/category-revenue?from=2026-10-13T08%3A17%3A51.685056%2B00%3A00&to=2026-10-15T08%3A17%3A51.685056%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/order-status?from=2026-10-13T08%3A17%3A51.685056%2B00%3A00&to=2026-10-15T08%3A17%3A51.685056%2B00%3A00",
+      "status": 200
+    }
+  ],
+  "results": {
+    "health": {
+      "status": "ok",
+      "checks": {
+        "backend": "ok",
+        "database": "ok",
+        "replicaSet": "ok"
+      }
+    },
+    "customerCod": "PASS",
+    "idempotency": "PASS",
+    "snapshot": "PASS",
+    "adminLifecycle": "PASS",
+    "revenueDelta": 120000,
+    "shippingExcluded": true,
+    "ownership": "PASS",
+    "payloadTampering": "PASS"
+  },
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "before": {
+    "digest": "b2c2c64fc4a11870d43e6b08d906c3a36e246f18cf0151777b48dc5807d63c1f",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "after": {
+    "digest": "b2c2c64fc4a11870d43e6b08d906c3a36e246f18cf0151777b48dc5807d63c1f",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "exactCleanup": true,
+  "removedOwnedDocuments": {
+    "payment_attempts": 0,
+    "orders": 2,
+    "carts": 1,
+    "users": 1,
+    "products": 1,
+    "categories": 1
+  },
+  "resetReseed": false,
+  "vnpayLiveSandbox": "NOT_TESTED_DISABLED"
+}

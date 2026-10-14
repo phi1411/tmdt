@@ -1,6 +1,6 @@
 # Sàn thương mại điện tử đa ngành — đồ án NoSQL
 
-**Trạng thái hiện tại14/10/2026:** NovaMart đã có React frontend, Flask backend, Auth/User, Catalog, Cart/Checkout/COD, Orders, Admin Dashboard và Payment implementation. Fullbackend674tests PASS; rehearsal với ảnh mới12nhóm PASS. MongoDB Atlas demo đã được nạp, Render runtime/blueprint sẵn sàng; public deployment đang thực hiện, chưa nghiệm thu. VNPAY Live Sandbox chưa PASS và đang disabled.
+**Trạng thái hiện tại14/10/2026:** NovaMart đã có React frontend, Flask backend, Auth/User, Catalog, Cart/Checkout/COD, Orders, Admin Dashboard và Payment implementation. Fullbackend674tests PASS; rehearsal với ảnh mới12nhóm PASS. [Website public](https://novamart-web.onrender.com) và [API health](https://novamart-api.onrender.com/api/v1/health) đã chạy trên Render/Atlas;50publicHTTP checks và exact cleanup PASS. Backend$7/tháng,Static Site/Atlas free. [Review deployment và giới hạn](docs/render-public-deployment-review.md) có dependency audit cần follow-up; VNPAY Live Sandbox chưa PASS và đang disabled.
 
 Xem [hướng dẫn Render/Atlas](docs/render-deployment-guide.md), [kết quả kiểm thử mới](docs/render-deployment-review.md), [API contract](docs/api-contract.md) và [checklist bảo vệ](docs/pre-demo-checklist.md). `.env`/`.local`/credentials không thuộc repository. Các mục PHASE04 bên dưới giữ lịch sử foundation, không phải trạng thái feature hiện tại.
 

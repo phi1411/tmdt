@@ -236,7 +236,7 @@ export const AdminLayout: React.FC = () => {
             {/* MongoDB Replica Set Live Badge */}
             <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-semibold">
               <Database className="w-3.5 h-3.5" />
-              <span>MongoDB rs0 Active</span>
+              <span>MongoDB Active</span>
             </div>
 
             {/* Admin Profile Pill */}
