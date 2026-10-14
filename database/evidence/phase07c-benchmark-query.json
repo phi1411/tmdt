@@ -1,0 +1,1125 @@
+{
+  "phase": "07C",
+  "mode": "READ_ONLY_REPLAY_OF_07B",
+  "database": "ecommerce_benchmark",
+  "source": "docs/evidence/performance/before-index.json",
+  "counts": {
+    "products": 30000,
+    "orders": 10000
+  },
+  "command": {
+    "find": "products",
+    "filter": {
+      "status": "ACTIVE",
+      "productType": "ELECTRONICS",
+      "categoryId": {
+        "$oid": "9f279f9b19426a6a465cfd3a"
+      },
+      "price": {
+        "$gte": 2000000,
+        "$lte": 5000000
+      }
+    },
+    "sort": {
+      "price": 1,
+      "_id": 1
+    },
+    "projection": {
+      "_id": 1,
+      "sku": 1,
+      "name": 1,
+      "slug": 1,
+      "categoryId": 1,
+      "productType": 1,
+      "brand": 1,
+      "description": 1,
+      "price": 1,
+      "stock": 1,
+      "images": 1,
+      "attributes": 1,
+      "status": 1,
+      "version": 1,
+      "createdAt": 1,
+      "updatedAt": 1
+    },
+    "limit": 20,
+    "maxTimeMS": 60000
+  },
+  "plans": {
+    "natural": {
+      "stages": [
+        "COLLSCAN",
+        "PROJECTION_SIMPLE",
+        "SORT"
+      ],
+      "nReturned": 20,
+      "totalDocsExamined": 30000,
+      "totalKeysExamined": 0,
+      "executionTimeMillis": 23,
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_benchmark.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "9f279f9b19426a6a465cfd3a"
+                  }
+                }
+              },
+              {
+                "productType": {
+                  "$eq": "ELECTRONICS"
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": 5000000
+                }
+              },
+              {
+                "price": {
+                  "$gte": 2000000
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "BDC72482",
+          "planCacheShapeHash": "BDC72482",
+          "planCacheKey": "262801FF",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "_id": 1,
+              "sku": 1,
+              "name": 1,
+              "slug": 1,
+              "categoryId": 1,
+              "productType": 1,
+              "brand": 1,
+              "description": 1,
+              "price": 1,
+              "stock": 1,
+              "images": 1,
+              "attributes": 1,
+              "status": 1,
+              "version": 1,
+              "createdAt": 1,
+              "updatedAt": 1
+            },
+            "inputStage": {
+              "stage": "SORT",
+              "sortPattern": {
+                "price": 1,
+                "_id": 1
+              },
+              "memLimit": 104857600,
+              "limitAmount": 20,
+              "type": "simple",
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "filter": {
+                  "$and": [
+                    {
+                      "categoryId": {
+                        "$eq": {
+                          "$oid": "9f279f9b19426a6a465cfd3a"
+                        }
+                      }
+                    },
+                    {
+                      "productType": {
+                        "$eq": "ELECTRONICS"
+                      }
+                    },
+                    {
+                      "status": {
+                        "$eq": "ACTIVE"
+                      }
+                    },
+                    {
+                      "price": {
+                        "$lte": 5000000
+                      }
+                    },
+                    {
+                      "price": {
+                        "$gte": 2000000
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 20,
+          "executionTimeMillis": 23,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 30000,
+          "executionStages": {
+            "isCached": false,
+            "stage": "PROJECTION_SIMPLE",
+            "nReturned": 20,
+            "executionTimeMillisEstimate": 10,
+            "works": 30022,
+            "advanced": 20,
+            "needTime": 30001,
+            "needYield": 0,
+            "saveState": 1,
+            "restoreState": 1,
+            "isEOF": 1,
+            "transformBy": {
+              "_id": 1,
+              "sku": 1,
+              "name": 1,
+              "slug": 1,
+              "categoryId": 1,
+              "productType": 1,
+              "brand": 1,
+              "description": 1,
+              "price": 1,
+              "stock": 1,
+              "images": 1,
+              "attributes": 1,
+              "status": 1,
+              "version": 1,
+              "createdAt": 1,
+              "updatedAt": 1
+            },
+            "inputStage": {
+              "stage": "SORT",
+              "nReturned": 20,
+              "executionTimeMillisEstimate": 10,
+              "works": 30022,
+              "advanced": 20,
+              "needTime": 30001,
+              "needYield": 0,
+              "saveState": 1,
+              "restoreState": 1,
+              "isEOF": 1,
+              "sortPattern": {
+                "price": 1,
+                "_id": 1
+              },
+              "memLimit": 104857600,
+              "limitAmount": 20,
+              "type": "simple",
+              "totalDataSizeSorted": 14820,
+              "usedDisk": false,
+              "spills": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "filter": {
+                  "$and": [
+                    {
+                      "categoryId": {
+                        "$eq": {
+                          "$oid": "9f279f9b19426a6a465cfd3a"
+                        }
+                      }
+                    },
+                    {
+                      "productType": {
+                        "$eq": "ELECTRONICS"
+                      }
+                    },
+                    {
+                      "status": {
+                        "$eq": "ACTIVE"
+                      }
+                    },
+                    {
+                      "price": {
+                        "$lte": 5000000
+                      }
+                    },
+                    {
+                      "price": {
+                        "$gte": 2000000
+                      }
+                    }
+                  ]
+                },
+                "nReturned": 96,
+                "executionTimeMillisEstimate": 10,
+                "works": 30001,
+                "advanced": 96,
+                "needTime": 29904,
+                "needYield": 0,
+                "saveState": 1,
+                "restoreState": 1,
+                "isEOF": 1,
+                "direction": "forward",
+                "docsExamined": 30000
+              }
+            }
+          }
+        },
+        "queryShapeHash": "57E8591E746734227DD76A80EE98C42CD70359E4F6BF7CBA0B9AAB1448575ECD",
+        "command": {
+          "find": "products",
+          "filter": {
+            "status": "ACTIVE",
+            "productType": "ELECTRONICS",
+            "categoryId": {
+              "$oid": "9f279f9b19426a6a465cfd3a"
+            },
+            "price": {
+              "$gte": 2000000,
+              "$lte": 5000000
+            }
+          },
+          "sort": {
+            "price": 1,
+            "_id": 1
+          },
+          "projection": {
+            "_id": 1,
+            "sku": 1,
+            "name": 1,
+            "slug": 1,
+            "categoryId": 1,
+            "productType": 1,
+            "brand": 1,
+            "description": 1,
+            "price": 1,
+            "stock": 1,
+            "images": 1,
+            "attributes": 1,
+            "status": 1,
+            "version": 1,
+            "createdAt": 1,
+            "updatedAt": 1
+          },
+          "limit": 20,
+          "maxTimeMS": 60000,
+          "hint": {
+            "$natural": 1
+          },
+          "$db": "ecommerce_benchmark"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": 27017,
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": 104857600,
+          "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+          "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+          "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+          "internalQueryProhibitBlockingMergeOnMongoS": 0,
+          "internalQueryMaxAddToSetBytes": 104857600,
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+        },
+        "ok": 1.0,
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791470334,
+              "i": 1
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": 0
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791470334,
+            "i": 1
+          }
+        }
+      }
+    },
+    "indexed": {
+      "stages": [
+        "FETCH",
+        "IXSCAN",
+        "LIMIT",
+        "PROJECTION_SIMPLE"
+      ],
+      "nReturned": 20,
+      "totalDocsExamined": 20,
+      "totalKeysExamined": 20,
+      "executionTimeMillis": 3,
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_benchmark.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "9f279f9b19426a6a465cfd3a"
+                  }
+                }
+              },
+              {
+                "productType": {
+                  "$eq": "ELECTRONICS"
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": 5000000
+                }
+              },
+              {
+                "price": {
+                  "$gte": 2000000
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "BDC72482",
+          "planCacheShapeHash": "BDC72482",
+          "planCacheKey": "262801FF",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "limitAmount": 20,
+            "inputStage": {
+              "stage": "PROJECTION_SIMPLE",
+              "transformBy": {
+                "_id": 1,
+                "sku": 1,
+                "name": 1,
+                "slug": 1,
+                "categoryId": 1,
+                "productType": 1,
+                "brand": 1,
+                "description": 1,
+                "price": 1,
+                "stock": 1,
+                "images": 1,
+                "attributes": 1,
+                "status": 1,
+                "version": 1,
+                "createdAt": 1,
+                "updatedAt": 1
+              },
+              "inputStage": {
+                "stage": "FETCH",
+                "filter": {
+                  "productType": {
+                    "$eq": "ELECTRONICS"
+                  }
+                },
+                "inputStage": {
+                  "stage": "IXSCAN",
+                  "keyPattern": {
+                    "status": 1,
+                    "categoryId": 1,
+                    "price": 1,
+                    "_id": 1
+                  },
+                  "indexName": "ix_products_category_price",
+                  "isMultiKey": false,
+                  "multiKeyPaths": {
+                    "status": [],
+                    "categoryId": [],
+                    "price": [],
+                    "_id": []
+                  },
+                  "isUnique": false,
+                  "isSparse": false,
+                  "isPartial": false,
+                  "indexVersion": 2,
+                  "direction": "forward",
+                  "indexBounds": {
+                    "status": [
+                      "[\"ACTIVE\", \"ACTIVE\"]"
+                    ],
+                    "categoryId": [
+                      "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                    ],
+                    "price": [
+                      "[2000000, 5000000]"
+                    ],
+                    "_id": [
+                      "[MinKey, MaxKey]"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 20,
+          "executionTimeMillis": 3,
+          "totalKeysExamined": 20,
+          "totalDocsExamined": 20,
+          "executionStages": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "nReturned": 20,
+            "executionTimeMillisEstimate": 0,
+            "works": 21,
+            "advanced": 20,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "limitAmount": 20,
+            "inputStage": {
+              "stage": "PROJECTION_SIMPLE",
+              "nReturned": 20,
+              "executionTimeMillisEstimate": 0,
+              "works": 20,
+              "advanced": 20,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 0,
+              "transformBy": {
+                "_id": 1,
+                "sku": 1,
+                "name": 1,
+                "slug": 1,
+                "categoryId": 1,
+                "productType": 1,
+                "brand": 1,
+                "description": 1,
+                "price": 1,
+                "stock": 1,
+                "images": 1,
+                "attributes": 1,
+                "status": 1,
+                "version": 1,
+                "createdAt": 1,
+                "updatedAt": 1
+              },
+              "inputStage": {
+                "stage": "FETCH",
+                "filter": {
+                  "productType": {
+                    "$eq": "ELECTRONICS"
+                  }
+                },
+                "nReturned": 20,
+                "executionTimeMillisEstimate": 0,
+                "works": 20,
+                "advanced": 20,
+                "needTime": 0,
+                "needYield": 0,
+                "saveState": 0,
+                "restoreState": 0,
+                "isEOF": 0,
+                "docsExamined": 20,
+                "alreadyHasObj": 0,
+                "inputStage": {
+                  "stage": "IXSCAN",
+                  "nReturned": 20,
+                  "executionTimeMillisEstimate": 0,
+                  "works": 20,
+                  "advanced": 20,
+                  "needTime": 0,
+                  "needYield": 0,
+                  "saveState": 0,
+                  "restoreState": 0,
+                  "isEOF": 0,
+                  "keyPattern": {
+                    "status": 1,
+                    "categoryId": 1,
+                    "price": 1,
+                    "_id": 1
+                  },
+                  "indexName": "ix_products_category_price",
+                  "isMultiKey": false,
+                  "multiKeyPaths": {
+                    "status": [],
+                    "categoryId": [],
+                    "price": [],
+                    "_id": []
+                  },
+                  "isUnique": false,
+                  "isSparse": false,
+                  "isPartial": false,
+                  "indexVersion": 2,
+                  "direction": "forward",
+                  "indexBounds": {
+                    "status": [
+                      "[\"ACTIVE\", \"ACTIVE\"]"
+                    ],
+                    "categoryId": [
+                      "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                    ],
+                    "price": [
+                      "[2000000, 5000000]"
+                    ],
+                    "_id": [
+                      "[MinKey, MaxKey]"
+                    ]
+                  },
+                  "keysExamined": 20,
+                  "seeks": 1,
+                  "dupsTested": 0,
+                  "dupsDropped": 0
+                }
+              }
+            }
+          }
+        },
+        "queryShapeHash": "57E8591E746734227DD76A80EE98C42CD70359E4F6BF7CBA0B9AAB1448575ECD",
+        "command": {
+          "find": "products",
+          "filter": {
+            "status": "ACTIVE",
+            "productType": "ELECTRONICS",
+            "categoryId": {
+              "$oid": "9f279f9b19426a6a465cfd3a"
+            },
+            "price": {
+              "$gte": 2000000,
+              "$lte": 5000000
+            }
+          },
+          "sort": {
+            "price": 1,
+            "_id": 1
+          },
+          "projection": {
+            "_id": 1,
+            "sku": 1,
+            "name": 1,
+            "slug": 1,
+            "categoryId": 1,
+            "productType": 1,
+            "brand": 1,
+            "description": 1,
+            "price": 1,
+            "stock": 1,
+            "images": 1,
+            "attributes": 1,
+            "status": 1,
+            "version": 1,
+            "createdAt": 1,
+            "updatedAt": 1
+          },
+          "limit": 20,
+          "maxTimeMS": 60000,
+          "hint": "ix_products_category_price",
+          "$db": "ecommerce_benchmark"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": 27017,
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": 104857600,
+          "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+          "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+          "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+          "internalQueryProhibitBlockingMergeOnMongoS": 0,
+          "internalQueryMaxAddToSetBytes": 104857600,
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+        },
+        "ok": 1.0,
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791470334,
+              "i": 1
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": 0
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791470334,
+            "i": 1
+          }
+        }
+      }
+    },
+    "planner": {
+      "stages": [
+        "FETCH",
+        "IXSCAN",
+        "LIMIT",
+        "PROJECTION_SIMPLE"
+      ],
+      "nReturned": 20,
+      "totalDocsExamined": 20,
+      "totalKeysExamined": 20,
+      "executionTimeMillis": 3,
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_benchmark.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "9f279f9b19426a6a465cfd3a"
+                  }
+                }
+              },
+              {
+                "productType": {
+                  "$eq": "ELECTRONICS"
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": 5000000
+                }
+              },
+              {
+                "price": {
+                  "$gte": 2000000
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "BDC72482",
+          "planCacheShapeHash": "BDC72482",
+          "planCacheKey": "262801FF",
+          "optimizationTimeMillis": 3,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "limitAmount": 20,
+            "inputStage": {
+              "stage": "PROJECTION_SIMPLE",
+              "transformBy": {
+                "_id": 1,
+                "sku": 1,
+                "name": 1,
+                "slug": 1,
+                "categoryId": 1,
+                "productType": 1,
+                "brand": 1,
+                "description": 1,
+                "price": 1,
+                "stock": 1,
+                "images": 1,
+                "attributes": 1,
+                "status": 1,
+                "version": 1,
+                "createdAt": 1,
+                "updatedAt": 1
+              },
+              "inputStage": {
+                "stage": "FETCH",
+                "filter": {
+                  "productType": {
+                    "$eq": "ELECTRONICS"
+                  }
+                },
+                "inputStage": {
+                  "stage": "IXSCAN",
+                  "keyPattern": {
+                    "status": 1,
+                    "categoryId": 1,
+                    "price": 1,
+                    "_id": 1
+                  },
+                  "indexName": "ix_products_category_price",
+                  "isMultiKey": false,
+                  "multiKeyPaths": {
+                    "status": [],
+                    "categoryId": [],
+                    "price": [],
+                    "_id": []
+                  },
+                  "isUnique": false,
+                  "isSparse": false,
+                  "isPartial": false,
+                  "indexVersion": 2,
+                  "direction": "forward",
+                  "indexBounds": {
+                    "status": [
+                      "[\"ACTIVE\", \"ACTIVE\"]"
+                    ],
+                    "categoryId": [
+                      "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                    ],
+                    "price": [
+                      "[2000000, 5000000]"
+                    ],
+                    "_id": [
+                      "[MinKey, MaxKey]"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "rejectedPlans": [
+            {
+              "isCached": false,
+              "stage": "LIMIT",
+              "limitAmount": 20,
+              "inputStage": {
+                "stage": "PROJECTION_SIMPLE",
+                "transformBy": {
+                  "_id": 1,
+                  "sku": 1,
+                  "name": 1,
+                  "slug": 1,
+                  "categoryId": 1,
+                  "productType": 1,
+                  "brand": 1,
+                  "description": 1,
+                  "price": 1,
+                  "stock": 1,
+                  "images": 1,
+                  "attributes": 1,
+                  "status": 1,
+                  "version": 1,
+                  "createdAt": 1,
+                  "updatedAt": 1
+                },
+                "inputStage": {
+                  "stage": "FETCH",
+                  "filter": {
+                    "categoryId": {
+                      "$eq": {
+                        "$oid": "9f279f9b19426a6a465cfd3a"
+                      }
+                    }
+                  },
+                  "inputStage": {
+                    "stage": "IXSCAN",
+                    "keyPattern": {
+                      "status": 1,
+                      "productType": 1,
+                      "price": 1,
+                      "_id": 1
+                    },
+                    "indexName": "ix_products_type_price",
+                    "isMultiKey": false,
+                    "multiKeyPaths": {
+                      "status": [],
+                      "productType": [],
+                      "price": [],
+                      "_id": []
+                    },
+                    "isUnique": false,
+                    "isSparse": false,
+                    "isPartial": false,
+                    "indexVersion": 2,
+                    "direction": "forward",
+                    "indexBounds": {
+                      "status": [
+                        "[\"ACTIVE\", \"ACTIVE\"]"
+                      ],
+                      "productType": [
+                        "[\"ELECTRONICS\", \"ELECTRONICS\"]"
+                      ],
+                      "price": [
+                        "[2000000, 5000000]"
+                      ],
+                      "_id": [
+                        "[MinKey, MaxKey]"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 20,
+          "executionTimeMillis": 3,
+          "totalKeysExamined": 20,
+          "totalDocsExamined": 20,
+          "executionStages": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "nReturned": 20,
+            "executionTimeMillisEstimate": 0,
+            "works": 21,
+            "advanced": 20,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "limitAmount": 20,
+            "inputStage": {
+              "stage": "PROJECTION_SIMPLE",
+              "nReturned": 20,
+              "executionTimeMillisEstimate": 0,
+              "works": 20,
+              "advanced": 20,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 0,
+              "transformBy": {
+                "_id": 1,
+                "sku": 1,
+                "name": 1,
+                "slug": 1,
+                "categoryId": 1,
+                "productType": 1,
+                "brand": 1,
+                "description": 1,
+                "price": 1,
+                "stock": 1,
+                "images": 1,
+                "attributes": 1,
+                "status": 1,
+                "version": 1,
+                "createdAt": 1,
+                "updatedAt": 1
+              },
+              "inputStage": {
+                "stage": "FETCH",
+                "filter": {
+                  "productType": {
+                    "$eq": "ELECTRONICS"
+                  }
+                },
+                "nReturned": 20,
+                "executionTimeMillisEstimate": 0,
+                "works": 20,
+                "advanced": 20,
+                "needTime": 0,
+                "needYield": 0,
+                "saveState": 0,
+                "restoreState": 0,
+                "isEOF": 0,
+                "docsExamined": 20,
+                "alreadyHasObj": 0,
+                "inputStage": {
+                  "stage": "IXSCAN",
+                  "nReturned": 20,
+                  "executionTimeMillisEstimate": 0,
+                  "works": 20,
+                  "advanced": 20,
+                  "needTime": 0,
+                  "needYield": 0,
+                  "saveState": 0,
+                  "restoreState": 0,
+                  "isEOF": 0,
+                  "keyPattern": {
+                    "status": 1,
+                    "categoryId": 1,
+                    "price": 1,
+                    "_id": 1
+                  },
+                  "indexName": "ix_products_category_price",
+                  "isMultiKey": false,
+                  "multiKeyPaths": {
+                    "status": [],
+                    "categoryId": [],
+                    "price": [],
+                    "_id": []
+                  },
+                  "isUnique": false,
+                  "isSparse": false,
+                  "isPartial": false,
+                  "indexVersion": 2,
+                  "direction": "forward",
+                  "indexBounds": {
+                    "status": [
+                      "[\"ACTIVE\", \"ACTIVE\"]"
+                    ],
+                    "categoryId": [
+                      "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                    ],
+                    "price": [
+                      "[2000000, 5000000]"
+                    ],
+                    "_id": [
+                      "[MinKey, MaxKey]"
+                    ]
+                  },
+                  "keysExamined": 20,
+                  "seeks": 1,
+                  "dupsTested": 0,
+                  "dupsDropped": 0
+                }
+              }
+            }
+          }
+        },
+        "queryShapeHash": "57E8591E746734227DD76A80EE98C42CD70359E4F6BF7CBA0B9AAB1448575ECD",
+        "command": {
+          "find": "products",
+          "filter": {
+            "status": "ACTIVE",
+            "productType": "ELECTRONICS",
+            "categoryId": {
+              "$oid": "9f279f9b19426a6a465cfd3a"
+            },
+            "price": {
+              "$gte": 2000000,
+              "$lte": 5000000
+            }
+          },
+          "sort": {
+            "price": 1,
+            "_id": 1
+          },
+          "projection": {
+            "_id": 1,
+            "sku": 1,
+            "name": 1,
+            "slug": 1,
+            "categoryId": 1,
+            "productType": 1,
+            "brand": 1,
+            "description": 1,
+            "price": 1,
+            "stock": 1,
+            "images": 1,
+            "attributes": 1,
+            "status": 1,
+            "version": 1,
+            "createdAt": 1,
+            "updatedAt": 1
+          },
+          "limit": 20,
+          "maxTimeMS": 60000,
+          "$db": "ecommerce_benchmark"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": 27017,
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": 104857600,
+          "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+          "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+          "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+          "internalQueryProhibitBlockingMergeOnMongoS": 0,
+          "internalQueryMaxAddToSetBytes": 104857600,
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+        },
+        "ok": 1.0,
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791470334,
+              "i": 1
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": 0
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791470334,
+            "i": 1
+          }
+        }
+      }
+    }
+  },
+  "sameOrderedProductIds": [
+    "33a36d4bb410ab0dbbba2f76",
+    "39c84ee2325058a7a838a8f6",
+    "44e5420fb517edb9693b455c",
+    "fe1c546f87ddc1e7ca962657",
+    "a4308b1c6a5acf0582cc5b5b",
+    "82d1da5114bbb1e37e5b4170",
+    "e690fd3f2e217ba7f6e32cdc",
+    "ccca01ed4f40750950ce2be9",
+    "51a000ec7bc73ce27c477964",
+    "4b70c6fac9bcbc3075195415",
+    "5be90b1224ac47a523aa222f",
+    "e41724594bf4f7745800c08d",
+    "e8acc8e73bd6713b28527dd1",
+    "a28a47c00fb4aecbae01c7e7",
+    "9b10412085c4e02749146670",
+    "97bff8f4512b493f6b1f9be2",
+    "b1ab519e7d4cc5b90a4c3811",
+    "646c948609d04a8198176e40",
+    "0eb46cdbfe6d6ff082fd3d09",
+    "274db8ce70e7f3352933fbfb"
+  ],
+  "resultsEqual": true,
+  "newOrDroppedIndexes": [],
+  "notANewLatencyBenchmark": true
+}

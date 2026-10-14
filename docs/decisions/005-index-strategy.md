@@ -2,6 +2,8 @@
 
 ## Status
 
+PHASE07B08/10/2026 đã đo3read index specifications trên database benchmark riêng30.000Products/10.000Orders. Keys/options của manifest không đổi; historical benchmarkStatus NOT_MEASURED trong JSON là snapshot phase02, runtime status ở [review07B](../phase-07b-performance-review.md)/[index audit](../evidence/performance/index-audit.json). Dev giữ11invariant+3workload; type-price chỉ benchmark,4candidates chưa apply dev. Không ADR design mới vì không đổi index definition/application/schema.
+
 LOCKED CANDIDATES — PHASE02,07/10/2026. Đã khóa keys/options/query patterns cho baseline v1, **chưa apply hoặc benchmark**. Manifest [candidate-indexes.json](../../database/indexes/candidate-indexes.json) là nguồn chuẩn exact specification, không lặp bảng keys trong ADR này.
 
 ## Context and decision

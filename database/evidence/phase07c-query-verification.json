@@ -1,0 +1,1663 @@
+{
+  "phase": "07C",
+  "mode": "READ_ONLY",
+  "before": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "after": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "devUnchangedDuringQueryChecks": true,
+  "fixedSeedWindow": {
+    "from": "2026-07-03T00:00:00+00:00",
+    "to": "2026-10-01T00:00:00+00:00"
+  },
+  "seedResults": {
+    "top-products": [
+      {
+        "productName": "Longines Master Collection — bản demo 02",
+        "quantity": 12,
+        "revenue": 472496856,
+        "productId": {
+          "$oid": "f289cf75b48de99d416e2384"
+        }
+      },
+      {
+        "productName": "Carbon Steel Wok",
+        "quantity": 9,
+        "revenue": 6747750,
+        "productId": {
+          "$oid": "7aa753942825a61fdcaa59b9"
+        }
+      },
+      {
+        "productName": "Selfie Lamp with iPhone — bản demo 02",
+        "quantity": 9,
+        "revenue": 3541392,
+        "productId": {
+          "$oid": "87409a4cc4c77501f8ef10e8"
+        }
+      },
+      {
+        "productName": "Samsung Galaxy S8",
+        "quantity": 8,
+        "revenue": 99998000,
+        "productId": {
+          "$oid": "d9a8bcc197f31c3f0fa1084a"
+        }
+      },
+      {
+        "productName": "Apple Airpods",
+        "quantity": 8,
+        "revenue": 25998000,
+        "productId": {
+          "$oid": "05c4109a3f04b06c864ff88e"
+        }
+      }
+    ],
+    "revenue-day": [
+      {
+        "_id": {
+          "$date": "2026-07-05T17:00:00Z"
+        },
+        "revenue": 85072464,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-07-09T17:00:00Z"
+        },
+        "revenue": 379584964,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-07-12T17:00:00Z"
+        },
+        "revenue": 354070750,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-07-15T17:00:00Z"
+        },
+        "revenue": 190419238,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-07-16T17:00:00Z"
+        },
+        "revenue": 134178868,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-07-17T17:00:00Z"
+        },
+        "revenue": 996452,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-07-23T17:00:00Z"
+        },
+        "revenue": 358322440,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-07-26T17:00:00Z"
+        },
+        "revenue": 165979154,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-07-27T17:00:00Z"
+        },
+        "revenue": 475785940,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-07-28T17:00:00Z"
+        },
+        "revenue": 1247570250,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-07-29T17:00:00Z"
+        },
+        "revenue": 31092416,
+        "orders": 3
+      },
+      {
+        "_id": {
+          "$date": "2026-08-02T17:00:00Z"
+        },
+        "revenue": 134073202,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-05T17:00:00Z"
+        },
+        "revenue": 3279940,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-06T17:00:00Z"
+        },
+        "revenue": 4348750,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-08T17:00:00Z"
+        },
+        "revenue": 262499250,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-11T17:00:00Z"
+        },
+        "revenue": 2423250,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-12T17:00:00Z"
+        },
+        "revenue": 15355726,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-13T17:00:00Z"
+        },
+        "revenue": 23841714,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-14T17:00:00Z"
+        },
+        "revenue": 19435476,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-15T17:00:00Z"
+        },
+        "revenue": 135409892,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-08-17T17:00:00Z"
+        },
+        "revenue": 85784190,
+        "orders": 3
+      },
+      {
+        "_id": {
+          "$date": "2026-08-18T17:00:00Z"
+        },
+        "revenue": 15061988,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-20T17:00:00Z"
+        },
+        "revenue": 870410488,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-22T17:00:00Z"
+        },
+        "revenue": 226180214,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-23T17:00:00Z"
+        },
+        "revenue": 50619964,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-24T17:00:00Z"
+        },
+        "revenue": 1067428952,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-08-25T17:00:00Z"
+        },
+        "revenue": 134373238,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-26T17:00:00Z"
+        },
+        "revenue": 234325928,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-08-27T17:00:00Z"
+        },
+        "revenue": 33147000,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-28T17:00:00Z"
+        },
+        "revenue": 166872964,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-08-30T17:00:00Z"
+        },
+        "revenue": 398434916,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-01T17:00:00Z"
+        },
+        "revenue": 17099000,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-03T17:00:00Z"
+        },
+        "revenue": 46053178,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-09-04T17:00:00Z"
+        },
+        "revenue": 2982690,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-06T17:00:00Z"
+        },
+        "revenue": 8249488,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-09T17:00:00Z"
+        },
+        "revenue": 8848726,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-11T17:00:00Z"
+        },
+        "revenue": 15050178,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-09-14T17:00:00Z"
+        },
+        "revenue": 24256952,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-15T17:00:00Z"
+        },
+        "revenue": 1028748714,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-16T17:00:00Z"
+        },
+        "revenue": 76947750,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-17T17:00:00Z"
+        },
+        "revenue": 1027955440,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-19T17:00:00Z"
+        },
+        "revenue": 289533238,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-22T17:00:00Z"
+        },
+        "revenue": 2949250,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-23T17:00:00Z"
+        },
+        "revenue": 32770500,
+        "orders": 2
+      },
+      {
+        "_id": {
+          "$date": "2026-09-25T17:00:00Z"
+        },
+        "revenue": 58685226,
+        "orders": 1
+      },
+      {
+        "_id": {
+          "$date": "2026-09-29T17:00:00Z"
+        },
+        "revenue": 156748714,
+        "orders": 1
+      }
+    ],
+    "revenue-month": [
+      {
+        "_id": {
+          "$date": "2026-06-30T17:00:00Z"
+        },
+        "revenue": 3423072936,
+        "orders": 17
+      },
+      {
+        "_id": {
+          "$date": "2026-07-31T17:00:00Z"
+        },
+        "revenue": 3883307042,
+        "orders": 25
+      },
+      {
+        "_id": {
+          "$date": "2026-08-31T17:00:00Z"
+        },
+        "revenue": 2796879044,
+        "orders": 18
+      }
+    ],
+    "sales-summary": [
+      {
+        "totalRevenue": 10103259022,
+        "qualifiedOrders": 60,
+        "totalProductsSold": 434
+      }
+    ]
+  },
+  "boundPipelines": {
+    "top-products": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": "2026-07-03T00:00:00Z"
+            },
+            "$lt": {
+              "$date": "2026-10-01T00:00:00Z"
+            }
+          }
+        }
+      },
+      {
+        "$sort": {
+          "completedAt": -1,
+          "_id": -1
+        }
+      },
+      {
+        "$unwind": "$items"
+      },
+      {
+        "$group": {
+          "_id": "$items.productId",
+          "productName": {
+            "$first": "$items.productName"
+          },
+          "quantity": {
+            "$sum": "$items.quantity"
+          },
+          "revenue": {
+            "$sum": "$items.lineTotal"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "quantity": -1,
+          "revenue": -1,
+          "_id": 1
+        }
+      },
+      {
+        "$limit": 5
+      },
+      {
+        "$project": {
+          "_id": 0,
+          "productId": "$_id",
+          "productName": 1,
+          "quantity": 1,
+          "revenue": 1
+        }
+      }
+    ],
+    "revenue-day": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": "2026-07-03T00:00:00Z"
+            },
+            "$lt": {
+              "$date": "2026-10-01T00:00:00Z"
+            }
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "$dateTrunc": {
+              "date": "$completedAt",
+              "unit": "day",
+              "timezone": "Asia/Ho_Chi_Minh"
+            }
+          },
+          "revenue": {
+            "$sum": {
+              "$subtract": [
+                "$subtotal",
+                "$discount"
+              ]
+            }
+          },
+          "orders": {
+            "$sum": 1
+          }
+        }
+      },
+      {
+        "$sort": {
+          "_id": 1
+        }
+      }
+    ],
+    "revenue-month": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": "2026-07-03T00:00:00Z"
+            },
+            "$lt": {
+              "$date": "2026-10-01T00:00:00Z"
+            }
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "$dateTrunc": {
+              "date": "$completedAt",
+              "unit": "month",
+              "timezone": "Asia/Ho_Chi_Minh"
+            }
+          },
+          "revenue": {
+            "$sum": {
+              "$subtract": [
+                "$subtotal",
+                "$discount"
+              ]
+            }
+          },
+          "orders": {
+            "$sum": 1
+          }
+        }
+      },
+      {
+        "$sort": {
+          "_id": 1
+        }
+      }
+    ],
+    "sales-summary": [
+      {
+        "$match": {
+          "orderStatus": "COMPLETED",
+          "paymentStatus": "PAID",
+          "completedAt": {
+            "$gte": {
+              "$date": "2026-07-03T00:00:00Z"
+            },
+            "$lt": {
+              "$date": "2026-10-01T00:00:00Z"
+            }
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": null,
+          "totalRevenue": {
+            "$sum": {
+              "$subtract": [
+                "$subtotal",
+                "$discount"
+              ]
+            }
+          },
+          "qualifiedOrders": {
+            "$sum": 1
+          },
+          "totalProductsSold": {
+            "$sum": {
+              "$sum": {
+                "$map": {
+                  "input": "$items",
+                  "as": "item",
+                  "in": "$$item.quantity"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "$project": {
+          "_id": 0,
+          "totalRevenue": 1,
+          "qualifiedOrders": 1,
+          "totalProductsSold": 1
+        }
+      }
+    ]
+  },
+  "liveDashboardWindow": {
+    "from": "2026-09-08T14:38:56Z",
+    "to": "2026-10-09T14:38:56Z"
+  },
+  "liveDashboardReports": {
+    "summary": {
+      "totalRevenue": 2722494688,
+      "totalProductsSold": 90,
+      "totalOrders": 25,
+      "totalCustomers": 41,
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-09-08T14:38:56.000Z",
+      "to": "2026-10-09T14:38:56.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-08T14:38:56.284Z"
+    },
+    "revenue": {
+      "series": [
+        {
+          "bucket": "2026-09-08",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-09",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-10",
+          "revenue": 8848726,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-11",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-12",
+          "revenue": 15050178,
+          "orders": 2
+        },
+        {
+          "bucket": "2026-09-13",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-14",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-15",
+          "revenue": 24256952,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-16",
+          "revenue": 1028748714,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-17",
+          "revenue": 76947750,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-18",
+          "revenue": 1027955440,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-19",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-20",
+          "revenue": 289533238,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-21",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-22",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-23",
+          "revenue": 2949250,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-24",
+          "revenue": 32770500,
+          "orders": 2
+        },
+        {
+          "bucket": "2026-09-25",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-26",
+          "revenue": 58685226,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-09-27",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-28",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-29",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-09-30",
+          "revenue": 156748714,
+          "orders": 1
+        },
+        {
+          "bucket": "2026-10-01",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-02",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-03",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-04",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-05",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-06",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-07",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-08",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-09",
+          "revenue": 0,
+          "orders": 0
+        }
+      ],
+      "interval": "day",
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-09-08T14:38:56.000Z",
+      "to": "2026-10-09T14:38:56.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-08T14:38:56.315Z"
+    },
+    "top-products": {
+      "items": [
+        {
+          "productName": "Rolex Cellini Moonphase — bản demo 02",
+          "quantity": 6,
+          "revenue": 2047498428,
+          "productId": "0f40834671a9902f9b8a40fc"
+        },
+        {
+          "productName": "Apple Airpods",
+          "quantity": 6,
+          "revenue": 19498500,
+          "productId": "05c4109a3f04b06c864ff88e"
+        },
+        {
+          "productName": "Fine Mesh Strainer",
+          "quantity": 5,
+          "revenue": 1248750,
+          "productId": "2e085e202ede27113697bf61"
+        },
+        {
+          "productName": "Samsung Galaxy S8",
+          "quantity": 4,
+          "revenue": 49999000,
+          "productId": "d9a8bcc197f31c3f0fa1084a"
+        },
+        {
+          "productName": "Men Check Shirt — bản demo 02",
+          "quantity": 4,
+          "revenue": 2938952,
+          "productId": "d2cc5ce306533940c844d5b5"
+        }
+      ],
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-09-08T14:38:56.000Z",
+      "to": "2026-10-09T14:38:56.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-08T14:38:56.345Z"
+    },
+    "category-revenue": {
+      "items": [
+        {
+          "categoryName": "Thời trang",
+          "revenue": 2344259380,
+          "categoryId": "24aaeea4c694b3035dbabd07"
+        },
+        {
+          "categoryName": "Điện tử",
+          "revenue": 339130166,
+          "categoryId": "4ad126c3ebc4fb3918f084d4"
+        },
+        {
+          "categoryName": "Gia dụng",
+          "revenue": 39105142,
+          "categoryId": "7197a05f34d94cd99a58f60b"
+        }
+      ],
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-09-08T14:38:56.000Z",
+      "to": "2026-10-09T14:38:56.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-08T14:38:56.361Z"
+    },
+    "order-status": {
+      "items": [
+        {
+          "status": "PENDING",
+          "count": 5
+        },
+        {
+          "status": "CONFIRMED",
+          "count": 1
+        },
+        {
+          "status": "SHIPPING",
+          "count": 4
+        },
+        {
+          "status": "COMPLETED",
+          "count": 12
+        },
+        {
+          "status": "CANCELLED",
+          "count": 2
+        },
+        {
+          "status": "EXPIRED",
+          "count": 1
+        }
+      ],
+      "dateBasis": "createdAt",
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-09-08T14:38:56.000Z",
+      "to": "2026-10-09T14:38:56.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-08T14:38:56.377Z"
+    }
+  },
+  "indexQuery": {
+    "categoryId": {
+      "$oid": "4ad126c3ebc4fb3918f084d4"
+    },
+    "status": "ACTIVE",
+    "price": {
+      "$gte": 1000000,
+      "$lte": 20000000
+    }
+  },
+  "indexSort": {
+    "price": 1,
+    "_id": 1
+  },
+  "limit": 10,
+  "plans": {
+    "natural": {
+      "stages": [
+        "COLLSCAN",
+        "SORT"
+      ],
+      "nReturned": 10,
+      "totalDocsExamined": 182,
+      "totalKeysExamined": 0,
+      "executionTimeMillis": 1,
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_dev.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": 20000000
+                }
+              },
+              {
+                "price": {
+                  "$gte": 1000000
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "365A9D47",
+          "planCacheShapeHash": "365A9D47",
+          "planCacheKey": "C69A6566",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "SORT",
+            "sortPattern": {
+              "price": 1,
+              "_id": 1
+            },
+            "memLimit": 104857600,
+            "limitAmount": 10,
+            "type": "simple",
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "categoryId": {
+                      "$eq": {
+                        "$oid": "4ad126c3ebc4fb3918f084d4"
+                      }
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": 20000000
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": 1000000
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 10,
+          "executionTimeMillis": 1,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 182,
+          "executionStages": {
+            "isCached": false,
+            "stage": "SORT",
+            "nReturned": 10,
+            "executionTimeMillisEstimate": 0,
+            "works": 194,
+            "advanced": 10,
+            "needTime": 183,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "sortPattern": {
+              "price": 1,
+              "_id": 1
+            },
+            "memLimit": 104857600,
+            "limitAmount": 10,
+            "type": "simple",
+            "totalDataSizeSorted": 12956,
+            "usedDisk": false,
+            "spills": 0,
+            "spilledDataStorageSize": 0,
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "categoryId": {
+                      "$eq": {
+                        "$oid": "4ad126c3ebc4fb3918f084d4"
+                      }
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": 20000000
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": 1000000
+                    }
+                  }
+                ]
+              },
+              "nReturned": 38,
+              "executionTimeMillisEstimate": 0,
+              "works": 183,
+              "advanced": 38,
+              "needTime": 144,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 1,
+              "direction": "forward",
+              "docsExamined": 182
+            }
+          }
+        },
+        "queryShapeHash": "E3F8D044A77DA448F62704B6630DDBC991B087F9DE4D504A77E0F3D658934E0A",
+        "command": {
+          "find": "products",
+          "filter": {
+            "categoryId": {
+              "$oid": "4ad126c3ebc4fb3918f084d4"
+            },
+            "status": "ACTIVE",
+            "price": {
+              "$gte": 1000000,
+              "$lte": 20000000
+            }
+          },
+          "sort": {
+            "price": 1,
+            "_id": 1
+          },
+          "limit": 10,
+          "hint": {
+            "$natural": 1
+          },
+          "$db": "ecommerce_dev"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": 27017,
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": 104857600,
+          "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+          "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+          "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+          "internalQueryProhibitBlockingMergeOnMongoS": 0,
+          "internalQueryMaxAddToSetBytes": 104857600,
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+        },
+        "ok": 1.0,
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791470334,
+              "i": 1
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": 0
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791470334,
+            "i": 1
+          }
+        }
+      }
+    },
+    "indexed": {
+      "stages": [
+        "FETCH",
+        "IXSCAN",
+        "LIMIT"
+      ],
+      "nReturned": 10,
+      "totalDocsExamined": 10,
+      "totalKeysExamined": 10,
+      "executionTimeMillis": 1,
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_dev.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": 20000000
+                }
+              },
+              {
+                "price": {
+                  "$gte": 1000000
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "365A9D47",
+          "planCacheShapeHash": "365A9D47",
+          "planCacheKey": "C69A6566",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "limitAmount": 10,
+            "inputStage": {
+              "stage": "FETCH",
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": 1,
+                  "categoryId": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                }
+              }
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 10,
+          "executionTimeMillis": 1,
+          "totalKeysExamined": 10,
+          "totalDocsExamined": 10,
+          "executionStages": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "nReturned": 10,
+            "executionTimeMillisEstimate": 0,
+            "works": 11,
+            "advanced": 10,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "limitAmount": 10,
+            "inputStage": {
+              "stage": "FETCH",
+              "nReturned": 10,
+              "executionTimeMillisEstimate": 0,
+              "works": 10,
+              "advanced": 10,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 0,
+              "docsExamined": 10,
+              "alreadyHasObj": 0,
+              "inputStage": {
+                "stage": "IXSCAN",
+                "nReturned": 10,
+                "executionTimeMillisEstimate": 0,
+                "works": 10,
+                "advanced": 10,
+                "needTime": 0,
+                "needYield": 0,
+                "saveState": 0,
+                "restoreState": 0,
+                "isEOF": 0,
+                "keyPattern": {
+                  "status": 1,
+                  "categoryId": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                },
+                "keysExamined": 10,
+                "seeks": 1,
+                "dupsTested": 0,
+                "dupsDropped": 0
+              }
+            }
+          }
+        },
+        "queryShapeHash": "E3F8D044A77DA448F62704B6630DDBC991B087F9DE4D504A77E0F3D658934E0A",
+        "command": {
+          "find": "products",
+          "filter": {
+            "categoryId": {
+              "$oid": "4ad126c3ebc4fb3918f084d4"
+            },
+            "status": "ACTIVE",
+            "price": {
+              "$gte": 1000000,
+              "$lte": 20000000
+            }
+          },
+          "sort": {
+            "price": 1,
+            "_id": 1
+          },
+          "limit": 10,
+          "hint": "ix_products_category_price",
+          "$db": "ecommerce_dev"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": 27017,
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": 104857600,
+          "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+          "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+          "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+          "internalQueryProhibitBlockingMergeOnMongoS": 0,
+          "internalQueryMaxAddToSetBytes": 104857600,
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+        },
+        "ok": 1.0,
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791470334,
+              "i": 1
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": 0
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791470334,
+            "i": 1
+          }
+        }
+      }
+    },
+    "planner": {
+      "stages": [
+        "FETCH",
+        "IXSCAN",
+        "LIMIT"
+      ],
+      "nReturned": 10,
+      "totalDocsExamined": 10,
+      "totalKeysExamined": 10,
+      "executionTimeMillis": 0,
+      "rawExplain": {
+        "explainVersion": "1",
+        "queryPlanner": {
+          "namespace": "ecommerce_dev.products",
+          "parsedQuery": {
+            "$and": [
+              {
+                "categoryId": {
+                  "$eq": {
+                    "$oid": "4ad126c3ebc4fb3918f084d4"
+                  }
+                }
+              },
+              {
+                "status": {
+                  "$eq": "ACTIVE"
+                }
+              },
+              {
+                "price": {
+                  "$lte": 20000000
+                }
+              },
+              {
+                "price": {
+                  "$gte": 1000000
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "365A9D47",
+          "planCacheShapeHash": "365A9D47",
+          "planCacheKey": "C69A6566",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "limitAmount": 10,
+            "inputStage": {
+              "stage": "FETCH",
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": 1,
+                  "categoryId": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                }
+              }
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 10,
+          "executionTimeMillis": 0,
+          "totalKeysExamined": 10,
+          "totalDocsExamined": 10,
+          "executionStages": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "nReturned": 10,
+            "executionTimeMillisEstimate": 0,
+            "works": 11,
+            "advanced": 10,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "limitAmount": 10,
+            "inputStage": {
+              "stage": "FETCH",
+              "nReturned": 10,
+              "executionTimeMillisEstimate": 0,
+              "works": 10,
+              "advanced": 10,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 0,
+              "docsExamined": 10,
+              "alreadyHasObj": 0,
+              "inputStage": {
+                "stage": "IXSCAN",
+                "nReturned": 10,
+                "executionTimeMillisEstimate": 0,
+                "works": 10,
+                "advanced": 10,
+                "needTime": 0,
+                "needYield": 0,
+                "saveState": 0,
+                "restoreState": 0,
+                "isEOF": 0,
+                "keyPattern": {
+                  "status": 1,
+                  "categoryId": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('4ad126c3ebc4fb3918f084d4'), ObjectId('4ad126c3ebc4fb3918f084d4')]"
+                  ],
+                  "price": [
+                    "[1000000, 20000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                },
+                "keysExamined": 10,
+                "seeks": 1,
+                "dupsTested": 0,
+                "dupsDropped": 0
+              }
+            }
+          }
+        },
+        "queryShapeHash": "E3F8D044A77DA448F62704B6630DDBC991B087F9DE4D504A77E0F3D658934E0A",
+        "command": {
+          "find": "products",
+          "filter": {
+            "categoryId": {
+              "$oid": "4ad126c3ebc4fb3918f084d4"
+            },
+            "status": "ACTIVE",
+            "price": {
+              "$gte": 1000000,
+              "$lte": 20000000
+            }
+          },
+          "sort": {
+            "price": 1,
+            "_id": 1
+          },
+          "limit": 10,
+          "$db": "ecommerce_dev"
+        },
+        "serverInfo": {
+          "host": "DESKTOP-KMNS09Q",
+          "port": 27017,
+          "version": "8.0.32",
+          "gitVersion": "f9eb55a7cc900f33a722a5b32a0fdbf54385c749"
+        },
+        "serverParameters": {
+          "internalQueryFacetBufferSizeBytes": 104857600,
+          "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+          "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+          "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+          "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+          "internalQueryProhibitBlockingMergeOnMongoS": 0,
+          "internalQueryMaxAddToSetBytes": 104857600,
+          "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+          "internalQueryFrameworkControl": "trySbeRestricted",
+          "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+        },
+        "ok": 1.0,
+        "$clusterTime": {
+          "clusterTime": {
+            "$timestamp": {
+              "t": 1791470334,
+              "i": 1
+            }
+          },
+          "signature": {
+            "hash": {
+              "$binary": {
+                "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "subType": "00"
+              }
+            },
+            "keyId": 0
+          }
+        },
+        "operationTime": {
+          "$timestamp": {
+            "t": 1791470334,
+            "i": 1
+          }
+        }
+      }
+    }
+  },
+  "sameOrderedProductIds": [
+    "1cfaa5df6bb9bc1194a1cce6",
+    "11993a813768cc569eff12ff",
+    "07e01df82b267f0c77a23271",
+    "c50280028bb206119f13db2b",
+    "4dc6ecb9e6a7e22ce90257a6",
+    "7874809dbc578b438e96da39",
+    "f994e81eff16052af4c14797",
+    "333bdca2026a5d13dec585f1",
+    "c3600958cf03ca0b4232f551",
+    "cff9c55514d0625fc964b014"
+  ],
+  "resultsEqual": true,
+  "newIndexes": [],
+  "phase07bReportPresent": true
+}

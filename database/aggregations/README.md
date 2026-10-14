@@ -1,5 +1,9 @@
 # Aggregation pipelines v1 — đã verify trên MongoDB ở PHASE03
 
+PHASE07B đã benchmark Revenue Day/Top5 canonical trên10.000Orders synthetic riêng, true-before/natural/named/unhinted equal outputs/oracle; qualified index đọc152docs trong7ngày thay10.000. [Raw aggregation explains](../../docs/evidence/performance/aggregation-explain.json), [review/methodology](../../docs/phase-07b-performance-review.md). Không đổi JSON stages hoặc revenue rule; index hỗ trợ initial match/latest sort, không toàn bộ unwind/group/rank. Broad6tháng đọc3.969docs cho thấy ảnh hưởng selectivity; latency local không production guarantee. Các ghi chú chưa benchmark bên dưới giữ lịch sử phase03/06B.
+
+PHASE06B Dashboard API dùng đúng8artifacts qua DashboardRepository: tz-aware EJSON decode/deep-copy/bind validated range, không duplicate hoặc đổi JSON canonical.5Admin APIs chạy aggregate thật; Python chỉ metadata/default0/calendar buckets. [Review](../../docs/phase-06b-review.md), [contract](../../docs/api-contract.md), [explain](../../backend/evidence/phase06b-explain.json). Semantic BR-REPORT/ADR007 giữ nguyên; frontend/full benchmark chưa thuộc phase.
+
 Đây là nguồn chuẩn pipeline JSON, không endpoint/dashboard implementation. Mỗi JSON là pipeline array dùng Extended JSON Date. PHASE03 dùng bson.json_util decode và bind range trước khi chạy thật; không truyền object `$date` chưa decode thẳng vào aggregate. [Kết quả thực và pipeline bound](../evidence/aggregation-results.json), [live verifier](../../scripts/validation/verify_database.py). JSON canonical vẫn giữ range tháng9 minh họa, verifier dùng range90ngày của seed.
 
 Representative binding: từ `2026-08-31T17:00:00Z` inclusive đến `2026-09-30T17:00:00Z` exclusive, tương ứng tháng09/2026 tại Việt Nam. Backend sau này bind from/to đã validate vào initial match; interval chỉ day/month và timezone cố định. Không nhận pipeline từ client. Collection và input/output chính:

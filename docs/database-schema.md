@@ -1,6 +1,6 @@
 # MongoDB schema — LOCKED DESIGN v1
 
-Ngày07/10/2026: PHASE02 đã duyệt, PHASE03 apply nguyên sáu validator trên MongoDB8.0.32 local rs0, chọn14declared indexes và nạp/verify dữ liệu thật. **Không thay schema v1, chưa implement business backend.** Meaning ở file này; exact shape/type/bounds canonical tại [validators](../database/validators/README.md), ví dụ thiết kế tại [samples](../database/samples/README.md), evidence runtime tại [phase03 review](phase-03-review.md). Không copy JSON Schema sang nhiều docs/backend.
+Ngày07/10/2026: PHASE02 đã duyệt, PHASE03 apply nguyên sáu validator trên MongoDB8.0.32 local rs0, chọn14declared indexes và nạp/verify dữ liệu thật. **Schema v1 giữ nguyên** qua backend05A Auth/User,05B Catalog và05C Commerce COD; [review05C](phase-05c-review.md) xác minh fingerprint dev không đổi. Meaning ở file này; exact shape/type/bounds canonical tại [validators](../database/validators/README.md), ví dụ thiết kế tại [samples](../database/samples/README.md), evidence runtime tại [phase03 review](phase-03-review.md). Không copy JSON Schema sang nhiều docs/backend.
 
 ## Mục lục
 

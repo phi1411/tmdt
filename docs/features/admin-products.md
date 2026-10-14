@@ -56,6 +56,14 @@ JWT Admin guards, allowlist mass assignment, arbitrary operators/URL scheme reje
 
 Table search/filter/pagination, dynamic attributes form theo type, money integer, stock/version; preview ảnh/fallback, validation field errors, archive confirm. Conflict409 reload và yêu cầu xem lại thay đổi, không force overwrite.
 
+PHASE07A hardening: form sửa Product giữ các attributes không có ô nhập, gồm known field chưa được form hỗ trợ và nested/unknown safe fields. Backend vẫn nhận attributes replacement theo contract; frontend merge thuộc tính gốc với các ô chỉnh sửa để việc đổi tên/giá không âm thầm xóa metadata đa hình.
+
+Bộ lọc Category giới hạn chiều rộng theo container trên mobile, kể cả tên Category dài; bảng vẫn cuộn ngang bên trong vùng riêng, không làm toàn trang tràn ngang.
+
+Follow-up07D ngày14/10/2026: ảnh là tùy chọn0–8 URL theo API contract. Form tạo/sửa cho phép textarea trống và gửi images=[]; không yêu cầu thêm ảnh để đổi giá. Chỉ loại dòng trắng, giữ URL đã nhập để backend báo lỗi validation thay vì âm thầm bỏ URL sai. Không thay validator hoặc dữ liệu fixture07C.
+
+Pre-deploy14/10/2026: Brand cũng là tùy chọn theo contract (`brand` là string có thể empty). Bỏ required của ô Brand và không chặn submit khi brand trống; không bắt sửa metadata của60Product seed chỉ để lưu thay đổi khác. Backend validation/expectedVersion giữ nguyên.
+
 ## Acceptance Criteria
 
 Create/read/update/archive Web/API cả3 ngành, Category integration đúng; snapshot price10→12 triệu vẫn giữ10; checkout/Admin concurrent không lost stock; permissions/validator đầy đủ.

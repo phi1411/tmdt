@@ -13,5 +13,8 @@ Cấu trúc phase01 đã được người dùng chấp nhận; PHASE02 khóa de
 | [007](007-revenue-definition.md) | Completed+paid merchandise revenue by completedAt | LOCKED |
 | [008](008-local-vietnamese-search.md) | Normalized Vietnamese substring/filter local | LOCKED |
 | [009](009-foundation-locks.md) | Localreplicaset, Englishnames, flatCategory, URLmedia/defaults | LOCKED |
+| [010](010-payment-runtime.md) | Payment runtime/Return/config/expiry; bounded transient retry backoff | IMPLEMENTED PHASE06A |
+| [011](011-atlas-demo-database.md) | User-authorized exact clone into separate Atlas novamart_demo; keep local schema/data | Deployment migration; evidence at database/evidence/atlas-demo-upload.json |
+| [012](012-render-production-runtime.md) | Separate production Atlas configuration and Waitress runtime; Render Free blueprint | Prepared; public deployment pending repository/hosting |
 
 Không thêm role/CSDL ngoài requirement; reviews DEFERRED không MVP blocker. Future breaking change cần ADR superseding/migration/contract/tests. Exact validators/index/pipelines ở database/, meaning ở database-schema, behaviors ở business-rules, không copy exact spec nhiều nơi.

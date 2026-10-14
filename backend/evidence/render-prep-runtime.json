@@ -1,0 +1,193 @@
+{
+  "status": "PRODUCTION_WSGI_ATLAS_READ_ONLY_PASS",
+  "publicDeployment": false,
+  "recordedAtUtc": "2026-10-14T07:24:26.208285+00:00",
+  "server": "Waitress 3.0.2",
+  "expectedReplicaSet": "atlas-uczcqo-shard-0",
+  "database": "novamart_demo",
+  "health": {
+    "status": "ok",
+    "checks": {
+      "backend": "ok",
+      "database": "ok",
+      "replicaSet": "ok"
+    }
+  },
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "cors": "not_allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/categories",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/products?q=07C",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/products/defense-07c-ao-thun",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/orders",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users",
+      "status": 401,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users",
+      "status": 403,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 401,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/summary?from=2026-10-01T00%3A00%3A00Z&to=2026-11-01T00%3A00%3A00Z",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/revenue?from=2026-10-01T00%3A00%3A00Z&to=2026-11-01T00%3A00%3A00Z",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/top-products?from=2026-10-01T00%3A00%3A00Z&to=2026-11-01T00%3A00%3A00Z",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/category-revenue?from=2026-10-01T00%3A00%3A00Z&to=2026-11-01T00%3A00%3A00Z",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/order-status?from=2026-10-01T00%3A00%3A00Z&to=2026-11-01T00%3A00%3A00Z",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6ac7a52f87e692850a155386",
+      "status": 200,
+      "cors": "allowed"
+    },
+    {
+      "method": "GET",
+      "path": "/unknown",
+      "status": 404,
+      "cors": "allowed"
+    }
+  ],
+  "before": {
+    "local": {
+      "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+      "counts": {
+        "users": 42,
+        "categories": 5,
+        "products": 182,
+        "carts": 1,
+        "orders": 101,
+        "payment_attempts": 30
+      }
+    },
+    "atlas": {
+      "digest": "0b4732ef04eea3ca167eacba8b1dd73f18a12c1cd47608ed76621f24bed73fe0",
+      "counts": {
+        "users": 42,
+        "categories": 5,
+        "products": 182,
+        "carts": 1,
+        "orders": 101,
+        "payment_attempts": 30
+      }
+    }
+  },
+  "after": {
+    "local": {
+      "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+      "counts": {
+        "users": 42,
+        "categories": 5,
+        "products": 182,
+        "carts": 1,
+        "orders": 101,
+        "payment_attempts": 30
+      }
+    },
+    "atlas": {
+      "digest": "0b4732ef04eea3ca167eacba8b1dd73f18a12c1cd47608ed76621f24bed73fe0",
+      "counts": {
+        "users": 42,
+        "categories": 5,
+        "products": 182,
+        "carts": 1,
+        "orders": 101,
+        "payment_attempts": 30
+      }
+    }
+  },
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": 0,
+  "databaseWrites": 0,
+  "vnpayEnabled": false,
+  "limitations": [
+    "Local Windows WSGI, not Render Linux/public TLS/proxy",
+    "No live payment sandbox"
+  ]
+}

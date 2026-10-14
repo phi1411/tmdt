@@ -8,7 +8,7 @@ from flask.json.provider import DefaultJSONProvider
 PRIVATE_FIELDS = frozenset({
     'passwordHash', 'password', 'currentPassword', 'newPassword', 'tokenVersion',
     'checkoutKey', 'checkoutRequestHash', 'requestHash', 'hashSecret',
-    'JWT_SECRET', 'VNPAY_HASH_SECRET', 'QUOTE_SIGNING_SECRET', 'SEED_DEMO_PASSWORD',
+    'JWT_SECRET', 'VNPAY_HASH_SECRET', 'VNP_HASH_SECRET', 'QUOTE_SIGNING_SECRET', 'SEED_DEMO_PASSWORD',
 })
 
 

@@ -1,0 +1,71 @@
+{
+  "status": "PHASE 07B PERFORMANCE EVIDENCE PASS",
+  "recordedAtUtc": {
+    "$date": "2026-10-08T14:27:28.499Z"
+  },
+  "allEvidenceReadable": true,
+  "allLocalLinksValid": true,
+  "featureDocSections": 13,
+  "comparisonVariants": 6,
+  "measuredSamples": 720,
+  "warmups": 120,
+  "safetyChecks": 8,
+  "benchmarkCounts": {
+    "users": 40,
+    "categories": 30,
+    "products": 30000,
+    "carts": 0,
+    "orders": 10000,
+    "payment_attempts": 0
+  },
+  "devFingerprintUnchangedDuringBenchmarkCommands": true,
+  "benchmarkCommandBaseline": {
+    "digest": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+    "counts": {
+      "users": 41,
+      "categories": 3,
+      "products": 180,
+      "carts": 0,
+      "orders": 100,
+      "payment_attempts": 30
+    }
+  },
+  "devObservedAtFinalCheck": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "devChangedAfterBenchmarkCommands": true,
+  "firstExternalDevObservation": {
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    },
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf"
+  },
+  "externalFixtureCleanupAttempted": false,
+  "otherActiveTasks": [
+    "Implement Catalog APIs",
+    "Xây dựng sàn thương mại điện tử"
+  ],
+  "devSchemaAndIndexesStillUnchanged": true,
+  "protectedSourceUnchanged": true,
+  "finalPerformanceScriptHashes": {
+    "scripts/performance/benchmark.py": "dd85c3aa597bb51006d8f5543f9136f43d918d01b54101c5dd78be093a513487",
+    "scripts/performance/dataset.py": "8678ff72a3f203d6e47e47faaba3972b72025c855c5f4d45e07ec57fbd2453e5",
+    "scripts/performance/perf_common.py": "bbae4ed12e0f3899e5b759055679d6f39ce15f57b0c2eea7e5425fc16b9970f2",
+    "scripts/performance/verify_safety.py": "e18c97b18a0d0ea68f994418beccba67bf6f206745ca8bc128a0ec45dee977bd"
+  },
+  "lockCleaned": true,
+  "note": "Dev snapshots can change outside benchmark windows under shared demo/FE writes; never reverted. All performance writes target literal ecommerce_benchmark."
+}

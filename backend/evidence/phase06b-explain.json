@@ -1,0 +1,551 @@
+{
+  "status": "PASS",
+  "dataset": {
+    "users": 40,
+    "categories": 3,
+    "products": 180,
+    "carts": 0,
+    "orders": 100,
+    "payment_attempts": 30
+  },
+  "queries": {
+    "sales-summary": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "PROJECTION_SIMPLE",
+        "transformBy": {
+          "discount": 1,
+          "items": 1,
+          "subtotal": 1,
+          "_id": 0
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "orderStatus": 1,
+              "paymentStatus": 1,
+              "completedAt": -1,
+              "_id": -1
+            },
+            "indexName": "ix_orders_qualified_completed",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "orderStatus": [],
+              "paymentStatus": [],
+              "completedAt": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "orderStatus": [
+                "[\"COMPLETED\", \"COMPLETED\"]"
+              ],
+              "paymentStatus": [
+                "[\"PAID\", \"PAID\"]"
+              ],
+              "completedAt": [
+                "(new Date(1790812800000), new Date(1783036800000)]"
+              ],
+              "_id": [
+                "[MaxKey, MinKey]"
+              ]
+            }
+          }
+        }
+      },
+      "indexes": [
+        "ix_orders_qualified_completed"
+      ],
+      "nReturned": 60,
+      "totalDocsExamined": 60,
+      "totalKeysExamined": 60,
+      "executionTimeMillis": 7
+    },
+    "revenue-day": {
+      "winningPlan": {
+        "isCached": false,
+        "queryPlan": {
+          "stage": "GROUP",
+          "planNodeId": 4,
+          "inputStage": {
+            "stage": "FETCH",
+            "planNodeId": 2,
+            "inputStage": {
+              "stage": "IXSCAN",
+              "planNodeId": 1,
+              "keyPattern": {
+                "orderStatus": 1,
+                "paymentStatus": 1,
+                "completedAt": -1,
+                "_id": -1
+              },
+              "indexName": "ix_orders_qualified_completed",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "orderStatus": [],
+                "paymentStatus": [],
+                "completedAt": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "orderStatus": [
+                  "[\"COMPLETED\", \"COMPLETED\"]"
+                ],
+                "paymentStatus": [
+                  "[\"PAID\", \"PAID\"]"
+                ],
+                "completedAt": [
+                  "(new Date(1790812800000), new Date(1783036800000)]"
+                ],
+                "_id": [
+                  "[MaxKey, MinKey]"
+                ]
+              }
+            }
+          }
+        },
+        "slotBasedPlan": {
+          "slots": "$$RESULT=s19 env: { s5 = {\"orderStatus\" : 1, \"paymentStatus\" : 1, \"completedAt\" : -1, \"_id\" : -1}, s11 = TimeZoneDatabase(Africa/Lagos...Europe/Isle_of_Man) (timeZoneDB) }",
+          "stages": "[4] project [s19 = newObj(\"_id\", s14, \"revenue\", s17, \"orders\", s18)] \n[4] project [s17 = doubleDoubleSumFinalize(s15), s18 = (convert ( s16, int32) ?: s16)] \n[4] group [s14] [s15 = aggDoubleDoubleSum(\n    if ((typeMatch(s10, 1088) ?: true) || (typeMatch(s9, 1088) ?: true)) \n    then null \n    else \n        if \n            if isNumber(s10) \n            then isNumber(s9) \n            else (isDate(s10) && (isNumber(s9) || isDate(s9))) \n        \n        then (s10 - s9) \n        else fail(7157720, \"Only numbers and dates are allowed in an $subtract expression. To subtract a number from a date, the date must be the first argument.\") \n), s16 = count()] spillSlots[s12, s13] mergingExprs[aggMergeDoubleDoubleSums(s12), sum(s13)] \n[4] project [s14 = (\n    let [\n        l10.0 = dateTrunc(s11, s8, \"day\", 1ll, \"Asia/Ho_Chi_Minh\", \"sun\") \n    ] \n    in \n        if exists(l10.0) \n        then makeOwn(move(l10.0)) \n        else \n            if (typeMatch(s8, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s8, 131712) \n                then Nothing \n                else fail(7157932, \"$dateTrunc parameter 'date' must be coercible to date\") \n?: null)] \n[2] nlj inner [] [s1, s2, s3, s4, s5] \n    left \n        [1] ixseek KS(3C434F4D504C45544544003C5041494400877FFFFE5F0B3D3BFFF5FE04) KS(3C434F4D504C45544544003C5041494400877FFFFE60DAB993FFF5FE04) s4 s1 s2 s3 [] @\"058ab18d-7101-4b84-96d0-5aeaa1ead11e\" @\"ix_orders_qualified_completed\" true \n    right \n        [2] limit 1ll \n        [2] seek s1 s6 s7 s2 s3 s4 s5 none none [s8 = completedAt, s9 = discount, s10 = subtotal] @\"058ab18d-7101-4b84-96d0-5aeaa1ead11e\" true false \n"
+        }
+      },
+      "indexes": [
+        "ix_orders_qualified_completed"
+      ],
+      "nReturned": 46,
+      "totalDocsExamined": 60,
+      "totalKeysExamined": 60,
+      "executionTimeMillis": 10
+    },
+    "revenue-month": {
+      "winningPlan": {
+        "isCached": false,
+        "queryPlan": {
+          "stage": "GROUP",
+          "planNodeId": 4,
+          "inputStage": {
+            "stage": "FETCH",
+            "planNodeId": 2,
+            "inputStage": {
+              "stage": "IXSCAN",
+              "planNodeId": 1,
+              "keyPattern": {
+                "orderStatus": 1,
+                "paymentStatus": 1,
+                "completedAt": -1,
+                "_id": -1
+              },
+              "indexName": "ix_orders_qualified_completed",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "orderStatus": [],
+                "paymentStatus": [],
+                "completedAt": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "orderStatus": [
+                  "[\"COMPLETED\", \"COMPLETED\"]"
+                ],
+                "paymentStatus": [
+                  "[\"PAID\", \"PAID\"]"
+                ],
+                "completedAt": [
+                  "(new Date(1790812800000), new Date(1783036800000)]"
+                ],
+                "_id": [
+                  "[MaxKey, MinKey]"
+                ]
+              }
+            }
+          }
+        },
+        "slotBasedPlan": {
+          "slots": "$$RESULT=s19 env: { s5 = {\"orderStatus\" : 1, \"paymentStatus\" : 1, \"completedAt\" : -1, \"_id\" : -1}, s11 = TimeZoneDatabase(Africa/Lagos...Europe/Isle_of_Man) (timeZoneDB) }",
+          "stages": "[4] project [s19 = newObj(\"_id\", s14, \"revenue\", s17, \"orders\", s18)] \n[4] project [s17 = doubleDoubleSumFinalize(s15), s18 = (convert ( s16, int32) ?: s16)] \n[4] group [s14] [s15 = aggDoubleDoubleSum(\n    if ((typeMatch(s10, 1088) ?: true) || (typeMatch(s9, 1088) ?: true)) \n    then null \n    else \n        if \n            if isNumber(s10) \n            then isNumber(s9) \n            else (isDate(s10) && (isNumber(s9) || isDate(s9))) \n        \n        then (s10 - s9) \n        else fail(7157720, \"Only numbers and dates are allowed in an $subtract expression. To subtract a number from a date, the date must be the first argument.\") \n), s16 = count()] spillSlots[s12, s13] mergingExprs[aggMergeDoubleDoubleSums(s12), sum(s13)] \n[4] project [s14 = (\n    let [\n        l10.0 = dateTrunc(s11, s8, \"month\", 1ll, \"Asia/Ho_Chi_Minh\", \"sun\") \n    ] \n    in \n        if exists(l10.0) \n        then makeOwn(move(l10.0)) \n        else \n            if (typeMatch(s8, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s8, 131712) \n                then Nothing \n                else fail(7157932, \"$dateTrunc parameter 'date' must be coercible to date\") \n?: null)] \n[2] nlj inner [] [s1, s2, s3, s4, s5] \n    left \n        [1] ixseek KS(3C434F4D504C45544544003C5041494400877FFFFE5F0B3D3BFFF5FE04) KS(3C434F4D504C45544544003C5041494400877FFFFE60DAB993FFF5FE04) s4 s1 s2 s3 [] @\"058ab18d-7101-4b84-96d0-5aeaa1ead11e\" @\"ix_orders_qualified_completed\" true \n    right \n        [2] limit 1ll \n        [2] seek s1 s6 s7 s2 s3 s4 s5 none none [s8 = completedAt, s9 = discount, s10 = subtotal] @\"058ab18d-7101-4b84-96d0-5aeaa1ead11e\" true false \n"
+        }
+      },
+      "indexes": [
+        "ix_orders_qualified_completed"
+      ],
+      "nReturned": 3,
+      "totalDocsExamined": 60,
+      "totalKeysExamined": 60,
+      "executionTimeMillis": 5
+    },
+    "top-products": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "PROJECTION_SIMPLE",
+        "transformBy": {
+          "items": 1,
+          "_id": 0
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "orderStatus": 1,
+              "paymentStatus": 1,
+              "completedAt": -1,
+              "_id": -1
+            },
+            "indexName": "ix_orders_qualified_completed",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "orderStatus": [],
+              "paymentStatus": [],
+              "completedAt": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "orderStatus": [
+                "[\"COMPLETED\", \"COMPLETED\"]"
+              ],
+              "paymentStatus": [
+                "[\"PAID\", \"PAID\"]"
+              ],
+              "completedAt": [
+                "(new Date(1790812800000), new Date(1783036800000)]"
+              ],
+              "_id": [
+                "[MaxKey, MinKey]"
+              ]
+            }
+          }
+        }
+      },
+      "indexes": [
+        "ix_orders_qualified_completed"
+      ],
+      "nReturned": 60,
+      "totalDocsExamined": 60,
+      "totalKeysExamined": 60,
+      "executionTimeMillis": 6
+    },
+    "category-revenue": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "PROJECTION_SIMPLE",
+        "transformBy": {
+          "items": 1,
+          "_id": 0
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "orderStatus": 1,
+              "paymentStatus": 1,
+              "completedAt": -1,
+              "_id": -1
+            },
+            "indexName": "ix_orders_qualified_completed",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "orderStatus": [],
+              "paymentStatus": [],
+              "completedAt": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "orderStatus": [
+                "[\"COMPLETED\", \"COMPLETED\"]"
+              ],
+              "paymentStatus": [
+                "[\"PAID\", \"PAID\"]"
+              ],
+              "completedAt": [
+                "(new Date(1790812800000), new Date(1783036800000)]"
+              ],
+              "_id": [
+                "[MaxKey, MinKey]"
+              ]
+            }
+          }
+        }
+      },
+      "indexes": [
+        "ix_orders_qualified_completed"
+      ],
+      "nReturned": 60,
+      "totalDocsExamined": 60,
+      "totalKeysExamined": 60,
+      "executionTimeMillis": 5
+    },
+    "order-count": {
+      "winningPlan": {
+        "isCached": false,
+        "queryPlan": {
+          "stage": "GROUP",
+          "planNodeId": 2,
+          "inputStage": {
+            "stage": "COLLSCAN",
+            "planNodeId": 1,
+            "filter": {
+              "$and": [
+                {
+                  "createdAt": {
+                    "$lt": {
+                      "$date": "2026-10-01T00:00:00Z"
+                    }
+                  }
+                },
+                {
+                  "createdAt": {
+                    "$gte": {
+                      "$date": "2026-07-03T00:00:00Z"
+                    }
+                  }
+                }
+              ]
+            },
+            "direction": "forward"
+          }
+        },
+        "slotBasedPlan": {
+          "slots": "$$RESULT=s8 env: {  }",
+          "stages": "[2] project [s8 = newObj(\"_id\", s6, \"totalOrders\", s7)] \n[2] project [s6 = null, s7 = (convert ( s5, int32) ?: s5)] \n[2] group [] [s5 = count()] spillSlots[s4] mergingExprs[sum(s4)] \n[1] filter {(traverseF(s1, lambda(l3.0) { ((move(l3.0) < Date(1790812800000)) ?: false) }, false) && traverseF(s1, lambda(l4.0) { ((move(l4.0) >= Date(1783036800000)) ?: false) }, false))} \n[1] scan s2 s3 none none none none none none lowPriority [s1 = createdAt] @\"058ab18d-7101-4b84-96d0-5aeaa1ead11e\" true false "
+        }
+      },
+      "indexes": [],
+      "nReturned": 1,
+      "totalDocsExamined": 100,
+      "totalKeysExamined": 0,
+      "executionTimeMillis": 5
+    },
+    "order-status": {
+      "winningPlan": {
+        "isCached": false,
+        "queryPlan": {
+          "stage": "GROUP",
+          "planNodeId": 3,
+          "inputStage": {
+            "stage": "COLLSCAN",
+            "planNodeId": 1,
+            "filter": {
+              "$and": [
+                {
+                  "createdAt": {
+                    "$lt": {
+                      "$date": "2026-10-01T00:00:00Z"
+                    }
+                  }
+                },
+                {
+                  "createdAt": {
+                    "$gte": {
+                      "$date": "2026-07-03T00:00:00Z"
+                    }
+                  }
+                }
+              ]
+            },
+            "direction": "forward"
+          }
+        },
+        "slotBasedPlan": {
+          "slots": "$$RESULT=s9 env: {  }",
+          "stages": "[3] project [s9 = newObj(\"_id\", s6, \"count\", s8)] \n[3] project [s8 = (convert ( s7, int32) ?: s7)] \n[3] group [s6] [s7 = count()] spillSlots[s5] mergingExprs[sum(s5)] \n[3] project [s6 = (s1 ?: null)] \n[1] filter {(traverseF(s2, lambda(l3.0) { ((move(l3.0) < Date(1790812800000)) ?: false) }, false) && traverseF(s2, lambda(l4.0) { ((move(l4.0) >= Date(1783036800000)) ?: false) }, false))} \n[1] scan s3 s4 none none none none none none lowPriority [s1 = orderStatus, s2 = createdAt] @\"058ab18d-7101-4b84-96d0-5aeaa1ead11e\" true false "
+        }
+      },
+      "indexes": [],
+      "nReturned": 6,
+      "totalDocsExamined": 100,
+      "totalKeysExamined": 0,
+      "executionTimeMillis": 5
+    },
+    "customer-count": {
+      "winningPlan": {
+        "isCached": false,
+        "queryPlan": {
+          "stage": "GROUP",
+          "planNodeId": 2,
+          "inputStage": {
+            "stage": "COLLSCAN",
+            "planNodeId": 1,
+            "filter": {
+              "role": {
+                "$eq": "CUSTOMER"
+              }
+            },
+            "direction": "forward"
+          }
+        },
+        "slotBasedPlan": {
+          "slots": "$$RESULT=s8 env: {  }",
+          "stages": "[2] project [s8 = newObj(\"_id\", s6, \"totalCustomers\", s7)] \n[2] project [s6 = null, s7 = (convert ( s5, int32) ?: s5)] \n[2] group [] [s5 = count()] spillSlots[s4] mergingExprs[sum(s4)] \n[1] filter {traverseF(s1, lambda(l2.0) { ((move(l2.0) == \"CUSTOMER\") ?: false) }, false)} \n[1] scan s2 s3 none none none none none none lowPriority [s1 = role] @\"731567d7-79cd-4f86-9396-db8069b16eb0\" true false "
+        }
+      },
+      "indexes": [],
+      "nReturned": 1,
+      "totalDocsExamined": 40,
+      "totalKeysExamined": 0,
+      "executionTimeMillis": 2
+    },
+    "top-products-named-index": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "PROJECTION_SIMPLE",
+        "transformBy": {
+          "items": 1,
+          "_id": 0
+        },
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "orderStatus": 1,
+              "paymentStatus": 1,
+              "completedAt": -1,
+              "_id": -1
+            },
+            "indexName": "ix_orders_qualified_completed",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "orderStatus": [],
+              "paymentStatus": [],
+              "completedAt": [],
+              "_id": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "orderStatus": [
+                "[\"COMPLETED\", \"COMPLETED\"]"
+              ],
+              "paymentStatus": [
+                "[\"PAID\", \"PAID\"]"
+              ],
+              "completedAt": [
+                "(new Date(1790812800000), new Date(1783036800000)]"
+              ],
+              "_id": [
+                "[MaxKey, MinKey]"
+              ]
+            }
+          }
+        }
+      },
+      "indexes": [
+        "ix_orders_qualified_completed"
+      ],
+      "nReturned": 60,
+      "totalDocsExamined": 60,
+      "totalKeysExamined": 60,
+      "executionTimeMillis": 5
+    },
+    "top-products-natural": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "PROJECTION_SIMPLE",
+        "transformBy": {
+          "items": 1,
+          "_id": 0
+        },
+        "inputStage": {
+          "stage": "SORT",
+          "sortPattern": {
+            "completedAt": -1,
+            "_id": -1
+          },
+          "memLimit": 104857600,
+          "type": "simple",
+          "inputStage": {
+            "stage": "COLLSCAN",
+            "filter": {
+              "$and": [
+                {
+                  "orderStatus": {
+                    "$eq": "COMPLETED"
+                  }
+                },
+                {
+                  "paymentStatus": {
+                    "$eq": "PAID"
+                  }
+                },
+                {
+                  "completedAt": {
+                    "$lt": {
+                      "$date": "2026-10-01T00:00:00Z"
+                    }
+                  }
+                },
+                {
+                  "completedAt": {
+                    "$gte": {
+                      "$date": "2026-07-03T00:00:00Z"
+                    }
+                  }
+                }
+              ]
+            },
+            "direction": "forward"
+          }
+        }
+      },
+      "indexes": [],
+      "nReturned": 60,
+      "totalDocsExamined": 100,
+      "totalKeysExamined": 0,
+      "executionTimeMillis": 2
+    },
+    "admin-orders-latest": {
+      "winningPlan": {
+        "isCached": false,
+        "stage": "SORT",
+        "sortPattern": {
+          "createdAt": -1,
+          "_id": -1
+        },
+        "memLimit": 104857600,
+        "limitAmount": 20,
+        "type": "simple",
+        "inputStage": {
+          "stage": "COLLSCAN",
+          "direction": "forward"
+        }
+      },
+      "indexes": [],
+      "nReturned": 20,
+      "totalDocsExamined": 100,
+      "totalKeysExamined": 0,
+      "executionTimeMillis": 0
+    }
+  },
+  "indexedAndNaturalResultsEqual": true,
+  "newIndexesCreated": false
+}

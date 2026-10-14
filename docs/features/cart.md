@@ -2,7 +2,7 @@
 
 ## Goal
 
-Giỏ hàng persist server, source of truth để checkout. P0; chưa implement. Đọc ADR-004, BR-CART và Product read contract.
+Giỏ hàng persist server, source of truth để checkout. **PHASE05C backend IMPLEMENTED**, frontend deferred. Đọc ADR-004, BR-CART, [API contract](../api-contract.md) và [review](../phase-05c-review.md).
 
 ## Actors
 
@@ -30,11 +30,11 @@ Customer owner từ JWT; không route `/cart/:userId`. Admin/Guest mutation403/4
 | DELETE /cart/items/:lineId | {cartVersion} | 204 | 404 line;409 stale |
 | DELETE /cart | {cartVersion} | 204 | 409 stale |
 
-lineId opaque URL-encoded server ID. GET line fields: productId/name/image/currentPrice/quantity/selectedAttributes/lineTotal/available/issues; subtotal chỉ available lines và `checkoutAllowed=false` nếu có issue, không coi subtotal là báo giá cuối.
+lineId là SHA256 hex64 canonical do server tạo, truyền nguyên trong URL. GET line fields: lineId/productId/name/slug/image/currentPrice/quantity/selectedAttributes/stock/lineTotal/available/issues; subtotal chỉ available lines và `checkoutAllowed=false` nếu rỗng/có issue, không coi subtotal là báo giá cuối. Missing Product giữ dòng: name/slug/currentPrice=null, image rỗng, stock/lineTotal0. Issue codes PRODUCT_MISSING/PRODUCT_UNAVAILABLE/CATEGORY_UNAVAILABLE/SELECTION_CHANGED/STOCK_CONFLICT. Không nhận query. DELETE dùng JSON body; frontend GET sau204 lấy version mới. Clear Cart chưa có với version0 no-op; Cart tồn tại clear tăng version và giữ document.
 
 ## Data
 
-Read/write carts, read products/categories; no Orders/payments writes. Paths `api/cart.py`, `services/cart_service.py`, `repositories/cart_repository.py`, Product/Category read methods, `schemas/cart_schema.py`, `features/cart/`. Chỉ đọc checkout doc nếu task đổi contract Cart→Checkout.
+Read/write carts, read products/categories; no Orders/payments writes. Backend paths `app/api/cart.py`, `app/services/cart_service.py`, `app/services/commerce_pricing.py`, `app/repositories/cart_repository.py`, ProductRepository.find_many/CategoryRepository.find, `app/schemas/cart_schema.py`; tests `backend/tests/test_commerce.py`. Dependency Auth/current User và shared validation/errors/serialization. Frontend `features/cart/` chưa tạo. Owner/version CAS và unique userId index xử lý lazy insert race→CART_CHANGED409, không cơ chế version khác.
 
 ## Validation
 
@@ -58,6 +58,7 @@ Add/update/delete/clear persist cùng owner; current pricing; stock/selection/ve
 
 ## Testing Checklist
 
-- [ ] Merge/selection/total qty/invalid price và ownership.
-- [ ] Stock0/inactive/category archived/missing/price changed.
-- [ ] Stale/concurrent mutations, lazy upsert and empty Cart.
+- [x] Backend merge/canonical selection/shared total qty/invalid price và ownership.
+- [x] Stock0/inactive/category archived/missing/price changed; invalid line vẫn remove được.
+- [x] Stale/concurrent CAS, lazy insert unique guard và empty/clear retained version.
+- [ ] Frontend Cart UI/E2E deferred.

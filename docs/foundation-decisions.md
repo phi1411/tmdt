@@ -28,12 +28,14 @@ Ngày07/10/2026. Người dùng đã chấp nhận cấu trúc phase01 và yêu 
 | QUOTE_TTL_SECONDS | 300 | Quote5 phút; checkout luôn revalidate |
 | PAYMENT_HOLD_MINUTES | 15, chỉ VNPAY | Giữ stock bounded; retry không kéo dài Order deadline |
 | PAYMENT_EXPIRY_POLL_SECONDS | 30 | Explicit worker polling từ phase Payment; không TTL-delete |
-| JWT_ACCESS_TTL_SECONDS | 1800 | Memory token, login lại khi hết hạn; refresh deferred |
+| JWT_ACCESS_TTL_SECONDS | 1800 | FE-01A giữ state + sessionStorage theo tab; login lại khi hết hạn; refresh-token deferred |
 | REPORT_TIMEZONE | Asia/Ho_Chi_Minh | Báo cáo ngày/tháng VN; BSON lưu UTC |
 | REPORT_MAX_DAYS | 366 | Bounded aggregation window |
 | Price / quantity / lines | 1..1e9 VND /1..99 /<=50 | Bounded document/integer arithmetic |
 | Total Order | <=5e12 VND; VNPAY riêng<=9.999.999.999 VND | Safe JSON integer; provider amount12 chữ số sau×100 |
 | Addresses / images / attributes | <=10 /<=8 /<=30 keys, depth<=3 | Bounded arrays/documents; linh hoạt trong attributes |
+
+PHASE07A đồng bộ mô tả token với hành vi FE-01A đã bàn giao và kiểm tra F5 tại [frontend integration review](phase-fe-01a-integration-review.md): state + sessionStorage theo tab, xóa khi logout/401. Đây là ghi nhận implementation frontend hiện hữu; JWT access-only/TTL/live DB guards của backend giữ nguyên, không thêm refresh token hoặc cookieauth.
 
 VNPAY giới hạn amount theo [contract provider](https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html); checkout/quote reject payment VNPAY vượt cap **trước** trừ kho. COD dùng cap Order chung. Config invalid/blank phải fail khi feature cần config, không âm thầm đổi phí/TTL. Password policy12..128 ký tự; Argon2id cost default m19456/t2/p1, có thể tăng sau benchmark hashing ở runtime foundation; không cài dependencies trong phase02.
 

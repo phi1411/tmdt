@@ -1,0 +1,124 @@
+{
+  "phase": "07D",
+  "recordedAtUtc": "2026-10-12T09:11:58.316Z",
+  "database": "ecommerce_test",
+  "app": "current production bundle/same Flask source",
+  "checks": [
+    {
+      "name": "Customer/Admin UI login and local clone health",
+      "status": "PASS",
+      "automationSeconds": 2.95,
+      "details": {
+        "frontendPort": 5174,
+        "apiPort": 5002,
+        "database": "ecommerce_test"
+      }
+    },
+    {
+      "name": "Recover exact interrupted test Order, preserve dev fixture",
+      "status": "FAIL",
+      "errorType": "TimeoutError",
+      "message": "Waiting failed: 15000ms exceeded"
+    }
+  ],
+  "http": [
+    {
+      "page": "ADMIN",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/health",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/orders/6acca3ff676156e90eda3736",
+      "status": 200
+    }
+  ],
+  "screenshots": [],
+  "pageErrors": [],
+  "timingsAreAutomationOnly": true,
+  "human5MinuteTiming": "MANUAL_PENDING",
+  "human10MinuteTiming": "MANUAL_PENDING",
+  "offline": {
+    "mode": "DENY_NON_LOOPBACK_HTTP_HTTPS_IN_BROWSER_COLD_CACHE",
+    "blocked": [],
+    "localRequests": 0,
+    "hostNetworkDisconnected": false,
+    "backendNetworkBlocked": false
+  },
+  "status": "FAIL",
+  "recordedAtEndUtc": "2026-10-12T09:12:17.740Z"
+}

@@ -11,7 +11,8 @@ class SafeJSONFormatter(logging.Formatter):
             'time': datetime.now(timezone.utc).isoformat(), 'level': record.levelname,
             'event': getattr(record, 'event', 'application.log'),
         }
-        for key in ('request_id', 'method', 'endpoint', 'status', 'duration_ms', 'error_type'):
+        for key in ('request_id', 'method', 'endpoint', 'status', 'duration_ms', 'error_type',
+                    'actor_id', 'order_id', 'action', 'order_status', 'order_version', 'previous_order_status'):
             if hasattr(record, key):
                 event[key] = getattr(record, key)
         if record.exc_info and record.exc_info[2]:

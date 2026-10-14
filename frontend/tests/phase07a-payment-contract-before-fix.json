@@ -1,0 +1,35 @@
+{
+  "scope": "DETERMINISTIC_FRONTEND_CONTRACT_ONLY_NOT_LIVE_SANDBOX",
+  "checks": [
+    {
+      "name": "Initial URL fault replays exact checkout",
+      "status": "FAIL",
+      "error": "Must replay checkout, not create a new attempt\n\n1 !== 2\n"
+    },
+    {
+      "name": "Lost checkout response retains key/body",
+      "status": "FAIL",
+      "error": "Missing button Xác nhận đặt hàng"
+    },
+    {
+      "name": "Retry attempt URL fault retains key/body",
+      "status": "FAIL",
+      "error": "Attempt recovery changed key\n+ actual - expected\n\n+ 'chk-muzmozby-z4oy89vf7n75x2bv5kw2u'\n- 'chk-muzmozcx-vtihb8r6e4dmvc4uk13dmc'\n             ^\n"
+    },
+    {
+      "name": "Pending initial attempt does not show new retry",
+      "status": "FAIL",
+      "error": "Retry displayed for ineligible payment state"
+    },
+    {
+      "name": "Return rejects review-required retry",
+      "status": "FAIL",
+      "error": "Retry displayed for ineligible payment state"
+    },
+    {
+      "name": "Return rejects COD retry",
+      "status": "FAIL",
+      "error": "Retry displayed for ineligible payment state"
+    }
+  ]
+}

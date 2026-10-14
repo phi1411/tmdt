@@ -1,5 +1,9 @@
 # Sàn thương mại điện tử đa ngành — đồ án NoSQL
 
+**Trạng thái hiện tại14/10/2026:** NovaMart đã có React frontend, Flask backend, Auth/User, Catalog, Cart/Checkout/COD, Orders, Admin Dashboard và Payment implementation. Fullbackend674tests PASS; rehearsal với ảnh mới12nhóm PASS. MongoDB Atlas demo đã được nạp, Render runtime/blueprint sẵn sàng; public deployment đang thực hiện, chưa nghiệm thu. VNPAY Live Sandbox chưa PASS và đang disabled.
+
+Xem [hướng dẫn Render/Atlas](docs/render-deployment-guide.md), [kết quả kiểm thử mới](docs/render-deployment-review.md), [API contract](docs/api-contract.md) và [checklist bảo vệ](docs/pre-demo-checklist.md). `.env`/`.local`/credentials không thuộc repository. Các mục PHASE04 bên dưới giữ lịch sử foundation, không phải trạng thái feature hiện tại.
+
 **PHASE 04 hoàn thành Flask backend foundation; dừng để review.** App factory/config/PyMongo/health/errors/JWT-Argon2-guards/validation/logging đã hoạt động; 80 tests pass. Chỉ health IMPLEMENTED, các API nghiệp vụ/frontend vẫn PLANNED. Thiết kế MongoDB PHASE 02 và dữ liệu PHASE 03 giữ nguyên.
 
 MongoDB Community 8.0.32/WiredTiger, local replica set **rs0 PRIMARY**, DB **ecommerce_dev**. Python 3.12.14/PyMongo 4.15.3/Flask 3.1.3. Server local hiện tại: [GET health](http://127.0.0.1:5001/api/v1/health), trả 200; port private 5001 vì 5000 có ứng dụng khác.

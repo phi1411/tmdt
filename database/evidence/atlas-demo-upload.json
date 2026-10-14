@@ -1,0 +1,120 @@
+{
+  "status": "ATLAS_DATABASE_UPLOAD_PASS",
+  "recordedAtUtc": "2026-10-14T06:52:09.228176+00:00",
+  "sourceDatabase": "ecommerce_dev",
+  "targetDatabase": "novamart_demo",
+  "localWrites": 0,
+  "deleteDropResetReseedPerformed": false,
+  "applicationConfigChanged": false,
+  "sourceCounts": {
+    "users": 42,
+    "categories": 5,
+    "products": 182,
+    "carts": 1,
+    "orders": 101,
+    "payment_attempts": 30
+  },
+  "sourceFingerprintBefore": {
+    "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "sourceDocumentDigests": {
+    "users": "46fe1dbbd054600032cd091fbc0d3278549a57b1cab7a54e64363fdba1d64881",
+    "categories": "3cc859ec321e9d13557b84bacd0e16bba035a817abdd799692445e01136dec1a",
+    "products": "05ad7745eeb8f2beea90657aac54a7c34d666c6197afc672a7d5d5937c3bee07",
+    "carts": "99eb7abe99c77c47b747088d4441992cdc239acefc48a55e601b66f1e077c27e",
+    "orders": "1cba923d0832d495711bffa9b996a6e40e8c117a05cb1a6f0140e97fea6d0386",
+    "payment_attempts": "84508e2c09a1e88519683dd06ef967fb116fd55a9a849cbcfa68d69f63a6f26c"
+  },
+  "sourceSchema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "replicaSetDiscovered": "atlas-uczcqo-shard-0",
+  "targetEmptyBefore": true,
+  "targetCounts": {
+    "users": 42,
+    "categories": 5,
+    "products": 182,
+    "carts": 1,
+    "orders": 101,
+    "payment_attempts": 30
+  },
+  "documentChecks": {
+    "users": {
+      "count": 42,
+      "canonicalBsonEqual": true
+    },
+    "categories": {
+      "count": 5,
+      "canonicalBsonEqual": true
+    },
+    "products": {
+      "count": 182,
+      "canonicalBsonEqual": true
+    },
+    "carts": {
+      "count": 1,
+      "canonicalBsonEqual": true
+    },
+    "orders": {
+      "count": 101,
+      "canonicalBsonEqual": true
+    },
+    "payment_attempts": {
+      "count": 30,
+      "canonicalBsonEqual": true
+    }
+  },
+  "targetSchema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": {
+    "cartsWithoutUser": 0,
+    "cartItemsWithoutProduct": 0,
+    "ordersWithoutUser": 0,
+    "orderItemsWithoutProduct": 0,
+    "attemptsWithoutUser": 0,
+    "attemptsWithoutOrder": 0,
+    "attemptOwnershipMismatch": 0,
+    "productsWithoutCategory": 0
+  },
+  "sourceFingerprintAfter": {
+    "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "sourceExactUnchanged": true,
+  "transactionImportCommitted": true,
+  "aggregationOutputsEqual": true,
+  "aggregationDigests": {
+    "sales-summary": "70177e76fac416381b725e48626b907395b1a960fd35cdd97d3106ab3571cd8e",
+    "revenue-day": "26546c6c08158f8d7952ca3c795d0060c23a20d791c31b60912236bc7299e46e",
+    "top-products": "8b4e94b9754a5125251465d650e34612f61129975dd4f1f06ea31cbc1da0e737"
+  },
+  "aggregationRows": {
+    "sales-summary": 1,
+    "revenue-day": 15,
+    "top-products": 5
+  },
+  "backendFrontendDeployed": false,
+  "vnpayLive": "BLOCKED"
+}

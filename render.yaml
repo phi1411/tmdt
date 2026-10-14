@@ -1,0 +1,47 @@
+# Free is explicit; selecting paid compute requires the owner's decision.
+services:
+  - type: web
+    name: novamart-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements-render.txt
+    startCommand: python backend/serve.py
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: APP_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_REPLICA_SET
+        sync: false
+      - key: MONGODB_DB
+        value: novamart_demo
+      - key: MONGODB_TIMEOUT_MS
+        value: "15000"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_ISSUER
+        value: novamart-api
+      - key: JWT_AUDIENCE
+        value: novamart-web
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: VNPAY_ENABLED
+        value: "false"
+  - type: web
+    name: novamart-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: 24.15.0
+      - key: VITE_API_BASE_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -1,0 +1,26 @@
+{
+  "backend": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "674",
+    "time": "109.419",
+    "timestamp": "2026-10-14T14:16:32.259833+07:00",
+    "hostname": "DESKTOP-KMNS09Q"
+  },
+  "browserChecks": 12,
+  "httpStatuses": {
+    "200": 160,
+    "201": 3,
+    "422": 1
+  },
+  "pageErrors": 0,
+  "secretScanFindings": [],
+  "frontendHttpsApiBaseBuild": true,
+  "localBuildUnchanged": true,
+  "testEmpty": true,
+  "devUnchanged": true,
+  "benchmarkUnchanged": true,
+  "publicDeployment": false
+}

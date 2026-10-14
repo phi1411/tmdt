@@ -1,6 +1,6 @@
 # Quy tắc nghiệp vụ
 
-**LOCKED DESIGN v1 — PHASE02**, chưa có chức năng chạy. Đây là nguồn chuẩn behavior; exact shape ở database/validators, defaults/limits ở [foundation-decisions](foundation-decisions.md). Feature docs tham chiếu BR-* thay vì tự chọn rule.
+**LOCKED DESIGN v1 — PHASE02**, giữ nguyên qua backend05A Auth/User,05B Catalog và05C Commerce COD. Trạng thái implementation/evidence từng feature tại [API contract](api-contract.md), [review05C](phase-05c-review.md); VNPAY/Admin Orders/Dashboard/Frontend còn deferred theo phase. Đây là nguồn chuẩn behavior; exact shape ở database/validators, defaults/limits ở [foundation-decisions](foundation-decisions.md). Feature docs tham chiếu BR-* thay vì tự chọn rule.
 
 ## BR-AUTH — phân quyền và tài khoản
 

@@ -1,0 +1,64 @@
+{
+  "beforeReadIndexes": {
+    "products": {
+      "count": 30000,
+      "size": 19237756,
+      "storageSize": 3444736,
+      "totalIndexSize": 4603904,
+      "indexSizes": {
+        "_id_": 1187840,
+        "uq_products_sku": 1703936,
+        "uq_products_slug": 1712128
+      },
+      "nindexes": 3
+    },
+    "orders": {
+      "count": 10000,
+      "size": 23753626,
+      "storageSize": 5017600,
+      "totalIndexSize": 1196032,
+      "indexSizes": {
+        "_id_": 319488,
+        "uq_orders_code": 425984,
+        "uq_orders_checkout": 450560
+      },
+      "nindexes": 3
+    }
+  },
+  "afterReadIndexes": {
+    "products": {
+      "count": 30000,
+      "size": 19237756,
+      "storageSize": 3444736,
+      "totalIndexSize": 6283264,
+      "indexSizes": {
+        "_id_": 1187840,
+        "uq_products_sku": 1703936,
+        "uq_products_slug": 1712128,
+        "ix_products_category_price": 851968,
+        "ix_products_type_price": 827392
+      },
+      "nindexes": 5
+    },
+    "orders": {
+      "count": 10000,
+      "size": 23753626,
+      "storageSize": 5017600,
+      "totalIndexSize": 1449984,
+      "indexSizes": {
+        "_id_": 319488,
+        "uq_orders_code": 425984,
+        "uq_orders_checkout": 450560,
+        "ix_orders_qualified_completed": 253952
+      },
+      "nindexes": 4
+    }
+  },
+  "indexBuildClientMs": {
+    "ix_products_category_price": 216.1491,
+    "ix_products_type_price": 213.2712,
+    "ix_orders_qualified_completed": 157.555
+  },
+  "writeUpdateBenchmark": "NOT_MEASURED",
+  "note": "Extra index storage and maintenance on insert/update; no write throughput claim."
+}

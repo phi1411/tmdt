@@ -1,4 +1,5 @@
 """Bounded retry; callbacks only perform MongoDB operations."""
+from time import sleep
 from pymongo.errors import PyMongoError
 from pymongo.read_concern import ReadConcern
 from pymongo.write_concern import WriteConcern
@@ -26,5 +27,8 @@ def catalog_transaction(callback):
                 if session.in_transaction:
                     session.abort_transaction()
                 if isinstance(error, PyMongoError) and error.has_error_label('TransientTransactionError') and attempt < 2:
+                    # Aborted transactions must give the competing writer time to commit.
+                    # Finite 20/40ms backoff; never replay an unknown commit outcome.
+                    sleep(0.02 * (2 ** attempt))
                     continue
                 raise

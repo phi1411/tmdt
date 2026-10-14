@@ -1,5 +1,15 @@
 # Kịch bản bảo vệ trực tiếp
 
+## Kịch bản hiện hành — PHASE07C
+
+Ưu tiên [bản 5 phút](demo-script-5min.md); [bản 10 phút](demo-script-10min.md) thêm lifecycle COD và Dashboard delta. [Compass từng click](compass-demo-steps.md), [checklist](pre-demo-checklist.md), [20 Q&A](defense-qa.md), [evidence index](defense-evidence-index.md), [readiness và giới hạn](phase-07c-demo-readiness.md).
+
+Web/API đã có sau các phase ứng dụng. Dùng Customer `defense07c@example.test`, Admin `admin@example.test` và hai Product **riêng** `DEFENSE-07C-ELE/FAS`; password chỉ local private. Polymorphic demo chọn seed `DEMO-ELE-001`, `DEMO-FAS-001`, **DEMO-HOM-019** để có power/capacity/voltage. Luồng COD → Order mới → đổi price A/B → snapshot giữ A → Dashboard/pipeline → benchmark index 07B. Bản 5 phút giữ PENDING và hủy sau proof; không làm thay đổi seed, không reset/reseed.
+
+07C đã kiểm tra real API/MongoDB và fixture ảnh rỗng trên Web; native Compass capture/input lỗi nên GUI/timed Web rehearsal còn gate thủ công. Đoạn dưới là lịch sử chuẩn bị PHASE03/06B/07B, không dùng câu “chưa có API login/Web” làm mô tả hệ thống hiện tại.
+
+## Lịch sử chuẩn bị PHASE03 và bổ sung các phase sau
+
 **PHASE03: dữ liệu/validator/aggregation/index/roundtrip đã kiểm thử trực tiếp. Chưa rehearsal UI Compass hoặc Web.** MongoDB local chạy với DB ecommerce_dev. Kịch bản Web/API bên dưới dành cho phase ứng dụng sau; không dùng fixture seed để tuyên bố checkout đã chạy.
 
 ## Demo DB có thể thực hiện ngay
@@ -16,6 +26,8 @@ Tài khoản development nằm trong `.local/demo-credentials.md`; chưa có API
 
 ## Chuẩn bị
 
+PHASE06B có thể demo bằng Postman/HTTP khi chưa có Web: ADMIN gọi `/admin/orders/:id/confirm`, `/ship`, `/complete` với expectedVersion mới mỗi bước; revenue tăng sau complete đúng subtotal/units, không shipping. Chọn from/to UTC bao phủ completedAt mới, kiểm tra day/month/Top5/category/status. Seed read-only `[2026-07-03T00:00:00Z,2026-10-01T00:00:00Z)` kỳ vọng10.103.259.022VND/434units/100Orders/39Customers. [Review06B](phase-06b-review.md); HTTP evidence dùng ecommerce_test và cleanup fixtures, không sửa seed permanent/completedAt thủ công. UI/gateway không nghiệm thu bởi worker06B.
+
 Verify seed 180 Product/100 Order/3 ngành/2–5 item. Chuẩn bị 1 Customer +1 Admin, Cart trống, Product demo điện thoại giá10 triệu stock đủ, một áo thun. Khóa browser timezone hiển thị Việt Nam, report khoảng bao phủ dữ liệu seed và demo hiện tại. Kết nối replica set trước; không reset giữa kịch bản. Dự kiến VNPAY ở phần bổ sung khi có merchant sandbox/IPN, không thay COD trong demo barem.
 
 ## Luồng chính theo 3 SV
@@ -29,6 +41,8 @@ Verify seed 180 Product/100 Order/3 ngành/2–5 item. Chuẩn bị 1 Customer +
 Thời gian demo tại Việt Nam; DB timestamps UTC. Nếu hôm nay ngoài dataset anchor, chọn khoảng phù hợp; không sửa completedAt thủ công để ép báo cáo.
 
 ## Bằng chứng bổ sung
+
+PHASE07B performance đã pass: dùng database **ecommerce_benchmark** riêng30.000Products/10.000Orders, [bảng BEFORE/AFTER](evidence/performance/benchmark-summary.md) và [talk track30–60s](phase-07b-performance-review.md#defense-talk-track). Natural COLLSCAN vs named/unhinted IXSCAN, docs/keys và exact same results; Category selector30.000→20docs, Revenue/Top510.000→152. Full Product repository có lookup/count khác selector, không lấy20docs làm latency toàn API. Giữ dev180Products/100Orders/41Users, không demo drop index dev. Rehearsal Compass screenshots thuộc07C;07B chỉ tạo JSON/text evidence và để benchmark dataset sẵn. [Script setup/run/reproduce/cleanup](../scripts/performance/README.md).
 
 - CRUD: tạo/sửa/ẩn Product; tạo Category, duplicate validation; thử DELETE referenced Category→409. Show Postman API contract nếu được hỏi.
 - **SV2+SV3 — performance:** query thật trên collection benchmark riêng; baseline natural scan và compound index; show winningPlan/COLLSCAN/IXSCAN, totalDocsExamined/totalKeysExamined/executionTimeMillis, client p50/p95. Không hứa thời gian giảm trên data100; explain cardinality là evidence.

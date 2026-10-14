@@ -40,6 +40,20 @@ class ProductRepository:
     def find(self, product_id, session):
         return self.collection.find_one({'_id': product_id}, PRODUCT_PROJECTION, session=session)
 
+    def find_many(self, product_ids, session=None):
+        return list(self.collection.find({'_id': {'$in': list(product_ids)}}, PRODUCT_PROJECTION, session=session))
+
+    def decrement_stock(self, product, quantity, now, session):
+        return self.collection.update_one(
+            {'_id': product['_id'], 'version': product['version'], 'status': 'ACTIVE',
+             'stock': {'$gte': quantity}, '$and': [{'version': {'$lt': 2147483647}}]},
+            {'$inc': {'stock': -quantity, 'version': 1}, '$set': {'updatedAt': now}}, session=session).matched_count
+
+    def restore_stock(self, product_id, quantity, now, session):
+        return self.collection.update_one(
+            {'_id': product_id, 'version': {'$lt': 2147483647}, 'stock': {'$lte': 2147483647 - quantity}},
+            {'$inc': {'stock': quantity, 'version': 1}, '$set': {'updatedAt': now}}, session=session).matched_count
+
     def referenced(self, category_id, session):
         return self.collection.find_one({'categoryId': category_id}, {'_id': 1}, session=session) is not None
 

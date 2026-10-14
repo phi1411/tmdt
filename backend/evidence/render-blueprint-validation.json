@@ -1,0 +1,8 @@
+{
+  "status": "SCHEMA_VALIDATION_PASS",
+  "schemaUrl": "https://render.com/schema/render.yaml.json",
+  "schemaSha256": "f5a85f494e2aac911627c574acd17ccda314bfd1129c102222ee26b97e004068",
+  "backendPlan": "free",
+  "services": 2,
+  "renderApiValidation": false
+}

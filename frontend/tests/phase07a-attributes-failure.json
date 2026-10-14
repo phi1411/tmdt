@@ -1,0 +1,685 @@
+{
+  "checks": [
+    {
+      "name": "Development and isolated application health",
+      "status": "PASS"
+    },
+    {
+      "name": "Guest UI/API Admin guard",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin login through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin Category create/read/edit/delete through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin Product create/read through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer registration/login through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer browse/search/filter Product",
+      "status": "PASS"
+    },
+    {
+      "name": "Polymorphic attributes API and UI for all 3 types",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer Add Cart then Update Cart through UI",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer Address create/select and Checkout quote",
+      "status": "PASS"
+    },
+    {
+      "name": "Disabled VNPAY quote fallback then COD recovery",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer COD Order/Success/My Orders/Detail/Cancel",
+      "status": "PASS"
+    },
+    {
+      "name": "Create second Order for Admin lifecycle and snapshot",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin edit name/price preserves flexible live attributes",
+      "status": "FAIL",
+      "message": "Admin edit silently deleted unexposed attributes\n+ actual - expected\n\n+ undefined\n- '5000mAh'\n"
+    }
+  ],
+  "http": [
+    {
+      "page": "SECURITY",
+      "method": "GET",
+      "path": "/api/v1/categories",
+      "status": 200
+    },
+    {
+      "page": "SECURITY",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "SECURITY",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "SECURITY",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "SECURITY",
+      "method": "GET",
+      "path": "/api/v1/health",
+      "status": 200
+    },
+    {
+      "page": "SECURITY",
+      "method": "GET",
+      "path": "/api/v1/admin/users",
+      "status": 401
+    },
+    {
+      "page": "ADMIN",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "POST",
+      "path": "/api/v1/admin/categories",
+      "status": 201
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "PATCH",
+      "path": "/api/v1/admin/categories/6ac7a52d442f2c8655b0f71e",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "DELETE",
+      "path": "/api/v1/admin/categories/6ac7a52d442f2c8655b0f71e",
+      "status": 204
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "POST",
+      "path": "/api/v1/admin/categories",
+      "status": 201
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "POST",
+      "path": "/api/v1/admin/products",
+      "status": 201
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "PATCH",
+      "path": "/api/v1/admin/products/6ac7a530442f2c8655b0f720",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "status": 201
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/categories",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/categories",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products/phase07a-phone-muzmah27",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products/nike-air-jordan-1-red-and-black-066",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products/silver-pot-with-glass-cap-149",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products/phase07a-phone-muzmah27",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/cart/items",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "PATCH",
+      "path": "/api/v1/cart/items/6daa59271091e44d907a312765e3acbb8534e481d9cf02646b4730d71f60eedd",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/users/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/users/me/addresses",
+      "status": 201
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/users/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 503
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "status": 201
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/orders/6ac7a53c442f2c8655b0f724",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/orders/6ac7a53c442f2c8655b0f724/cancel",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/products/6ac7a530442f2c8655b0f720",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/products/phase07a-phone-muzmah27",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/cart/items",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/users/me",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "status": 201
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/products/6ac7a530442f2c8655b0f720",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "PATCH",
+      "path": "/api/v1/admin/products/6ac7a530442f2c8655b0f720",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/admin/products",
+      "status": 200
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "page": "SECURITY",
+      "message": "Failed to load resource: the server responded with a status of 401 (UNAUTHORIZED)"
+    },
+    {
+      "page": "CUSTOMER",
+      "message": "Failed to load resource: the server responded with a status of 503 (SERVICE UNAVAILABLE)"
+    }
+  ],
+  "consoleWarnings": [],
+  "requestFailures": [
+    {
+      "page": "ADMIN",
+      "url": "http://127.0.0.1:5174/api/v1/admin/categories/6ac7a52d442f2c8655b0f71e",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "views": [
+    {
+      "productType": "ELECTRONICS",
+      "attributeKeys": [
+        "warrantyMonths",
+        "ram",
+        "battery",
+        "customSpecification"
+      ]
+    },
+    {
+      "productType": "FASHION",
+      "attributeKeys": [
+        "sourceCategory",
+        "sourceProductId",
+        "dimensions",
+        "sizes",
+        "colors",
+        "material",
+        "gender",
+        "sole"
+      ]
+    },
+    {
+      "productType": "HOME_APPLIANCE",
+      "attributeKeys": [
+        "sourceCategory",
+        "sourceProductId",
+        "dimensions",
+        "material",
+        "capacity",
+        "dishwasherSafe",
+        "useCase",
+        "care"
+      ]
+    }
+  ],
+  "status": "FAILED",
+  "failure": "AssertionError [ERR_ASSERTION]: Admin edit silently deleted unexposed attributes\n+ actual - expected\n\n+ undefined\n- '5000mAh'\n\n    at file:///C:/Users/Admin/Documents/ChatGPT/tmdt/frontend/tests/phase07a-full-system.mjs:223:12\n    at async step (file:///C:/Users/Admin/Documents/ChatGPT/tmdt/frontend/tests/phase07a-full-system.mjs:40:51)\n    at async file:///C:/Users/Admin/Documents/ChatGPT/tmdt/frontend/tests/phase07a-full-system.mjs:218:3"
+}

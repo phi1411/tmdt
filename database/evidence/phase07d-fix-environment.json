@@ -1,0 +1,644 @@
+{
+  "phase": "07D-FIX",
+  "recordedAtUtc": {
+    "$date": "2026-10-14T06:11:01.760Z"
+  },
+  "version": "8.0.32",
+  "replicaSet": "rs0",
+  "primary": true,
+  "devBaseline": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "benchmarkBaseline": {
+    "digest": "22c0c7807a4664efcb720c6bf6495a389116c5e60dfda799a512c1227af1c2c0",
+    "counts": {
+      "users": 40,
+      "categories": 30,
+      "products": 30000,
+      "carts": 0,
+      "orders": 10000,
+      "payment_attempts": 0
+    }
+  },
+  "fixture": {
+    "userId": "6ac7a52e87e692850a155381",
+    "products": [
+      {
+        "_id": {
+          "$oid": "6ac7a52f87e692850a155384"
+        },
+        "sku": "DEFENSE-07C-ELE",
+        "slug": "defense-07c-dien-thoai",
+        "price": 10000000,
+        "stock": 20,
+        "images": [],
+        "attributes": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo CPU 07C"
+        },
+        "version": 5
+      },
+      {
+        "_id": {
+          "$oid": "6ac7a52f87e692850a155386"
+        },
+        "sku": "DEFENSE-07C-FAS",
+        "slug": "defense-07c-ao-thun",
+        "price": 200000,
+        "stock": 20,
+        "images": [],
+        "attributes": {
+          "sizes": [
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black"
+          ],
+          "material": "Cotton"
+        },
+        "version": 3
+      }
+    ],
+    "cartEmpty": true,
+    "phoneAddressReady": true
+  },
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": {
+    "cartsWithoutUser": 0,
+    "cartItemsWithoutProduct": 0,
+    "ordersWithoutUser": 0,
+    "orderItemsWithoutProduct": 0,
+    "attemptsWithoutUser": 0,
+    "attemptsWithoutOrder": 0,
+    "attemptOwnershipMismatch": 0,
+    "productsWithoutCategory": 0
+  },
+  "liveApi": {
+    "health": {
+      "status": "ok",
+      "checks": {
+        "backend": "ok",
+        "database": "ok",
+        "replicaSet": "ok"
+      }
+    },
+    "products": [
+      {
+        "id": "6ac7a52f87e692850a155386",
+        "createdAt": "2026-10-08T14:14:07.112Z",
+        "updatedAt": "2026-10-08T14:14:13.517Z",
+        "version": 3,
+        "sku": "DEFENSE-07C-FAS",
+        "name": "Áo thun bảo vệ 07C",
+        "slug": "defense-07c-ao-thun",
+        "productType": "FASHION",
+        "price": 200000,
+        "attributes": {
+          "sizes": [
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black"
+          ],
+          "material": "Cotton"
+        },
+        "categoryId": "6ac7a52f87e692850a155385",
+        "brand": "NovaMart Demo",
+        "description": "Fixture bảo vệ; giá/spec mô phỏng, không giao dịch tiền thật.",
+        "stock": 20,
+        "images": [],
+        "category": {
+          "id": "6ac7a52f87e692850a155385",
+          "name": "Demo bảo vệ 07C Thời trang",
+          "slug": "defense-07c-fashion",
+          "productType": "FASHION"
+        }
+      },
+      {
+        "id": "6ac7a52f87e692850a155384",
+        "createdAt": "2026-10-08T14:14:07.030Z",
+        "updatedAt": "2026-10-08T14:14:13.598Z",
+        "version": 5,
+        "sku": "DEFENSE-07C-ELE",
+        "name": "Điện thoại bảo vệ 07C",
+        "slug": "defense-07c-dien-thoai",
+        "productType": "ELECTRONICS",
+        "price": 10000000,
+        "attributes": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo CPU 07C"
+        },
+        "categoryId": "6ac7a52e87e692850a155383",
+        "brand": "NovaMart Demo",
+        "description": "Fixture bảo vệ; giá/spec mô phỏng, không giao dịch tiền thật.",
+        "stock": 20,
+        "images": [],
+        "category": {
+          "id": "6ac7a52e87e692850a155383",
+          "name": "Demo bảo vệ 07C Điện tử",
+          "slug": "defense-07c-electronics",
+          "productType": "ELECTRONICS"
+        }
+      }
+    ],
+    "cart": {
+      "version": 3,
+      "items": [],
+      "subtotal": 0,
+      "currency": "VND",
+      "issues": [],
+      "checkoutAllowed": false
+    },
+    "orders": [
+      {
+        "id": "6ac7a53587e692850a155388",
+        "createdAt": "2026-10-08T14:14:13.374Z",
+        "updatedAt": "2026-10-08T14:14:13.517Z",
+        "orderCode": "ORD-6AC7A53587E692850A155388",
+        "total": 10230000,
+        "currency": "VND",
+        "paymentMethod": "COD",
+        "paymentStatus": "UNPAID",
+        "paymentReviewRequired": false,
+        "orderStatus": "CANCELLED",
+        "version": 2
+      }
+    ]
+  },
+  "dashboardWindow": {
+    "from": "2026-10-01T00:00:00Z",
+    "to": "2026-11-01T00:00:00Z"
+  },
+  "liveDashboard": {
+    "summary": {
+      "totalRevenue": 0,
+      "totalProductsSold": 0,
+      "totalOrders": 1,
+      "totalCustomers": 41,
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-10-01T00:00:00.000Z",
+      "to": "2026-11-01T00:00:00.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-14T06:10:56.947Z"
+    },
+    "revenue": {
+      "series": [
+        {
+          "bucket": "2026-10-01",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-02",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-03",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-04",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-05",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-06",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-07",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-08",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-09",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-10",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-11",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-12",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-13",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-14",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-15",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-16",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-17",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-18",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-19",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-20",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-21",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-22",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-23",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-24",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-25",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-26",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-27",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-28",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-29",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-30",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-10-31",
+          "revenue": 0,
+          "orders": 0
+        },
+        {
+          "bucket": "2026-11-01",
+          "revenue": 0,
+          "orders": 0
+        }
+      ],
+      "interval": "day",
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-10-01T00:00:00.000Z",
+      "to": "2026-11-01T00:00:00.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-14T06:10:56.977Z"
+    },
+    "top-products": {
+      "items": [],
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-10-01T00:00:00.000Z",
+      "to": "2026-11-01T00:00:00.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-14T06:10:56.984Z"
+    },
+    "category-revenue": {
+      "items": [],
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-10-01T00:00:00.000Z",
+      "to": "2026-11-01T00:00:00.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-14T06:10:57.007Z"
+    },
+    "order-status": {
+      "items": [
+        {
+          "status": "PENDING",
+          "count": 0
+        },
+        {
+          "status": "CONFIRMED",
+          "count": 0
+        },
+        {
+          "status": "SHIPPING",
+          "count": 0
+        },
+        {
+          "status": "COMPLETED",
+          "count": 0
+        },
+        {
+          "status": "CANCELLED",
+          "count": 1
+        },
+        {
+          "status": "EXPIRED",
+          "count": 0
+        }
+      ],
+      "dateBasis": "createdAt",
+      "currency": "VND",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "from": "2026-10-01T00:00:00.000Z",
+      "to": "2026-11-01T00:00:00.000Z",
+      "revenueBasis": "PAID_COMPLETED_MERCHANDISE",
+      "fetchedAt": "2026-10-14T06:10:57.023Z"
+    }
+  },
+  "testCloneCounts": {
+    "users": 42,
+    "categories": 5,
+    "products": 182,
+    "carts": 1,
+    "orders": 101,
+    "payment_attempts": 30
+  },
+  "mutationsTarget": "ecommerce_test_only",
+  "vnpayEnabled": false,
+  "protectedHashes": {
+    "backend/app/config.py": "8f163897160ca8f3da707d085ee9ac25f1ffc4ff81ff3dd3ca0aa5aceaf32d07",
+    "backend/app/__init__.py": "fd26b97d17e70a279e9637a7308562cfa3247c1807f72a2356a3733a812351e0",
+    "backend/app/api/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/api/admin_dashboard.py": "5f8b7d81d4cc67e4d47964499d2f6e5ed73997ec55510c48162ac78e85e9d96c",
+    "backend/app/api/admin_orders.py": "bf07c301d8d9f218187e5a896e6df948ca70d25994234a79d75b59dedd161e88",
+    "backend/app/api/admin_products.py": "7a83c1bceda5bc5b508f060ff8d8fdfd28cfd5ed4c790fc712606dfeb2c8efb1",
+    "backend/app/api/admin_users.py": "db1a385e53b4f685b2d8f69bd1c85111f38b0ddea6443aacf4c4502b5bfd1b69",
+    "backend/app/api/auth.py": "38899df66aa194506aad14005db4d0e97bdb5fb7484d365b9982139f0546f2cf",
+    "backend/app/api/cart.py": "0b6d1f088bda3cd2be63400b2d45370a8366c14bd2dbee9f21a7b92675ce922c",
+    "backend/app/api/categories.py": "aa84497da55d09aa9cf397fdf576431c3276a5730c5b6fa1102a3aacbcb291b7",
+    "backend/app/api/checkout.py": "b7f46b6cff69aac1503e841dfde0ea7ac242d24b9340e23ffbcf2bf048aba0e3",
+    "backend/app/api/health.py": "1852315220df67d5af81db770e57bf52950fe413c94a08a34f6d5fb5ef1bb2be",
+    "backend/app/api/orders.py": "9deb3a9a4f012e35c33b4b265211dd18c5883095a40d4be9f69e6cd527895f7a",
+    "backend/app/api/payments.py": "bc84b86e197cdafcef5b5bc2ddbdae1afba9776ab6a3dcf7b77e9bd8c6b62075",
+    "backend/app/api/products.py": "ec1cee018e087ae09ae959827e23a753bb72dffbc5209114b16d6839e6258d14",
+    "backend/app/api/users.py": "bc9dd1670b52fa826dd8937d5d5d4fc83efb6b031d6eb2555cb3fad99b3bf28c",
+    "backend/app/api/__init__.py": "dacef289489b7d4da0384d255489e8f87290772b6470ebea43334d94f3e24327",
+    "backend/app/auth/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/auth/passwords.py": "4ca6ff4ebaf826c408dce2e59f8dd5a7a1507cee048ccacdffca0bbb31ffd9a6",
+    "backend/app/auth/rate_limit.py": "6f7c5f7d9f3e78883420037dce36fe48437d631360c31f3120925ebe829eb5b8",
+    "backend/app/auth/tokens.py": "1ddad8df7d2fab9a67444bbd64e1a31ef6a26d2c715ba82b73624bbb42988835",
+    "backend/app/auth/__init__.py": "0838538fe464bc4082866fb0b1756ba0f7da6af12e314774539be324e34017ae",
+    "backend/app/db/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/db/__init__.py": "094e19516d05ae2c9dc652715b1952fc315b4ad6e457db7915aa0440ee323e20",
+    "backend/app/errors/handlers.py": "522f8592421697529fcee98845b5fd371b1eb40fabeb41ff35ea85ea8de98055",
+    "backend/app/errors/__init__.py": "93401bf5987c94a3a303fd39da0aa4a9752033caaab9095a1c8b3b54fa49d509",
+    "backend/app/repositories/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/repositories/cart_repository.py": "3ea53eda05b295e0fe682bee348fe12bfeb3add8ab16a6d7e3552292f7f73e3e",
+    "backend/app/repositories/category_repository.py": "1d01f4534d15ffa498576b75b344246dd1e83441077b8f324ff8089b7868d3ef",
+    "backend/app/repositories/dashboard_repository.py": "433895c5497aaebf0ec36b5ad7f305e28e6ee737365cacf08f63031588bb7ce3",
+    "backend/app/repositories/order_repository.py": "0cf2f0bb16fa647863c49e6e34646c46449f5450d9764f7d35975681a52c21cf",
+    "backend/app/repositories/payment_attempt_repository.py": "38576bdadbbf73c8c0c689da568fc46d1dec9508c9012fec27a20cad7ef04379",
+    "backend/app/repositories/product_repository.py": "625443b4b43144227cfbe6ab04e19534e4cab0369f583b391c1f348fde0429c2",
+    "backend/app/repositories/user_repository.py": "24d91f52a833046a36c30ee74d8f17a23e910426cbbd85b8c598daf680951699",
+    "backend/app/repositories/__init__.py": "24480a54968fe793224fc95ca493e2ceac02adcab6a81fb1d6e7a8f1fccd38b3",
+    "backend/app/schemas/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/schemas/admin_order_schema.py": "2b44dc30759afea6032cecaeb7d8fa86831ab7c3fba6463959f90168cf358491",
+    "backend/app/schemas/admin_user_schema.py": "43aa78f91af676f53c1a5057c0fe03e236d68261518b719b3af76ff3e9cc74c2",
+    "backend/app/schemas/auth_schema.py": "dcefbc45fa1b59330d2e0d5bf82e02a9baab7e6b3f309f84d2bcfa00105b7195",
+    "backend/app/schemas/cart_schema.py": "39c683cbd03d2bbeffcfddaee1e18e2e5f2371c922a6f8c1ede507db73e1f32d",
+    "backend/app/schemas/catalog_schema.py": "b4da2ea3be42c092afcadc9e555980a01bf253fd5bd7873c4d66de01f88c5cbc",
+    "backend/app/schemas/category_schema.py": "3b9f8584bde8e00153b8dc596554d6936111ea3122b436919e7b4cbb8b6c40b2",
+    "backend/app/schemas/checkout_schema.py": "ad58ce47b75d64b928f82aeab1fbd49c1c66b5e1032e824936ab2880f81c52ca",
+    "backend/app/schemas/dashboard_schema.py": "109d963ecbe43e083796311b57152b6f863cc818d5e142cfef4eee01bde38af0",
+    "backend/app/schemas/order_schema.py": "0ec61f8b7c7e75229c84e6fa2a04b11ed9e59eed6a226b0edec4e0a8b7e6ac69",
+    "backend/app/schemas/pagination.py": "36291e61172736b57f2f4e5f8b075924c312b87e566be303ec93b52001d51370",
+    "backend/app/schemas/product_schema.py": "f27c84a385c0d5fd08d548218905b624da3d2e5f41211739aacbea537f2bc628",
+    "backend/app/schemas/query_contract.py": "d84d4b09975caff22164a590bb7a17ff0fda8f04aca0c8817008b43e45855cc2",
+    "backend/app/schemas/user_response.py": "e5a35139d1607a994123c65439a2ad222fc4177927eeff3e9e95706da7ef9d57",
+    "backend/app/schemas/user_schema.py": "e36ac9480298a7c1a489d0ba68afaac7b5a4dc813bbc49d056daf6b20fc5bcf3",
+    "backend/app/schemas/validation.py": "6a89f260261fbb44a686525f4b64c91c4366bfb2c454ab5e7fff6a09dc3c8af2",
+    "backend/app/schemas/__init__.py": "c61653d52cd7f8d5d2f4f8b19b0ec57a17032a755976d37d824d1882efff66b6",
+    "backend/app/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/services/auth_service.py": "1b05ebe5888f0ca1650d6d312495f49d89957d389254feb507d9d1d9574ea643",
+    "backend/app/services/cart_service.py": "b4ea431f04efa2b52659a95cb549dddbdb4d49d616e028a3ab788ac292e5e21b",
+    "backend/app/services/catalog_transaction.py": "5163ecd215492e871483a171d63cf943fef3ab17b3877c2f907ffe30e7daff90",
+    "backend/app/services/category_service.py": "fb5704e2cbf62811743e2f61e7634d1c2130a1e890960482202d76cdab7a8e77",
+    "backend/app/services/checkout_service.py": "c9a8a85ccaf22d5c3a6df86fe5f658c8c44d35a01a226d6d6cbb497715e57d2b",
+    "backend/app/services/commerce_pricing.py": "df320972069d7e9b0ab1d252478246fded460798df45ffd4634b984a8c6e07ba",
+    "backend/app/services/dashboard_service.py": "335abe4a24cca0cff2143e4263109cec98ffcfe58753f52519f426191fd8448f",
+    "backend/app/services/health_service.py": "2ee8e993b3422251543c5d57856bc05689ae9fbc1807cdb6f13fb6875b579b41",
+    "backend/app/services/order_service.py": "5e11c10ab9b199aaa3e23012669573198928db64d9ae38b24929002fd01b7d07",
+    "backend/app/services/payment_service.py": "29611d1dddef94fa34d6ad3882c1815bc956c6ef396512db4da338f6bbb06e58",
+    "backend/app/services/product_service.py": "ab0d008d8b5dfe1cbb98f386f020cb3e2d2cad77960026404f352932fb2cd413",
+    "backend/app/services/user_service.py": "cf191586836189b7a1bf7b0452e902ca0b14f76362c7edc8345b883204a868af",
+    "backend/app/services/vnpay_provider.py": "40d1eacb32977c6fbf82a62d3048dbae96b52505910ee0e8112069370a6162d8",
+    "backend/app/services/__init__.py": "fd9e5b6de48bd99733dea790f09e0f5c73068026e96fe8f7a805aa5cbd3d03e6",
+    "backend/app/utils/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/utils/ids.py": "9429af198fab52ae8f01133ffaff7661b6eabcb4bf745794464c1e71bb5f4176",
+    "backend/app/utils/logging.py": "c781de76ed2587b3fd707cd9cd2006e9e01548b1f17bccf517975928b929b71f",
+    "backend/app/utils/responses.py": "309b7befee8954967183219fc6de72f6fdbe7ffd4417e7543fdc8da503d6867d",
+    "backend/app/utils/serialization.py": "0e6f862415dcd6a2fc8679fbbfcbd3901068e499186d394e63054444124d4869",
+    "backend/app/utils/__init__.py": "57d335a41e2fb16715fc0cefdb912946696794a3a86fe0e04bce8c78a23a1649",
+    "frontend/src/App.tsx": "01ef51b386bd86352aed6a1d82efe7d209192f4dc13d5a0cb32d7b633e6727be",
+    "frontend/src/index.css": "b189aae522fd1a8dcbfbee7e1ac3a0829034ad4581b43a1312d9029d6b8aaf35",
+    "frontend/src/main.tsx": "14a10dee4aaa2130d9f57c136db7f16f95f524d60d77146b17776e91c2ab626c",
+    "frontend/src/api/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/api/adminCategoriesApi.ts": "1d9e5868e066dcc3e6fc8a635aea074ce678223842556347d568d631554cc7be",
+    "frontend/src/api/adminOrdersApi.ts": "8af09eef90afeb04085e84ade88960bb22f986d2c9e41396496c8f1b1624a6bc",
+    "frontend/src/api/adminProductsApi.ts": "1ce252f55f8d14552d2679ca591a193ad887b6b0cfc18caa47f1bcedd8ccc3d0",
+    "frontend/src/api/adminUsersApi.ts": "e1e78628fc6ce550fbb7770656dd01a82a673f3d94f3fb63cf851d5bc8e45a71",
+    "frontend/src/api/authApi.ts": "a4153d21e7622280f976a051dd4840a3f1db582751ac572e26793ea2adf959ae",
+    "frontend/src/api/cartApi.ts": "f16f8a532b5521b0fc17fb794e4295c2f3e6213f7a0f7f4ae4fa2cb96bcd3b58",
+    "frontend/src/api/catalogApi.ts": "0ce3879f740aa79652d601ae1829647df0605de8ae777edd9576bb42ea07bf59",
+    "frontend/src/api/checkoutApi.ts": "8dbe326c4515efbea666bc9666df446d34541b690605a335dd352b389e3c3c61",
+    "frontend/src/api/client.ts": "9cf06b8f426232b4c51eba4d981f01ff35be3f3b5a9805eb164df329ab6fd817",
+    "frontend/src/api/dashboardApi.ts": "fc2197fb79e9ea87a208b52cb400db16391a25bc051e275ed476e2b2b20a0c3c",
+    "frontend/src/api/orderApi.ts": "f571df85e35ffea0dd8529e9cc21b668a27c809a2f7c30c4fbc4072faa0519f3",
+    "frontend/src/api/paymentApi.ts": "0ea88a5e1bc457a926267fdc72cdedd7709c20b0eaae10ca3bbb9a594db5eaa5",
+    "frontend/src/api/userApi.ts": "b17f15ac7d7242f5b2b0f8facab7c61b1fce919a2d5dd32a0a2dba03b5180422",
+    "frontend/src/components/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/contexts/AuthContext.tsx": "54122e3194720eb338ee957f92d48c228c2ca3b50680bb4b05d61b2632ad3d73",
+    "frontend/src/contexts/CartContext.tsx": "430665776eb30b031ad5fc927de322708d88ba4d1bf8fd37e963259926be6e72",
+    "frontend/src/contexts/ToastContext.tsx": "143354aa5ec874471af7775f7f1b752a537ebd8b767a2fe1bde5c62fc9937423",
+    "frontend/src/features/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/hooks/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/layouts/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/layouts/AccountLayout.tsx": "8d8924e1f9ba20823c6fa281b1fe2ca9df8483c2bdbb723f10c52fe0189527d4",
+    "frontend/src/layouts/AdminLayout.tsx": "ae90b328a076e0f4580755b6758fe3106eda45fcacf1ab45a0a370a8d0ebf2ee",
+    "frontend/src/layouts/RootLayout.tsx": "a441a0486c733cb0d221c7c3c7774bb627b89e6af7a60fcae6697d030583e8e4",
+    "frontend/src/pages/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/pages/AddressesPage.tsx": "6b795cbd59ff6561728a60578ba49d40b4791b60fccfae68aba9eaf9e7a170a7",
+    "frontend/src/pages/AdminCategoriesPage.tsx": "1ae4991710487f22b5589f30a413ff32b16518695dda8a42123fd8a2586ecd50",
+    "frontend/src/pages/AdminDashboardPage.tsx": "55354d2ed17fbf145e4e819892b3db51fed3022688c7fcf92a34fd869d1c540a",
+    "frontend/src/pages/AdminOrderDetailPage.tsx": "ca1cb046c7ca55ed79e9646f5f673275e715b13854a541d17d356ca1c691d76c",
+    "frontend/src/pages/AdminOrdersPage.tsx": "5019970b005dda0fdc4b05219d8509fdfa4f625c8b01618e20ad06f4482a7c53",
+    "frontend/src/pages/AdminProductFormPage.tsx": "7fc5ed65cca84384091a8c2ffacd9f637ccbe1742760e6b89555f9fe553de6ed",
+    "frontend/src/pages/AdminProductsPage.tsx": "991f1607dd765cdebd838da255876205f038cb28c2ba16c091621d1d328e26fd",
+    "frontend/src/pages/AdminUsersPage.tsx": "f0e58e64d3858dee5c598a0d301fe5445f423db43692617ebf682fd2a89ecd81",
+    "frontend/src/pages/CartPage.tsx": "72a296a85045c65e63c9f0721e79b3153c0aa1acaf05aaf50f724a585fe247f4",
+    "frontend/src/pages/CheckoutPage.tsx": "e51de5226fc80f4b65b6d5a2d32c067a09f5114c0db5ef4690907037e8e95ee7",
+    "frontend/src/pages/HomePage.tsx": "e6e2bd7f8b152555bcf488896705162eb83b408db2d98d4ba45591e20888ec71",
+    "frontend/src/pages/LoginPage.tsx": "947ad64084654b30542c36720b0fac91b0df2485dc192dc007340bd1cb7d296f",
+    "frontend/src/pages/NotFoundPage.tsx": "f4cfd3d47f38aeaeb642ad24ffb722cfb9692776bbb5b58f9dbc69609bd347f1",
+    "frontend/src/pages/OrderDetailPage.tsx": "de9e3ec4c52d535b519dccef4b67461c797f7d3f40e7c2c801927fe3c9cc2f68",
+    "frontend/src/pages/OrdersPage.tsx": "a0591740fb7fcf8dfba26d9991fc9696c0413ea5de2a898e963d20a66f7349b0",
+    "frontend/src/pages/OrderSuccessPage.tsx": "e12d7bfd134dfae41ef337441bccdd307fe82ebd74469a32b1d48f8e10e3075b",
+    "frontend/src/pages/PaymentReturnPage.tsx": "c20df665cca867ea45fbe6ef35d7be169ac5afedf9fc94bc46d33c87a000e90b",
+    "frontend/src/pages/ProductDetailPage.tsx": "0ce411680e3680500ba576b4082a037c912fc873bd17d16a62bbe0a0a6f7e1ec",
+    "frontend/src/pages/ProductsPage.tsx": "8291b9d4367db78a2d878ebe6c45f1e0afe5d3728ef00a835cebd53c47fd065f",
+    "frontend/src/pages/ProfilePage.tsx": "066f7caf29c482554ea3b095ab54787369c441fb7f333eee0fa5984031f9212f",
+    "frontend/src/pages/RegisterPage.tsx": "f2170d9c6805fc77d942f9c56e2257b8b131b2cd59cf1627e39e418915dd042a",
+    "frontend/src/routes/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/routes/AppRoutes.tsx": "3902fb2f15a3b6e6e59df6c9f3442ee4a43f328849601dbdea0eef59ad6684ba",
+    "frontend/src/routes/ProtectedRoute.tsx": "f86eb889ced9a8b4e1ce020350e3635eebd804df5094f0d4524929bbf6e9cb8e",
+    "frontend/src/types/adminCategory.ts": "779d7c24252dd0dad3b94baa5928b198e95d0055d36ab5d27a7edd831f82a375",
+    "frontend/src/types/adminOrder.ts": "8dfd258f57c043cf78f7251df36b828e56c4c9159f29e2849f3f0b3beb09d698",
+    "frontend/src/types/adminProduct.ts": "dcae00dfa2ca3a4262e84ad13cfe8b4c54265b8b4ef866d1db677da1953a66d3",
+    "frontend/src/types/adminUser.ts": "e46a618f39d2fe03867c38adc5f21137859eb84a0531189d253df1af193374d8",
+    "frontend/src/types/api.ts": "2d606031a368eba8fba0b7837827db503e5aa4b37e99d1766559fd7a08336c89",
+    "frontend/src/types/auth.ts": "463f5def2b7a7d35d3a91fbf746118bba50c06d9a6a807eb9846072cfc7a12d2",
+    "frontend/src/types/cart.ts": "de83d0a12b37898305155d2cccefa752b8f8bf8df49c7caf4e0fcfae672dc43f",
+    "frontend/src/types/checkout.ts": "07f94870f3d13e9a9e37d6a9fd0c031f65b996d26ccbbcd8396abb4abca0d91b",
+    "frontend/src/types/dashboard.ts": "bd974de03848f719383b6c34f7d8fe88ef5c1601005ae8bcae8a4990eb176167",
+    "frontend/src/types/order.ts": "04041f660542e425b2954284967e9024bb39453da787f00974f4b767a33666db",
+    "frontend/src/types/payment.ts": "330c52b2bacf36e81273b0e63a04186c1c0d34568d279e9819d7dd2c8fea3fca",
+    "frontend/src/types/product.ts": "dac11028645e7bd7f6c9738fd9f9d6fe238e44c865a35ee1dfd954b19cc414cc",
+    "frontend/src/types/user.ts": "d1c3a8fd6801c7d740b29a834d789251fdf202763bd510880817b17478c565d6",
+    "frontend/src/utils/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/utils/cn.ts": "9304a861c8673bee09e0f12de31773abbde503b02e59dfd74763ddec2e37cf05",
+    "frontend/src/utils/formatters.ts": "7b79f81124986a6b7e66168d6950fc308f32fc1d5e29252f448f67b0398c5136",
+    "frontend/src/utils/idempotency.ts": "c39509719dac46a743f2198b6364f7147eb989b06a9c5e66191a380cfd0e5343",
+    "frontend/src/components/common/Footer.tsx": "20539105854c3bbe58963be31c9ae4af00b7c71f0c9208188530129a39405376",
+    "frontend/src/components/common/Navbar.tsx": "8e0b1e5b4fca7536877cd1a969e1292d1995e58cf28bd7aaa219b7969dd5a9b0",
+    "frontend/src/components/common/ProductCard.tsx": "9b0d9a8fe310fbf4ae202132fb6a7155deeda6dfb608503701f45c2befdc3348",
+    "frontend/src/components/common/ProductCardSkeleton.tsx": "77f8c6538f09548cda71040be0d9e34c9fb7baa95d393c5dec13d3dbef59467d",
+    "frontend/src/components/ui/Badge.tsx": "3ec0027098a7897a7754562b718f79bf4ed1febdc6c9acc71732945115333fef",
+    "frontend/src/components/ui/Button.tsx": "6ed544debbade0357407401dfed562cd37e1ba79a005fc4585b4b783c90c28bc",
+    "frontend/src/components/ui/EmptyState.tsx": "3f2de2e0e535711f5208d36d9ead2904e58e33de1702c55df56c6cf0684828fa",
+    "frontend/src/components/ui/ErrorState.tsx": "df6d2dab34e3839c70b8b865fcd4ecb2adae8cdca79f2abc82b93d2b8a7aca13",
+    "frontend/src/components/ui/Input.tsx": "ca320382dbda19af1875774d099b28772307eb5b70a83a6bc7e66e386b1f3782",
+    "frontend/src/components/ui/Modal.tsx": "694baa1f8f12bcb26c1a516b0647fc348ff1a967ce62e9b55e6949bbd401b498",
+    "frontend/src/components/ui/Pagination.tsx": "7408e7bed6611b6adef13842ddee44ddcc370870964f6c303742d4fd68a8e8e8",
+    "frontend/src/components/ui/Skeleton.tsx": "720ede7e4ce33c57576978914f50a3b594ce0c14b1d0fca5d66d2b6662e10033",
+    "database/validators/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "database/validators/carts.json": "169f190d1144f020aca52e9a42ae907516db96939addb92e70375eecd0e935f7",
+    "database/validators/categories.json": "e580bba5dcda9914148904bc24a26837d707a150f5a7d81430b4028d4462c754",
+    "database/validators/orders.json": "585716dbafcd915d2808db00feb9f06e491e34ab0010653ecbe4649cbd6ca715",
+    "database/validators/payment_attempts.json": "dbb59a8a5d87226aad70669b5fc578323a759b87e8f75b182d40f43a65842d5d",
+    "database/validators/products.json": "204f5dc8e674fb7239a7563e4fdd1cea50073b71be4d83452ff67562060da7cb",
+    "database/validators/README.md": "6311182d30efccd1fee361ea5f66b1e80878ba59fc1aeebdc943f4a1a69f23cf",
+    "database/validators/users.json": "f4e8a9b150436790d05f5643d14202fbd366f63d9fc371487582db513910d6cb",
+    "database/aggregations/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "database/aggregations/category-revenue.json": "672088ae58fd55242168652ecaee15adc23818002eddbaa70ff074c9dea7faec",
+    "database/aggregations/customer-count.json": "dba12c6aee940a0b23dddf21425dfba235915c90097d594be8bf660ef2eadaa6",
+    "database/aggregations/order-count.json": "a65523f096b945fe79901ebc79a74fdbc34dd3b8836b91fb8587de40553fe46e",
+    "database/aggregations/order-status.json": "8e4a798d0250ecdaf0f828a66c1d1566ce88bcff9ed65d2254004d936b2f6798",
+    "database/aggregations/README.md": "b4ba36bb2ec1cf0a7ad55099f2e0cbbf6a3b10ab352c42219c3302e0b07bd780",
+    "database/aggregations/revenue-day.json": "6d5d24046903534042fda827a3164e8f693717ded277de51f4ae2f4febc0c9d9",
+    "database/aggregations/revenue-month.json": "16c855957762910a881a1680d364bb75bfe007bcba73a544cf23cf5b1f809862",
+    "database/aggregations/sales-summary.json": "4038e37ba490e5c7a431a57d0fb494faf9da1d94c84071226d23ffa6f8e9cd66",
+    "database/aggregations/top-products.json": "cb8198a05ada76f2056777a36fa46b6e5ee157acaae25117a2fe11b619a153ad",
+    "database/indexes/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "database/indexes/candidate-indexes.json": "f0c3005e575f68c6433e3c95da3d0173a5a5c2cc63101bf97772b433ee969cbe",
+    "database/indexes/README.md": "43487a2763c8ca5e287ed1d0cd7509b01d2b229ab126ae545d484cb41fe99fd6",
+    "docs/evidence/performance/after-index.json": "84a752f28dca24d4a49ff11f28b540074d4305571134738b15845b129cff0294",
+    "docs/evidence/performance/aggregation-explain.json": "df2c6a76fe90c5766908e60d92555dc43ea8aff321a64ed6681b29e4927d773c",
+    "docs/evidence/performance/before-index.json": "c27876fc33b7c2f08c728b72e6962065ac757f6f130d2e9334cb03d8563d7a9e",
+    "docs/evidence/performance/benchmark-results.json": "fa51aa93cce96a47517915be941d510499194927438dd9ad564a193c1ef8e836",
+    "docs/evidence/performance/benchmark-summary.md": "b3207bc0f5e1dc9e8ee01097b345f02094cc4658b4a58c1f80214e3c416905f1",
+    "docs/evidence/performance/dataset-manifest.json": "a6a7bd38eac56a8679ae75f6887b8d358a6a712ac064c5481b9d5809c19228fa",
+    "docs/evidence/performance/dev-integrity-all.json": "b8f591557c8ef45bedb6ae3d994d3b34a927389def681d4af0b8eb3f6a1e419d",
+    "docs/evidence/performance/dev-integrity-reproduce.json": "7f8fa1ab539ea4fed2cfbcefdc66a64a43c525adc4e9129cdbf3bd7be8bc1d2e",
+    "docs/evidence/performance/dev-seed-smoke.json": "f25a9c6a055e1c4a87ceeaf42dc7c5308e9e285a0870ff4d61b77b1fc70e06a6",
+    "docs/evidence/performance/final-verification.json": "137700e091a25664e13b837c6aeae46fe8ac46438739fd7b0d7d72fc8f8b28ef",
+    "docs/evidence/performance/index-audit.json": "6f279885dd6bd30b715c28f792bea1803c4ac3f350bb656ebffc6bf3293736a4",
+    "docs/evidence/performance/README.md": "0051af476a88c710ee39bd901f280a1f1a53597247c79b83096cae31274dff43",
+    "docs/evidence/performance/reproducibility-verification.json": "be3177ac4da12ef1372fcf31264da50e9b43193ddda55fc7a0199a7ad74c8c50",
+    "docs/evidence/performance/safety-verification.json": "9f74ee555baec39408293149d9d9c332acd7083d0ff441dc14d79387ad874b29",
+    "docs/evidence/performance/storage.json": "bdc544f4d230738c03ce21139f4470b16f536d4d209b9eb2842cbf8c8909da51",
+    "database/evidence/phase07c-benchmark-index.mongodb.js": "bb6e003b2979db54eb860df4bfcbc2c2712179963271eb24eae55bc460e3243f",
+    "database/evidence/phase07c-benchmark-query.json": "5978b4643140b13c2f6df96418231d6775e6f04da080f177fc8d26f639d8af4e",
+    "database/evidence/phase07c-check.json": "7292010bcb6e52d00ccf8c9006e97ccca5000ae5db9974e919fb9e15533d8ac1",
+    "database/evidence/phase07c-final-verification.json": "8413c2b1ac2a40a46c841d8b288c87ad4db93d616e0176545714b814eef39f24",
+    "database/evidence/phase07c-index.mongodb.js": "838ce8c423798c90a2ab662f348e9c84b19944ef02fcbe2d07c9621b9d50c55e",
+    "database/evidence/phase07c-prepare.json": "4c0c758f50f47879f3768fd995c01af0c3d03af0aa0a21056561d0b83f3a743a",
+    "database/evidence/phase07c-query-verification.json": "7ce31435cb5f297a8fa59e90cb009a36bf03fe8bbbd64f9367696bb9eb62cfec",
+    "database/evidence/phase07c-rehearse.json": "eaba86c3246b826f0a20b4bc14daed1dea71f2e1fffc437ee362336bece122e3",
+    "database/evidence/phase07c-revenue-day.compass.txt": "25086bab50338cb5ded941b42d8e2e73f0e1ff61a59d3baef490f924f84191fa",
+    "database/evidence/phase07c-revenue-day.ejson": "984e8ab9de5f964df71953441aba417fbbcc9fa8343e040610080ca10c38a1c7",
+    "database/evidence/phase07c-top-products.compass.txt": "732138cf25c31d2f31b301216adfa98d3e50994c03926e83fb772eee897dc6e9",
+    "database/evidence/phase07c-top-products.ejson": "ad6f4a151519d232860bf5670142c0defcf713bf948c0387ae46d5ec14efb320",
+    "docs/api-contract.md": "010c6a07f94a1bd145eb375bc19302098e5ddff7be48b8576eb8d87053553939",
+    "frontend/package.json": "7a9a5052d51d4177471802f9ab72e68a48aef7851b1c9ea0cf2af3e7e2622611",
+    "frontend/vite.config.ts": "3978aadd541b74f97657c95f10d39627f3b6abe0d3d57d199ea6f5122f6045cb"
+  }
+}

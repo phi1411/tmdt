@@ -2,7 +2,7 @@
 
 ## Goal
 
-Dashboard chứng minh MongoDB xử lý doanh thu/time/Top5 và các metric sản phẩm. P0 doanh thu/Top5; P1 metrics bổ sung. Chưa implement/chạy pipeline. Đọc BR-REPORT và ADR-005.
+Dashboard chứng minh MongoDB xử lý doanh thu/time/Top5 và các metric sản phẩm. Backend PHASE06B IMPLEMENTED:5API/8canonical pipelines trên MongoDB thật; frontend chưa làm. Đọc BR-REPORT/ADR-005 và [review06B](../phase-06b-review.md).
 
 ## Actors
 
@@ -25,30 +25,30 @@ All `/admin/dashboard/*` ADMIN server auth. Guest/Customer không nhận raw rep
 | Method / path | Request | Response data | Error |
 | --- | --- | --- | --- |
 | GET /admin/dashboard/summary | from,to UTC | 200 summary + reportMetadata | 401/403/422/503 |
-| GET /admin/dashboard/revenue | from,to,interval=day/month | 200 {series:[{bucket,revenue,orders}],...metadata} | 401/403/422 |
-| GET /admin/dashboard/top-products | from,to | 200 {items:[{productId,productName,quantity,revenue}],...metadata} max5 | 401/403/422 |
-| GET /admin/dashboard/category-revenue | from,to | 200 {items:[{categoryId,categoryName,revenue}],...metadata} | 401/403/422 |
-| GET /admin/dashboard/order-status | from,to | 200 {items:[{status,count}],dateBasis:createdAt,...metadata} | 401/403/422 |
+| GET /admin/dashboard/revenue | from,to,interval=day/month | 200 {series:[{bucket,revenue,orders}],...metadata} | 401/403/422/503 |
+| GET /admin/dashboard/top-products | from,to | 200 {items:[{productId,productName,quantity,revenue}],...metadata} max5 | 401/403/422/503 |
+| GET /admin/dashboard/category-revenue | from,to | 200 {items:[{categoryId,categoryName,revenue}],...metadata} | 401/403/422/503 |
+| GET /admin/dashboard/order-status | from,to | 200 {items:[{status,count}],dateBasis:createdAt,...metadata} | 401/403/422/503 |
 
-Envelopes/bucket/time metadata api-conventions canonical. Không endpoint nhận pipeline JSON từ client.
+Envelopes/bucket/time metadata api-conventions canonical. from/to bắt buộc; revenue interval mặc định day. Metadata `{currency,timezone,from,to,revenueBasis,fetchedAt}` với VND/Asia/Ho_Chi_Minh/PAID_COMPLETED_MERCHANDISE, times UTC milliseconds Z. Revenue thêm interval, status thêm dateBasis. Không endpoint nhận pipeline JSON hoặc tự thêm payment method/status charts ngoài design.
 
 ## Data
 
-Read orders snapshots, users for customer count, no writes; no Product lookup. Paths `api/admin_dashboard.py`, `services/dashboard_service.py`, `repositories/dashboard_repository.py`, `schemas/dashboard_schema.py`; canonical artifacts `database/aggregations/`; frontend `features/admin-dashboard/`. Direct dependencies Order schema/BR-REPORT, user.role count, index ADR; không đọc Cart/Payment adapter/Review implementation.
+Source dưới `backend/app`: `api/admin_dashboard.py`, `services/dashboard_service.py`, `repositories/dashboard_repository.py`, `schemas/dashboard_schema.py`; canonical `database/aggregations/`; test `backend/tests/test_admin_analytics.py`. Read-only Order snapshots/users customer count, no Product/Category lookup. Direct dependencies BR-REPORT/Order schema/user.role count/index ADR/auth/validation/envelopes; không Cart/Payment adapter/Review. Frontend vẫn dự kiến.
 
 ### Canonical aggregation design
 
 Pipeline definitions chỉ ở [database/aggregations](../../database/aggregations/README.md): Revenue Day/Month, Top5, CategoryRevenue, SalesSummary, OrderCount/Status và CustomerCount. Exact EJSON/stage/field mappings ở đó; feature doc không giữ bản pipeline thứ hai.
 
-Revenue pipeline match/group/sort, Top5 match/unwind/group/sort/limit; mọi historical metrics đọc snapshot và không lookupProduct. BR-REPORT/ADR007 là semantic source; runtime repository sau này decode/bind JSON designs, không cho client gửi arbitrarypipeline.
+Repository decode EJSON canonical với tz-aware Date, cache8templates/deep-copy/bind range vào initial match. Không duplicate pipeline trong backend. Top5 match/sort latest/unwind/group/sort rank/limit/project, no lookup. Summary dùng sales-summary/order-count/customer-count; các reports còn lại dùng đúng artifact. maxTimeMS10000/allowDiskUse=false; backend không tải Orders về Python để cộng/group, chỉ metadata/default/bucket filling.
 
 ## Validation
 
-from<to, Dates parse UTC, interval enum, range cap đã khóa366ngày; timezone cố định, no client pipeline/field name. completedAt required khi COMPLETED trong service. Revenue/units long/integer tránh float; API kiểm tra safe range.
+Full ISO UTC seconds/Z/+00:00/fractional1..6, năm tối đa9998 tránh calendar overflow; from/to bắt buộc, from<to, window<=366×24h. Interval day/month, ZoneInfo Asia/Ho_Chi_Minh, unknown/repeated query422. Daily/monthly labels YYYY-MM-DD/YYYY-MM. Bucket điền0 nếu giao window, tối đa367day buckets khi partial-day boundaries. Money/units integer0..2^53-1; vượt giới hạn→503, không float rounding.
 
 ## Edge Cases
 
-No qualified orders, only cancelled/unpaid, month/day boundary VN, shipping>0, top tie/<5 products, renamed Product/Category, out-of-range/stale data. Live checkout PENDING không làm revenue tăng đến completed+paid.
+No qualified orders→summary0 (Customers vẫn global), Top/category[], series bucket0. Status đủ6states PENDING/CONFIRMED/SHIPPING/COMPLETED/CANCELLED/EXPIRED, missing count0. VN month/day/leap boundaries, shipping>0, top ties/<5, renamed/missing current Product/Category không đổi report. PENDING không tăng revenue; COD completion delta subtotal. Các query/HTTP reports độc lập, không cam kết snapshot xuyên calls.
 
 ## Security
 
@@ -60,11 +60,12 @@ KPI cards nhãn rõ doanh thu hàng hóa, Customers toàn hệ thống; day/mont
 
 ## Acceptance Criteria
 
-MongoDB thật trả metrics đúng fixture450 revenue/8 units/Top5, đủ4 stages trong Top5, no history lookup/current prices, no frontend raw Order calculation. Dashboard động sau COD completion, index/explain evidence và timezone đúng. Definition đã khóa tại ADR007; runtime correctness và benchmark vẫn kiểm tra phase sau.
+MongoDB thật trả fixture450 revenue/8units/Top5, đủ4required stages, no live history lookup/current prices, COD completion delta đúng, timezone/explain evidence. Definition giữ ADR007; full benchmark/UI kiểm tra phase sau.
 
 ## Testing Checklist
 
-- [ ] Fixture totals/day/month/top/category/status/customer date bases.
-- [ ] Shipping excluded, unwind no duplicate order total, Product price10→12 does not alter report.
-- [ ] Timezone/from-to/empty/ties/renames, Admin authorization.
-- [ ] Explain with/without index equal results; Web API network and live demo delta.
+- [x] Fixture450/8units, dates/status/global Customers/empty/default buckets.
+- [x] Shipping excluded, unwind không nhân Order total; live Product đổi giá/name/delete không đổi report.
+- [x] Timezone/range/leap/boundaries/ties/Top5 limit/authorization/query allowlists.
+- [x] Mongo executionStats, named-index/natural equal results, real HTTP và COD completion delta.
+- [ ] Frontend/Web rehearsal/full benchmark chưa triển khai.

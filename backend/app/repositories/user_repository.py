@@ -27,6 +27,11 @@ class UserRepository:
     def find_profile(self, user_id):
         return self.database.users.find_one({'_id': user_id}, PROFILE_PROJECTION)
 
+    def find_checkout_user(self, identity, session=None):
+        return self.database.users.find_one(
+            {'_id': identity['_id'], 'status': 'ACTIVE', 'role': 'CUSTOMER',
+             'tokenVersion': identity['tokenVersion']}, PROFILE_PROJECTION, session=session)
+
     def find_account(self, user_id):
         return self.database.users.find_one({'_id': user_id}, ACCOUNT_PROJECTION)
 

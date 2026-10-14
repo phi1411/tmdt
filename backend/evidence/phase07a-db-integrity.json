@@ -1,0 +1,76 @@
+{
+  "status": "DATABASE_INTEGRITY_PASS",
+  "devBefore": {
+    "digest": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+    "counts": {
+      "users": 41,
+      "categories": 3,
+      "products": 180,
+      "carts": 0,
+      "orders": 100,
+      "payment_attempts": 30
+    }
+  },
+  "devAfter": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "originalCorpusDigest": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+  "originalCorpusUnchanged": true,
+  "externalFixtures": {
+    "phase": "07C",
+    "account": "defense07c@example.test",
+    "preserved": true,
+    "evidence": "database/evidence/phase07c-rehearse.json",
+    "counts": {
+      "users": 1,
+      "categories": 2,
+      "products": 2,
+      "carts": 1,
+      "orders": 1,
+      "payment_attempts": 0
+    }
+  },
+  "devWritesBy07A": 0,
+  "fixtureCleanupCounts": {
+    "payment_attempts": 30,
+    "orders": 107,
+    "carts": 4,
+    "products": 183,
+    "categories": 6,
+    "users": 45
+  },
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": {
+    "cartsWithoutUser": 0,
+    "cartItemsWithoutProduct": 0,
+    "ordersWithoutUser": 0,
+    "orderItemsWithoutProduct": 0,
+    "attemptsWithoutUser": 0,
+    "attemptsWithoutOrder": 0,
+    "attemptOwnershipMismatch": 0,
+    "productsWithoutCategory": 0
+  },
+  "testEmpty": true,
+  "testSchema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "retainedAccountPresent": true,
+  "resetPerformed": false,
+  "reseedPerformed": false
+}

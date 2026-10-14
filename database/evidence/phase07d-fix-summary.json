@@ -1,0 +1,79 @@
+{
+  "phase": "07D-FIX",
+  "recordedAtUtc": "2026-10-14T06:15:47.095035+00:00",
+  "status": "WEB_PRICE_EDITOR_FIX_AND_FUNCTIONAL_REHEARSAL_PASS_MANUAL_GATES_PENDING",
+  "backendTests": {
+    "total": 658,
+    "passed": 658,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 108.085
+  },
+  "frontendBuild": {
+    "strict": true,
+    "exitCode": 0,
+    "modules": 2237,
+    "seconds": 15.58,
+    "warning": "chunk >500kB"
+  },
+  "browser": {
+    "checks": 11,
+    "passed": 11,
+    "failed": 0,
+    "http": 147,
+    "statuses": {
+      "200": 143,
+      "422": 1,
+      "201": 3
+    },
+    "pageErrors": [],
+    "adminMutationChannel": "REAL_BROWSER_ADMIN_FORM_NO_API_FALLBACK"
+  },
+  "devUnchangedAfterPytest": true,
+  "benchmarkUnchangedAfterPytest": true,
+  "testEmptyAfterPytest": true,
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "testSchema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": {
+    "cartsWithoutUser": 0,
+    "cartItemsWithoutProduct": 0,
+    "ordersWithoutUser": 0,
+    "orderItemsWithoutProduct": 0,
+    "attemptsWithoutUser": 0,
+    "attemptsWithoutOrder": 0,
+    "attemptOwnershipMismatch": 0,
+    "productsWithoutCategory": 0
+  },
+  "applicationChangesSince07A": [
+    "frontend/src/pages/AdminProductFormPage.tsx"
+  ],
+  "protectedChangesDuringRehearsal": [],
+  "compass": {
+    "version": "1.52.0",
+    "applicationOpened": true,
+    "accessibilityRead": true,
+    "guiQueryGate": "MANUAL_PENDING",
+    "inputError": "coordinate input geometry is unavailable",
+    "attempts": 2
+  },
+  "humanTiming": "MANUAL_PENDING",
+  "hostOffline": "MANUAL_PENDING",
+  "vnpayLive": "BLOCKED",
+  "privateEnvValueScan": {
+    "files": 11,
+    "matches": 0
+  },
+  "commitCreated": false,
+  "pushPerformed": false
+}

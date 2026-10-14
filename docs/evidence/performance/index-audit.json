@@ -1,0 +1,501 @@
+{
+  "devIndexes": {
+    "users": {
+      "_id_": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      },
+      "uq_users_email": {
+        "v": 2,
+        "key": {
+          "email": 1
+        },
+        "name": "uq_users_email",
+        "unique": true
+      }
+    },
+    "categories": {
+      "_id_": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      },
+      "uq_categories_slug": {
+        "v": 2,
+        "key": {
+          "slug": 1
+        },
+        "name": "uq_categories_slug",
+        "unique": true
+      }
+    },
+    "products": {
+      "_id_": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      },
+      "uq_products_sku": {
+        "v": 2,
+        "key": {
+          "sku": 1
+        },
+        "name": "uq_products_sku",
+        "unique": true
+      },
+      "uq_products_slug": {
+        "v": 2,
+        "key": {
+          "slug": 1
+        },
+        "name": "uq_products_slug",
+        "unique": true
+      },
+      "ix_products_category_price": {
+        "v": 2,
+        "key": {
+          "status": 1,
+          "categoryId": 1,
+          "price": 1,
+          "_id": 1
+        },
+        "name": "ix_products_category_price"
+      }
+    },
+    "carts": {
+      "_id_": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      },
+      "uq_carts_user": {
+        "v": 2,
+        "key": {
+          "userId": 1
+        },
+        "name": "uq_carts_user",
+        "unique": true
+      }
+    },
+    "orders": {
+      "_id_": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      },
+      "uq_orders_code": {
+        "v": 2,
+        "key": {
+          "orderCode": 1
+        },
+        "name": "uq_orders_code",
+        "unique": true
+      },
+      "uq_orders_checkout": {
+        "v": 2,
+        "key": {
+          "userId": 1,
+          "checkoutKey": 1
+        },
+        "name": "uq_orders_checkout",
+        "unique": true
+      },
+      "ix_orders_user_history": {
+        "v": 2,
+        "key": {
+          "userId": 1,
+          "createdAt": -1,
+          "_id": -1
+        },
+        "name": "ix_orders_user_history"
+      },
+      "ix_orders_qualified_completed": {
+        "v": 2,
+        "key": {
+          "orderStatus": 1,
+          "paymentStatus": 1,
+          "completedAt": -1,
+          "_id": -1
+        },
+        "name": "ix_orders_qualified_completed"
+      }
+    },
+    "payment_attempts": {
+      "_id_": {
+        "v": 2,
+        "key": {
+          "_id": 1
+        },
+        "name": "_id_"
+      },
+      "uq_attempts_txn_ref": {
+        "v": 2,
+        "key": {
+          "txnRef": 1
+        },
+        "name": "uq_attempts_txn_ref",
+        "unique": true
+      },
+      "uq_attempts_order_key": {
+        "v": 2,
+        "key": {
+          "orderId": 1,
+          "attemptKey": 1
+        },
+        "name": "uq_attempts_order_key",
+        "unique": true
+      },
+      "uq_attempts_provider_txn": {
+        "v": 2,
+        "key": {
+          "providerTransactionNo": 1
+        },
+        "name": "uq_attempts_provider_txn",
+        "unique": true,
+        "partialFilterExpression": {
+          "providerTransactionNo": {
+            "$type": "string"
+          }
+        }
+      },
+      "uq_attempts_pending_order": {
+        "v": 2,
+        "key": {
+          "orderId": 1
+        },
+        "name": "uq_attempts_pending_order",
+        "unique": true,
+        "partialFilterExpression": {
+          "status": "PENDING"
+        }
+      }
+    }
+  },
+  "declaredApplied": 14,
+  "automaticIdIndexes": 6,
+  "manifestEntries": 18,
+  "audit": [
+    {
+      "collection": "users",
+      "name": "uq_users_email",
+      "keys": {
+        "email": 1
+      },
+      "options": {
+        "name": "uq_users_email",
+        "unique": true
+      },
+      "queryPattern": "Login và register theo email đã lowercase/trim",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "categories",
+      "name": "uq_categories_slug",
+      "keys": {
+        "slug": 1
+      },
+      "options": {
+        "name": "uq_categories_slug",
+        "unique": true
+      },
+      "queryPattern": "Lookup slug và uniqueness category",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "products",
+      "name": "uq_products_sku",
+      "keys": {
+        "sku": 1
+      },
+      "options": {
+        "name": "uq_products_sku",
+        "unique": true
+      },
+      "queryPattern": "Lookup/uniqueness Product sku",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "products",
+      "name": "uq_products_slug",
+      "keys": {
+        "slug": 1
+      },
+      "options": {
+        "name": "uq_products_slug",
+        "unique": true
+      },
+      "queryPattern": "Lookup/uniqueness Product slug",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "carts",
+      "name": "uq_carts_user",
+      "keys": {
+        "userId": 1
+      },
+      "options": {
+        "name": "uq_carts_user",
+        "unique": true
+      },
+      "queryPattern": "GET/mutate Cart owner",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "orders",
+      "name": "uq_orders_code",
+      "keys": {
+        "orderCode": 1
+      },
+      "options": {
+        "name": "uq_orders_code",
+        "unique": true
+      },
+      "queryPattern": "Tra cứu exact orderCode",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "orders",
+      "name": "uq_orders_checkout",
+      "keys": {
+        "userId": 1,
+        "checkoutKey": 1
+      },
+      "options": {
+        "name": "uq_orders_checkout",
+        "unique": true
+      },
+      "queryPattern": "Replay checkout intent của User",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_txn_ref",
+      "keys": {
+        "txnRef": 1
+      },
+      "options": {
+        "name": "uq_attempts_txn_ref",
+        "unique": true
+      },
+      "queryPattern": "Lookup attempt nhận IPN",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_order_key",
+      "keys": {
+        "orderId": 1,
+        "attemptKey": 1
+      },
+      "options": {
+        "name": "uq_attempts_order_key",
+        "unique": true
+      },
+      "queryPattern": "Replay create payment attempt trong Order",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_provider_txn",
+      "keys": {
+        "providerTransactionNo": 1
+      },
+      "options": {
+        "name": "uq_attempts_provider_txn",
+        "unique": true,
+        "partialFilterExpression": {
+          "providerTransactionNo": {
+            "$type": "string"
+          }
+        }
+      },
+      "queryPattern": "Không gán cùng provider transaction vào hai attempt",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "payment_attempts",
+      "name": "uq_attempts_pending_order",
+      "keys": {
+        "orderId": 1
+      },
+      "options": {
+        "name": "uq_attempts_pending_order",
+        "unique": true,
+        "partialFilterExpression": {
+          "status": "PENDING"
+        }
+      },
+      "queryPattern": "Chỉ một active PENDING attempt cho Order",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Unique/integrity; không drop để benchmark"
+    },
+    {
+      "collection": "products",
+      "name": "ix_products_category_price",
+      "keys": {
+        "status": 1,
+        "categoryId": 1,
+        "price": 1,
+        "_id": 1
+      },
+      "options": {
+        "name": "ix_products_category_price"
+      },
+      "queryPattern": "status=ACTIVE, categoryId exact, min/maxPrice, sort price asc + id asc",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": true,
+      "reason": "Workload ứng dụng hiện có; không thay index dev"
+    },
+    {
+      "collection": "products",
+      "name": "ix_products_type_price",
+      "keys": {
+        "status": 1,
+        "productType": 1,
+        "price": 1,
+        "_id": 1
+      },
+      "options": {
+        "name": "ix_products_type_price"
+      },
+      "queryPattern": "ACTIVE + exact productType cross-category + min/maxPrice + price sort",
+      "classification": "CANDIDATE",
+      "appliedToDev": false,
+      "testedOnBenchmark": true,
+      "reason": "Đã đo ở benchmark riêng, chưa áp dụng dev"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_user_history",
+      "keys": {
+        "userId": 1,
+        "createdAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_user_history"
+      },
+      "queryPattern": "Customer history owner + createdAt range + latest sort",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": false,
+      "reason": "Workload ứng dụng hiện có; không thay index dev"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_admin_status",
+      "keys": {
+        "orderStatus": 1,
+        "createdAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_admin_status"
+      },
+      "queryPattern": "Admin list exact status + createdAt range + latest sort",
+      "classification": "CANDIDATE",
+      "appliedToDev": false,
+      "testedOnBenchmark": false,
+      "reason": "Có use case, chưa đo workload riêng để justify apply"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_created_at",
+      "keys": {
+        "createdAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_created_at"
+      },
+      "queryPattern": "Admin list không status; Total Orders/status distribution createdAt range",
+      "classification": "CANDIDATE",
+      "appliedToDev": false,
+      "testedOnBenchmark": false,
+      "reason": "Có use case, chưa đo workload riêng để justify apply"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_qualified_completed",
+      "keys": {
+        "orderStatus": 1,
+        "paymentStatus": 1,
+        "completedAt": -1,
+        "_id": -1
+      },
+      "options": {
+        "name": "ix_orders_qualified_completed"
+      },
+      "queryPattern": "COMPLETED+PAID và completedAt range; latest snapshot before unwind",
+      "classification": "KEEP",
+      "appliedToDev": true,
+      "testedOnBenchmark": true,
+      "reason": "Workload ứng dụng hiện có; không thay index dev"
+    },
+    {
+      "collection": "orders",
+      "name": "ix_orders_payment_expiry",
+      "keys": {
+        "paymentMethod": 1,
+        "orderStatus": 1,
+        "paymentExpiresAt": 1
+      },
+      "options": {
+        "name": "ix_orders_payment_expiry"
+      },
+      "queryPattern": "VNPAY+PENDING, paymentExpiresAt<=now; paymentStatus unpaid residual",
+      "classification": "CANDIDATE",
+      "appliedToDev": false,
+      "testedOnBenchmark": false,
+      "reason": "Có use case, chưa đo workload riêng để justify apply"
+    }
+  ],
+  "unknownIndexes": [],
+  "removeRedundant": [],
+  "indexesRemovedFromDev": [],
+  "conclusion": "Không chứng minh index dư thừa; giữ tất cả unique/integrity và workload đã áp dụng."
+}

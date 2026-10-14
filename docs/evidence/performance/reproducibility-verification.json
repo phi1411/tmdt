@@ -1,0 +1,68 @@
+{
+  "status": "BENCHMARK_CLEANUP_REPRODUCIBILITY_PASS",
+  "cleanupReceipt": {
+    "status": "OWNED_BENCHMARK_CLEANUP_PASS",
+    "deletedCollections": [
+      "users",
+      "categories",
+      "products",
+      "carts",
+      "orders",
+      "payment_attempts"
+    ],
+    "deletedDataset": {
+      "users": {
+        "count": 40,
+        "digest": "0134db0d4b7a70746bf1fd7b142a8a6f52b719b3f5584d3b6218c7f3bc52cac7"
+      },
+      "categories": {
+        "count": 30,
+        "digest": "8cbd0c6137aed65797f9aa731a58ecef69f83a2d9384c978a39acd28319d6998"
+      },
+      "products": {
+        "count": 30000,
+        "digest": "f9ae3aa91952c87de7c161f1440e2bfe9aaac28d7e7b98b05743a0518e14f09c"
+      },
+      "carts": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "orders": {
+        "count": 10000,
+        "digest": "cff0a92bd5fd69073531aa5688abb8c8e83a7109276211653330c66b6ee8131b"
+      },
+      "payment_attempts": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "devTouched": false
+  },
+  "recreatedCollections": {
+    "users": {
+      "count": 40,
+      "digest": "0134db0d4b7a70746bf1fd7b142a8a6f52b719b3f5584d3b6218c7f3bc52cac7"
+    },
+    "categories": {
+      "count": 30,
+      "digest": "8cbd0c6137aed65797f9aa731a58ecef69f83a2d9384c978a39acd28319d6998"
+    },
+    "products": {
+      "count": 30000,
+      "digest": "f9ae3aa91952c87de7c161f1440e2bfe9aaac28d7e7b98b05743a0518e14f09c"
+    },
+    "carts": {
+      "count": 0,
+      "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "orders": {
+      "count": 10000,
+      "digest": "cff0a92bd5fd69073531aa5688abb8c8e83a7109276211653330c66b6ee8131b"
+    },
+    "payment_attempts": {
+      "count": 0,
+      "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "bsonHashesReproducedExactly": true
+}

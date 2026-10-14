@@ -1,0 +1,68 @@
+{
+  "phase": "07D",
+  "recordedAtUtc": "2026-10-12T09:23:30.830180+00:00",
+  "clientDate": "2026-10-12",
+  "finalStatus": "NOT_FINAL_PASS_FAIL_AND_MANUAL_PENDING",
+  "browserChecks": {
+    "pass": 10,
+    "fail": 1,
+    "http2xx": 140
+  },
+  "priceEditorStatus": "FAIL_IMAGES_EMPTY_REQUIRED_BY_UI",
+  "snapshotPriceChangeTransport": "HTTP_API_FALLBACK_NOT_WEB_EDITOR",
+  "compassGui": "MANUAL_PENDING",
+  "compassVersion": "1.52.0",
+  "compassErrors": [
+    "FrameArrived timed out: timed out waiting on channel",
+    "window capture timed out: timed out waiting on channel"
+  ],
+  "human5MinuteTiming": "MANUAL_PENDING",
+  "human10MinuteTiming": "MANUAL_PENDING",
+  "offlineBrowserExternalDeny": "PASS_SCOPED_COLD_CACHE",
+  "hostInternetDisconnected": "MANUAL_PENDING",
+  "build": {
+    "command": "npm run build",
+    "observedExitCode": 0,
+    "vite": "6.4.4",
+    "modules": 2237,
+    "observedBuildSeconds": 18.42,
+    "warning": "CHUNK_SIZE_OVER_500_KB"
+  },
+  "visualChartStatus": "PASS",
+  "devExactUnchanged": true,
+  "benchmarkExactUnchanged": true,
+  "applicationSourceChanged": false,
+  "evidence07b07cChanged": false,
+  "testCleanupEmpty": true,
+  "devCounts": {
+    "users": 42,
+    "categories": 5,
+    "products": 182,
+    "carts": 1,
+    "orders": 101,
+    "payment_attempts": 30
+  },
+  "health": {
+    "5001": 200,
+    "5173": 200
+  },
+  "liveSandbox": "BLOCKED",
+  "secretValueScanPassed": true,
+  "privateCredentialsIgnored": true,
+  "reportSections": 14,
+  "newEvidence": [
+    "database/evidence/phase07d-browser-attempt1.json",
+    "database/evidence/phase07d-browser-attempt2.json",
+    "database/evidence/phase07d-browser-attempt3.json",
+    "database/evidence/phase07d-browser.json",
+    "database/evidence/phase07d-chart-visual.json",
+    "database/evidence/phase07d-environment.json",
+    "database/evidence/phase07d-integrity.json",
+    "database/evidence/phase07d-queries.json",
+    "database/evidence/phase07d-test-outcomes.json"
+  ],
+  "uniqueBrowserScreenshots": 11,
+  "noHumanDurationFabricated": true,
+  "stoppedForReview": true,
+  "localLinksVerified": true
+}

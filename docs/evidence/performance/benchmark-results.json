@@ -1,0 +1,2652 @@
+{
+  "status": "PHASE 07B PERFORMANCE EVIDENCE PASS",
+  "recordedAtUtc": {
+    "$date": "2026-10-08T14:11:39.777Z"
+  },
+  "runtime": {
+    "mongo": "8.0.32",
+    "pymongo": "4.15.3",
+    "python": "3.12.14",
+    "platform": "Windows-10-10.0.19044-SP0",
+    "logicalCpuCount": 12,
+    "replicaSet": "rs0",
+    "primary": "localhost:27017",
+    "storageEngine": "wiredTiger"
+  },
+  "database": "ecommerce_benchmark",
+  "dataset": {
+    "label": "BENCHMARK DATASET — không phải seed chính thức",
+    "generatorSeed": 20261008,
+    "anchorUtc": {
+      "$date": "2026-10-01T00:00:00Z"
+    },
+    "config": {
+      "products": 30000,
+      "orders": 10000
+    },
+    "collections": {
+      "users": {
+        "count": 40,
+        "digest": "0134db0d4b7a70746bf1fd7b142a8a6f52b719b3f5584d3b6218c7f3bc52cac7"
+      },
+      "categories": {
+        "count": 30,
+        "digest": "8cbd0c6137aed65797f9aa731a58ecef69f83a2d9384c978a39acd28319d6998"
+      },
+      "products": {
+        "count": 30000,
+        "digest": "f9ae3aa91952c87de7c161f1440e2bfe9aaac28d7e7b98b05743a0518e14f09c"
+      },
+      "carts": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "orders": {
+        "count": 10000,
+        "digest": "cff0a92bd5fd69073531aa5688abb8c8e83a7109276211653330c66b6ee8131b"
+      },
+      "payment_attempts": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "oracle": {
+      "qualifiedOrders": 152,
+      "totalRevenue": 10552893400,
+      "productsSold": 1030,
+      "revenue-day": [
+        {
+          "_id": {
+            "$date": "2026-07-31T17:00:00Z"
+          },
+          "revenue": 1398458297,
+          "orders": 20
+        },
+        {
+          "_id": {
+            "$date": "2026-08-01T17:00:00Z"
+          },
+          "revenue": 1790272595,
+          "orders": 25
+        },
+        {
+          "_id": {
+            "$date": "2026-08-02T17:00:00Z"
+          },
+          "revenue": 1701926524,
+          "orders": 24
+        },
+        {
+          "_id": {
+            "$date": "2026-08-03T17:00:00Z"
+          },
+          "revenue": 1981366035,
+          "orders": 29
+        },
+        {
+          "_id": {
+            "$date": "2026-08-04T17:00:00Z"
+          },
+          "revenue": 1122405601,
+          "orders": 17
+        },
+        {
+          "_id": {
+            "$date": "2026-08-05T17:00:00Z"
+          },
+          "revenue": 1443479378,
+          "orders": 19
+        },
+        {
+          "_id": {
+            "$date": "2026-08-06T17:00:00Z"
+          },
+          "revenue": 1114984970,
+          "orders": 18
+        }
+      ],
+      "top-products": [
+        {
+          "productId": {
+            "$oid": "f6025d2979833920f20cb180"
+          },
+          "productName": "Sản phẩm BENCHMARK 08281",
+          "quantity": 6,
+          "revenue": 77728230
+        },
+        {
+          "productId": {
+            "$oid": "8d352789632c8b9cea5b073e"
+          },
+          "productName": "Sản phẩm BENCHMARK 22818",
+          "quantity": 5,
+          "revenue": 55990560
+        },
+        {
+          "productId": {
+            "$oid": "48051e093914841219b9b9e6"
+          },
+          "productName": "Sản phẩm BENCHMARK 09901",
+          "quantity": 5,
+          "revenue": 46327685
+        },
+        {
+          "productId": {
+            "$oid": "2e2db71c2d9dc2a04b7a29ec"
+          },
+          "productName": "Sản phẩm BENCHMARK 25653",
+          "quantity": 4,
+          "revenue": 33550300
+        },
+        {
+          "productId": {
+            "$oid": "317d4b809940ba3961581711"
+          },
+          "productName": "Sản phẩm BENCHMARK 08552",
+          "quantity": 3,
+          "revenue": 58161492
+        }
+      ]
+    },
+    "window": {
+      "from": {
+        "$date": "2026-07-31T17:00:00Z"
+      },
+      "to": {
+        "$date": "2026-08-07T17:00:00Z"
+      }
+    },
+    "statusDistribution": {
+      "COMPLETED": 6000,
+      "PENDING": 1000,
+      "CONFIRMED": 1000,
+      "SHIPPING": 1000,
+      "CANCELLED": 1000
+    }
+  },
+  "warmupsPerMode": 5,
+  "repeatsPerMode": 30,
+  "method": "Warm cache, single client, fully materialized cursor, perf_counter_ns; shuffled mode order after build",
+  "queryComparison": {
+    "products-category-price": {
+      "kind": "product-selection",
+      "source": "parse_product_query + PRODUCT_SORTS/PROJECTION",
+      "apiParams": {
+        "productType": "ELECTRONICS",
+        "categoryId": "9f279f9b19426a6a465cfd3a",
+        "minPrice": "2000000",
+        "maxPrice": "5000000",
+        "sort": "price_asc"
+      },
+      "withoutIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "_id": 1,
+            "sku": 1,
+            "name": 1,
+            "slug": 1,
+            "categoryId": 1,
+            "productType": 1,
+            "brand": 1,
+            "description": 1,
+            "price": 1,
+            "stock": 1,
+            "images": 1,
+            "attributes": 1,
+            "status": 1,
+            "version": 1,
+            "createdAt": 1,
+            "updatedAt": 1
+          },
+          "inputStage": {
+            "stage": "SORT",
+            "sortPattern": {
+              "price": 1,
+              "_id": 1
+            },
+            "memLimit": 104857600,
+            "limitAmount": 20,
+            "type": "simple",
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "categoryId": {
+                      "$eq": {
+                        "$oid": "9f279f9b19426a6a465cfd3a"
+                      }
+                    }
+                  },
+                  {
+                    "productType": {
+                      "$eq": "ELECTRONICS"
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": 5000000
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": 2000000
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          }
+        },
+        "statisticsScope": "optimized-root",
+        "planStages": [
+          "COLLSCAN",
+          "PROJECTION_SIMPLE",
+          "SORT"
+        ],
+        "indexNames": [],
+        "executionTimeMillis": 28,
+        "totalDocsExamined": 30000,
+        "totalKeysExamined": 0,
+        "nReturned": 20,
+        "finalResultRows": 20,
+        "serverPipelineStages": [],
+        "spillsObserved": 0
+      },
+      "withNamedIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "LIMIT",
+          "limitAmount": 20,
+          "inputStage": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "_id": 1,
+              "sku": 1,
+              "name": 1,
+              "slug": 1,
+              "categoryId": 1,
+              "productType": 1,
+              "brand": 1,
+              "description": 1,
+              "price": 1,
+              "stock": 1,
+              "images": 1,
+              "attributes": 1,
+              "status": 1,
+              "version": 1,
+              "createdAt": 1,
+              "updatedAt": 1
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "filter": {
+                "productType": {
+                  "$eq": "ELECTRONICS"
+                }
+              },
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": 1,
+                  "categoryId": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                  ],
+                  "price": [
+                    "[2000000, 5000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "statisticsScope": "optimized-root",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_category_price"
+        ],
+        "executionTimeMillis": 0,
+        "totalDocsExamined": 20,
+        "totalKeysExamined": 20,
+        "nReturned": 20,
+        "finalResultRows": 20,
+        "serverPipelineStages": [],
+        "spillsObserved": 0
+      },
+      "plannerUnhinted": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "LIMIT",
+          "limitAmount": 20,
+          "inputStage": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "_id": 1,
+              "sku": 1,
+              "name": 1,
+              "slug": 1,
+              "categoryId": 1,
+              "productType": 1,
+              "brand": 1,
+              "description": 1,
+              "price": 1,
+              "stock": 1,
+              "images": 1,
+              "attributes": 1,
+              "status": 1,
+              "version": 1,
+              "createdAt": 1,
+              "updatedAt": 1
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "filter": {
+                "productType": {
+                  "$eq": "ELECTRONICS"
+                }
+              },
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": 1,
+                  "categoryId": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_category_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "categoryId": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "categoryId": [
+                    "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                  ],
+                  "price": [
+                    "[2000000, 5000000]"
+                  ],
+                  "_id": [
+                    "[MinKey, MaxKey]"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "statisticsScope": "optimized-root",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_category_price"
+        ],
+        "executionTimeMillis": 0,
+        "totalDocsExamined": 20,
+        "totalKeysExamined": 20,
+        "nReturned": 20,
+        "finalResultRows": 20,
+        "serverPipelineStages": [],
+        "spillsObserved": 0
+      },
+      "documentScanReductionPercent": 99.933,
+      "resultsEqualAcrossAllModes": true,
+      "resultDigest": "9debf11e3b461111b4d2949b3b09afe63940baaa0f3377f8f91f6fd64707b015",
+      "latency": {
+        "noSuitableIndex": {
+          "p50ClientMs": 29.44325,
+          "p95ClientMs": 33.9122,
+          "minClientMs": 27.3793,
+          "maxClientMs": 34.0067,
+          "samplesClientMs": [
+            27.9421,
+            30.6325,
+            29.133,
+            29.5038,
+            29.4837,
+            29.0585,
+            28.9676,
+            29.4535,
+            29.5319,
+            29.8071,
+            29.2649,
+            28.8808,
+            33.9122,
+            30.3049,
+            31.7607,
+            34.0067,
+            28.1897,
+            29.8769,
+            29.6067,
+            28.8166,
+            28.9417,
+            29.3458,
+            29.6146,
+            29.8415,
+            29.399,
+            28.727,
+            30.4507,
+            27.3793,
+            29.3185,
+            29.433
+          ]
+        },
+        "natural": {
+          "p50ClientMs": 29.1027,
+          "p95ClientMs": 42.5961,
+          "minClientMs": 27.793,
+          "maxClientMs": 57.226,
+          "samplesClientMs": [
+            29.0999,
+            29.1055,
+            31.3035,
+            28.3407,
+            28.6919,
+            28.6304,
+            27.9124,
+            27.9694,
+            27.793,
+            29.4016,
+            28.4811,
+            29.7766,
+            30.4518,
+            29.0361,
+            29.2714,
+            29.0398,
+            29.6186,
+            28.9908,
+            28.7212,
+            30.9732,
+            37.0478,
+            57.226,
+            42.5961,
+            28.9327,
+            30.0055,
+            29.3152,
+            29.1956,
+            29.1556,
+            28.193,
+            28.2302
+          ]
+        },
+        "namedIndex": {
+          "p50ClientMs": 1.1995,
+          "p95ClientMs": 3.0773,
+          "minClientMs": 0.7781,
+          "maxClientMs": 3.1113,
+          "samplesClientMs": [
+            1.3231,
+            1.1085,
+            1.9668,
+            2.3801,
+            1.9236,
+            1.6116,
+            1.2722,
+            1.2776,
+            1.1476,
+            1.1789,
+            1.2201,
+            1.077,
+            0.9904,
+            1.0229,
+            1.1461,
+            1.5829,
+            1.1205,
+            1.5547,
+            1.5051,
+            1.1159,
+            3.1113,
+            1.7654,
+            3.0773,
+            0.8771,
+            1.0559,
+            1.0336,
+            1.4957,
+            1.108,
+            0.7781,
+            1.0486
+          ]
+        },
+        "plannerUnhinted": {
+          "p50ClientMs": 1.2998,
+          "p95ClientMs": 3.3185,
+          "minClientMs": 0.7131,
+          "maxClientMs": 3.4818,
+          "samplesClientMs": [
+            1.5766,
+            1.4587,
+            1.0624,
+            0.9233,
+            1.135,
+            3.3185,
+            3.4818,
+            2.275,
+            2.7685,
+            1.177,
+            1.3278,
+            1.6438,
+            1.6845,
+            1.1292,
+            1.0777,
+            0.7131,
+            1.1386,
+            1.6764,
+            1.1662,
+            1.7559,
+            2.3616,
+            2.1138,
+            1.9901,
+            1.2718,
+            1.2466,
+            1.0091,
+            1.4716,
+            0.7864,
+            0.732,
+            1.0868
+          ]
+        }
+      }
+    },
+    "products-category-price-full-api": {
+      "kind": "product-full-repository",
+      "source": "ProductRepository.list/public=True/page1/pageSize20",
+      "apiParams": {
+        "productType": "ELECTRONICS",
+        "categoryId": "9f279f9b19426a6a465cfd3a",
+        "minPrice": "2000000",
+        "maxPrice": "5000000",
+        "sort": "price_asc"
+      },
+      "withoutIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "SORT",
+          "sortPattern": {
+            "price": 1,
+            "_id": 1
+          },
+          "memLimit": 104857600,
+          "type": "simple",
+          "inputStage": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "_id": 1,
+              "attributes": 1,
+              "brand": 1,
+              "categoryId": 1,
+              "createdAt": 1,
+              "description": 1,
+              "images": 1,
+              "name": 1,
+              "price": 1,
+              "productType": 1,
+              "sku": 1,
+              "slug": 1,
+              "stock": 1,
+              "updatedAt": 1,
+              "version": 1
+            },
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "categoryId": {
+                      "$eq": {
+                        "$oid": "9f279f9b19426a6a465cfd3a"
+                      }
+                    }
+                  },
+                  {
+                    "productType": {
+                      "$eq": "ELECTRONICS"
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": 5000000
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": 2000000
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "COLLSCAN",
+          "PROJECTION_SIMPLE",
+          "SORT"
+        ],
+        "indexNames": [],
+        "executionTimeMillis": 54,
+        "totalDocsExamined": 30000,
+        "totalKeysExamined": 0,
+        "nReturned": 96,
+        "finalResultRows": 1,
+        "serverPipelineStages": [
+          "$cursor",
+          "$lookup",
+          "$match",
+          "$set",
+          "$facet"
+        ],
+        "spillsObserved": 0,
+        "pagedItemsReturned": 20,
+        "matchingTotal": 96
+      },
+      "withNamedIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "_id": 1,
+            "attributes": 1,
+            "brand": 1,
+            "categoryId": 1,
+            "createdAt": 1,
+            "description": 1,
+            "images": 1,
+            "name": 1,
+            "price": 1,
+            "productType": 1,
+            "sku": 1,
+            "slug": 1,
+            "stock": 1,
+            "updatedAt": 1,
+            "version": 1
+          },
+          "inputStage": {
+            "stage": "FETCH",
+            "filter": {
+              "productType": {
+                "$eq": "ELECTRONICS"
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "status": 1,
+                "categoryId": 1,
+                "price": 1,
+                "_id": 1
+              },
+              "indexName": "ix_products_category_price",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "status": [],
+                "categoryId": [],
+                "price": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "status": [
+                  "[\"ACTIVE\", \"ACTIVE\"]"
+                ],
+                "categoryId": [
+                  "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                ],
+                "price": [
+                  "[2000000, 5000000]"
+                ],
+                "_id": [
+                  "[MinKey, MaxKey]"
+                ]
+              }
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_category_price"
+        ],
+        "executionTimeMillis": 16,
+        "totalDocsExamined": 96,
+        "totalKeysExamined": 96,
+        "nReturned": 96,
+        "finalResultRows": 1,
+        "serverPipelineStages": [
+          "$cursor",
+          "$lookup",
+          "$match",
+          "$set",
+          "$facet"
+        ],
+        "spillsObserved": 0,
+        "pagedItemsReturned": 20,
+        "matchingTotal": 96
+      },
+      "plannerUnhinted": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "_id": 1,
+            "attributes": 1,
+            "brand": 1,
+            "categoryId": 1,
+            "createdAt": 1,
+            "description": 1,
+            "images": 1,
+            "name": 1,
+            "price": 1,
+            "productType": 1,
+            "sku": 1,
+            "slug": 1,
+            "stock": 1,
+            "updatedAt": 1,
+            "version": 1
+          },
+          "inputStage": {
+            "stage": "FETCH",
+            "filter": {
+              "productType": {
+                "$eq": "ELECTRONICS"
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "status": 1,
+                "categoryId": 1,
+                "price": 1,
+                "_id": 1
+              },
+              "indexName": "ix_products_category_price",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "status": [],
+                "categoryId": [],
+                "price": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "status": [
+                  "[\"ACTIVE\", \"ACTIVE\"]"
+                ],
+                "categoryId": [
+                  "[ObjectId('9f279f9b19426a6a465cfd3a'), ObjectId('9f279f9b19426a6a465cfd3a')]"
+                ],
+                "price": [
+                  "[2000000, 5000000]"
+                ],
+                "_id": [
+                  "[MinKey, MaxKey]"
+                ]
+              }
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_category_price"
+        ],
+        "executionTimeMillis": 18,
+        "totalDocsExamined": 96,
+        "totalKeysExamined": 96,
+        "nReturned": 96,
+        "finalResultRows": 1,
+        "serverPipelineStages": [
+          "$cursor",
+          "$lookup",
+          "$match",
+          "$set",
+          "$facet"
+        ],
+        "spillsObserved": 0,
+        "pagedItemsReturned": 20,
+        "matchingTotal": 96
+      },
+      "documentScanReductionPercent": 99.68,
+      "resultsEqualAcrossAllModes": true,
+      "resultDigest": "8b5caca28d77d1483fbfaccea5ee5d039d2d2b9cfee9f93f8292fcb34e5ca94f",
+      "latency": {
+        "noSuitableIndex": {
+          "p50ClientMs": 45.359899999999996,
+          "p95ClientMs": 87.5735,
+          "minClientMs": 43.0838,
+          "maxClientMs": 89.7743,
+          "samplesClientMs": [
+            60.1143,
+            87.5735,
+            89.7743,
+            58.3816,
+            45.826,
+            52.583,
+            43.2813,
+            45.1999,
+            44.3598,
+            46.1844,
+            44.3011,
+            47.0495,
+            43.7416,
+            44.5242,
+            43.4561,
+            45.4491,
+            45.0781,
+            44.9737,
+            44.5005,
+            45.2707,
+            44.6738,
+            44.6368,
+            43.0838,
+            45.781,
+            46.8515,
+            45.7787,
+            46.5496,
+            44.1954,
+            50.9161,
+            46.9174
+          ]
+        },
+        "natural": {
+          "p50ClientMs": 44.919,
+          "p95ClientMs": 83.5242,
+          "minClientMs": 42.3432,
+          "maxClientMs": 90.6745,
+          "samplesClientMs": [
+            43.0678,
+            42.3766,
+            45.193,
+            42.3788,
+            45.3977,
+            43.764,
+            43.532,
+            43.1219,
+            42.5394,
+            42.645,
+            42.4481,
+            49.1078,
+            63.0195,
+            90.6745,
+            69.48,
+            45.1142,
+            53.1093,
+            45.7708,
+            44.2447,
+            44.7238,
+            44.1341,
+            43.5501,
+            72.624,
+            77.6576,
+            82.2788,
+            45.3872,
+            83.5242,
+            48.8071,
+            42.3432,
+            44.3561
+          ]
+        },
+        "namedIndex": {
+          "p50ClientMs": 17.776249999999997,
+          "p95ClientMs": 30.5185,
+          "minClientMs": 16.0201,
+          "maxClientMs": 69.7642,
+          "samplesClientMs": [
+            19.1366,
+            17.8966,
+            19.0692,
+            17.4205,
+            16.6362,
+            17.0663,
+            16.7474,
+            16.9242,
+            17.3792,
+            17.2591,
+            17.6559,
+            20.2652,
+            30.5185,
+            24.2942,
+            21.0818,
+            69.7642,
+            25.4218,
+            16.6548,
+            16.9457,
+            16.0201,
+            19.4702,
+            17.0327,
+            17.6246,
+            21.8346,
+            23.3319,
+            21.781,
+            18.3298,
+            17.3882,
+            17.9825,
+            16.3031
+          ]
+        },
+        "plannerUnhinted": {
+          "p50ClientMs": 18.4571,
+          "p95ClientMs": 31.7735,
+          "minClientMs": 16.1467,
+          "maxClientMs": 33.1592,
+          "samplesClientMs": [
+            19.3204,
+            17.3364,
+            18.5542,
+            16.7471,
+            16.6831,
+            17.4049,
+            16.5296,
+            18.36,
+            19.4415,
+            19.8407,
+            16.5625,
+            23.1203,
+            17.5474,
+            29.4835,
+            30.1303,
+            20.9796,
+            24.4259,
+            16.5509,
+            17.6956,
+            16.1467,
+            16.8711,
+            16.9996,
+            31.7735,
+            19.0925,
+            33.1592,
+            22.1233,
+            21.8744,
+            17.3492,
+            19.0062,
+            17.6294
+          ]
+        }
+      }
+    },
+    "products-type-brand-price": {
+      "kind": "product-selection",
+      "source": "parse_product_query + PRODUCT_SORTS/PROJECTION",
+      "apiParams": {
+        "productType": "ELECTRONICS",
+        "brand": "Benchmark Brand 1",
+        "minPrice": "2000000",
+        "maxPrice": "5000000",
+        "sort": "price_desc"
+      },
+      "withoutIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "_id": 1,
+            "sku": 1,
+            "name": 1,
+            "slug": 1,
+            "categoryId": 1,
+            "productType": 1,
+            "brand": 1,
+            "description": 1,
+            "price": 1,
+            "stock": 1,
+            "images": 1,
+            "attributes": 1,
+            "status": 1,
+            "version": 1,
+            "createdAt": 1,
+            "updatedAt": 1
+          },
+          "inputStage": {
+            "stage": "SORT",
+            "sortPattern": {
+              "price": -1,
+              "_id": -1
+            },
+            "memLimit": 104857600,
+            "limitAmount": 20,
+            "type": "simple",
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "brandNormalized": {
+                      "$eq": "benchmark brand 1"
+                    }
+                  },
+                  {
+                    "productType": {
+                      "$eq": "ELECTRONICS"
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": 5000000
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": 2000000
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          }
+        },
+        "statisticsScope": "optimized-root",
+        "planStages": [
+          "COLLSCAN",
+          "PROJECTION_SIMPLE",
+          "SORT"
+        ],
+        "indexNames": [],
+        "executionTimeMillis": 31,
+        "totalDocsExamined": 30000,
+        "totalKeysExamined": 0,
+        "nReturned": 20,
+        "finalResultRows": 20,
+        "serverPipelineStages": [],
+        "spillsObserved": 0
+      },
+      "withNamedIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "LIMIT",
+          "limitAmount": 20,
+          "inputStage": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "_id": 1,
+              "sku": 1,
+              "name": 1,
+              "slug": 1,
+              "categoryId": 1,
+              "productType": 1,
+              "brand": 1,
+              "description": 1,
+              "price": 1,
+              "stock": 1,
+              "images": 1,
+              "attributes": 1,
+              "status": 1,
+              "version": 1,
+              "createdAt": 1,
+              "updatedAt": 1
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "filter": {
+                "brandNormalized": {
+                  "$eq": "benchmark brand 1"
+                }
+              },
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": 1,
+                  "productType": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_type_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "productType": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "backward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "productType": [
+                    "[\"ELECTRONICS\", \"ELECTRONICS\"]"
+                  ],
+                  "price": [
+                    "[5000000, 2000000]"
+                  ],
+                  "_id": [
+                    "[MaxKey, MinKey]"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "statisticsScope": "optimized-root",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_type_price"
+        ],
+        "executionTimeMillis": 0,
+        "totalDocsExamined": 160,
+        "totalKeysExamined": 160,
+        "nReturned": 20,
+        "finalResultRows": 20,
+        "serverPipelineStages": [],
+        "spillsObserved": 0
+      },
+      "plannerUnhinted": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "LIMIT",
+          "limitAmount": 20,
+          "inputStage": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "_id": 1,
+              "sku": 1,
+              "name": 1,
+              "slug": 1,
+              "categoryId": 1,
+              "productType": 1,
+              "brand": 1,
+              "description": 1,
+              "price": 1,
+              "stock": 1,
+              "images": 1,
+              "attributes": 1,
+              "status": 1,
+              "version": 1,
+              "createdAt": 1,
+              "updatedAt": 1
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "filter": {
+                "brandNormalized": {
+                  "$eq": "benchmark brand 1"
+                }
+              },
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "status": 1,
+                  "productType": 1,
+                  "price": 1,
+                  "_id": 1
+                },
+                "indexName": "ix_products_type_price",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "status": [],
+                  "productType": [],
+                  "price": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "backward",
+                "indexBounds": {
+                  "status": [
+                    "[\"ACTIVE\", \"ACTIVE\"]"
+                  ],
+                  "productType": [
+                    "[\"ELECTRONICS\", \"ELECTRONICS\"]"
+                  ],
+                  "price": [
+                    "[5000000, 2000000]"
+                  ],
+                  "_id": [
+                    "[MaxKey, MinKey]"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "statisticsScope": "optimized-root",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_type_price"
+        ],
+        "executionTimeMillis": 2,
+        "totalDocsExamined": 160,
+        "totalKeysExamined": 160,
+        "nReturned": 20,
+        "finalResultRows": 20,
+        "serverPipelineStages": [],
+        "spillsObserved": 0
+      },
+      "documentScanReductionPercent": 99.467,
+      "resultsEqualAcrossAllModes": true,
+      "resultDigest": "6b8cba1694fc2613f948a2e473f7b85edc5a644a1158d0e135662a89f5055ddc",
+      "latency": {
+        "noSuitableIndex": {
+          "p50ClientMs": 30.7806,
+          "p95ClientMs": 35.1224,
+          "minClientMs": 29.1695,
+          "maxClientMs": 38.3896,
+          "samplesClientMs": [
+            38.3896,
+            30.4095,
+            32.2789,
+            30.4136,
+            31.3879,
+            30.6777,
+            31.3645,
+            30.1383,
+            31.1813,
+            29.9581,
+            30.809,
+            29.955,
+            29.3893,
+            32.3177,
+            32.3011,
+            31.2396,
+            31.3693,
+            35.1224,
+            30.4169,
+            31.1935,
+            30.7023,
+            30.6148,
+            30.6514,
+            30.7522,
+            30.5863,
+            31.9273,
+            31.134,
+            29.1695,
+            32.376,
+            30.6898
+          ]
+        },
+        "natural": {
+          "p50ClientMs": 31.35875,
+          "p95ClientMs": 47.7392,
+          "minClientMs": 29.3126,
+          "maxClientMs": 52.9677,
+          "samplesClientMs": [
+            31.8372,
+            30.2175,
+            33.0874,
+            47.7392,
+            52.9677,
+            46.8831,
+            34.4101,
+            31.8225,
+            31.5705,
+            43.8684,
+            33.184,
+            30.3655,
+            31.3383,
+            30.3497,
+            31.0561,
+            31.7735,
+            29.9514,
+            29.3126,
+            30.7818,
+            31.437,
+            29.9472,
+            30.4884,
+            30.5301,
+            31.3792,
+            30.8615,
+            32.1985,
+            29.9299,
+            30.4859,
+            30.4412,
+            32.464
+          ]
+        },
+        "namedIndex": {
+          "p50ClientMs": 1.8242500000000001,
+          "p95ClientMs": 4.4412,
+          "minClientMs": 1.4911,
+          "maxClientMs": 5.604,
+          "samplesClientMs": [
+            1.532,
+            1.9882,
+            3.036,
+            4.4412,
+            5.604,
+            4.3947,
+            2.0363,
+            1.9772,
+            1.5406,
+            2.1277,
+            1.8142,
+            2.3429,
+            3.5709,
+            1.7572,
+            1.6662,
+            3.7225,
+            1.7799,
+            1.9154,
+            1.7465,
+            1.5539,
+            1.8301,
+            1.8184,
+            1.6492,
+            1.4911,
+            1.6932,
+            2.0787,
+            1.6063,
+            1.7493,
+            1.7282,
+            2.2685
+          ]
+        },
+        "plannerUnhinted": {
+          "p50ClientMs": 2.1508,
+          "p95ClientMs": 5.3856,
+          "minClientMs": 1.0711,
+          "maxClientMs": 6.102,
+          "samplesClientMs": [
+            4.2651,
+            1.6849,
+            1.4245,
+            6.102,
+            3.6811,
+            3.4453,
+            3.5353,
+            2.2734,
+            1.7912,
+            2.4827,
+            5.3856,
+            2.1508,
+            2.5028,
+            1.7072,
+            1.8249,
+            2.2518,
+            1.0711,
+            1.5336,
+            1.6482,
+            1.8248,
+            1.7286,
+            4.3998,
+            2.1508,
+            2.0658,
+            2.2028,
+            3.1381,
+            1.2845,
+            1.6029,
+            1.6372,
+            2.1894
+          ]
+        }
+      }
+    },
+    "products-type-brand-price-full-api": {
+      "kind": "product-full-repository",
+      "source": "ProductRepository.list/public=True/page1/pageSize20",
+      "apiParams": {
+        "productType": "ELECTRONICS",
+        "brand": "Benchmark Brand 1",
+        "minPrice": "2000000",
+        "maxPrice": "5000000",
+        "sort": "price_desc"
+      },
+      "withoutIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "SORT",
+          "sortPattern": {
+            "price": -1,
+            "_id": -1
+          },
+          "memLimit": 104857600,
+          "type": "simple",
+          "inputStage": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "_id": 1,
+              "attributes": 1,
+              "brand": 1,
+              "categoryId": 1,
+              "createdAt": 1,
+              "description": 1,
+              "images": 1,
+              "name": 1,
+              "price": 1,
+              "productType": 1,
+              "sku": 1,
+              "slug": 1,
+              "stock": 1,
+              "updatedAt": 1,
+              "version": 1
+            },
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "brandNormalized": {
+                      "$eq": "benchmark brand 1"
+                    }
+                  },
+                  {
+                    "productType": {
+                      "$eq": "ELECTRONICS"
+                    }
+                  },
+                  {
+                    "status": {
+                      "$eq": "ACTIVE"
+                    }
+                  },
+                  {
+                    "price": {
+                      "$lte": 5000000
+                    }
+                  },
+                  {
+                    "price": {
+                      "$gte": 2000000
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "COLLSCAN",
+          "PROJECTION_SIMPLE",
+          "SORT"
+        ],
+        "indexNames": [],
+        "executionTimeMillis": 66,
+        "totalDocsExamined": 30000,
+        "totalKeysExamined": 0,
+        "nReturned": 214,
+        "finalResultRows": 1,
+        "serverPipelineStages": [
+          "$cursor",
+          "$lookup",
+          "$match",
+          "$set",
+          "$facet"
+        ],
+        "spillsObserved": 0,
+        "pagedItemsReturned": 20,
+        "matchingTotal": 214
+      },
+      "withNamedIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "_id": 1,
+            "attributes": 1,
+            "brand": 1,
+            "categoryId": 1,
+            "createdAt": 1,
+            "description": 1,
+            "images": 1,
+            "name": 1,
+            "price": 1,
+            "productType": 1,
+            "sku": 1,
+            "slug": 1,
+            "stock": 1,
+            "updatedAt": 1,
+            "version": 1
+          },
+          "inputStage": {
+            "stage": "FETCH",
+            "filter": {
+              "brandNormalized": {
+                "$eq": "benchmark brand 1"
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "status": 1,
+                "productType": 1,
+                "price": 1,
+                "_id": 1
+              },
+              "indexName": "ix_products_type_price",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "status": [],
+                "productType": [],
+                "price": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "backward",
+              "indexBounds": {
+                "status": [
+                  "[\"ACTIVE\", \"ACTIVE\"]"
+                ],
+                "productType": [
+                  "[\"ELECTRONICS\", \"ELECTRONICS\"]"
+                ],
+                "price": [
+                  "[5000000, 2000000]"
+                ],
+                "_id": [
+                  "[MaxKey, MinKey]"
+                ]
+              }
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_type_price"
+        ],
+        "executionTimeMillis": 39,
+        "totalDocsExamined": 1108,
+        "totalKeysExamined": 1108,
+        "nReturned": 214,
+        "finalResultRows": 1,
+        "serverPipelineStages": [
+          "$cursor",
+          "$lookup",
+          "$match",
+          "$set",
+          "$facet"
+        ],
+        "spillsObserved": 0,
+        "pagedItemsReturned": 20,
+        "matchingTotal": 214
+      },
+      "plannerUnhinted": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "_id": 1,
+            "attributes": 1,
+            "brand": 1,
+            "categoryId": 1,
+            "createdAt": 1,
+            "description": 1,
+            "images": 1,
+            "name": 1,
+            "price": 1,
+            "productType": 1,
+            "sku": 1,
+            "slug": 1,
+            "stock": 1,
+            "updatedAt": 1,
+            "version": 1
+          },
+          "inputStage": {
+            "stage": "FETCH",
+            "filter": {
+              "brandNormalized": {
+                "$eq": "benchmark brand 1"
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "status": 1,
+                "productType": 1,
+                "price": 1,
+                "_id": 1
+              },
+              "indexName": "ix_products_type_price",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "status": [],
+                "productType": [],
+                "price": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "backward",
+              "indexBounds": {
+                "status": [
+                  "[\"ACTIVE\", \"ACTIVE\"]"
+                ],
+                "productType": [
+                  "[\"ELECTRONICS\", \"ELECTRONICS\"]"
+                ],
+                "price": [
+                  "[5000000, 2000000]"
+                ],
+                "_id": [
+                  "[MaxKey, MinKey]"
+                ]
+              }
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_products_type_price"
+        ],
+        "executionTimeMillis": 54,
+        "totalDocsExamined": 1108,
+        "totalKeysExamined": 1108,
+        "nReturned": 214,
+        "finalResultRows": 1,
+        "serverPipelineStages": [
+          "$cursor",
+          "$lookup",
+          "$match",
+          "$set",
+          "$facet"
+        ],
+        "spillsObserved": 0,
+        "pagedItemsReturned": 20,
+        "matchingTotal": 214
+      },
+      "documentScanReductionPercent": 96.307,
+      "resultsEqualAcrossAllModes": true,
+      "resultDigest": "b23e7bc857f6d2291f3995805cad5633e5aa15515b47a0d00b7c0f7817c1d859",
+      "latency": {
+        "noSuitableIndex": {
+          "p50ClientMs": 63.34955,
+          "p95ClientMs": 104.4283,
+          "minClientMs": 60.7449,
+          "maxClientMs": 130.1132,
+          "samplesClientMs": [
+            64.0606,
+            61.5054,
+            61.8206,
+            61.5147,
+            61.8629,
+            60.7449,
+            62.5865,
+            62.1361,
+            62.5514,
+            64.9373,
+            60.7547,
+            63.4137,
+            64.675,
+            64.315,
+            63.8016,
+            67.3097,
+            104.4283,
+            130.1132,
+            66.2485,
+            62.0169,
+            62.2271,
+            63.2854,
+            62.3208,
+            62.0779,
+            63.4798,
+            62.6095,
+            64.0179,
+            101.1981,
+            98.8017,
+            64.8269
+          ]
+        },
+        "natural": {
+          "p50ClientMs": 75.0825,
+          "p95ClientMs": 157.8575,
+          "minClientMs": 62.1745,
+          "maxClientMs": 219.725,
+          "samplesClientMs": [
+            64.3155,
+            64.7412,
+            62.1745,
+            62.9185,
+            70.5751,
+            63.5766,
+            63.0173,
+            123.6054,
+            78.3591,
+            64.1952,
+            71.6747,
+            86.9506,
+            77.8505,
+            66.0221,
+            67.5416,
+            75.7529,
+            77.9386,
+            86.1545,
+            157.8575,
+            219.725,
+            106.4589,
+            93.0531,
+            105.8708,
+            90.282,
+            82.375,
+            74.4121,
+            76.0979,
+            64.6279,
+            64.5433,
+            62.8113
+          ]
+        },
+        "namedIndex": {
+          "p50ClientMs": 45.2126,
+          "p95ClientMs": 73.8501,
+          "minClientMs": 37.1161,
+          "maxClientMs": 98.9697,
+          "samplesClientMs": [
+            39.3946,
+            40.4143,
+            37.1161,
+            37.7847,
+            40.1426,
+            42.7005,
+            45.126,
+            64.2223,
+            39.0631,
+            45.2263,
+            46.6971,
+            42.9208,
+            50.0565,
+            42.3856,
+            42.7923,
+            51.5854,
+            55.0698,
+            67.5503,
+            71.7394,
+            73.8501,
+            98.9697,
+            57.3056,
+            51.3412,
+            52.5473,
+            48.4619,
+            45.1989,
+            69.9107,
+            39.8369,
+            39.8717,
+            42.4823
+          ]
+        },
+        "plannerUnhinted": {
+          "p50ClientMs": 44.3451,
+          "p95ClientMs": 110.2388,
+          "minClientMs": 36.6263,
+          "maxClientMs": 117.9256,
+          "samplesClientMs": [
+            38.062,
+            38.7936,
+            36.6263,
+            38.5214,
+            43.7477,
+            38.7163,
+            37.0231,
+            47.6396,
+            41.9359,
+            40.3463,
+            44.9425,
+            65.5704,
+            48.5706,
+            40.1405,
+            40.9974,
+            42.7637,
+            51.7922,
+            62.7714,
+            82.3531,
+            60.0904,
+            117.9256,
+            107.4754,
+            110.2388,
+            49.3311,
+            52.3473,
+            45.4924,
+            57.2925,
+            39.3447,
+            38.6284,
+            36.8035
+          ]
+        }
+      }
+    },
+    "revenue-day": {
+      "kind": "canonical-dashboard",
+      "source": "DashboardRepository.pipeline + canonical database/aggregations/revenue-day.json",
+      "apiParams": null,
+      "withoutIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 3,
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "planNodeId": 1,
+              "filter": {
+                "$and": [
+                  {
+                    "orderStatus": {
+                      "$eq": "COMPLETED"
+                    }
+                  },
+                  {
+                    "paymentStatus": {
+                      "$eq": "PAID"
+                    }
+                  },
+                  {
+                    "completedAt": {
+                      "$lt": {
+                        "$date": "2026-08-07T17:00:00Z"
+                      }
+                    }
+                  },
+                  {
+                    "completedAt": {
+                      "$gte": {
+                        "$date": "2026-07-31T17:00:00Z"
+                      }
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s16 env: { s8 = TimeZoneDatabase(America/Montreal...Europe/Mariehamn) (timeZoneDB) }",
+            "stages": "[3] project [s16 = newObj(\"_id\", s11, \"revenue\", s14, \"orders\", s15)] \n[3] project [s14 = doubleDoubleSumFinalize(s12), s15 = (convert ( s13, int32) ?: s13)] \n[3] group [s11] [s12 = aggDoubleDoubleSum(\n    if ((typeMatch(s3, 1088) ?: true) || (typeMatch(s2, 1088) ?: true)) \n    then null \n    else \n        if \n            if isNumber(s3) \n            then isNumber(s2) \n            else (isDate(s3) && (isNumber(s2) || isDate(s2))) \n        \n        then (s3 - s2) \n        else fail(7157720, \"Only numbers and dates are allowed in an $subtract expression. To subtract a number from a date, the date must be the first argument.\") \n), s13 = count()] spillSlots[s9, s10] mergingExprs[aggMergeDoubleDoubleSums(s9), sum(s10)] \n[3] project [s11 = (\n    let [\n        l18.0 = dateTrunc(s8, s1, \"day\", 1ll, \"Asia/Ho_Chi_Minh\", \"sun\") \n    ] \n    in \n        if exists(l18.0) \n        then makeOwn(move(l18.0)) \n        else \n            if (typeMatch(s1, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s1, 131712) \n                then Nothing \n                else fail(7157932, \"$dateTrunc parameter 'date' must be coercible to date\") \n?: null)] \n[1] filter {((traverseF(s4, lambda(l5.0) { ((move(l5.0) == \"COMPLETED\") ?: false) }, false) && traverseF(s5, lambda(l6.0) { ((move(l6.0) == \"PAID\") ?: false) }, false)) && (traverseF(s1, lambda(l7.0) { ((move(l7.0) < Date(1786122000000)) ?: false) }, false) && traverseF(s1, lambda(l8.0) { ((move(l8.0) >= Date(1785517200000)) ?: false) }, false)))} \n[1] scan s6 s7 none none none none none none lowPriority [s1 = completedAt, s2 = discount, s3 = subtotal, s4 = orderStatus, s5 = paymentStatus] @\"4210350d-dd8a-4e1f-9253-d8ea1e6821d9\" true false "
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "COLLSCAN",
+          "GROUP"
+        ],
+        "indexNames": [],
+        "executionTimeMillis": 15,
+        "totalDocsExamined": 10000,
+        "totalKeysExamined": 0,
+        "nReturned": 7,
+        "finalResultRows": 7,
+        "serverPipelineStages": [
+          "$cursor",
+          "$sort"
+        ],
+        "spillsObserved": 0
+      },
+      "withNamedIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "FETCH",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "IXSCAN",
+                "planNodeId": 1,
+                "keyPattern": {
+                  "orderStatus": 1,
+                  "paymentStatus": 1,
+                  "completedAt": -1,
+                  "_id": -1
+                },
+                "indexName": "ix_orders_qualified_completed",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "orderStatus": [],
+                  "paymentStatus": [],
+                  "completedAt": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "orderStatus": [
+                    "[\"COMPLETED\", \"COMPLETED\"]"
+                  ],
+                  "paymentStatus": [
+                    "[\"PAID\", \"PAID\"]"
+                  ],
+                  "completedAt": [
+                    "(new Date(1786122000000), new Date(1785517200000)]"
+                  ],
+                  "_id": [
+                    "[MaxKey, MinKey]"
+                  ]
+                }
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s19 env: { s5 = {\"orderStatus\" : 1, \"paymentStatus\" : 1, \"completedAt\" : -1, \"_id\" : -1}, s11 = TimeZoneDatabase(America/Montreal...Europe/Mariehamn) (timeZoneDB) }",
+            "stages": "[4] project [s19 = newObj(\"_id\", s14, \"revenue\", s17, \"orders\", s18)] \n[4] project [s17 = doubleDoubleSumFinalize(s15), s18 = (convert ( s16, int32) ?: s16)] \n[4] group [s14] [s15 = aggDoubleDoubleSum(\n    if ((typeMatch(s10, 1088) ?: true) || (typeMatch(s9, 1088) ?: true)) \n    then null \n    else \n        if \n            if isNumber(s10) \n            then isNumber(s9) \n            else (isDate(s10) && (isNumber(s9) || isDate(s9))) \n        \n        then (s10 - s9) \n        else fail(7157720, \"Only numbers and dates are allowed in an $subtract expression. To subtract a number from a date, the date must be the first argument.\") \n), s16 = count()] spillSlots[s12, s13] mergingExprs[aggMergeDoubleDoubleSums(s12), sum(s13)] \n[4] project [s14 = (\n    let [\n        l10.0 = dateTrunc(s11, s8, \"day\", 1ll, \"Asia/Ho_Chi_Minh\", \"sun\") \n    ] \n    in \n        if exists(l10.0) \n        then makeOwn(move(l10.0)) \n        else \n            if (typeMatch(s8, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s8, 131712) \n                then Nothing \n                else fail(7157932, \"$dateTrunc parameter 'date' must be coercible to date\") \n?: null)] \n[2] nlj inner [] [s1, s2, s3, s4, s5] \n    left \n        [1] ixseek KS(3C434F4D504C45544544003C5041494400877FFFFE6022D5297FF5FE04) KS(3C434F4D504C45544544003C5041494400877FFFFE6046E1AD7FF5FE04) s4 s1 s2 s3 [] @\"4210350d-dd8a-4e1f-9253-d8ea1e6821d9\" @\"ix_orders_qualified_completed\" true \n    right \n        [2] limit 1ll \n        [2] seek s1 s6 s7 s2 s3 s4 s5 none none [s8 = completedAt, s9 = discount, s10 = subtotal] @\"4210350d-dd8a-4e1f-9253-d8ea1e6821d9\" true false \n"
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "GROUP",
+          "IXSCAN"
+        ],
+        "indexNames": [
+          "ix_orders_qualified_completed"
+        ],
+        "executionTimeMillis": 5,
+        "totalDocsExamined": 152,
+        "totalKeysExamined": 152,
+        "nReturned": 7,
+        "finalResultRows": 7,
+        "serverPipelineStages": [
+          "$cursor",
+          "$sort"
+        ],
+        "spillsObserved": 0
+      },
+      "plannerUnhinted": {
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "FETCH",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "IXSCAN",
+                "planNodeId": 1,
+                "keyPattern": {
+                  "orderStatus": 1,
+                  "paymentStatus": 1,
+                  "completedAt": -1,
+                  "_id": -1
+                },
+                "indexName": "ix_orders_qualified_completed",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "orderStatus": [],
+                  "paymentStatus": [],
+                  "completedAt": [],
+                  "_id": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "orderStatus": [
+                    "[\"COMPLETED\", \"COMPLETED\"]"
+                  ],
+                  "paymentStatus": [
+                    "[\"PAID\", \"PAID\"]"
+                  ],
+                  "completedAt": [
+                    "(new Date(1786122000000), new Date(1785517200000)]"
+                  ],
+                  "_id": [
+                    "[MaxKey, MinKey]"
+                  ]
+                }
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s19 env: { s5 = {\"orderStatus\" : 1, \"paymentStatus\" : 1, \"completedAt\" : -1, \"_id\" : -1}, s11 = TimeZoneDatabase(America/Montreal...Europe/Mariehamn) (timeZoneDB) }",
+            "stages": "[4] project [s19 = newObj(\"_id\", s14, \"revenue\", s17, \"orders\", s18)] \n[4] project [s17 = doubleDoubleSumFinalize(s15), s18 = (convert ( s16, int32) ?: s16)] \n[4] group [s14] [s15 = aggDoubleDoubleSum(\n    if ((typeMatch(s10, 1088) ?: true) || (typeMatch(s9, 1088) ?: true)) \n    then null \n    else \n        if \n            if isNumber(s10) \n            then isNumber(s9) \n            else (isDate(s10) && (isNumber(s9) || isDate(s9))) \n        \n        then (s10 - s9) \n        else fail(7157720, \"Only numbers and dates are allowed in an $subtract expression. To subtract a number from a date, the date must be the first argument.\") \n), s16 = count()] spillSlots[s12, s13] mergingExprs[aggMergeDoubleDoubleSums(s12), sum(s13)] \n[4] project [s14 = (\n    let [\n        l10.0 = dateTrunc(s11, s8, \"day\", 1ll, \"Asia/Ho_Chi_Minh\", \"sun\") \n    ] \n    in \n        if exists(l10.0) \n        then makeOwn(move(l10.0)) \n        else \n            if (typeMatch(s8, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s8, 131712) \n                then Nothing \n                else fail(7157932, \"$dateTrunc parameter 'date' must be coercible to date\") \n?: null)] \n[2] nlj inner [] [s1, s2, s3, s4, s5] \n    left \n        [1] ixseek KS(3C434F4D504C45544544003C5041494400877FFFFE6022D5297FF5FE04) KS(3C434F4D504C45544544003C5041494400877FFFFE6046E1AD7FF5FE04) s4 s1 s2 s3 [] @\"4210350d-dd8a-4e1f-9253-d8ea1e6821d9\" @\"ix_orders_qualified_completed\" true \n    right \n        [2] limit 1ll \n        [2] seek s1 s6 s7 s2 s3 s4 s5 none none [s8 = completedAt, s9 = discount, s10 = subtotal] @\"4210350d-dd8a-4e1f-9253-d8ea1e6821d9\" true false \n"
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "GROUP",
+          "IXSCAN"
+        ],
+        "indexNames": [
+          "ix_orders_qualified_completed"
+        ],
+        "executionTimeMillis": 2,
+        "totalDocsExamined": 152,
+        "totalKeysExamined": 152,
+        "nReturned": 7,
+        "finalResultRows": 7,
+        "serverPipelineStages": [
+          "$cursor",
+          "$sort"
+        ],
+        "spillsObserved": 0
+      },
+      "documentScanReductionPercent": 98.48,
+      "resultsEqualAcrossAllModes": true,
+      "resultDigest": "891e0856a64e3d106075794eb0937a97f616bdba04cc6b1c8d3f707c70ef696a",
+      "latency": {
+        "noSuitableIndex": {
+          "p50ClientMs": 15.05685,
+          "p95ClientMs": 16.09,
+          "minClientMs": 13.2932,
+          "maxClientMs": 17.015,
+          "samplesClientMs": [
+            13.9465,
+            15.8331,
+            15.1453,
+            16.0682,
+            15.655,
+            15.4303,
+            14.2581,
+            14.8766,
+            14.3192,
+            14.9104,
+            14.4379,
+            13.2932,
+            15.2136,
+            14.6585,
+            15.1637,
+            16.09,
+            17.015,
+            14.3824,
+            15.1515,
+            14.4551,
+            15.7501,
+            14.4719,
+            15.0686,
+            14.3069,
+            13.609,
+            15.4185,
+            15.2754,
+            15.1781,
+            14.2616,
+            15.0451
+          ]
+        },
+        "natural": {
+          "p50ClientMs": 16.1492,
+          "p95ClientMs": 21.6428,
+          "minClientMs": 14.3638,
+          "maxClientMs": 21.8611,
+          "samplesClientMs": [
+            14.7963,
+            21.8611,
+            21.6428,
+            19.5063,
+            19.8952,
+            16.8256,
+            16.622,
+            17.3008,
+            16.831,
+            16.1155,
+            16.598,
+            15.5863,
+            16.3639,
+            15.4785,
+            15.8993,
+            17.9044,
+            16.5878,
+            17.6081,
+            16.1829,
+            15.372,
+            15.0367,
+            15.8578,
+            16.6837,
+            14.9536,
+            14.527,
+            14.7955,
+            15.3901,
+            14.8486,
+            14.3638,
+            15.3165
+          ]
+        },
+        "namedIndex": {
+          "p50ClientMs": 2.9739,
+          "p95ClientMs": 5.2541,
+          "minClientMs": 2.4485,
+          "maxClientMs": 7.5123,
+          "samplesClientMs": [
+            3.3314,
+            4.138,
+            4.9535,
+            5.2541,
+            3.5869,
+            3.7606,
+            2.4485,
+            3.5091,
+            2.6956,
+            2.6533,
+            4.3958,
+            2.5662,
+            4.5168,
+            3.9176,
+            2.7387,
+            2.7533,
+            2.4558,
+            7.5123,
+            2.7482,
+            3.74,
+            2.8574,
+            2.6274,
+            4.3232,
+            2.6643,
+            2.8034,
+            3.0904,
+            3.4524,
+            2.6304,
+            2.6218,
+            2.4901
+          ]
+        },
+        "plannerUnhinted": {
+          "p50ClientMs": 3.04455,
+          "p95ClientMs": 7.3143,
+          "minClientMs": 2.2988,
+          "maxClientMs": 9.9973,
+          "samplesClientMs": [
+            3.6112,
+            4.8499,
+            4.6162,
+            9.9973,
+            7.3143,
+            5.8075,
+            3.0506,
+            2.7761,
+            4.9935,
+            2.3477,
+            3.9854,
+            2.8396,
+            2.633,
+            2.8809,
+            2.6524,
+            4.9306,
+            2.5846,
+            2.8257,
+            3.3715,
+            4.3229,
+            2.6403,
+            2.8313,
+            3.3542,
+            3.0385,
+            2.9176,
+            5.9755,
+            2.6439,
+            2.2988,
+            5.3836,
+            2.729
+          ]
+        }
+      }
+    },
+    "top-products": {
+      "kind": "canonical-dashboard",
+      "source": "DashboardRepository.pipeline + canonical database/aggregations/top-products.json",
+      "apiParams": null,
+      "withoutIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "items": 1,
+            "_id": 0
+          },
+          "inputStage": {
+            "stage": "SORT",
+            "sortPattern": {
+              "completedAt": -1,
+              "_id": -1
+            },
+            "memLimit": 104857600,
+            "type": "simple",
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "$and": [
+                  {
+                    "orderStatus": {
+                      "$eq": "COMPLETED"
+                    }
+                  },
+                  {
+                    "paymentStatus": {
+                      "$eq": "PAID"
+                    }
+                  },
+                  {
+                    "completedAt": {
+                      "$lt": {
+                        "$date": "2026-08-07T17:00:00Z"
+                      }
+                    }
+                  },
+                  {
+                    "completedAt": {
+                      "$gte": {
+                        "$date": "2026-07-31T17:00:00Z"
+                      }
+                    }
+                  }
+                ]
+              },
+              "direction": "forward"
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "COLLSCAN",
+          "PROJECTION_SIMPLE",
+          "SORT"
+        ],
+        "indexNames": [],
+        "executionTimeMillis": 22,
+        "totalDocsExamined": 10000,
+        "totalKeysExamined": 0,
+        "nReturned": 152,
+        "finalResultRows": 5,
+        "serverPipelineStages": [
+          "$cursor",
+          "$unwind",
+          "$group",
+          "$sort",
+          "$project"
+        ],
+        "spillsObserved": 0
+      },
+      "withNamedIndex": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "items": 1,
+            "_id": 0
+          },
+          "inputStage": {
+            "stage": "FETCH",
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "orderStatus": 1,
+                "paymentStatus": 1,
+                "completedAt": -1,
+                "_id": -1
+              },
+              "indexName": "ix_orders_qualified_completed",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "orderStatus": [],
+                "paymentStatus": [],
+                "completedAt": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "orderStatus": [
+                  "[\"COMPLETED\", \"COMPLETED\"]"
+                ],
+                "paymentStatus": [
+                  "[\"PAID\", \"PAID\"]"
+                ],
+                "completedAt": [
+                  "(new Date(1786122000000), new Date(1785517200000)]"
+                ],
+                "_id": [
+                  "[MaxKey, MinKey]"
+                ]
+              }
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_orders_qualified_completed"
+        ],
+        "executionTimeMillis": 2,
+        "totalDocsExamined": 152,
+        "totalKeysExamined": 152,
+        "nReturned": 152,
+        "finalResultRows": 5,
+        "serverPipelineStages": [
+          "$cursor",
+          "$unwind",
+          "$group",
+          "$sort",
+          "$project"
+        ],
+        "spillsObserved": 0
+      },
+      "plannerUnhinted": {
+        "winningPlan": {
+          "isCached": false,
+          "stage": "PROJECTION_SIMPLE",
+          "transformBy": {
+            "items": 1,
+            "_id": 0
+          },
+          "inputStage": {
+            "stage": "FETCH",
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "orderStatus": 1,
+                "paymentStatus": 1,
+                "completedAt": -1,
+                "_id": -1
+              },
+              "indexName": "ix_orders_qualified_completed",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "orderStatus": [],
+                "paymentStatus": [],
+                "completedAt": [],
+                "_id": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "orderStatus": [
+                  "[\"COMPLETED\", \"COMPLETED\"]"
+                ],
+                "paymentStatus": [
+                  "[\"PAID\", \"PAID\"]"
+                ],
+                "completedAt": [
+                  "(new Date(1786122000000), new Date(1785517200000)]"
+                ],
+                "_id": [
+                  "[MaxKey, MinKey]"
+                ]
+              }
+            }
+          }
+        },
+        "statisticsScope": "$cursor",
+        "planStages": [
+          "FETCH",
+          "IXSCAN",
+          "PROJECTION_SIMPLE"
+        ],
+        "indexNames": [
+          "ix_orders_qualified_completed"
+        ],
+        "executionTimeMillis": 4,
+        "totalDocsExamined": 152,
+        "totalKeysExamined": 152,
+        "nReturned": 152,
+        "finalResultRows": 5,
+        "serverPipelineStages": [
+          "$cursor",
+          "$unwind",
+          "$group",
+          "$sort",
+          "$project"
+        ],
+        "spillsObserved": 0
+      },
+      "documentScanReductionPercent": 98.48,
+      "resultsEqualAcrossAllModes": true,
+      "resultDigest": "2909408def1e89d0d332eb62253c4f9133ea91b2675ec3ffcce4945f21040f43",
+      "latency": {
+        "noSuitableIndex": {
+          "p50ClientMs": 22.6072,
+          "p95ClientMs": 28.0654,
+          "minClientMs": 20.5929,
+          "maxClientMs": 28.2506,
+          "samplesClientMs": [
+            21.051,
+            24.5576,
+            22.9216,
+            27.0914,
+            28.2506,
+            23.989,
+            28.0654,
+            21.0165,
+            24.8643,
+            25.0449,
+            21.2181,
+            23.1106,
+            22.2928,
+            21.4998,
+            23.7848,
+            21.223,
+            21.131,
+            24.1205,
+            21.5518,
+            20.9929,
+            24.0506,
+            22.1631,
+            20.5929,
+            23.3469,
+            21.2798,
+            20.6846,
+            23.2851,
+            21.6175,
+            21.3241,
+            26.1776
+          ]
+        },
+        "natural": {
+          "p50ClientMs": 22.5396,
+          "p95ClientMs": 28.9856,
+          "minClientMs": 20.5708,
+          "maxClientMs": 37.2029,
+          "samplesClientMs": [
+            21.5674,
+            22.3758,
+            23.2219,
+            37.2029,
+            22.6164,
+            28.9856,
+            24.3894,
+            27.381,
+            24.4695,
+            23.8416,
+            23.6102,
+            23.5103,
+            21.1623,
+            20.6786,
+            22.6783,
+            21.4905,
+            21.1923,
+            22.9903,
+            21.8016,
+            20.974,
+            21.6617,
+            22.0027,
+            21.7919,
+            20.8611,
+            20.7804,
+            20.5708,
+            22.4628,
+            24.8162,
+            24.5098,
+            27.6765
+          ]
+        },
+        "namedIndex": {
+          "p50ClientMs": 3.7262500000000003,
+          "p95ClientMs": 8.0386,
+          "minClientMs": 3.2481,
+          "maxClientMs": 9.4294,
+          "samplesClientMs": [
+            3.524,
+            3.3868,
+            6.5552,
+            4.578,
+            8.0386,
+            5.0847,
+            3.7869,
+            3.8854,
+            3.528,
+            3.538,
+            3.5818,
+            3.3578,
+            5.6908,
+            3.4153,
+            3.5539,
+            3.3649,
+            4.4373,
+            3.6072,
+            5.3736,
+            4.6211,
+            3.4398,
+            3.468,
+            4.9751,
+            3.6656,
+            4.6021,
+            3.2481,
+            6.0295,
+            3.5691,
+            4.8763,
+            9.4294
+          ]
+        },
+        "plannerUnhinted": {
+          "p50ClientMs": 4.23855,
+          "p95ClientMs": 6.3999,
+          "minClientMs": 3.1742,
+          "maxClientMs": 7.3042,
+          "samplesClientMs": [
+            5.4459,
+            5.6918,
+            3.368,
+            7.3042,
+            4.517,
+            3.8225,
+            4.1069,
+            4.9639,
+            3.2905,
+            3.3292,
+            3.4093,
+            3.9309,
+            3.5273,
+            5.4597,
+            4.3702,
+            6.3483,
+            4.7109,
+            3.1809,
+            3.1742,
+            5.5027,
+            3.7371,
+            5.2276,
+            3.4439,
+            6.3999,
+            4.5095,
+            3.2843,
+            3.4139,
+            3.2854,
+            5.7198,
+            4.5354
+          ]
+        }
+      }
+    }
+  },
+  "schemaChanged": false,
+  "businessRuleChanged": false,
+  "devIndexesCreatedOrDropped": false
+}

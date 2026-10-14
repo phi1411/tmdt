@@ -1,0 +1,678 @@
+{
+  "flows": [
+    {
+      "name": "1.1 Tải trang chủ",
+      "status": "PASS",
+      "details": "Tiêu đề: \"Novamart - Sàn Thương Mại Điện Tử Đa Ngành\""
+    },
+    {
+      "name": "1.2 Hiển thị danh mục ngành hàng",
+      "status": "PASS",
+      "details": "Tìm thấy 5 danh mục trên trang chủ"
+    },
+    {
+      "name": "1.3 Hiển thị sản phẩm trên trang chủ",
+      "status": "PASS",
+      "details": "Tìm thấy 12 thẻ sản phẩm"
+    },
+    {
+      "name": "2.1 Đăng ký tài khoản Customer (POST /auth/register 201)",
+      "status": "PASS",
+      "details": "Đăng ký thành công khach_muznh34i@example.test"
+    },
+    {
+      "name": "2.2 Bắt lỗi trùng email (POST /auth/register 409)",
+      "status": "PASS",
+      "details": "Hiển thị cảnh báo email đã tồn tại"
+    },
+    {
+      "name": "2.3 Bắt lỗi sai mật khẩu (POST /auth/login 401)",
+      "status": "PASS",
+      "details": "Hiển thị lỗi thông tin đăng nhập không chính xác"
+    },
+    {
+      "name": "2.4 Đăng nhập tài khoản hợp lệ (POST /auth/login 200)",
+      "status": "PASS",
+      "details": "Đã nhận Bearer JWT và đăng nhập thành công"
+    },
+    {
+      "name": "2.5 Duy trì phiên đăng nhập sau Refresh (F5)",
+      "status": "PASS",
+      "details": "Session phục hồi thành công qua GET /auth/me"
+    },
+    {
+      "name": "3.1 Tải danh sách sản phẩm (/products)",
+      "status": "PASS",
+      "details": "Hiển thị 16 sản phẩm"
+    },
+    {
+      "name": "3.2 Tìm kiếm từ khóa (?q=demo)",
+      "status": "PASS",
+      "details": "Tìm thấy 16 sản phẩm khớp từ khóa"
+    },
+    {
+      "name": "3.3 Trạng thái Empty Search",
+      "status": "PASS",
+      "details": "Hiển thị EmptyState thân thiện"
+    },
+    {
+      "name": "3.4 Render Polymorphic Detail: ELECTRONICS",
+      "status": "PASS",
+      "details": "Hiển thị thông số kỹ thuật điện tử"
+    },
+    {
+      "name": "3.5 Render Polymorphic Detail: FASHION",
+      "status": "PASS",
+      "details": "Hiển thị thuộc tính thời trang (Size/Màu)"
+    },
+    {
+      "name": "3.6 Render Polymorphic Detail: HOME_APPLIANCE",
+      "status": "PASS",
+      "details": "Hiển thị thuộc tính đồ gia dụng"
+    },
+    {
+      "name": "4.1 Thêm sản phẩm vào giỏ (POST /cart/items 200)",
+      "status": "PASS",
+      "details": "Thêm vào giỏ thành công và nhận cart payload"
+    },
+    {
+      "name": "4.2 Mở trang Giỏ Hàng (/cart)",
+      "status": "PASS",
+      "details": "Giỏ hàng hiển thị tạm tính: 999.750 ₫"
+    },
+    {
+      "name": "4.3 Cập nhật số lượng (PATCH /cart/items 200)",
+      "status": "PASS",
+      "details": "Tăng số lượng thành công"
+    },
+    {
+      "name": "5.1 Tạo địa chỉ giao hàng mới (POST /users/me/addresses 201)",
+      "status": "PASS",
+      "details": "Đã lưu địa chỉ vào DB"
+    },
+    {
+      "name": "5.2 Xử lý graceful VNPAY 503",
+      "status": "PASS",
+      "details": "Cổng VNPAY hiển thị ghi chú bảo trì sandbox"
+    },
+    {
+      "name": "5.3 Nhận báo giá có chữ ký (GET /checkout/quote 200)",
+      "status": "PASS",
+      "details": "Tổng thanh toán: 2.029.500 ₫"
+    },
+    {
+      "name": "5.4 Tạo đơn hàng COD thành công (POST /orders 201)",
+      "status": "PASS",
+      "details": "Mã đơn: ORD-6AC7AD0B442F2C8655B0F761, ID: 6ac7ad0b442f2c8655b0f761, Tiền backend: 2029500 VND"
+    },
+    {
+      "name": "6.1 Hiển thị đơn hàng trong Lịch sử (GET /orders 200)",
+      "status": "PASS",
+      "details": "Tìm thấy ORD-6AC7AD0B442F2C8655B0F761"
+    },
+    {
+      "name": "6.2 Render dữ liệu từ Order Snapshot (GET /orders/:id 200)",
+      "status": "PASS",
+      "details": "Chi tiết hiển thị chính xác các trường snapshot"
+    },
+    {
+      "name": "7.1 Hủy đơn hàng PENDING thành công (POST /cancel 200)",
+      "status": "PASS",
+      "details": "Trạng thái chuyển thành CANCELLED và giải phóng tồn kho"
+    },
+    {
+      "name": "7.2 Ẩn nút Hủy khi đơn đã ở trạng thái CANCELLED",
+      "status": "PASS",
+      "details": "Không thể hủy tiếp đơn đã hủy"
+    },
+    {
+      "name": "8.1 Cập nhật thông tin cá nhân (PATCH /users/me 200)",
+      "status": "PASS",
+      "details": "Họ tên cập nhật kèm OCC version"
+    },
+    {
+      "name": "8.2 Xem sổ địa chỉ (GET /users/me 200)",
+      "status": "PASS",
+      "details": "Hiển thị sổ địa chỉ đã lưu"
+    },
+    {
+      "name": "9.1 Desktop Viewport (1440px)",
+      "status": "PASS",
+      "details": "Sidebar bộ lọc hiển thị đầy đủ"
+    },
+    {
+      "name": "9.2 Tablet Viewport (900px)",
+      "status": "PASS",
+      "details": "Nút mở bộ lọc xuất hiện"
+    },
+    {
+      "name": "9.3 Mobile Viewport (390px)",
+      "status": "PASS",
+      "details": "Menu hamburger mở trượt mượt mà"
+    },
+    {
+      "name": "10.1 Đăng xuất tài khoản",
+      "status": "PASS",
+      "details": "Xóa token trong memory và sessionStorage"
+    },
+    {
+      "name": "10.2 Chặn Protected Route khi là Guest",
+      "status": "PASS",
+      "details": "Tự động chuyển hướng về /login"
+    }
+  ],
+  "httpCalls": [
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=ELECTRONICS&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=FASHION&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=HOME_APPLIANCE&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "endpoint": "/auth/register",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "endpoint": "/auth/register",
+      "status": 409
+    },
+    {
+      "method": "POST",
+      "endpoint": "/auth/login",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "endpoint": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=HOME_APPLIANCE&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=FASHION&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=ELECTRONICS&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=FASHION&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=ELECTRONICS&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=HOME_APPLIANCE&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?q=demo&sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?q=xyznonexistenttoken999&sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=ELECTRONICS&sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products/phase07a-phone-muznahjh",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=FASHION&sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products/nike-air-jordan-1-red-and-black-066",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=HOME_APPLIANCE&sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products/silver-pot-with-glass-cap-149",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "endpoint": "/cart/items",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "endpoint": "/cart/items/8e34944d6094d4d9d54cff3cb8ce1ae7f618f52475e73b87237debf1cdad746a",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "endpoint": "/users/me/addresses",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "endpoint": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/checkout/quote?addressId=6ac7ad07442f2c8655b0f760&paymentMethod=COD",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "endpoint": "/orders",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/orders?page=1&pageSize=10",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/orders/6ac7ad0b442f2c8655b0f761",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "endpoint": "/orders/6ac7ad0b442f2c8655b0f761/cancel",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "endpoint": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?sort=latest&page=1&pageSize=16",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=ELECTRONICS&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=FASHION&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=HOME_APPLIANCE&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=FASHION&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=ELECTRONICS&sort=latest&pageSize=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "endpoint": "/products?productType=HOME_APPLIANCE&sort=latest&pageSize=4",
+      "status": 200
+    }
+  ],
+  "errors": [
+    "[Console Error] Failed to load resource: the server responded with a status of 409 (CONFLICT)",
+    "[Console Error] Failed to load resource: the server responded with a status of 401 (UNAUTHORIZED)"
+  ],
+  "capturedOrder": {
+    "orderId": "6ac7ad0b442f2c8655b0f761",
+    "orderCode": "ORD-6AC7AD0B442F2C8655B0F761",
+    "total": 2029500,
+    "status": "PENDING",
+    "paymentStatus": "UNPAID",
+    "itemsCount": 1
+  }
+}

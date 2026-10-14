@@ -2,61 +2,65 @@
 
 ## Goal
 
-COD phục vụ demo barem; VNPAY Sandbox mô phỏng thanh toán online an toàn. P0/P1; chưa implement. Design/state/metadata/TTL đã khóa; secrets/reachable IPN deferred tới phasePayment, không blocker modeling/COD.
+PHASE06A Payment backend IMPLEMENTED; COD giữ nguyên. Live Sandbox **BLOCKED LIVE SANDBOX** khi chưa có merchant credentials/IPN công khai. Frontend và rehearsal thật chưa DONE. [Contract](../api-contract.md), [review](../phase-06a-review.md), [setup](../payment-setup.md).
 
 ## Actors
 
-Customer initiates; VNPAY server IPN; Admin xem trạng thái/đối soát, không fake paid online.
+Customer owner tạo/retry link; VNPAY server gửi IPN; browser Return; Admin đọc trạng thái/đối soát, không fake paid online.
 
 ## Functional Requirements
 
-COD payment status tại Order completion; VNPAY signed payment URL, attempt retry/idempotency, signed IPN validation, ReturnUrl UX/poll server state, explicit expiry/late payment review. Không payment production/refund tự động.
+Checkout online tạo Order/initial attempt/hold stock/clear Cart atomic; dựng signed URL sau commit. Retry existing Order idempotent trong deadline; Return verify/read-only; IPN authoritative transaction và duplicate-safe; expiry worker30s trả kho once. COD payment thuộc existing Admin complete flow; không payment production/refund tự động.
 
 ## Business Rules
 
-BR-PAYMENT/BR-ORDER và ADR-006. Amount=Order.total ×100 theo [VNPAY chính thức](https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html), txnRef unique/attempt, merchant/hash server config. URL không đồng nghĩa đã trả tiền. Chỉ success IPN chữ ký/merchant/amount/reference/status valid cập nhật PAID và CONFIRMED trong transaction. Duplicate same txn no side effects; failure after success no downgrade. Late success sau cancel/expiry→Order REVIEW_REQUIRED. Second-success txn khác trên Order đã PAID→attempt REVIEW_REQUIRED và Order.paymentReviewRequired=true nhưng giữ paymentStatus PAID/orderStatus, không tăng hay xóa doanh thu trước đó/trừ stock lại.
+BR-PAYMENT/BR-ORDER/ADR006 và [ADR010 runtime](../decisions/010-payment-runtime.md). Amount=Order.total×100. Success cả response/status00, nonzero transactionNo, verifiedAt trước deadline và providerPaidAt<=deadline: Order PENDING→CONFIRMED/PAID, attempt SUCCEEDED. Failure→attempt FAILED/Order PENDING+FAILED, hold tới deadline. Retry không gia hạn. Expiry→EXPIRED/FAILED +stockReleasedAt/expiredAt, invalidate pending; cancel giữ CANCELLED/FAILED. Late success sau terminal/deadline→REVIEW_REQUIRED, không revive. Second distinct success khi đã PAID giữ PAID/orderStatus/paidAt, chỉ review flag và attempt REVIEW_REQUIRED. Duplicate hoặc failure sau success không write. Revenue definition giữ nguyên, không cộng revenue trong IPN.
 
 ## Permission
 
-Customer owner tạo link/read status qua Order detail; IPN public network nhưng bắt buộc provider verification. Admin chỉ read/review baseline, không gọi endpoint set-paid VNPAY. Return trang public không lộ Order PII, cần đăng nhập để fetch detail.
+CUSTOMER ACTIVE owner tạo link/poll Order, Guest401/Admin403/khác owner404. IPN/Return public nhưng bắt buộc provider verification; Return không PII. Không endpoint set-paid, không Admin override owner.
 
 ## API
 
 | Method / path | Request | Response data | Error |
 | --- | --- | --- | --- |
-| POST /orders/:id/payment-attempts | {expectedVersion}, Idempotency-Key | 201 {attemptId,paymentUrl,expiresAt};200 replay | 404 owner;409 paid/terminal/pending attempt/expired/stale;503 config;422 |
-| GET /payments/vnpay/ipn | Provider signed query | HTTP200 provider {RspCode,Message}, không JSON envelope | Signature/amount/ref/state response theo protocol provider |
-| GET /orders/:id | Bearer | 200 Order paymentStatus | 404/401/403 |
+| POST /orders/:id/payment-attempts | Bearer CUSTOMER; {expectedVersion}, Idempotency-Key, không query | 201 {attemptId,attemptStatus,expiresAt,orderVersion,paymentUrl?,retryRequired?};200 replay | 400 ID/JSON;401/403;404 owner;409 ORDER_CHANGED/INVALID_TRANSITION/PAYMENT_ATTEMPT_PENDING/IDEMPOTENCY_CONFLICT/VERSION_LIMIT;422;503 |
+| GET /payments/vnpay/return | Signed provider query | 200 envelope safe result SUCCESS/FAILED/PENDING/INVALID_SIGNATURE/INVALID_RESPONSE, authoritative:false | 503 config/DB |
+| GET /payments/vnpay/ipn | Signed provider query | HTTP200 provider {RspCode,Message}, không envelope | 00 committed;02 duplicate;01 relation;04 amount;97 signature;99 processing |
+| GET /orders/:id | Bearer CUSTOMER owner, không query | 200 Order paymentStatus/orderStatus/review flag; lazy expiry | 400/401/403/404/422/503 |
 
-Frontend `/payment/return` là SPA route được cấu hình ReturnUrl; không API trust browser params. IPN codes/method/canonical encoding đã khóa theo BR-PAYMENT và provider2.1.0; implementation sau này phải có provider fixtures xác minh contract, không mở lại quyết định đã khóa. IPN chỉ acknowledge sau DB commit; DB outage cần provider-compatible retry response, không falsely acknowledge thành công.
+Shape/parameters/errors đầy đủ tại [API contract Payment](../api-contract.md). ReturnUrl trỏ handler backend hoặc SPA `/payment/return` forward nguyên query tới handler. Return trước IPN chỉ PENDING dù provider success; persisted PAID mới SUCCESS. Client poll own Order. Replay same attempt key/body trả current state, không paymentUrl cho terminal attempt/order; đổi body409. Initial link lấy từ checkout, retry endpoint chỉ khi không pending attempt.
 
 ## Data
 
-Read/write payment_attempts + orders; expiry/cancel write products stock trong transaction. Paths `api/payments.py`, `services/payment_service.py`, `services/vnpay_provider.py`, `repositories/payment_repository.py`, Order/Product repos state operations, `features/payment/`; future `scripts/payment/expire_pending.py` worker đã khóa poll30giây, file chỉ tạo khi phasePayment được yêu cầu. Checkout tạo initial attempt, payment endpoint retry cùng existing state. Canonical paymentRequest/callback metadata tại database-schema và validator, partial unique PENDING/orderId chống concurrent attempts.
+Read/write payment_attempts/orders; expiry/cancel products stock/version transaction. Paths `backend/app/api/payments.py`, `services/payment_service.py`, `services/vnpay_provider.py`, `repositories/payment_attempt_repository.py`, Order/Product repositories; dependencies Checkout initial attempt, Order detail expiry/cancel, shared `catalog_transaction.py`, foundation config/guards/DTO/errors. Worker `scripts/payment/expire_pending.py` poll30s/batch100, `start-expiry.ps1`; tests `backend/tests/test_payment.py`, runtime `scripts/backend/verify_payment_runtime.py`. PaymentRequest immutable metadata theo canonical validator, money BSON long, date UTC, ObjectId, partial unique pending/order +txnRef/attemptKey/providerTransactionNo indexes có sẵn. Không schema/index/collection mới.
 
 ## Validation
 
-Query allowlist + signature canonical sorted params theo provider, exclude signature fields đúng protocol; compare digest constant time. txnRef existing, provider/code/amount/time/transaction status; amount integer bound (Order.total<=9.999.999.999 VND); configured absolute return/IPN URLs. Success require both responseCode00 và transactionStatus00, deadline guard theo BR-PAYMENT. Không nhận user amount/provider secret/URL tùy ý.
+HMAC-SHA512 canonical sorted UTF-8 form URL encoding, constant-time compare, exclude signature fields; callback allowlist/repeated/missing keys reject, bounds/protocol verification. Merchant/ref/order/owner/payment method và amount khớp cả attempt/Order/request metadata. Order total1..9.999.999.999VND, version strict integer1..2147483647, key printable ASCII8..128 không spaces. Valid config VNP_* và VNPAY_ENABLED; Sandbox host allowlist, HTTPS ngoài loopback; IP lấy peer socket, không tin forwarded header. Provider date UTC+7 strictly14digits, missing payDate dùng verifiedAt.
 
 ## Edge Cases
 
-Double-click/timeout URL, callbacks out of order/duplicate, lost return, server clock offset, payment after expiry/cancel, failed attempt retry, simultaneous expiry/success, unavailable IPN public access. Không refund hoặc hồi sinh đơn tự động; manual reconciliation ngoài ứng dụng; refund automation DEFERRED. Deadline15phút/expiry30giây, provider amount cap và late success rules tại foundation-decisions/BR-PAYMENT.
+Unknown commit→retry nguyên key/body, acknowledge IPN00 chỉ sau commit. Initial insert/stock restoration/Order patch fault rollback toàn bộ. URL fault sau commit→retryRequired. Same/different attempt key race, duplicate IPN, cancel/expiry vs IPN dùng real rs0 state/version guards. Expiry/retry không trừ kho lần nữa, version cap không overflow. Old failure callback không downgrade paid; success sau failure vẫn được xử lý theo deadline. Missing Product/restore cap giữ transaction fail và safe log. Worker scan fail tiếp tục poll, --once exit1; per-order failure không ngăn batch còn lại.
 
 ## Security
 
-HTTPS cho IPN/return bên ngoài localhost; secret không vào frontend/repo/log. Signature mandatory kể cả IP allowlist; không tin IP header từ proxy chưa cấu hình. Rate limit không cản retry hợp lệ; request replay state guarded. No card data capture/storage.
+Secret chỉ backend env, không hardcode/live credential trong tests, không lưu signed URL/raw query/card/billing/secret, không log exception message. Metadata allowlist+SHA256 callback fingerprint; IPN không tin browser amount/state. HTTPS/IPN registration cần reachable public endpoint; signature mandatory. Không external HTTP call trong transaction callback. Disabled creation vẫn cho receipt/expiry hiện hữu khi retained valid config.
 
 ## UI Behavior
 
-Payment choice/fee đúng quote; redirect allowlisted provider URL; Return page hiển thị “đang xác minh”, poll own Order hữu hạn, rồi paid/failed/pending/review message từ backend. Retry chỉ khi đủ điều kiện, không tạo Order mới. Admin có badge cần đối soát.
+Frontend đã được kiểm tra ở PHASE07A; live merchant/IPN vẫn BLOCKED LIVE SANDBOX. Dùng paymentUrl từ checkout/retry để redirect Sandbox; Return hiển thị đang xác minh trước IPN, người dùng chủ động poll Order, failed/invalid/review message từ server. Retry trên UI chỉ dành cho VNPAY/PENDING order, payment FAILED, chưa review và còn deadline; không mời tạo attempt mới khi initial attempt đang PENDING. Retry URL fault/network503 giữ cùng Idempotency-Key/expectedVersion để khôi phục attempt đã commit. Initial URL recovery dùng nguyên checkout key/body theo Checkout, không tạo attempt mới. Review flag cần đối soát thủ công ngoài ứng dụng. Không tự set paid từ query browser. Evidence giả lập contract frontend được ghi riêng và không thay thế provider rehearsal.
 
 ## Acceptance Criteria
 
-COD PAID khi completion; VNPAY sandbox success real IPN test, invalid/duplicate/late callbacks an toàn; external redirect không tự set paid; expiry trả kho once. Không đánh feature DONE khi chưa có credentials/reachable IPN/rehearsal.
+Backend atomic checkout/attempt, valid URL/signature, Return read-only, IPN idempotent/amount-safe, expiry/cancel return stock once và COD regression pass; dev fingerprint giữ nguyên. Full feature live DONE cần credentials, reachable registered IPN và rehearsal provider thật; deterministic fixtures không thay thế live check.
 
 ## Testing Checklist
 
-- [ ] Signed URL amount/encoding/expiry and secret absence.
-- [ ] Invalid hash/amount/merchant/ref, provider response codes.
-- [ ] Duplicate/out-of-order/late/second-success + transaction rollback.
-- [ ] Retry idempotency, expiry concurrency, Return poll and actual sandbox rehearsal.
+- [x] Signed URL/golden canonical UTF-8 vector/amount/expiry/config/secret absence.
+- [x] Valid/invalid/tampered/missing/duplicate signature parameters, protocol codes, owner/role/payload tampering.
+- [x] Return pending/success/failed/invalid/review read-only, no PII.
+- [x] IPN duplicate/out-of-order/late/second-success, version caps, unique transactionNo, rollback/ambiguous commit.
+- [x] Retry idempotency/deadline/creation race và expiry/cancel/IPN concurrency trên real rs0; worker --once/failure handling.
+- [ ] Real Sandbox redirect/bank/IPN rehearsal: missing merchant/IPN config; BLOCKED LIVE SANDBOX.
+- [ ] Frontend Payment Result page/poll UI: deferred theo phạm vi.

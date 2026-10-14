@@ -41,8 +41,13 @@ Máy hiện tại dùng [health ở cổng 5001](http://127.0.0.1:5001/api/v1/he
 | FRONTEND_ORIGIN / CORS_ORIGINS | Origin chính hoặc allowlist phân cách dấu phẩy; exact HTTP(S) origins |
 | MAX_CONTENT_LENGTH | Mặc định 1048576 byte |
 | LOG_LEVEL | Mặc định INFO |
+| SHIPPING_FEE_VND | PHASE05C default30000, integer0..1000000, blank/invalid fail startup |
+| QUOTE_TTL_SECONDS | PHASE05C default300, integer1..3600, blank/invalid fail startup |
+| VNPAY_ENABLED | PHASE05C bắt buộc false; bật bị từ chối đến khi adapter/expiry worker có |
 
 `.env` và `.local` được ignore. `create_env.py` chỉ tạo JWT secret nếu chưa có/đang placeholder, giữ secret đã có và không in giá trị. Không tải VNPAY secrets khi feature chưa triển khai. Ví dụ env chỉ chứa tên key và placeholder, không chứa credential thật.
+
+PHASE05C quote key domain-separated SHA256 từ JWT_SECRET, audience checkout-quote-v1. QUOTE_SIGNING_SECRET placeholder lịch sử trong private .env không dùng, không cần tạo secret khác. Phải có phone profile hợp lệ trước checkout (không lấy phone address thay profile). VNPAY request mới503 PAYMENT_UNAVAILABLE, không tạo online hold/attempt; COD tạo PENDING/UNPAID, thu tiền/completed thuộc Admin Order worker sau.
 
 ## MongoClient và tầng ứng dụng
 
@@ -91,8 +96,43 @@ Pop-Location
 
 Evidence PHASE05B ghi full workspace325 passed (112 Catalog +80 foundation +133 Auth/User); không ghi đè PHASE04/05A. Nếu chỉ chạy Catalog/foundation: chỉ định tests/test_catalog.py tests/test_catalog_transaction.py tests/test_foundation.py tests/test_auth_foundation.py (192 cases); counts evidence khi đó phản ánh scope đã chạy. Verify Catalog mở HTTP server localhost tạm từ source hiện tại, **read-only dev** public/Admin GET và unauthorized writes bị guard chặn; server đóng sau checks. Explain smoke category/type-price chỉ dùng index có sẵn, candidate chưa applied ghi đúng trạng thái. Fingerprint dev so với immutable phase04 baseline; no reset/reseed/index creation. Runtime server nền của project cần restart theo quy trình xác minh process đang giữ cổng nếu còn chạy source cũ; smoke không thay thế process của phiên khác.
 
-## Log và giới hạn PHASE05B
+## PHASE05C Commerce
 
-Catalog done chỉ trong backend scope. Checkout/category/stock concurrency tích hợp, Cart/Order/Payment/Dashboard/Frontend và full benchmark chưa thuộc phiên này. latest INDEX CANDIDATE ở review, chưa tạo index. Không tự tiến phase.
+10 Customer Cart/Checkout COD/Order method/path đã implement; [review](phase-05c-review.md), [contract](api-contract.md). Thực chạy Commerce và full backend suite, sau đó HTTP verifier:
+
+```powershell
+Push-Location backend
+../.venv/Scripts/python.exe -m pytest tests/test_commerce.py -q --junitxml=evidence/phase05c-commerce-pytest.xml
+../.venv/Scripts/python.exe -m pytest -q --junitxml=evidence/phase05c-pytest.xml
+Pop-Location
+./.venv/Scripts/python.exe -X utf8 scripts/backend/verify_commerce_runtime.py
+```
+
+Verifier dùng source hiện tại/temporary HTTP listeners; owned ecommerce_test phải trống trước/sau smoke. Dev fingerprint đối chiếu baseline `.local/phase05c-before.json` chụp trước implementation và05AB, không reset/reseed. Không ghi đè evidence cũ. Để dùng endpoints mới trên persistent server5001, restart backend project đúng quy trình xác minh process; verifier không tự thay process đó; phiên05C đã xác minh/restart đúng project process5001 để nạp source mới. VNPAY/Admin lifecycle/Dashboard/Frontend deferred, không bắt đầu phase tiếp theo.
+
+## PHASE06B Admin Orders/Analytics
+
+Chụp manifest trước final tests, giữ evidence phase cũ:
+
+```powershell
+./.venv/Scripts/python.exe -X utf8 -c "import json,sys;from pathlib import Path;sys.path.insert(0,'scripts/backend');from verify_integration_05ab import source_manifest;Path('.local/phase06b-source-before-tests.json').write_text(json.dumps(source_manifest(),indent=2),encoding='utf-8')"
+Push-Location backend
+../.venv/Scripts/python.exe -X utf8 -m pytest tests/test_admin_analytics.py -q --junitxml=evidence/phase06b-worker-pytest.xml
+../.venv/Scripts/python.exe -X utf8 -m pytest -q --junitxml=evidence/phase06b-pytest.xml
+Pop-Location
+./.venv/Scripts/python.exe -X utf8 scripts/backend/verify_admin_runtime.py
+```
+
+Baseline immutable `.local/phase06b-before.json` chụp `verify_admin_runtime.py --capture` trước implementation, không ghi đè; khớp05C. Verifier chỉ mutate owned ecommerce_test nếu6collections rỗng, exact ID cleanup; dev chỉ đọc HTTP reports/explain/fingerprint. Trước verifier, persistent backend5001 phải chạy source mới theo quy trình xác minh project process; smoke health200/Admin anonymous401. Backend source/test hashes phải giữ nguyên từ trước tests; contract docs có thể được worker song song cập nhật, current11routes được audit riêng và cả hai manifest lưu trong evidence. ZoneInfo trên Windows reuse tzdata2025.2 từ DB tooling lock trong cùng `.venv`, không dependency mới. [Review](phase-06b-review.md).
+
+## Log và giới hạn lịch sử PHASE05B
+
+## Render production runtime (14/10/2026)
+
+Install `backend/requirements-render.txt` from repository root and start `python backend/serve.py` with `APP_ENV=production`. This uses Waitress, not the local development runner. Set Atlas SRV URI, expected `MONGODB_REPLICA_SET`, `MONGODB_DB=novamart_demo`, private JWT secret/issuer/audience, exact HTTPS `FRONTEND_ORIGIN`, and `VNPAY_ENABLED=false`. Render supplies `PORT`; production defaults to `0.0.0.0`. Local `.env` is not automatically loaded. Keep repository root available because Dashboard loads canonical files from `database/aggregations`.
+
+Read-only startup verification: `./.venv/Scripts/python.exe scripts/deploy/verify_render_runtime.py` (uses ignored `.local/atlas-upload/connection.json`, temporary owned listener5003). See [Render guide](render-deployment-guide.md). Production URL/TLS/proxy checks remain separate from this local WSGI check.
+
+Catalog done chỉ trong backend scope. Checkout/category/stock concurrency tích hợp, Cart/Order/Payment/Dashboard/Frontend và full benchmark chưa thuộc phiên Catalog; Commerce đã có evidence05C riêng phía trên. latest INDEX CANDIDATE ở review Catalog, chưa tạo index. Không tự tiến phase.
 
 Structured logs có requestId, method, endpoint, status, latency và error type/frame locations. Không ghi raw body/query/header/token/password/exception text hoặc locals. Client nhận lỗi an toàn và requestId; CORS không thay authorization. Auth limiter hiện local per-process/reset khi restart; chưa distributed limiter/deployment proxy. Full transaction tests, benchmark, VNPAY/frontend/deployment chỉ làm khi phase tương ứng được giao; không nghiệm thu trong PHASE05A.

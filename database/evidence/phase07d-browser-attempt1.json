@@ -1,0 +1,66 @@
+{
+  "phase": "07D",
+  "recordedAtUtc": "2026-10-12T09:09:21.801Z",
+  "database": "ecommerce_test",
+  "app": "current production bundle/same Flask source",
+  "checks": [
+    {
+      "name": "Customer/Admin UI login and local clone health",
+      "status": "FAIL",
+      "errorType": "AssertionError",
+      "message": "/auth/login"
+    }
+  ],
+  "http": [
+    {
+      "page": "ADMIN",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/categories",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "ADMIN",
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "page": "CUSTOMER",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 401
+    }
+  ],
+  "screenshots": [],
+  "pageErrors": [],
+  "timingsAreAutomationOnly": true,
+  "human5MinuteTiming": "MANUAL_PENDING",
+  "human10MinuteTiming": "MANUAL_PENDING",
+  "offline": {
+    "mode": "DENY_NON_LOOPBACK_HTTP_HTTPS_IN_BROWSER_COLD_CACHE",
+    "blocked": [],
+    "localRequests": 0,
+    "hostNetworkDisconnected": false,
+    "backendNetworkBlocked": false
+  },
+  "status": "FAIL",
+  "recordedAtEndUtc": "2026-10-12T09:09:26.827Z"
+}

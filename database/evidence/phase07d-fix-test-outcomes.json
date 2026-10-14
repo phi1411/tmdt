@@ -1,0 +1,236 @@
+{
+  "phase": "07D-FIX",
+  "recordedAtUtc": {
+    "$date": "2026-10-14T06:12:24.988Z"
+  },
+  "database": "ecommerce_test",
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": {
+    "cartsWithoutUser": 0,
+    "cartItemsWithoutProduct": 0,
+    "ordersWithoutUser": 0,
+    "orderItemsWithoutProduct": 0,
+    "attemptsWithoutUser": 0,
+    "attemptsWithoutOrder": 0,
+    "attemptOwnershipMismatch": 0,
+    "productsWithoutCategory": 0
+  },
+  "ownedRehearsalOrders": [
+    {
+      "_id": {
+        "$oid": "6acf1d11c07657a5f115f5db"
+      },
+      "orderCode": "ORD-6ACF1D11C07657A5F115F5DB",
+      "orderStatus": "CANCELLED",
+      "paymentStatus": "UNPAID",
+      "subtotal": 10200000,
+      "shippingFee": 30000,
+      "total": 10230000,
+      "items": [
+        {
+          "productId": {
+            "$oid": "6ac7a52f87e692850a155384"
+          },
+          "sku": "DEFENSE-07C-ELE",
+          "productName": "Điện thoại bảo vệ 07C",
+          "image": "",
+          "productType": "ELECTRONICS",
+          "categoryId": {
+            "$oid": "6ac7a52e87e692850a155383"
+          },
+          "categoryName": "Demo bảo vệ 07C Điện tử",
+          "attributesSnapshot": {
+            "ram": "8GB",
+            "storage": "256GB",
+            "chip": "Demo CPU 07C"
+          },
+          "selectedAttributes": {},
+          "priceAtPurchase": 10000000,
+          "quantity": 1,
+          "lineTotal": 10000000
+        },
+        {
+          "productId": {
+            "$oid": "6ac7a52f87e692850a155386"
+          },
+          "sku": "DEFENSE-07C-FAS",
+          "productName": "Áo thun bảo vệ 07C",
+          "image": "",
+          "productType": "FASHION",
+          "categoryId": {
+            "$oid": "6ac7a52f87e692850a155385"
+          },
+          "categoryName": "Demo bảo vệ 07C Thời trang",
+          "attributesSnapshot": {
+            "sizes": [
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Black"
+            ],
+            "material": "Cotton"
+          },
+          "selectedAttributes": {
+            "size": "M",
+            "color": "Black"
+          },
+          "priceAtPurchase": 200000,
+          "quantity": 1,
+          "lineTotal": 200000
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "6acf1d16c07657a5f115f5dd"
+      },
+      "orderCode": "ORD-6ACF1D16C07657A5F115F5DD",
+      "orderStatus": "COMPLETED",
+      "paymentStatus": "PAID",
+      "subtotal": 10200000,
+      "shippingFee": 30000,
+      "total": 10230000,
+      "items": [
+        {
+          "productId": {
+            "$oid": "6ac7a52f87e692850a155384"
+          },
+          "sku": "DEFENSE-07C-ELE",
+          "productName": "Điện thoại bảo vệ 07C",
+          "image": "",
+          "productType": "ELECTRONICS",
+          "categoryId": {
+            "$oid": "6ac7a52e87e692850a155383"
+          },
+          "categoryName": "Demo bảo vệ 07C Điện tử",
+          "attributesSnapshot": {
+            "warrantyMonths": 12,
+            "ram": "8GB",
+            "storage": "256GB",
+            "chip": "Demo CPU 07C"
+          },
+          "selectedAttributes": {},
+          "priceAtPurchase": 10000000,
+          "quantity": 1,
+          "lineTotal": 10000000
+        },
+        {
+          "productId": {
+            "$oid": "6ac7a52f87e692850a155386"
+          },
+          "sku": "DEFENSE-07C-FAS",
+          "productName": "Áo thun bảo vệ 07C",
+          "image": "",
+          "productType": "FASHION",
+          "categoryId": {
+            "$oid": "6ac7a52f87e692850a155385"
+          },
+          "categoryName": "Demo bảo vệ 07C Thời trang",
+          "attributesSnapshot": {
+            "sizes": [
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Black"
+            ],
+            "material": "Cotton"
+          },
+          "selectedAttributes": {
+            "size": "M",
+            "color": "Black"
+          },
+          "priceAtPurchase": 200000,
+          "quantity": 1,
+          "lineTotal": 200000
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "6acf1d1ac07657a5f115f5df"
+      },
+      "orderCode": "ORD-6ACF1D1AC07657A5F115F5DF",
+      "orderStatus": "CANCELLED",
+      "paymentStatus": "UNPAID",
+      "subtotal": 10200000,
+      "shippingFee": 30000,
+      "total": 10230000,
+      "items": [
+        {
+          "productId": {
+            "$oid": "6ac7a52f87e692850a155384"
+          },
+          "sku": "DEFENSE-07C-ELE",
+          "productName": "Điện thoại bảo vệ 07C",
+          "image": "",
+          "productType": "ELECTRONICS",
+          "categoryId": {
+            "$oid": "6ac7a52e87e692850a155383"
+          },
+          "categoryName": "Demo bảo vệ 07C Điện tử",
+          "attributesSnapshot": {
+            "warrantyMonths": 12,
+            "ram": "8GB",
+            "storage": "256GB",
+            "chip": "Demo CPU 07C"
+          },
+          "selectedAttributes": {},
+          "priceAtPurchase": 10000000,
+          "quantity": 1,
+          "lineTotal": 10000000
+        },
+        {
+          "productId": {
+            "$oid": "6ac7a52f87e692850a155386"
+          },
+          "sku": "DEFENSE-07C-FAS",
+          "productName": "Áo thun bảo vệ 07C",
+          "image": "",
+          "productType": "FASHION",
+          "categoryId": {
+            "$oid": "6ac7a52f87e692850a155385"
+          },
+          "categoryName": "Demo bảo vệ 07C Thời trang",
+          "attributesSnapshot": {
+            "sizes": [
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Black"
+            ],
+            "material": "Cotton"
+          },
+          "selectedAttributes": {
+            "size": "M",
+            "color": "Black"
+          },
+          "priceAtPurchase": 200000,
+          "quantity": 1,
+          "lineTotal": 200000
+        }
+      ]
+    }
+  ],
+  "fixtureStocksBeforeExactCleanup": [
+    {
+      "sku": "DEFENSE-07C-ELE",
+      "price": 10000000,
+      "stock": 19,
+      "images": []
+    },
+    {
+      "sku": "DEFENSE-07C-FAS",
+      "price": 200000,
+      "stock": 19,
+      "images": []
+    }
+  ]
+}

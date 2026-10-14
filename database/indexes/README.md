@@ -1,4 +1,8 @@
-# Candidate indexes v1 — đã khóa thiết kế, chưa đo
+# Index specifications v1 và evidence runtime
+
+**PHASE07B performance evidence PASS:**3read indexes đã đo thật trên benchmark riêng30.000Products/10.000Orders,6query variants/5warmups/30samples mỗi mode. [Review07B](../../docs/phase-07b-performance-review.md), [audit18entries/20actual dev indexes](../../docs/evidence/performance/index-audit.json), [scripts](../../scripts/performance/README.md). Dev14declared+6_id_ giữ nguyên; type-price chỉ tạo benchmark,4candidates vẫn chưa apply dev. Không REMOVE đã chứng minh, không drop constraints. JSON benchmarkStatus NOT_MEASURED giữ snapshot thiết kế phase02; số liệu runtime mới nằm tại07B evidence, không giả rằng toàn18specs đều được benchmark.
+
+PHASE06B chạy executionStats cho8Dashboard pipelines/Admin latest trên seed100Orders; [evidence](../../backend/evidence/phase06b-explain.json). Reuse ix_orders_qualified_completed; named-index/natural Top5 cùng kết quả. Không tạo index mới/toàn manifest. Admin latest/createdAt reports có thể COLLSCAN; admin-status/created-at candidates chưa apply. Đây là explain/cardinality evidence, không full benchmark/p50/p95 hoặc claim tăng tốc.
 
 Nguồn chuẩn: [candidate-indexes.json](candidate-indexes.json). Manifest18 indexes:11 invariant unique constraints và7 workload candidates. `_id` index tự có không liệt kê lại. Mỗi entry có collection/name/ordered keys/options/queryPattern/equalityFields/sortFields/rangeFields/fieldOrderReason. `sortFields:{}`/`rangeFields:[]` nghĩa query không có sort/range, không thiếu phân tích.
 

@@ -1,0 +1,38 @@
+{
+  "scope": "DETERMINISTIC_FRONTEND_CONTRACT_ONLY_NOT_LIVE_SANDBOX",
+  "checks": [
+    {
+      "name": "Initial URL fault replays exact checkout",
+      "status": "PASS",
+      "requests": 2,
+      "sameKeyBody": true
+    },
+    {
+      "name": "Lost checkout response retains key/body",
+      "status": "PASS",
+      "requests": 2,
+      "sameKeyBody": true
+    },
+    {
+      "name": "Retry attempt URL fault retains key/body",
+      "status": "PASS",
+      "requests": 2,
+      "sameKeyBody": true
+    },
+    {
+      "name": "Pending initial attempt does not show new retry",
+      "status": "PASS",
+      "requests": 0
+    },
+    {
+      "name": "Return rejects review-required retry",
+      "status": "PASS",
+      "requests": 0
+    },
+    {
+      "name": "Return rejects COD retry",
+      "status": "PASS",
+      "requests": 0
+    }
+  ]
+}

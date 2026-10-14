@@ -2,7 +2,7 @@
 
 ## Goal
 
-Đăng ký/đăng nhập JWT an toàn cho Customer/Admin. Backend PHASE05A IMPLEMENTED và đã kiểm tra HTTP thật; frontend chưa triển khai. Giữ JWT/Argon2id/get_current_user/role guard của PHASE04. Đọc thêm [backend foundation](backend-foundation.md), [API contract](../api-contract.md), users contract và BR-AUTH.
+Đăng ký/đăng nhập JWT an toàn cho Customer/Admin. Backend PHASE05A IMPLEMENTED và đã kiểm tra HTTP thật; frontend FE-01A đã bàn giao, được kiểm tra lại ở PHASE07A. Giữ JWT/Argon2id/get_current_user/role guard của PHASE04. Đọc thêm [backend foundation](backend-foundation.md), [API contract](../api-contract.md), users contract và BR-AUTH.
 
 ## Actors
 
@@ -14,7 +14,7 @@ Register Customer, login, current identity, đổi password, logout UI. Admin bo
 
 ## Business Rules
 
-BR-AUTH: normalized email unique; ACTIVE mới login/request protected. Access token có TTL cấu hình; tokenVersion tăng khi đổi password/role/status. Logout xóa memory token; không claim logout này thu hồi mọi JWT đã phát nếu chưa tăng version.
+BR-AUTH: normalized email unique; ACTIVE mới login/request protected. Access token có TTL cấu hình; tokenVersion tăng khi đổi password/role/status. Logout xóa state/client token và sessionStorage theo tab; không claim logout này thu hồi mọi JWT đã phát nếu chưa tăng version.
 
 ## Permission
 
@@ -31,11 +31,11 @@ Prefix/envelope theo api-conventions:
 | GET /auth/me | Bearer token | 200 publicUser | 401 invalid/expired |
 | PATCH /auth/password | {currentPassword,newPassword} + Bearer | 200 {reauthenticationRequired:true} | 401 wrong current/invalid token;422 password |
 
-Logout không endpoint trong memory-token baseline; refresh/forgot routes không được tự thêm.
+Logout không endpoint; FE-01A giữ access token theo tab trong sessionStorage và state; refresh/forgot routes không được tự thêm.
 
 ## Data
 
-Read/write users; không embed token lists. Source thực tế dưới `backend/app`: `auth/`, `api/auth.py`, `services/auth_service.py`, `services/user_service.py`, `repositories/user_repository.py`, `schemas/auth_schema.py`, `schemas/user_response.py`; tests `backend/tests/test_auth_users.py`. Direct dependencies User projection, JWT/Argon2id, strict validation/error/envelope và factory đăng ký blueprint. Frontend `frontend/src/features/auth/` vẫn dự kiến.
+Read/write users; không embed token lists. Source thực tế dưới `backend/app`: `auth/`, `api/auth.py`, `services/auth_service.py`, `services/user_service.py`, `repositories/user_repository.py`, `schemas/auth_schema.py`, `schemas/user_response.py`; tests `backend/tests/test_auth_users.py`. Direct dependencies User projection, JWT/Argon2id, strict validation/error/envelope và factory đăng ký blueprint. Frontend hiện hữu: `frontend/src/contexts/AuthContext.tsx`, `api/authApi.ts`, `api/client.ts`, `pages/LoginPage.tsx`, `pages/RegisterPage.tsx`, `routes/ProtectedRoute.tsx`.
 
 ## Validation
 
@@ -43,7 +43,7 @@ Email syntax/trim/lowercase, <=254 ký tự, không strip dot/plus; name1..100 s
 
 ## Edge Cases
 
-Duplicate concurrent signup dựa unique index; invalid hash/token/subject; blocked sau login; password đổi vô hiệu tokenVersion cũ. Frontend refresh mất memory token cần login lại, ghi rõ UX.
+Duplicate concurrent signup dựa unique index; invalid hash/token/subject; blocked sau login; password đổi vô hiệu tokenVersion cũ. Frontend F5 khôi phục sessionStorage theo tab rồi gọi /auth/me; identity vẫn do backend xác minh. Logout/401 xóa token; không có refresh token hay localStorage persistence.
 
 ## Security
 
@@ -66,4 +66,4 @@ Customer đăng ký/đăng nhập; Admin chỉ seed; blocked/token invalid bị 
 - [x] Valid/invalid/duplicate/concurrent register trên unique index thật.
 - [x] Login wrong/unknown/blocked/corrupt hash/limit, JWT expiry/tamper/algorithm/subject.
 - [x] Payload role ADMIN bị reject; password update/tokenVersion, concurrent password change và block giữa verify/write.
-- [ ] UI loading/error/reauthentication; không persistence token ngoài baseline.
+- [x] FE-01A/PHASE07A UI register/login/logout, F5 khôi phục sessionStorage theo tab qua /auth/me, 401 thu hồi local token và route guard; không có refresh token/localStorage.

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Customer đọc lịch sử bằng dữ liệu snapshot và hủy khi đủ điều kiện. P0 snapshot, P1 history/cancel; chưa implement. POST tạo đơn thuộc checkout.
+Customer đọc lịch sử bằng dữ liệu snapshot và hủy khi đủ điều kiện. **PHASE05C backend snapshot/history/cancel IMPLEMENTED**, PHASE06A thêm lazy online expiry/races; frontend deferred, Admin Orders thuộc worker06B/evidence riêng. POST tạo đơn thuộc checkout. [Contract](../api-contract.md), [review](../phase-05c-review.md), [Payment](payment.md).
 
 ## Actors
 
@@ -32,11 +32,13 @@ List dateBasis=createdAt, stable sort createdAt desc/_id desc. Không trả raw 
 
 ## Data
 
-Read orders only cho history/detail; cancel write orders + products + active payment_attempts invalidation chung transaction. Source `api/orders.py`, `services/order_service.py`, `repositories/order_repository.py`, product/attempt methods khi cancel, `schemas/order_schema.py`, `features/orders/`. Dependency checkout snapshot contract/payment state guard, không Product detail cho history.
+Read orders only cho history/detail; cancel write orders + products + active payment_attempts invalidation chung transaction. Source `app/api/orders.py`, `app/services/order_service.py`, `app/repositories/order_repository.py`, `app/repositories/payment_attempt_repository.py`, ProductRepository.restore_stock, `app/schemas/order_schema.py`; tests `backend/tests/test_commerce.py`. Reuse shared catalog_transaction bounded snapshot/majority orchestration; owner enforced queries, DTO allowlist. Dependency Auth live role/identity, checkout snapshot contract/payment state guard, không Product detail cho history. Frontend `features/orders/` chưa tạo.
 
 ## Validation
 
-ObjectId/filter/status/time bounds/page limits; expectedVersion positive int. Mutable update allowlist chỉ states/timestamps/version, no snapshot mass assignment. Cancel reason chưa requirement, không tự bắt buộc field này.
+ObjectId/filter/status/time bounds/page limits; expectedVersion positive int1..2147483647, reject bool. Mutable update allowlist chỉ states/timestamps/version, no snapshot mass assignment. Cancel reason chưa requirement, không tự bắt buộc field này. from/to UTC Z/+00:00, [from,to), from<to; page1/pageSize20/max100; no client sort/userId. History facet MongoDB count/items, summary allowlist không PII address; detail snapshot đầy đủ, private checkoutKey/hash không public.
+
+Cancel stale409 ORDER_CHANGED, forbidden409 INVALID_TRANSITION; expectedVersion được kiểm tra sau CANCELLED replay no-op200. Guard cả paymentReviewRequired=false/absence stockReleasedAt. Restore tổng quantity/Product bằng $inc stock/version, archived vẫn restore. Missing Product/stock overflow/version exhausted→409 STOCK_RESTORE_FAILED, rollback Order và mọi Product, log event commerce.stock_restore_failed. Online cancel chuyển FAILED/invalidate attempts EXPIRED. PHASE06A detail lazy expiry dùng PaymentService, không lookup live snapshot; IPN/expiry/cancel race và late review theo [Payment](payment.md). COD cancellation giữ UNPAID; COD completion do worker Admin Orders.
 
 ## Edge Cases
 
@@ -56,6 +58,9 @@ History paginated đúng owner/date; detail độc lập live Product/User; canc
 
 ## Testing Checklist
 
-- [ ] History ownership/status/time boundaries/sort/pagination.
-- [ ] Snapshot after product/category/profile/address changes/archive.
-- [ ] Cancel repeats/stale/race IPN/expiry, forbidden paid/shipping/completed.
+- [x] Backend history ownership/status/time boundaries/sort/pagination/input allowlist.
+- [x] Snapshot after product/category/profile/address changes/archive/delete; read không dùng live Product/Category.
+- [x] Cancel repeats/stale/concurrent once, CONFIRMED COD, online attempt invalidation, forbidden paid/review flag/shipping/completed/expired.
+- [x] Cancel rollback missing Product/fail second restore/fail attempt invalidation trên rs0.
+- [x] PHASE06A IPN/cancel/expiry race, once-only stock restore và late review trên test rs0.
+- [ ] Frontend deferred; Admin Orders có worker/evidence riêng.

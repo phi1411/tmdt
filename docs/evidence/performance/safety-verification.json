@@ -1,0 +1,40 @@
+{
+  "status": "PERFORMANCE_SAFETY_PASS",
+  "recordedAtUtc": {
+    "$date": "2026-10-08T14:15:50.361Z"
+  },
+  "checks": [
+    "dev database explicitly refused before cleanup validation",
+    "concurrent runner refused",
+    "wrong ownership marker refused",
+    "existing unmarked benchmark refused",
+    "canonical validator rejects float money121",
+    "changed dataset refuses destructive cleanup",
+    "six real collections BSON/index validation valid",
+    "real reference/money/stock invariants pass"
+  ],
+  "devBefore": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "devAfter": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "benchmarkDatasetRestoredExactly": true,
+  "devUnchanged": true
+}

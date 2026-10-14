@@ -1,0 +1,217 @@
+{
+  "phase": "07C",
+  "mode": "rehearse",
+  "timestampUtc": "2026-10-08T14:14:13.732983+00:00",
+  "replicaSet": "rs0",
+  "primary": true,
+  "database": "ecommerce_dev",
+  "apiChecks": [
+    {
+      "label": "backend health",
+      "status": 200
+    },
+    {
+      "label": "login admin@example.test",
+      "status": 200
+    },
+    {
+      "label": "login defense07c@example.test",
+      "status": 200
+    },
+    {
+      "label": "read fixture price/version",
+      "status": 200
+    },
+    {
+      "label": "read fixture price/version",
+      "status": 200
+    },
+    {
+      "label": "fixture Cart",
+      "status": 200
+    },
+    {
+      "label": "empty Cart",
+      "status": 200
+    },
+    {
+      "label": "add private item",
+      "status": 200
+    },
+    {
+      "label": "add private item",
+      "status": 200
+    },
+    {
+      "label": "COD quote",
+      "status": 200
+    },
+    {
+      "label": "real COD checkout",
+      "status": 201
+    },
+    {
+      "label": "COD replay",
+      "status": 200
+    },
+    {
+      "label": "read private Product",
+      "status": 200
+    },
+    {
+      "label": "price A to B",
+      "status": 200
+    },
+    {
+      "label": "read snapshot after price change",
+      "status": 200
+    },
+    {
+      "label": "cancel owned unpaid demo order",
+      "status": 200
+    },
+    {
+      "label": "read fixture price/version",
+      "status": 200
+    },
+    {
+      "label": "restore only fixture price",
+      "status": 200
+    },
+    {
+      "label": "read fixture price/version",
+      "status": 200
+    },
+    {
+      "label": "fixture Cart",
+      "status": 200
+    }
+  ],
+  "before": {
+    "digest": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+    "counts": {
+      "users": 41,
+      "categories": 3,
+      "products": 180,
+      "carts": 0,
+      "orders": 100,
+      "payment_attempts": 30
+    }
+  },
+  "after": {
+    "digest": "0a3ebe55d3ff069259a892eb80fbce25a8cb9db00c24ecbec3b97c6f795197cf",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "originalDigestAfterExcludingOwnedFixtures": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+  "originalDataUnchanged": true,
+  "ownedFixture": {
+    "customerEmail": "defense07c@example.test",
+    "userId": "6ac7a52e87e692850a155381",
+    "categories": {
+      "ELECTRONICS": "6ac7a52e87e692850a155383",
+      "FASHION": "6ac7a52f87e692850a155385"
+    },
+    "products": [
+      {
+        "sku": "DEFENSE-07C-ELE",
+        "name": "Điện thoại bảo vệ 07C",
+        "slug": "defense-07c-dien-thoai",
+        "productType": "ELECTRONICS",
+        "price": 10000000,
+        "attributes": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo CPU 07C"
+        },
+        "id": "6ac7a52f87e692850a155384"
+      },
+      {
+        "sku": "DEFENSE-07C-FAS",
+        "name": "Áo thun bảo vệ 07C",
+        "slug": "defense-07c-ao-thun",
+        "productType": "FASHION",
+        "price": 200000,
+        "attributes": {
+          "sizes": [
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black"
+          ],
+          "material": "Cotton"
+        },
+        "id": "6ac7a52f87e692850a155386"
+      }
+    ],
+    "addressId": "6ac7a52e87e692850a155382"
+  },
+  "snapshotProof": {
+    "orderId": "6ac7a53587e692850a155388",
+    "orderCode": "ORD-6AC7A53587E692850A155388",
+    "priceA": 10000000,
+    "priceB": 12000000,
+    "snapshotPriceAfterChange": 10000000,
+    "subtotal": 10200000,
+    "shippingFee": 30000,
+    "total": 10230000,
+    "items": [
+      {
+        "productId": "6ac7a52f87e692850a155384",
+        "sku": "DEFENSE-07C-ELE",
+        "productName": "Điện thoại bảo vệ 07C",
+        "image": "",
+        "productType": "ELECTRONICS",
+        "categoryId": "6ac7a52e87e692850a155383",
+        "categoryName": "Demo bảo vệ 07C Điện tử",
+        "attributesSnapshot": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo CPU 07C"
+        },
+        "selectedAttributes": {},
+        "priceAtPurchase": 10000000,
+        "quantity": 1,
+        "lineTotal": 10000000
+      },
+      {
+        "productId": "6ac7a52f87e692850a155386",
+        "sku": "DEFENSE-07C-FAS",
+        "productName": "Áo thun bảo vệ 07C",
+        "image": "",
+        "productType": "FASHION",
+        "categoryId": "6ac7a52f87e692850a155385",
+        "categoryName": "Demo bảo vệ 07C Thời trang",
+        "attributesSnapshot": {
+          "sizes": [
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black"
+          ],
+          "material": "Cotton"
+        },
+        "selectedAttributes": {
+          "size": "M",
+          "color": "Black"
+        },
+        "priceAtPurchase": 200000,
+        "quantity": 1,
+        "lineTotal": 200000
+      }
+    ],
+    "transport": "REAL_HTTP_API_NOT_BROWSER",
+    "snapshotUnchanged": true
+  },
+  "liveSandbox": "BLOCKED",
+  "frontendBrowserRehearsed": false,
+  "compassGuiRehearsed": false
+}

@@ -1,0 +1,1323 @@
+{
+  "status": "PHASE 06AB BACKEND INTEGRATION PASS",
+  "readyForFrontendAdminPayment": true,
+  "gitHead": "39998900e16daec35caee24493f7011041820c91",
+  "tests": {
+    "total": 658,
+    "passed": 658,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 188.676,
+    "modules": {
+      "tests.test_admin_analytics": 105,
+      "tests.test_auth_foundation": 25,
+      "tests.test_auth_users": 133,
+      "tests.test_catalog": 106,
+      "tests.test_catalog_transaction": 6,
+      "tests.test_commerce": 126,
+      "tests.test_foundation": 55,
+      "tests.test_payment": 102
+    }
+  },
+  "httpCheckCount": 96,
+  "httpChecks": [
+    {
+      "label": "development startup health",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "providerCode": null,
+      "environment": "development-read-only"
+    },
+    {
+      "label": "persistent health",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "providerCode": null,
+      "environment": "development-read-only"
+    },
+    {
+      "label": "persistent Catalog",
+      "method": "GET",
+      "path": "/products",
+      "status": 200,
+      "providerCode": null,
+      "environment": "development-read-only"
+    },
+    {
+      "label": "persistent Admin routes",
+      "method": "GET",
+      "path": "/admin/orders",
+      "status": 401,
+      "providerCode": null,
+      "environment": "development-read-only"
+    },
+    {
+      "label": "missing live config Return",
+      "method": "GET",
+      "path": "/payments/vnpay/return",
+      "status": 503,
+      "providerCode": null,
+      "environment": "development-read-only"
+    },
+    {
+      "label": "missing live config IPN",
+      "method": "GET",
+      "path": "/payments/vnpay/ipn",
+      "status": 200,
+      "providerCode": "99",
+      "environment": "development-read-only"
+    },
+    {
+      "label": "customer login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "other login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "admin login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Product detail",
+      "method": "GET",
+      "path": "/products/checkpoint-3c607687506641a68315ff2f8f0f2705",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Empty revenue",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart read",
+      "method": "GET",
+      "path": "/cart",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart add",
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY quote",
+      "method": "GET",
+      "path": "/checkout/quote",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY checkout",
+      "method": "POST",
+      "path": "/orders",
+      "status": 201,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY idempotency replay",
+      "method": "POST",
+      "path": "/orders",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin confirm",
+      "method": "POST",
+      "path": "/admin/orders/:id/confirm",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin ship",
+      "method": "POST",
+      "path": "/admin/orders/:id/ship",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Return before IPN",
+      "method": "GET",
+      "path": "/payments/vnpay/return",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Authoritative VNPAY success",
+      "method": "GET",
+      "path": "/payments/vnpay/ipn",
+      "status": 200,
+      "providerCode": "00",
+      "environment": "owned-test"
+    },
+    {
+      "label": "Owner Order paid poll",
+      "method": "GET",
+      "path": "/orders/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Paid not completed excluded",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Return after IPN",
+      "method": "GET",
+      "path": "/payments/vnpay/return",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin confirm",
+      "method": "POST",
+      "path": "/admin/orders/:id/confirm",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin cancel",
+      "method": "POST",
+      "path": "/admin/orders/:id/cancel",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin ship",
+      "method": "POST",
+      "path": "/admin/orders/:id/ship",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin complete",
+      "method": "POST",
+      "path": "/admin/orders/:id/complete",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Online completed revenue",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin complete",
+      "method": "POST",
+      "path": "/admin/orders/:id/complete",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Duplicate completed payment",
+      "method": "GET",
+      "path": "/payments/vnpay/ipn",
+      "status": 200,
+      "providerCode": "02",
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart read",
+      "method": "GET",
+      "path": "/cart",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart add",
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD quote",
+      "method": "GET",
+      "path": "/checkout/quote",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD checkout",
+      "method": "POST",
+      "path": "/orders",
+      "status": 201,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD idempotency replay",
+      "method": "POST",
+      "path": "/orders",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin ship",
+      "method": "POST",
+      "path": "/admin/orders/:id/ship",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin confirm",
+      "method": "POST",
+      "path": "/admin/orders/:id/confirm",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin ship",
+      "method": "POST",
+      "path": "/admin/orders/:id/ship",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin complete",
+      "method": "POST",
+      "path": "/admin/orders/:id/complete",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD plus online completed",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Live Product price/name mutation",
+      "method": "PATCH",
+      "path": "/admin/products/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Revenue independent of live Product",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Snapshot after live price change",
+      "method": "GET",
+      "path": "/orders/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Dashboard revenue",
+      "method": "GET",
+      "path": "/admin/dashboard/revenue",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Dashboard top-products",
+      "method": "GET",
+      "path": "/admin/dashboard/top-products",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Dashboard category-revenue",
+      "method": "GET",
+      "path": "/admin/dashboard/category-revenue",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Dashboard order-status",
+      "method": "GET",
+      "path": "/admin/dashboard/order-status",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart read",
+      "method": "GET",
+      "path": "/cart",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart add",
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY quote",
+      "method": "GET",
+      "path": "/checkout/quote",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY checkout",
+      "method": "POST",
+      "path": "/orders",
+      "status": 201,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY idempotency replay",
+      "method": "POST",
+      "path": "/orders",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Different owner attempt denied",
+      "method": "POST",
+      "path": "/orders/:id/payment-attempts",
+      "status": 404,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Client amount rejected",
+      "method": "POST",
+      "path": "/orders/:id/payment-attempts",
+      "status": 422,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Payment failure keeps hold",
+      "method": "GET",
+      "path": "/payments/vnpay/ipn",
+      "status": 200,
+      "providerCode": "00",
+      "environment": "owned-test"
+    },
+    {
+      "label": "Failed Order poll",
+      "method": "GET",
+      "path": "/orders/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Retry payment attempt",
+      "method": "POST",
+      "path": "/orders/:id/payment-attempts",
+      "status": 201,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Retry attempt same key replay",
+      "method": "POST",
+      "path": "/orders/:id/payment-attempts",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Retry payment success",
+      "method": "GET",
+      "path": "/payments/vnpay/ipn",
+      "status": 200,
+      "providerCode": "00",
+      "environment": "owned-test"
+    },
+    {
+      "label": "Confirmed retry not revenue",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart read",
+      "method": "GET",
+      "path": "/cart",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart add",
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY quote",
+      "method": "GET",
+      "path": "/checkout/quote",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY checkout",
+      "method": "POST",
+      "path": "/orders",
+      "status": 201,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY idempotency replay",
+      "method": "POST",
+      "path": "/orders",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin cancel",
+      "method": "POST",
+      "path": "/admin/orders/:id/cancel",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin cancel",
+      "method": "POST",
+      "path": "/admin/orders/:id/cancel",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Late payment after Admin cancel",
+      "method": "GET",
+      "path": "/payments/vnpay/ipn",
+      "status": 200,
+      "providerCode": "00",
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cancelled late payment review",
+      "method": "GET",
+      "path": "/orders/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin ship",
+      "method": "POST",
+      "path": "/admin/orders/:id/ship",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin complete",
+      "method": "POST",
+      "path": "/admin/orders/:id/complete",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart read",
+      "method": "GET",
+      "path": "/cart",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart add",
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY quote",
+      "method": "GET",
+      "path": "/checkout/quote",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY checkout",
+      "method": "POST",
+      "path": "/orders",
+      "status": 201,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "VNPAY idempotency replay",
+      "method": "POST",
+      "path": "/orders",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Lazy expiry restores once",
+      "method": "GET",
+      "path": "/orders/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Repeated expiry no restore",
+      "method": "GET",
+      "path": "/orders/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Late payment after expiry",
+      "method": "GET",
+      "path": "/payments/vnpay/ipn",
+      "status": 200,
+      "providerCode": "00",
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin confirm",
+      "method": "POST",
+      "path": "/admin/orders/:id/confirm",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin ship",
+      "method": "POST",
+      "path": "/admin/orders/:id/ship",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin complete",
+      "method": "POST",
+      "path": "/admin/orders/:id/complete",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin cancel",
+      "method": "POST",
+      "path": "/admin/orders/:id/cancel",
+      "status": 409,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart read",
+      "method": "GET",
+      "path": "/cart",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Cart add",
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD quote",
+      "method": "GET",
+      "path": "/checkout/quote",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD checkout",
+      "method": "POST",
+      "path": "/orders",
+      "status": 201,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD idempotency replay",
+      "method": "POST",
+      "path": "/orders",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD Customer cancel",
+      "method": "POST",
+      "path": "/orders/:id/cancel",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "COD cancel replay",
+      "method": "POST",
+      "path": "/orders/:id/cancel",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin Orders list",
+      "method": "GET",
+      "path": "/admin/orders",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Admin Order detail",
+      "method": "GET",
+      "path": "/admin/orders/:id",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Terminal/review/noncompleted excluded",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Customer Dashboard denied",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 403,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Customer Admin Orders denied",
+      "method": "GET",
+      "path": "/admin/orders",
+      "status": 403,
+      "providerCode": null,
+      "environment": "owned-test"
+    },
+    {
+      "label": "Development historical revenue oracle",
+      "method": "GET",
+      "path": "/admin/dashboard/summary",
+      "status": 200,
+      "providerCode": null,
+      "environment": "development-read-only"
+    }
+  ],
+  "routesAndContract": {
+    "blueprints": [
+      "health",
+      "categories",
+      "products",
+      "admin_products",
+      "auth",
+      "users",
+      "admin_users",
+      "cart",
+      "checkout",
+      "orders",
+      "payments",
+      "admin_orders",
+      "admin_dashboard"
+    ],
+    "blueprintCount": 13,
+    "methodPathCount": 52,
+    "routes": [
+      {
+        "method": "GET",
+        "path": "/api/v1/health",
+        "endpoint": "health.health"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/categories",
+        "endpoint": "categories.public_list"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/categories/<slug>",
+        "endpoint": "categories.public_detail"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/categories",
+        "endpoint": "categories.admin_list"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/categories/<category_id>",
+        "endpoint": "categories.admin_detail"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/admin/categories",
+        "endpoint": "categories.create"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/admin/categories/<category_id>",
+        "endpoint": "categories.update"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/v1/admin/categories/<category_id>",
+        "endpoint": "categories.delete"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/products",
+        "endpoint": "products.public_list"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/products/<slug>",
+        "endpoint": "products.public_detail"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/products",
+        "endpoint": "admin_products.admin_list"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/products/<product_id>",
+        "endpoint": "admin_products.admin_detail"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/admin/products",
+        "endpoint": "admin_products.create"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/admin/products/<product_id>",
+        "endpoint": "admin_products.update"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/v1/admin/products/<product_id>",
+        "endpoint": "admin_products.archive"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/auth/register",
+        "endpoint": "auth.register"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/auth/login",
+        "endpoint": "auth.login"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "endpoint": "auth.me"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/auth/password",
+        "endpoint": "auth.password"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/users/me",
+        "endpoint": "users.me"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/users/me",
+        "endpoint": "users.profile"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/users/me/addresses",
+        "endpoint": "users.add_address"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/users/me/addresses/<address_id>",
+        "endpoint": "users.update_address"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/v1/users/me/addresses/<address_id>",
+        "endpoint": "users.remove_address"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/users/me/default-address",
+        "endpoint": "users.default_address"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/users",
+        "endpoint": "admin_users.users"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/users/<user_id>",
+        "endpoint": "admin_users.user"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/admin/users/<user_id>/status",
+        "endpoint": "admin_users.status"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/cart",
+        "endpoint": "cart.get_cart"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/cart/items",
+        "endpoint": "cart.add_item"
+      },
+      {
+        "method": "PATCH",
+        "path": "/api/v1/cart/items/<line_id>",
+        "endpoint": "cart.update_item"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/v1/cart/items/<line_id>",
+        "endpoint": "cart.remove_item"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/v1/cart",
+        "endpoint": "cart.clear_cart"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/checkout/quote",
+        "endpoint": "checkout.quote"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/orders",
+        "endpoint": "checkout.create_order"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/orders",
+        "endpoint": "orders.list_orders"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/orders/<order_id>",
+        "endpoint": "orders.detail"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/orders/<order_id>/cancel",
+        "endpoint": "orders.cancel"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/orders/<order_id>/payment-attempts",
+        "endpoint": "payments.create_attempt"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/payments/vnpay/return",
+        "endpoint": "payments.payment_return"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/payments/vnpay/ipn",
+        "endpoint": "payments.payment_ipn"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/orders",
+        "endpoint": "admin_orders.list_orders"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/orders/<order_id>",
+        "endpoint": "admin_orders.detail"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/admin/orders/<order_id>/confirm",
+        "endpoint": "admin_orders.confirm"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/admin/orders/<order_id>/ship",
+        "endpoint": "admin_orders.ship"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/admin/orders/<order_id>/complete",
+        "endpoint": "admin_orders.complete"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/admin/orders/<order_id>/cancel",
+        "endpoint": "admin_orders.cancel"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/dashboard/summary",
+        "endpoint": "admin_dashboard.summary"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/dashboard/revenue",
+        "endpoint": "admin_dashboard.revenue"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/dashboard/top-products",
+        "endpoint": "admin_dashboard.top_products"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/dashboard/category-revenue",
+        "endpoint": "admin_dashboard.category_revenue"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/admin/dashboard/order-status",
+        "endpoint": "admin_dashboard.order_status"
+      }
+    ],
+    "collisions": [],
+    "shadows": [],
+    "contractSections": {
+      "Auth/User/Admin User IMPLEMENTED": {
+        "methodPaths": 13,
+        "sha256": "d688e6ae59f32f45cc163c14517118b1f38020c47d1983d714e27376e267bb63"
+      },
+      "Catalog IMPLEMENTED — PHASE 05B": {
+        "methodPaths": 14,
+        "sha256": "2f326b1c64767d3a433e88bed0a6291da3d58d62180dd8a3e5f9d6308aa22d9b"
+      },
+      "Commerce IMPLEMENTED — PHASE 05C": {
+        "methodPaths": 10,
+        "sha256": "cf49bff4f193f041bc617e06b9b1d66c6f4a6aa3b0c9e69a0c9ef0e31f6c0ff6"
+      },
+      "Payment IMPLEMENTED — PHASE 06A": {
+        "methodPaths": 3,
+        "sha256": "a4d65923f36b10c9649d95e171a63356c21671a2b612e961ff89d86d940e8b44"
+      },
+      "Admin Orders và Dashboard IMPLEMENTED — PHASE 06B": {
+        "methodPaths": 11,
+        "sha256": "a4d3f037dac945e697fc4691fae461e13dae824ca7a6534bb1709d3f39653593"
+      }
+    },
+    "contractMatchesRoutesAndFeatures": true
+  },
+  "sharedFoundation": {
+    "status": "PASS",
+    "competingImplementations": [],
+    "canonicalDefinitions": {
+      "load_config": [
+        "backend/app/config.py"
+      ],
+      "create_access_token": [
+        "backend/app/auth/tokens.py"
+      ],
+      "decode_access_token": [
+        "backend/app/auth/tokens.py"
+      ],
+      "get_current_user": [
+        "backend/app/auth/__init__.py"
+      ],
+      "require_auth": [
+        "backend/app/auth/__init__.py"
+      ],
+      "require_roles": [
+        "backend/app/auth/__init__.py"
+      ],
+      "MongoConnection": [
+        "backend/app/db/__init__.py"
+      ],
+      "init_mongo": [
+        "backend/app/db/__init__.py"
+      ],
+      "get_db": [
+        "backend/app/db/__init__.py"
+      ],
+      "register_error_handlers": [
+        "backend/app/errors/handlers.py"
+      ],
+      "Pagination": [
+        "backend/app/schemas/pagination.py"
+      ],
+      "validate_payload": [
+        "backend/app/schemas/validation.py"
+      ],
+      "parse_json_body": [
+        "backend/app/schemas/validation.py"
+      ],
+      "single_query_values": [
+        "backend/app/schemas/validation.py"
+      ],
+      "parse_object_id": [
+        "backend/app/utils/ids.py"
+      ],
+      "to_api": [
+        "backend/app/utils/serialization.py"
+      ]
+    }
+  },
+  "sourceManifest": {
+    "backend/app/config.py": "8f163897160ca8f3da707d085ee9ac25f1ffc4ff81ff3dd3ca0aa5aceaf32d07",
+    "backend/app/__init__.py": "fd26b97d17e70a279e9637a7308562cfa3247c1807f72a2356a3733a812351e0",
+    "backend/app/api/admin_dashboard.py": "5f8b7d81d4cc67e4d47964499d2f6e5ed73997ec55510c48162ac78e85e9d96c",
+    "backend/app/api/admin_orders.py": "bf07c301d8d9f218187e5a896e6df948ca70d25994234a79d75b59dedd161e88",
+    "backend/app/api/admin_products.py": "7a83c1bceda5bc5b508f060ff8d8fdfd28cfd5ed4c790fc712606dfeb2c8efb1",
+    "backend/app/api/admin_users.py": "db1a385e53b4f685b2d8f69bd1c85111f38b0ddea6443aacf4c4502b5bfd1b69",
+    "backend/app/api/auth.py": "38899df66aa194506aad14005db4d0e97bdb5fb7484d365b9982139f0546f2cf",
+    "backend/app/api/cart.py": "0b6d1f088bda3cd2be63400b2d45370a8366c14bd2dbee9f21a7b92675ce922c",
+    "backend/app/api/categories.py": "aa84497da55d09aa9cf397fdf576431c3276a5730c5b6fa1102a3aacbcb291b7",
+    "backend/app/api/checkout.py": "b7f46b6cff69aac1503e841dfde0ea7ac242d24b9340e23ffbcf2bf048aba0e3",
+    "backend/app/api/health.py": "1852315220df67d5af81db770e57bf52950fe413c94a08a34f6d5fb5ef1bb2be",
+    "backend/app/api/orders.py": "9deb3a9a4f012e35c33b4b265211dd18c5883095a40d4be9f69e6cd527895f7a",
+    "backend/app/api/payments.py": "bc84b86e197cdafcef5b5bc2ddbdae1afba9776ab6a3dcf7b77e9bd8c6b62075",
+    "backend/app/api/products.py": "ec1cee018e087ae09ae959827e23a753bb72dffbc5209114b16d6839e6258d14",
+    "backend/app/api/users.py": "bc9dd1670b52fa826dd8937d5d5d4fc83efb6b031d6eb2555cb3fad99b3bf28c",
+    "backend/app/api/__init__.py": "dacef289489b7d4da0384d255489e8f87290772b6470ebea43334d94f3e24327",
+    "backend/app/auth/passwords.py": "4ca6ff4ebaf826c408dce2e59f8dd5a7a1507cee048ccacdffca0bbb31ffd9a6",
+    "backend/app/auth/rate_limit.py": "6f7c5f7d9f3e78883420037dce36fe48437d631360c31f3120925ebe829eb5b8",
+    "backend/app/auth/tokens.py": "1ddad8df7d2fab9a67444bbd64e1a31ef6a26d2c715ba82b73624bbb42988835",
+    "backend/app/auth/__init__.py": "0838538fe464bc4082866fb0b1756ba0f7da6af12e314774539be324e34017ae",
+    "backend/app/db/__init__.py": "094e19516d05ae2c9dc652715b1952fc315b4ad6e457db7915aa0440ee323e20",
+    "backend/app/errors/handlers.py": "522f8592421697529fcee98845b5fd371b1eb40fabeb41ff35ea85ea8de98055",
+    "backend/app/errors/__init__.py": "93401bf5987c94a3a303fd39da0aa4a9752033caaab9095a1c8b3b54fa49d509",
+    "backend/app/repositories/cart_repository.py": "3ea53eda05b295e0fe682bee348fe12bfeb3add8ab16a6d7e3552292f7f73e3e",
+    "backend/app/repositories/category_repository.py": "1d01f4534d15ffa498576b75b344246dd1e83441077b8f324ff8089b7868d3ef",
+    "backend/app/repositories/dashboard_repository.py": "433895c5497aaebf0ec36b5ad7f305e28e6ee737365cacf08f63031588bb7ce3",
+    "backend/app/repositories/order_repository.py": "0cf2f0bb16fa647863c49e6e34646c46449f5450d9764f7d35975681a52c21cf",
+    "backend/app/repositories/payment_attempt_repository.py": "38576bdadbbf73c8c0c689da568fc46d1dec9508c9012fec27a20cad7ef04379",
+    "backend/app/repositories/product_repository.py": "625443b4b43144227cfbe6ab04e19534e4cab0369f583b391c1f348fde0429c2",
+    "backend/app/repositories/user_repository.py": "24d91f52a833046a36c30ee74d8f17a23e910426cbbd85b8c598daf680951699",
+    "backend/app/repositories/__init__.py": "24480a54968fe793224fc95ca493e2ceac02adcab6a81fb1d6e7a8f1fccd38b3",
+    "backend/app/schemas/admin_order_schema.py": "2b44dc30759afea6032cecaeb7d8fa86831ab7c3fba6463959f90168cf358491",
+    "backend/app/schemas/admin_user_schema.py": "43aa78f91af676f53c1a5057c0fe03e236d68261518b719b3af76ff3e9cc74c2",
+    "backend/app/schemas/auth_schema.py": "dcefbc45fa1b59330d2e0d5bf82e02a9baab7e6b3f309f84d2bcfa00105b7195",
+    "backend/app/schemas/cart_schema.py": "39c683cbd03d2bbeffcfddaee1e18e2e5f2371c922a6f8c1ede507db73e1f32d",
+    "backend/app/schemas/catalog_schema.py": "b4da2ea3be42c092afcadc9e555980a01bf253fd5bd7873c4d66de01f88c5cbc",
+    "backend/app/schemas/category_schema.py": "3b9f8584bde8e00153b8dc596554d6936111ea3122b436919e7b4cbb8b6c40b2",
+    "backend/app/schemas/checkout_schema.py": "ad58ce47b75d64b928f82aeab1fbd49c1c66b5e1032e824936ab2880f81c52ca",
+    "backend/app/schemas/dashboard_schema.py": "109d963ecbe43e083796311b57152b6f863cc818d5e142cfef4eee01bde38af0",
+    "backend/app/schemas/order_schema.py": "0ec61f8b7c7e75229c84e6fa2a04b11ed9e59eed6a226b0edec4e0a8b7e6ac69",
+    "backend/app/schemas/pagination.py": "36291e61172736b57f2f4e5f8b075924c312b87e566be303ec93b52001d51370",
+    "backend/app/schemas/product_schema.py": "f27c84a385c0d5fd08d548218905b624da3d2e5f41211739aacbea537f2bc628",
+    "backend/app/schemas/query_contract.py": "d84d4b09975caff22164a590bb7a17ff0fda8f04aca0c8817008b43e45855cc2",
+    "backend/app/schemas/user_response.py": "e5a35139d1607a994123c65439a2ad222fc4177927eeff3e9e95706da7ef9d57",
+    "backend/app/schemas/user_schema.py": "e36ac9480298a7c1a489d0ba68afaac7b5a4dc813bbc49d056daf6b20fc5bcf3",
+    "backend/app/schemas/validation.py": "6a89f260261fbb44a686525f4b64c91c4366bfb2c454ab5e7fff6a09dc3c8af2",
+    "backend/app/schemas/__init__.py": "c61653d52cd7f8d5d2f4f8b19b0ec57a17032a755976d37d824d1882efff66b6",
+    "backend/app/services/auth_service.py": "1b05ebe5888f0ca1650d6d312495f49d89957d389254feb507d9d1d9574ea643",
+    "backend/app/services/cart_service.py": "b4ea431f04efa2b52659a95cb549dddbdb4d49d616e028a3ab788ac292e5e21b",
+    "backend/app/services/catalog_transaction.py": "5163ecd215492e871483a171d63cf943fef3ab17b3877c2f907ffe30e7daff90",
+    "backend/app/services/category_service.py": "fb5704e2cbf62811743e2f61e7634d1c2130a1e890960482202d76cdab7a8e77",
+    "backend/app/services/checkout_service.py": "c9a8a85ccaf22d5c3a6df86fe5f658c8c44d35a01a226d6d6cbb497715e57d2b",
+    "backend/app/services/commerce_pricing.py": "df320972069d7e9b0ab1d252478246fded460798df45ffd4634b984a8c6e07ba",
+    "backend/app/services/dashboard_service.py": "335abe4a24cca0cff2143e4263109cec98ffcfe58753f52519f426191fd8448f",
+    "backend/app/services/health_service.py": "2ee8e993b3422251543c5d57856bc05689ae9fbc1807cdb6f13fb6875b579b41",
+    "backend/app/services/order_service.py": "5e11c10ab9b199aaa3e23012669573198928db64d9ae38b24929002fd01b7d07",
+    "backend/app/services/payment_service.py": "29611d1dddef94fa34d6ad3882c1815bc956c6ef396512db4da338f6bbb06e58",
+    "backend/app/services/product_service.py": "ab0d008d8b5dfe1cbb98f386f020cb3e2d2cad77960026404f352932fb2cd413",
+    "backend/app/services/user_service.py": "cf191586836189b7a1bf7b0452e902ca0b14f76362c7edc8345b883204a868af",
+    "backend/app/services/vnpay_provider.py": "40d1eacb32977c6fbf82a62d3048dbae96b52505910ee0e8112069370a6162d8",
+    "backend/app/services/__init__.py": "fd9e5b6de48bd99733dea790f09e0f5c73068026e96fe8f7a805aa5cbd3d03e6",
+    "backend/app/utils/ids.py": "9429af198fab52ae8f01133ffaff7661b6eabcb4bf745794464c1e71bb5f4176",
+    "backend/app/utils/logging.py": "c781de76ed2587b3fd707cd9cd2006e9e01548b1f17bccf517975928b929b71f",
+    "backend/app/utils/responses.py": "309b7befee8954967183219fc6de72f6fdbe7ffd4417e7543fdc8da503d6867d",
+    "backend/app/utils/serialization.py": "0e6f862415dcd6a2fc8679fbbfcbd3901068e499186d394e63054444124d4869",
+    "backend/app/utils/__init__.py": "57d335a41e2fb16715fc0cefdb912946696794a3a86fe0e04bce8c78a23a1649",
+    "backend/tests/conftest.py": "83bd0b039f502caabb4b30f2cef4bc2e238d4d2956b2ac322090c6e8d70e0e55",
+    "backend/tests/test_admin_analytics.py": "704180c11a2bb5b73b2df57cd1701b1004f6861b063e2e99ee70724c86d7b154",
+    "backend/tests/test_auth_foundation.py": "290df7bd6facdacc90288b0e37748b28c2126b81e1e380e7f40c5fecdffe713b",
+    "backend/tests/test_auth_users.py": "b1f967cde6120977e068b3b6dda12f31977fb1cdadb2f84dbe7d6b0831785bef",
+    "backend/tests/test_catalog.py": "9fee3e88080fac874cd0fbc58da8b7de4d0b6bac51c7bb891c569abd5af771dd",
+    "backend/tests/test_catalog_transaction.py": "9bc06b6be208ee387c6465de196a41ef0f0b1fabbe4b1256f3610fa782340160",
+    "backend/tests/test_commerce.py": "07eda524c273102836a43a41a7badd6005d78f0080cc200b8c12f79a8acc1cb1",
+    "backend/tests/test_foundation.py": "181242d795c9e9711765d0c257211ebbaefe67b11f44d5fdcca083c7154a0025",
+    "backend/tests/test_payment.py": "12a9daa503e8c3fc4491119be26db448e07746d7955ff24b9d3a33feacb0422e",
+    "docs/api-contract.md": "f653c44be0d5bc40bb922fbb41232e3d5ae8001682dfc2af787d03c2607049f2"
+  },
+  "backendAndContractUnchanged": true,
+  "initialDevBaseline": {
+    "digest": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+    "counts": {
+      "users": 41,
+      "categories": 3,
+      "products": 180,
+      "carts": 0,
+      "orders": 100,
+      "payment_attempts": 30
+    }
+  },
+  "devBefore": {
+    "digest": "347c71bdc799e828bceeb197d9a9f3ea45624449a387aca239abb18538792f73",
+    "counts": {
+      "users": 42,
+      "categories": 3,
+      "products": 180,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "devAfter": {
+    "digest": "347c71bdc799e828bceeb197d9a9f3ea45624449a387aca239abb18538792f73",
+    "counts": {
+      "users": 42,
+      "categories": 3,
+      "products": 180,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "externalDevChangeSinceInitialBaseline": true,
+  "approvedDevDelta": {
+    "historicalDigestWithoutOneAdditionalUser": "3cb02b86dae359fe469356c818205b8ddc2e83768862d9f3c47776a79657c6a6",
+    "historicalMatchedAfterExcludingAdditionalUser": true,
+    "additionalUserId": "6ac6363904fbb6846343e369",
+    "additionalUserRole": "CUSTOMER",
+    "additionalUserCreatedAt": "2026-10-07T12:08:25.580000+00:00",
+    "linkedCarts": 0,
+    "linkedOrders": 0,
+    "linkedAttempts": 0,
+    "additionalUserApprovedByUser": true,
+    "disposition": "KEEP"
+  },
+  "testDatabaseEmptyAfterCleanup": true,
+  "revenueVerification": {
+    "qualifiedRevenue": 360000,
+    "excludedShipping": 60000,
+    "qualifiedUnits": 3,
+    "paidBeforeCompletionRevenue": 0,
+    "liveProductMutationPreservedRevenue": true,
+    "historicalDevRevenue": 10103259022
+  },
+  "liveSandbox": {
+    "status": "LIVE SANDBOX BLOCKED",
+    "enabled": false,
+    "missingEffectiveConfig": [
+      "VNP_TMN_CODE",
+      "VNP_HASH_SECRET",
+      "VNP_PAYMENT_URL",
+      "VNP_RETURN_URL",
+      "VNP_IPN_URL"
+    ],
+    "realRedirectVerified": false,
+    "realProviderIpnVerified": false
+  },
+  "applicationFixes": [],
+  "frontendWorkPerformed": false,
+  "newFeaturesImplemented": false,
+  "runtime": {
+    "python": "3.12.14",
+    "Flask": "3.1.3",
+    "pymongo": "4.15.3",
+    "pytest": "9.1.1",
+    "PyJWT": "2.15.1"
+  },
+  "canonicalSchemaIndexAudit": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "devDatabaseUnchangedDuringSmoke": true,
+  "devDataReview": {
+    "status": "PENDING_USER_CONFIRMATION",
+    "scope": "Later additional User, Cart, Order and related stock/version changes",
+    "automaticCleanupPerformed": false
+  }
+}

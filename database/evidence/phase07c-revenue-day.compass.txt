@@ -1,0 +1,39 @@
+[
+  {
+    "$match": {
+      "orderStatus": "COMPLETED",
+      "paymentStatus": "PAID",
+      "completedAt": {
+        "$gte": ISODate("2026-07-03T00:00:00Z"),
+        "$lt": ISODate("2026-10-01T00:00:00Z")
+      }
+    }
+  },
+  {
+    "$group": {
+      "_id": {
+        "$dateTrunc": {
+          "date": "$completedAt",
+          "unit": "day",
+          "timezone": "Asia/Ho_Chi_Minh"
+        }
+      },
+      "revenue": {
+        "$sum": {
+          "$subtract": [
+            "$subtotal",
+            "$discount"
+          ]
+        }
+      },
+      "orders": {
+        "$sum": 1
+      }
+    }
+  },
+  {
+    "$sort": {
+      "_id": 1
+    }
+  }
+]

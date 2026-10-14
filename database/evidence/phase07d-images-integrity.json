@@ -1,0 +1,135 @@
+{
+  "phase": "07D-FIX",
+  "recordedAtUtc": {
+    "$date": "2026-10-14T07:24:58.061Z"
+  },
+  "devBefore": {
+    "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "devAfter": {
+    "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "benchmarkBefore": {
+    "digest": "22c0c7807a4664efcb720c6bf6495a389116c5e60dfda799a512c1227af1c2c0",
+    "counts": {
+      "users": 40,
+      "categories": 30,
+      "products": 30000,
+      "carts": 0,
+      "orders": 10000,
+      "payment_attempts": 0
+    }
+  },
+  "benchmarkAfter": {
+    "digest": "22c0c7807a4664efcb720c6bf6495a389116c5e60dfda799a512c1227af1c2c0",
+    "counts": {
+      "users": 40,
+      "categories": 30,
+      "products": 30000,
+      "carts": 0,
+      "orders": 10000,
+      "payment_attempts": 0
+    }
+  },
+  "devExactUnchanged": true,
+  "benchmarkExactUnchanged": true,
+  "fixtureBaseline": {
+    "userId": "6ac7a52e87e692850a155381",
+    "products": [
+      {
+        "_id": {
+          "$oid": "6ac7a52f87e692850a155384"
+        },
+        "sku": "DEFENSE-07C-ELE",
+        "slug": "defense-07c-dien-thoai",
+        "price": 10000000,
+        "stock": 20,
+        "images": [
+          "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/1.webp",
+          "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/2.webp"
+        ],
+        "attributes": {
+          "ram": "8GB",
+          "storage": "256GB",
+          "chip": "Demo CPU 07C"
+        },
+        "version": 6
+      },
+      {
+        "_id": {
+          "$oid": "6ac7a52f87e692850a155386"
+        },
+        "sku": "DEFENSE-07C-FAS",
+        "slug": "defense-07c-ao-thun",
+        "price": 200000,
+        "stock": 20,
+        "images": [
+          "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/1.webp",
+          "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/2.webp"
+        ],
+        "attributes": {
+          "sizes": [
+            "M",
+            "L"
+          ],
+          "colors": [
+            "Black"
+          ],
+          "material": "Cotton"
+        },
+        "version": 4
+      }
+    ],
+    "cartEmpty": true,
+    "phoneAddressReady": true
+  },
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": {
+    "cartsWithoutUser": 0,
+    "cartItemsWithoutProduct": 0,
+    "ordersWithoutUser": 0,
+    "orderItemsWithoutProduct": 0,
+    "attemptsWithoutUser": 0,
+    "attemptsWithoutOrder": 0,
+    "attemptOwnershipMismatch": 0,
+    "productsWithoutCategory": 0
+  },
+  "changedProtectedFiles": [],
+  "cleanupExactCounts": {
+    "users": 42,
+    "categories": 5,
+    "products": 182,
+    "carts": 1,
+    "orders": 104,
+    "payment_attempts": 30
+  },
+  "testEmpty": true,
+  "testSchema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "resetOrReseed": false
+}
