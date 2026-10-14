@@ -1,0 +1,12 @@
+{
+  "frontendUrl": "https://novamart-web.onrender.com",
+  "backendUrl": "https://novamart-api.onrender.com",
+  "frontendSourceCommit": "c1b28ddcd63590b95e2806753bce893ec486b15b",
+  "backendSourceCommit": "a9117fb83b3e9b07ba3f3e2611cafb6e5e7110e7",
+  "frontendAsset": "/assets/index-D1nj9JcG.js",
+  "newBadgeInDeployedBundle": true,
+  "health200": true,
+  "exactCors": true,
+  "frontendRenderStatus": "Deploy succeeded | Live",
+  "frontendRenderBuildSeconds": 11.12
+}

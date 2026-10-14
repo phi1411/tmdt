@@ -1,0 +1,33 @@
+{
+  "localBefore": {
+    "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "localAfter": {
+    "digest": "9df03c4e3446cb983eec55eb08fab603e2c723517b9eade1a9e47c3ffc1db4a9",
+    "counts": {
+      "users": 42,
+      "categories": 5,
+      "products": 182,
+      "carts": 1,
+      "orders": 101,
+      "payment_attempts": 30
+    }
+  },
+  "localExactUnchanged": false,
+  "testCollectionCounts": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0
+  }
+}

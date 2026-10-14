@@ -16,7 +16,7 @@ Source đã đẩy lên `https://github.com/phi1411/tmdt`,branch master. Backend
 
 Frontend `VITE_API_BASE_URL=https://novamart-api.onrender.com/api/v1`; backend `FRONTEND_ORIGIN=https://novamart-web.onrender.com`. Static rewrite `/* → /index.html` đã lưu. VNPAY_ENABLED=false; không khởi tạo expiry worker.
 
-Sửa text nhỏ ở AdminLayout: bỏ tên `rs0` hardcoded khỏi badge để không mô tả sai replica set Atlas. Không đổi logic, API, schema, auth hoặc business rules. Strict TypeScript/build sau sửa PASS,2237modules/19.93s; còn chunk-size warning. Bản sửa cần manual frontend deploy vì repository public đang kết nối theo Public Git Repository, không qua Git Provider/Blueprint auto-deploy.
+Sửa text nhỏ ở AdminLayout: bỏ tên `rs0` hardcoded khỏi badge để không mô tả sai replica set Atlas. Không đổi logic, API, schema, auth hoặc business rules. Strict TypeScript/build sau sửa PASS,2237modules/19.93s; còn chunk-size warning. Đã manual frontend deploy commit `c1b28ddcd63590b95e2806753bce893ec486b15b`,Render báo Deploy succeeded | Live/build11.12s. Bundle public đã xác minh chứa nhãn mới. Public Git Repository không dùng Git Provider/Blueprint auto-deploy; lần cập nhật source sau cần manual deploy.
 
 ## Kiểm tra thật
 
@@ -33,12 +33,14 @@ Public HTTP script mutate chỉ fixture mới có journal và unique owner/categ
 
 Static HTTP checks: `/`, `/products`, `/login`, `/admin/dashboard` đều200 và cùng SHA256 index.html; bundle dùng API HTTPS thật. Browser thật: Catalog182Products,16ảnh ở trang đầu tải thành công,chi tiết Product/attributes; Admin login bằng UI,Dashboard KPI/Top5/SVG charts hiển thị,không overflow ở viewport quan sát. Đây là browser smoke, không chạy lại toàn bộ Customer/Admin E2E UI suite trên public; checkout/lifecycle/snapshot public được kiểm tra qua HTTP thật.
 
+Final local audit: counts giữ42/5/182/1/101/30 và6testcollections rỗng,nhưng full local fingerprint đổi `c526acf... → 9df03c...` trong phiên. Đối chiếu exact migration backup có fingerprint bằng baseline trước deploy cho thấy **63Product đổi naming metadata** (name/nameNormalized/slug,brand ở2fixture,version/updatedAt),khớp helper `scripts/db/fix_product_names.py` mới xuất hiện song song. Tất cả IDs/User/Category/Cart/Order/Attempt,prices/stocks/images/schema/indexes giữ nguyên;0orphans. Không rollback hoặc gán những writes này cho smoke deploy; không claim local full-session immutable. Các file helper/demo/evidence của thay đổi song song được để nguyên và không đưa vào deployment commit.
+
 Fullbackend674PASS và12nhóm browser regression trên owned test clone đã có trong [review chuẩn bị](render-deployment-review.md); không gán các kết quả local đó thành public UI E2E mới.
 
 ## Các lỗi tạm thời và giới hạn
 
 - Lượt public HTTP đầu bị `RemoteDisconnected` khi POST address. Exact cleanup đã PASS trước khi chạy lại; lượt mới hoàn tất50HTTP. Không có bằng chứng đã sửa nguyên nhân mạng.
-- Một lần browser `Failed to fetch` trong giai đoạn triển khai; reload sau đó Catalog tải đủ dữ liệu. Không claim zero network/console errors xuyên toàn phiên.
+- Một lần browser `Failed to fetch` trong giai đoạn triển khai; reload sau đó Catalog tải đủ dữ liệu. Lượt reload sau deployment mới cũng gặpERR_CONNECTION_CLOSED trong in-app browser; tabHTTPS mới mở lại thành công,home tải12ảnh và không overflow. Không claim nguyên nhân mạng đã được sửa hoặc zero network/console errors xuyên toàn phiên.
 - Render UI từng lỗi tải giá trị env ẩn; lượt save đó không thành công. Đã reload, mở riêng giá trị origin, nhập đúng URL và Save and deploy; deployment mới Live và CORS HTTP xác nhận đúng origin.
 - Npm audit lúc build ghi **9vulnerabilities:5high/4moderate**,gồm chuỗi Tailwind/build tooling và React Router. Fix được npm đề xuất có major upgrades; chưa thực hiện migration ngoài scope deploy. Không claim production-security-clean. Private full audit lưu `.local/render-deployment/npm-audit.json`; cần follow-up dependency review trước sử dụng ngoài demo. [React Router advisory](https://github.com/advisories/GHSA-wrjc-x8rr-h8h6), [braces advisory](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm).
 - Auth limiter vẫn per-process/socketIP sau Render proxy; chưa thêm distributed limiter/ProxyFix hoặc nghiệm thu abuse/load test.
@@ -46,4 +48,4 @@ Fullbackend674PASS và12nhóm browser regression trên owned test clone đã có
 
 ## Evidence
 
-[Public HTTP/cleanup](../backend/evidence/render-public-smoke.json), [SPA/bundle/CORS](../backend/evidence/render-public-static.json), [backend674JUnit](../backend/evidence/render-prep-pytest.xml). Private screenshots/journals và receipt lần HTTP lỗi được giữ ở ignored `.local/render-deployment`; không chứa secrets trong evidence public.
+[Public HTTP/cleanup](../backend/evidence/render-public-smoke.json), [SPA/bundle/CORS](../backend/evidence/render-public-static.json), [final deployed build](../backend/evidence/render-public-final.json), [local fingerprint](../backend/evidence/render-public-local-integrity.json), [local naming delta](../backend/evidence/render-public-local-delta.json), [backend674JUnit](../backend/evidence/render-prep-pytest.xml). Private screenshots/journals và receipt lần HTTP lỗi được giữ ở ignored `.local/render-deployment`; không chứa secrets trong evidence public.

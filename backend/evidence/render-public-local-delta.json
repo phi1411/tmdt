@@ -1,0 +1,667 @@
+{
+  "baselineMatchesMigrationBackup": true,
+  "changedDocuments": {
+    "users": 0,
+    "categories": 0,
+    "products": 63,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0
+  },
+  "productChanges": [
+    {
+      "sku": "DEMO-FAS-060",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-052",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-058",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-039",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-044",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-060",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-043",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-054",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-041",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-050",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-039",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-045",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-047",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-043",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-053",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-051",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-040",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-040",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-048",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEFENSE-07C-ELE",
+      "fields": [
+        "brand",
+        "brandNormalized",
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEFENSE-07C-FAS",
+      "fields": [
+        "brand",
+        "brandNormalized",
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-054",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-057",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-052",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-050",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-049",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-042",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-050",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-056",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-041",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-051",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-055",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-054",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-048",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-047",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-049",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-057",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-037",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-036",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-042",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-053",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-060",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-055",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-059",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-048",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-056",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-047",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-058",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-038",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-044",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-051",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-046",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-059",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-052",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-059",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-049",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-056",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-055",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-HOM-057",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-058",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-FAS-053",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-046",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    },
+    {
+      "sku": "DEMO-ELE-045",
+      "fields": [
+        "name",
+        "nameNormalized",
+        "slug",
+        "updatedAt",
+        "version"
+      ]
+    }
+  ],
+  "onlyProductNamingMetadataChanged": true,
+  "pricesStocksImagesAndOrdersUnchanged": true,
+  "schema": {
+    "validators": 6,
+    "declaredIndexes": 14,
+    "idIndexes": 6,
+    "canonicalMatch": true
+  },
+  "orphans": {
+    "cartsWithoutUser": 0,
+    "cartItemsWithoutProduct": 0,
+    "ordersWithoutUser": 0,
+    "orderItemsWithoutProduct": 0,
+    "attemptsWithoutUser": 0,
+    "attemptsWithoutOrder": 0,
+    "attemptOwnershipMismatch": 0,
+    "productsWithoutCategory": 0
+  },
+  "externalHelperPresent": "scripts/db/fix_product_names.py",
+  "rollbackPerformed": false
+}
