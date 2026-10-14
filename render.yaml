@@ -1,9 +1,10 @@
-# Free is explicit; selecting paid compute requires the owner's decision.
+# Owner approved $7/month backend compute for a one-month demo on 14-Oct-2026.
 services:
   - type: web
     name: novamart-api
     runtime: python
-    plan: free
+    plan: 0.5c-512mb
+    region: singapore
     buildCommand: pip install -r backend/requirements-render.txt
     startCommand: python backend/serve.py
     healthCheckPath: /api/v1/health

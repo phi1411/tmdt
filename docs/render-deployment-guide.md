@@ -1,6 +1,6 @@
 # Deploy Novamart lên Render + Atlas
 
-`render.yaml` đã chuẩn bị một backend **Free** và một Static Site. Chưa tạo service hoặc dùng credit. Atlas `novamart_demo` đã có dữ liệu; không chạy seed/import lại khi deploy app.
+Người dùng đã chọn backend **$7/tháng** cho demo trong một tháng, dùng credit Render; `render.yaml` hiện dùng `0.5c-512mb`,Singapore. Static Site và Atlas vẫn miễn phí. Credit trong workspace đã kiểm tra là$50. Atlas `novamart_demo` đã có dữ liệu; không chạy seed/import lại khi deploy app. Trạng thái public thực tế xem review deployment mới nhất; cấu hình không tự chứng minh deploy thành công.
 
 ## Repository
 
@@ -17,7 +17,7 @@ Render → **New → Web Service** → chọn repository/branch:
 | Root Directory | để trống |
 | Build Command | `pip install -r backend/requirements-render.txt` |
 | Start Command | `python backend/serve.py` |
-| Instance Type | Free, trừ khi chủ dự án chọn paid |
+| Instance Type | $7/month,0.5CPU/512MB, theo lựa chọn chủ dự án |
 | Health Check Path | `/api/v1/health` |
 
 Environment backend:
@@ -69,6 +69,6 @@ Có thể dùng **New → Blueprint** với `render.yaml` thay việc tạo th�
 
 Chỉ kết luận **PUBLIC DEPLOYMENT PASS** sau các bước này. Hiện WSGI local kết nối Atlas đã được kiểm tra; Render Linux/public TLS/proxy chưa nghiệm thu. VNPAY Live Sandbox chưa PASS và đang disabled.
 
-Free có cold start. Bundle còn chunk-size warning. Auth limiter hiện per-process/socket IP, cần kiểm tra qua proxy Render trước khi kết luận security public; chưa đổi proxy trust/auth strategy trong lần chuẩn bị này.
+Nếu chuyển về Free, backend có cold start. Gói trả phí tiếp tục tính tiền cho tới khi suspend/delete; muốn dùng một tháng thì chủ dự án cần dừng service khi kết thúc. Chưa tạo lịch tự dừng. Bundle còn chunk-size warning. Auth limiter hiện per-process/socket IP, cần kiểm tra qua proxy Render trước khi kết luận security public; chưa đổi proxy trust/auth strategy trong lần chuẩn bị này.
 
 Nguồn: [Render Blueprint](https://render.com/docs/blueprint-spec), [Deploy Flask](https://render.com/docs/deploy-flask), [Flask Waitress](https://flask.palletsprojects.com/en/stable/deploying/waitress/).
