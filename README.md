@@ -79,4 +79,6 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 12 | Sweet Bakery (hoang) | Cập nhật file bằng chứng seed manifest ghi nhận collection reviews | `test(evidence): record seed manifest with reviews collection` | QA Engineer |
 | 13 | Sweet Bakery (hoang) | Cập nhật cấu hình fixture test backend cho collection reviews và ổn định kiểm tra mật khẩu môi trường test | `test(backend): add reviews collection to conftest fixture and stabilize seed password check` | QA / Test Engineer |
 | 14 | Sweet Bakery (hoang) | Bổ sung tài liệu đặc tả clean-room kiến trúc sàn TMĐT tham chiếu Shopee và TikTok Shop | `docs(spec): add clean-room e-commerce specifications for shopee and tiktok shop` | Solution Architect |
+| 15 | Sweet Bakery (hoang) | Nâng cấp JSON Schema validator cho carts và orders hỗ trợ biến thể thuộc tính động | `fix(schema): allow dynamic selectedAttributes in cart and order validators` | Database Engineer |
+| 16 | Sweet Bakery (hoang) | Mở rộng schema xác thực SELECTION của giỏ hàng chấp nhận thuộc tính phân loại đa tầng và khắc phục lỗi 422 | `fix(cart): expand SELECTION schema to accept multi-tier variant attributes` | Backend Engineer |
 

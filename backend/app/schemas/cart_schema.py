@@ -3,8 +3,14 @@ from app.schemas.user_schema import object_schema
 
 CART_VERSION = {'type': 'integer', 'minimum': 0, 'maximum': 2147483647}
 QUANTITY = {'type': 'integer', 'minimum': 1, 'maximum': 99}
-SELECTION = object_schema({key: {'type': 'string', 'minLength': 1, 'maxLength': 50}
-                           for key in ('size', 'color')})
+SELECTION = {
+    'type': 'object',
+    'maxProperties': 10,
+    'patternProperties': {
+        '^.+$': {'type': 'string', 'minLength': 1, 'maxLength': 100}
+    },
+    'additionalProperties': False
+}
 ADD_SCHEMA = object_schema({'productId': {'type': 'string'}, 'quantity': QUANTITY,
                            'selectedAttributes': SELECTION, 'cartVersion': CART_VERSION},
                           ['productId', 'quantity', 'cartVersion'])
