@@ -2,7 +2,8 @@ from pymongo import ReturnDocument
 from app.db import get_db
 
 PRODUCT_PROJECTION = {key: 1 for key in ('_id', 'sku', 'name', 'slug', 'categoryId', 'productType', 'brand',
-    'description', 'price', 'stock', 'images', 'attributes', 'status', 'version', 'createdAt', 'updatedAt')}
+    'description', 'price', 'stock', 'images', 'attributes', 'status', 'version', 'createdAt', 'updatedAt',
+    'tierVariations', 'skus', 'ratingSummary')}
 
 
 class ProductRepository:
