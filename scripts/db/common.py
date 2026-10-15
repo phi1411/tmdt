@@ -16,7 +16,7 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parents[2]
-COLLECTIONS = ('users', 'categories', 'products', 'carts', 'orders', 'payment_attempts')
+COLLECTIONS = ('users', 'categories', 'products', 'carts', 'orders', 'payment_attempts', 'reviews')
 ALLOWED_DATABASES = {'ecommerce_dev', 'ecommerce_test', 'ecommerce_roundtrip'}
 WORKLOAD_INDEXES = {'ix_products_category_price', 'ix_orders_user_history', 'ix_orders_qualified_completed'}
 

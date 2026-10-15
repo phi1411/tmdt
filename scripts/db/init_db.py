@@ -9,6 +9,6 @@ if __name__ == '__main__':
     client, db = connection(args.database, claim=True)
     try:
         apply_foundation(db)
-        print(f'{db.name}: 6 validators applied; {len(selected_indexes())} declared indexes (+6 _id_)')
+        print(f'{db.name}: 7 validators applied; {len(selected_indexes())} declared indexes')
     finally:
         client.close()

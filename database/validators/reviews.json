@@ -1,0 +1,106 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "additionalProperties": false,
+    "required": [
+      "_id",
+      "schemaVersion",
+      "createdAt",
+      "updatedAt",
+      "productId",
+      "orderId",
+      "userId",
+      "rating",
+      "status"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "schemaVersion": {
+        "bsonType": "int",
+        "enum": [
+          1
+        ]
+      },
+      "createdAt": {
+        "bsonType": "date"
+      },
+      "updatedAt": {
+        "bsonType": "date"
+      },
+      "productId": {
+        "bsonType": "objectId"
+      },
+      "orderId": {
+        "bsonType": "objectId"
+      },
+      "userId": {
+        "bsonType": "objectId"
+      },
+      "orderCode": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "userSnapshot": {
+        "bsonType": "object",
+        "properties": {
+          "displayName": {
+            "bsonType": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "avatarUrl": {
+            "bsonType": "string",
+            "maxLength": 2048
+          }
+        }
+      },
+      "skuSpecSnapshot": {
+        "bsonType": "object"
+      },
+      "rating": {
+        "bsonType": "int",
+        "minimum": 1,
+        "maximum": 5
+      },
+      "reviewText": {
+        "bsonType": "string",
+        "maxLength": 2000
+      },
+      "images": {
+        "bsonType": "array",
+        "maxItems": 5,
+        "items": {
+          "bsonType": "string",
+          "maxLength": 2048
+        }
+      },
+      "helpfulCount": {
+        "bsonType": "int",
+        "minimum": 0
+      },
+      "sellerFeedback": {
+        "bsonType": "object",
+        "properties": {
+          "content": {
+            "bsonType": "string",
+            "maxLength": 2000
+          },
+          "respondedAt": {
+            "bsonType": "date"
+          }
+        }
+      },
+      "status": {
+        "bsonType": "string",
+        "enum": [
+          "VISIBLE",
+          "HIDDEN",
+          "PENDING_AUDIT"
+        ]
+      }
+    }
+  }
+}

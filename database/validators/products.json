@@ -267,6 +267,100 @@
         "bsonType": "int",
         "minimum": 1,
         "maximum": 2147483647
+      },
+      "tierVariations": {
+        "bsonType": "array",
+        "minItems": 0,
+        "maxItems": 4,
+        "items": {
+          "bsonType": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "options"
+          ],
+          "properties": {
+            "tier": {
+              "bsonType": "int"
+            },
+            "name": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "options": {
+              "bsonType": "array",
+              "minItems": 1,
+              "maxItems": 50,
+              "items": {
+                "bsonType": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            }
+          }
+        }
+      },
+      "skus": {
+        "bsonType": "array",
+        "minItems": 0,
+        "maxItems": 100,
+        "items": {
+          "bsonType": "object",
+          "additionalProperties": false,
+          "required": [
+            "skuId",
+            "price",
+            "stock"
+          ],
+          "properties": {
+            "skuId": {
+              "bsonType": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "tierIndex": {
+              "bsonType": "array",
+              "minItems": 0,
+              "maxItems": 4,
+              "items": {
+                "bsonType": "int"
+              }
+            },
+            "price": {
+              "bsonType": "long",
+              "minimum": 1,
+              "maximum": 1000000000
+            },
+            "stock": {
+              "bsonType": "int",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            "image": {
+              "bsonType": "string",
+              "maxLength": 2048
+            }
+          }
+        }
+      },
+      "ratingSummary": {
+        "bsonType": "object",
+        "additionalProperties": false,
+        "properties": {
+          "averageRating": {
+            "bsonType": "double",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "totalReviews": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "starsBreakdown": {
+            "bsonType": "object"
+          }
+        }
       }
     },
     "oneOf": [

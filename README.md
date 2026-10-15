@@ -71,4 +71,5 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 4 | Nguyen Ngoc Phi | Xác thực Render public và làm rõ database badge | `Verify public Render deployment and clarify database badge` | QA / DevOps |
 | 5 | Nguyen Ngoc Phi | Ghi nhận tài liệu deployment và audit tên sản phẩm song song | `Record final deployment and concurrent product naming audit` | Technical Writer / QA |
 | 6 | Sweet Bakery (hoang) | Thiết lập quy chuẩn Conventional Commits, quy tắc chia nhỏ commit chi tiết và bảng nhật ký dự án | `docs(convention): enforce atomic commit policy and project ledger` | Fullstack Developer |
+| 7 | Sweet Bakery (hoang) | Nâng cấp JSON Schema validator cho products (hỗ trợ tierVariations, skus, ratingSummary) và bổ sung validator reviews kèm indexes | `schema(db): upgrade product validator for tier variations and add reviews collection with indexes` | Database Engineer |
 

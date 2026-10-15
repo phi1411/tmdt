@@ -416,6 +416,54 @@
       ],
       "fieldOrderReason": "Method/status equality trước deadline range; no TTL-delete chứng từ.",
       "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "reviews",
+      "name": "uq_reviews_user_order_product",
+      "keys": {
+        "userId": 1,
+        "orderId": 1,
+        "productId": 1
+      },
+      "options": {
+        "name": "uq_reviews_user_order_product",
+        "unique": true
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Một user chỉ review 1 lần cho 1 sản phẩm trong 1 đơn hàng",
+      "equalityFields": [
+        "userId",
+        "orderId",
+        "productId"
+      ],
+      "sortFields": {},
+      "rangeFields": [],
+      "fieldOrderReason": "Unique compound key chống spam review trùng lặp",
+      "benchmarkStatus": "NOT_MEASURED"
+    },
+    {
+      "collection": "reviews",
+      "name": "ix_reviews_product_feed",
+      "keys": {
+        "productId": 1,
+        "status": 1,
+        "createdAt": -1
+      },
+      "options": {
+        "name": "ix_reviews_product_feed"
+      },
+      "kind": "INVARIANT",
+      "queryPattern": "Lấy feed review của sản phẩm theo trạng thái hiển thị và sắp xếp mới nhất",
+      "equalityFields": [
+        "productId",
+        "status"
+      ],
+      "sortFields": {
+        "createdAt": -1
+      },
+      "rangeFields": [],
+      "fieldOrderReason": "Equality filter trước; sort createdAt mới nhất",
+      "benchmarkStatus": "NOT_MEASURED"
     }
   ]
 }
