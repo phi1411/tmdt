@@ -18,3 +18,16 @@ def public_list():
 def public_detail(slug):
     single_query_values(request.args, set())
     return success(ProductService().detail({'slug': slug, 'status': 'ACTIVE'}, public=True))
+
+
+@products_blueprint.get('/products/<identifier>/reviews')
+def product_reviews(identifier):
+    from app.services.review_service import ReviewService
+    from bson import ObjectId
+    if ObjectId.is_valid(identifier):
+        pid = ObjectId(identifier)
+    else:
+        product = ProductService().detail({'slug': identifier, 'status': 'ACTIVE'}, public=True)
+        pid = product['_id']
+    reviews, stats = ReviewService().get_product_reviews(pid)
+    return success({'reviews': reviews, 'stats': stats})
