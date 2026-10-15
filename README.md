@@ -76,4 +76,5 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 9 | Sweet Bakery (hoang) | Xây dựng script nạp sản phẩm thực tế đa biến thể SKU và reviews xác thực | `feat(seed): add realistic multi-tier sku products and authentic reviews generator` | Data Engineer |
 | 10 | Sweet Bakery (hoang) | Nâng cấp giao diện chọn phân loại đa tầng dynamic tier variations, cập nhật giá và kho real-time theo SKU và khắc phục lỗi cứng size | `feat(ui): support dynamic tier variations and real-time sku price updates` | Frontend Engineer |
 | 11 | Sweet Bakery (hoang) | Cập nhật logic tính giá giỏ hàng và projection kho theo SKU ma trận đa ngành | `feat(backend): support multi-tier sku pricing and cart resolution` | Backend Engineer |
+| 12 | Sweet Bakery (hoang) | Cập nhật file bằng chứng seed manifest ghi nhận collection reviews | `test(evidence): record seed manifest with reviews collection` | QA Engineer |
 
