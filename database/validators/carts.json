@@ -65,19 +65,15 @@
             },
             "selectedAttributes": {
               "bsonType": "object",
-              "additionalProperties": false,
-              "properties": {
-                "size": {
+              "maxProperties": 10,
+              "patternProperties": {
+                "^.+$": {
                   "bsonType": "string",
                   "minLength": 1,
-                  "maxLength": 50
-                },
-                "color": {
-                  "bsonType": "string",
-                  "minLength": 1,
-                  "maxLength": 50
+                  "maxLength": 100
                 }
-              }
+              },
+              "additionalProperties": false
             }
           }
         }
