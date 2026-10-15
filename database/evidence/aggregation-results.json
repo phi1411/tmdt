@@ -1204,7 +1204,7 @@
     "customer-count": [
       {
         "totalCustomers": {
-          "$numberInt": "39"
+          "$numberInt": "40"
         }
       }
     ]

@@ -348,11 +348,11 @@ export const CheckoutPage: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-sm text-slate-900">VNPAY Sandbox (Online)</span>
+                    <span className="font-bold text-sm text-slate-900">Cổng Thanh Toán VNPAY (QR / ATM / Visa)</span>
                     {paymentMethod === 'VNPAY' && <Check className="w-4 h-4 text-brand-600" />}
                   </div>
                   <p className="text-xs text-slate-500 mt-1">
-                    Thanh toán mô phỏng qua cổng VNPAY QR / Thẻ nội địa.
+                    Thanh toán bảo mật quét mã VNPAY-QR hoặc thẻ ATM / Internet Banking / Visa.
                   </p>
                 </div>
               </div>

@@ -31,9 +31,9 @@
       "users:valid",
       "categories:valid",
       "products:valid",
+      "carts:valid",
       "orders:valid",
       "payment_attempts:valid",
-      "carts:valid",
       "reviews:valid",
       "ELECTRONICS:polymorphic",
       "FASHION:polymorphic",
@@ -95,6 +95,24 @@
         }
       },
       {
+        "case": "carts:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "carts:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "carts:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
         "case": "orders:required",
         "code": {
           "$numberInt": "121"
@@ -126,24 +144,6 @@
       },
       {
         "case": "payment_attempts:type",
-        "code": {
-          "$numberInt": "121"
-        }
-      },
-      {
-        "case": "carts:required",
-        "code": {
-          "$numberInt": "121"
-        }
-      },
-      {
-        "case": "carts:enum",
-        "code": {
-          "$numberInt": "121"
-        }
-      },
-      {
-        "case": "carts:type",
         "code": {
           "$numberInt": "121"
         }
@@ -335,16 +335,16 @@
   },
   "counts": {
     "users": {
-      "$numberInt": "40"
+      "$numberInt": "41"
     },
     "categories": {
       "$numberInt": "3"
     },
     "products": {
-      "$numberInt": "180"
+      "$numberInt": "190"
     },
     "carts": {
-      "$numberInt": "0"
+      "$numberInt": "1"
     },
     "orders": {
       "$numberInt": "100"
@@ -353,18 +353,18 @@
       "$numberInt": "30"
     },
     "reviews": {
-      "$numberInt": "0"
+      "$numberInt": "24"
     }
   },
   "productDistribution": {
     "FASHION": {
-      "$numberInt": "60"
+      "$numberInt": "63"
     },
     "ELECTRONICS": {
-      "$numberInt": "60"
+      "$numberInt": "64"
     },
     "HOME_APPLIANCE": {
-      "$numberInt": "60"
+      "$numberInt": "63"
     }
   },
   "orderStatusDistribution": {
@@ -435,7 +435,7 @@
     }
   },
   "productsWithImages": {
-    "$numberInt": "180"
+    "$numberInt": "190"
   },
   "passwordsVerified": {
     "$numberInt": "40"
@@ -1036,7 +1036,7 @@
         "$numberInt": "10"
       },
       "totalDocsExamined": {
-        "$numberInt": "180"
+        "$numberInt": "190"
       },
       "totalKeysExamined": {
         "$numberInt": "0"
@@ -1121,7 +1121,7 @@
       }
     }
   },
-  "contentDigestExcludingSaltedPasswords": "0ddf8697b1a75f5249b81eb7ebe897e59148453b3caf0c332dbc5af816fe442c",
+  "contentDigestExcludingSaltedPasswords": "7cc9a00d7d36284dc3a259701f5d980a18f7e02e3b0c6a3709754ad1bf4174d6",
   "businessFeaturesImplemented": false,
   "frontendImplemented": false,
   "fullBenchmarkRun": false

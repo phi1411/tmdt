@@ -131,7 +131,7 @@ export const AdminDashboardPage: React.FC = () => {
             <span>Phạm Vi Báo Cáo Phân Tích</span>
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Dữ liệu tổng hợp từ các MongoDB Aggregation Pipelines trên replica set WiredTiger
+            Báo cáo thống kê hiệu suất kinh doanh, doanh thu và xu hướng đơn hàng sàn NovaMart
           </p>
         </div>
 

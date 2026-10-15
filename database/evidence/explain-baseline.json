@@ -450,7 +450,7 @@
         "$clusterTime": {
           "clusterTime": {
             "$timestamp": {
-              "t": 1792065062,
+              "t": 1792078869,
               "i": 55
             }
           },
@@ -468,7 +468,7 @@
         },
         "operationTime": {
           "$timestamp": {
-            "t": 1792065062,
+            "t": 1792078869,
             "i": 55
           }
         }
@@ -536,7 +536,7 @@
         "$numberInt": "10"
       },
       "totalDocsExamined": {
-        "$numberInt": "180"
+        "$numberInt": "190"
       },
       "totalKeysExamined": {
         "$numberInt": "0"
@@ -656,7 +656,7 @@
             "$numberInt": "0"
           },
           "totalDocsExamined": {
-            "$numberInt": "180"
+            "$numberInt": "190"
           },
           "executionStages": {
             "isCached": false,
@@ -668,13 +668,13 @@
               "$numberInt": "0"
             },
             "works": {
-              "$numberInt": "192"
+              "$numberInt": "202"
             },
             "advanced": {
               "$numberInt": "10"
             },
             "needTime": {
-              "$numberInt": "181"
+              "$numberInt": "191"
             },
             "needYield": {
               "$numberInt": "0"
@@ -746,19 +746,19 @@
                 ]
               },
               "nReturned": {
-                "$numberInt": "38"
+                "$numberInt": "39"
               },
               "executionTimeMillisEstimate": {
                 "$numberInt": "0"
               },
               "works": {
-                "$numberInt": "181"
+                "$numberInt": "191"
               },
               "advanced": {
-                "$numberInt": "38"
+                "$numberInt": "39"
               },
               "needTime": {
-                "$numberInt": "142"
+                "$numberInt": "151"
               },
               "needYield": {
                 "$numberInt": "0"
@@ -774,7 +774,7 @@
               },
               "direction": "forward",
               "docsExamined": {
-                "$numberInt": "180"
+                "$numberInt": "190"
               }
             }
           }
@@ -858,7 +858,7 @@
         "$clusterTime": {
           "clusterTime": {
             "$timestamp": {
-              "t": 1792065062,
+              "t": 1792078869,
               "i": 55
             }
           },
@@ -876,7 +876,7 @@
         },
         "operationTime": {
           "$timestamp": {
-            "t": 1792065062,
+            "t": 1792078869,
             "i": 55
           }
         }
@@ -1304,7 +1304,7 @@
         "$clusterTime": {
           "clusterTime": {
             "$timestamp": {
-              "t": 1792065062,
+              "t": 1792078869,
               "i": 55
             }
           },
@@ -1322,7 +1322,7 @@
         },
         "operationTime": {
           "$timestamp": {
-            "t": 1792065062,
+            "t": 1792078869,
             "i": 55
           }
         }

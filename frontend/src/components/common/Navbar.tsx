@@ -40,9 +40,9 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
-      {/* Top Banner (Student Project Disclaimer) */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 text-center tracking-wide font-medium">
-        Đồ án NoSQL E-Commerce • Nhóm 3 Sinh Viên • MongoDB Replica Set Community 8.0
+      {/* Top Promotional Bar */}
+      <div className="bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white text-xs py-1.5 px-4 text-center tracking-wide font-medium flex items-center justify-center gap-2">
+        <span>🎉 Chào mừng đến với NovaMart — Miễn phí vận chuyển toàn quốc cho đơn hàng từ 0đ!</span>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

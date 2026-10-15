@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-white text-sm">Thanh Toán An Toàn</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Hỗ trợ COD và VNPAY Sandbox</p>
+                <p className="text-xs text-slate-400 mt-0.5">Bảo mật đa tầng COD & VNPAY</p>
               </div>
             </div>
 
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-white text-sm">Chính Sách Đổi Trả</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Dễ dàng hủy đơn khi chưa giao</p>
+                <p className="text-xs text-slate-400 mt-0.5">Đổi trả miễn phí trong 15 ngày</p>
               </div>
             </div>
 
@@ -44,8 +44,8 @@ export const Footer: React.FC = () => {
                 <Headphones className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-white text-sm">Hỗ Trợ Sinh Viên</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Sẵn sàng demo và giải trình NoSQL</p>
+                <h4 className="font-semibold text-white text-sm">Hỗ Trợ Khách Hàng</h4>
+                <p className="text-xs text-slate-400 mt-0.5">Tư vấn tận tâm 24/7</p>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Sàn thương mại điện tử đa ngành hàng tích hợp cơ sở dữ liệu MongoDB Community 8.0 local replica set với mô hình Polymorphic Schema & Embedded Order Snapshots.
+              NovaMart — Sàn thương mại điện tử hàng đầu cung cấp sản phẩm chính hãng, trải nghiệm mua sắm tiện lợi và giao hàng nhanh chóng trên toàn quốc.
             </p>
           </div>
 
@@ -112,22 +112,22 @@ export const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h5 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">Thông Tin Đồ Án</h5>
+            <h5 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">Chăm Sóc Khách Hàng</h5>
             <div className="text-xs text-slate-400 space-y-1.5 leading-relaxed">
-              <p>Môn học: Cơ sở dữ liệu NoSQL</p>
-              <p>Nhóm: 3 Sinh viên</p>
-              <p>Cơ sở dữ liệu: MongoDB Community 8.0</p>
-              <p>Stack: Flask, PyMongo, React, TypeScript, Tailwind CSS</p>
+              <p>Hotline: 1900 1234 (8:00 - 21:00)</p>
+              <p>Email: support@novamart.vn</p>
+              <p>Chính sách vận chuyển & bảo hành</p>
+              <p>Quy chế hoạt động sàn TMĐT</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2026 Novamart. Dự án học thuật môn NoSQL. Giữ toàn quyền bảo lưu.</p>
+          <p>© 2026 NovaMart. Tất cả các quyền được bảo lưu.</p>
           <div className="flex items-center gap-1">
             <span>Thiết kế & Xây dựng với</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" />
-            <span>cho trải nghiệm E-commerce hiện đại</span>
+            <span>cho trải nghiệm mua sắm hiện đại</span>
           </div>
         </div>
       </div>
