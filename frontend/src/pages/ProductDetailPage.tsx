@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   ShoppingCart,
@@ -10,6 +10,7 @@ import {
   Minus,
   Check,
   ImageOff,
+  Star,
 } from 'lucide-react';
 import { catalogApi } from '../api/catalogApi';
 import { Product } from '../types/product';
@@ -33,7 +34,10 @@ export const ProductDetailPage: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
   const [quantity, setQuantity] = useState<number>(1);
 
-  // Fashion selection states
+  // Dynamic tier variation selection states: mapping tierIndex -> option string
+  const [selectedTiers, setSelectedTiers] = useState<Record<number, string>>({});
+
+  // Legacy Fashion selection states
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [addingToCart, setAddingToCart] = useState<boolean>(false);
@@ -49,8 +53,17 @@ export const ProductDetailPage: React.FC = () => {
         setSelectedImageIndex(0);
         setQuantity(1);
 
-        // Pre-select first size and color if available
-        if (data.productType === 'FASHION') {
+        // Pre-select first options if tierVariations available
+        if (data.tierVariations && data.tierVariations.length > 0) {
+          const initial: Record<number, string> = {};
+          data.tierVariations.forEach((t, idx) => {
+            if (t.options && t.options.length > 0) {
+              initial[idx] = t.options[0];
+            }
+          });
+          setSelectedTiers(initial);
+        } else if (data.productType === 'FASHION') {
+          // Fallback legacy
           if (Array.isArray(data.attributes.sizes) && data.attributes.sizes.length > 0) {
             setSelectedSize(data.attributes.sizes[0]);
           }
@@ -67,6 +80,22 @@ export const ProductDetailPage: React.FC = () => {
 
     loadDetail();
   }, [slug]);
+
+  const hasTierVariations = Boolean(product?.tierVariations && product.tierVariations.length > 0);
+
+  // Match active SKU from selected tiers
+  const matchedSku = useMemo(() => {
+    if (!hasTierVariations || !product?.skus || product.skus.length === 0) return null;
+    return (
+      product.skus.find((sku) => {
+        if (!sku.tierIndex || sku.tierIndex.length !== product.tierVariations!.length) return false;
+        return sku.tierIndex.every((optIdx, tierIdx) => {
+          const optionVal = product.tierVariations![tierIdx]?.options[optIdx];
+          return optionVal === selectedTiers[tierIdx];
+        });
+      }) || product.skus[0]
+    );
+  }, [hasTierVariations, product, selectedTiers]);
 
   if (loading) {
     return (
@@ -97,30 +126,44 @@ export const ProductDetailPage: React.FC = () => {
     );
   }
 
-  const isOutOfStock = product.stock <= 0;
+  const currentPrice = matchedSku ? matchedSku.price : product.price;
+  const currentStock = matchedSku ? matchedSku.stock : product.stock;
+  const isOutOfStock = currentStock <= 0;
+
   const isFashion = product.productType === 'FASHION';
-  const hasSizes = isFashion && Array.isArray(product.attributes.sizes) && product.attributes.sizes.length > 0;
-  const hasColors = isFashion && Array.isArray(product.attributes.colors) && product.attributes.colors.length > 0;
+  const hasSizes = !hasTierVariations && isFashion && Array.isArray(product.attributes.sizes) && product.attributes.sizes.length > 0;
+  const hasColors = !hasTierVariations && isFashion && Array.isArray(product.attributes.colors) && product.attributes.colors.length > 0;
 
   const handleAddToCart = async () => {
-    if (isOutOfStock) return;
+    if (isOutOfStock || !product) return;
 
     const selectedAttributes: Record<string, any> = {};
 
-    if (hasSizes) {
-      if (!selectedSize) {
-        toastWarning('Vui lòng chọn Kích cỡ (Size) trước khi thêm vào giỏ hàng.');
-        return;
+    if (hasTierVariations && product.tierVariations) {
+      product.tierVariations.forEach((t, idx) => {
+        if (selectedTiers[idx]) {
+          selectedAttributes[t.name] = selectedTiers[idx];
+        }
+      });
+      if (matchedSku?.skuId) {
+        selectedAttributes.skuId = matchedSku.skuId;
       }
-      selectedAttributes.size = selectedSize;
-    }
+    } else {
+      if (hasSizes) {
+        if (!selectedSize) {
+          toastWarning('Vui lòng chọn Kích cỡ (Size) trước khi thêm vào giỏ hàng.');
+          return;
+        }
+        selectedAttributes.size = selectedSize;
+      }
 
-    if (hasColors) {
-      if (!selectedColor) {
-        toastWarning('Vui lòng chọn Màu sắc trước khi thêm vào giỏ hàng.');
-        return;
+      if (hasColors) {
+        if (!selectedColor) {
+          toastWarning('Vui lòng chọn Màu sắc trước khi thêm vào giỏ hàng.');
+          return;
+        }
+        selectedAttributes.color = selectedColor;
       }
-      selectedAttributes.color = selectedColor;
     }
 
     setAddingToCart(true);
@@ -210,6 +253,23 @@ export const ProductDetailPage: React.FC = () => {
               {product.name}
             </h1>
 
+            {product.ratingSummary && product.ratingSummary.totalReviews > 0 && (
+              <div className="flex items-center gap-2 pt-1 text-xs">
+                <div className="flex items-center gap-1 text-amber-600 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200/60">
+                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  <span>{product.ratingSummary.averageRating.toFixed(1)}</span>
+                </div>
+                <span className="text-slate-400">•</span>
+                <span className="text-slate-600 font-medium underline">
+                  {product.ratingSummary.totalReviews} đánh giá thực tế
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="text-emerald-700 font-medium bg-emerald-50 px-2 py-0.5 rounded text-[11px] border border-emerald-200/60">
+                  ✓ Verified Purchase
+                </span>
+              </div>
+            )}
+
             {product.brand && (
               <p className="text-sm text-slate-600 font-medium">
                 Thương hiệu: <span className="text-brand-600 font-semibold">{product.brand}</span>
@@ -220,7 +280,7 @@ export const ProductDetailPage: React.FC = () => {
           {/* Pricing Box */}
           <div className="p-5 rounded-2xl bg-slate-100/70 border border-slate-200/60 flex items-baseline gap-4">
             <div className="text-3xl sm:text-4xl font-extrabold text-brand-700 tracking-tight">
-              {formatVND(product.price)}
+              {formatVND(currentPrice)}
             </div>
             <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">
               (Đã bao gồm VAT)
@@ -234,57 +294,94 @@ export const ProductDetailPage: React.FC = () => {
               <span className="font-semibold text-rose-600">Hết hàng</span>
             ) : (
               <span className="font-semibold text-emerald-600">
-                Còn hàng ({product.stock} sản phẩm sẵn sàng)
+                Còn hàng ({currentStock} sản phẩm sẵn sàng)
               </span>
             )}
           </div>
 
-          {/* Polymorphic Attributes Selection: Fashion (Sizes & Colors) */}
-          {hasSizes && (
-            <div className="space-y-2.5 pt-2">
-              <label className="block text-sm font-semibold text-slate-900">
-                Kích cỡ (Size): <span className="text-brand-600 font-normal">{selectedSize}</span>
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {product.attributes.sizes.map((sz: string) => (
-                  <button
-                    key={sz}
-                    onClick={() => setSelectedSize(sz)}
-                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all ${
-                      selectedSize === sz
-                        ? 'border-brand-600 bg-brand-50 text-brand-700 ring-2 ring-brand-100'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
-                    }`}
-                  >
-                    {sz}
-                  </button>
-                ))}
-              </div>
+          {/* Dynamic Tier Variations (Shopee / TikTok Shop model) */}
+          {hasTierVariations ? (
+            <div className="space-y-4 pt-2">
+              {product.tierVariations!.map((tier, tierIdx) => (
+                <div key={tierIdx} className="space-y-2">
+                  <label className="block text-sm font-semibold text-slate-900">
+                    {tier.name}: <span className="text-brand-600 font-normal">{selectedTiers[tierIdx]}</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {tier.options.map((opt) => {
+                      const isSelected = selectedTiers[tierIdx] === opt;
+                      return (
+                        <button
+                          key={opt}
+                          type="button"
+                          onClick={() => setSelectedTiers((prev) => ({ ...prev, [tierIdx]: opt }))}
+                          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all ${
+                            isSelected
+                              ? 'border-brand-600 bg-brand-50 text-brand-700 ring-2 ring-brand-100 shadow-xs'
+                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                          }`}
+                        >
+                          {isSelected && <Check className="w-3.5 h-3.5 inline mr-1 text-brand-600" />}
+                          {opt}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
-          )}
+          ) : (
+            <>
+              {/* Fallback Legacy Fashion (Sizes & Colors) */}
+              {hasSizes && (
+                <div className="space-y-2.5 pt-2">
+                  <label className="block text-sm font-semibold text-slate-900">
+                    Kích cỡ (Size): <span className="text-brand-600 font-normal">{selectedSize}</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {product.attributes.sizes.map((sz: string) => (
+                      <button
+                        key={sz}
+                        type="button"
+                        onClick={() => setSelectedSize(sz)}
+                        className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all ${
+                          selectedSize === sz
+                            ? 'border-brand-600 bg-brand-50 text-brand-700 ring-2 ring-brand-100'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                        }`}
+                      >
+                        {sz}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-          {hasColors && (
-            <div className="space-y-2.5 pt-2">
-              <label className="block text-sm font-semibold text-slate-900">
-                Màu sắc: <span className="text-brand-600 font-normal">{selectedColor}</span>
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {product.attributes.colors.map((clr: string) => (
-                  <button
-                    key={clr}
-                    onClick={() => setSelectedColor(clr)}
-                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all flex items-center gap-1.5 ${
-                      selectedColor === clr
-                        ? 'border-brand-600 bg-brand-50 text-brand-700 ring-2 ring-brand-100'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
-                    }`}
-                  >
-                    {selectedColor === clr && <Check className="w-3.5 h-3.5 text-brand-600" />}
-                    <span>{clr}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
+              {hasColors && (
+                <div className="space-y-2.5 pt-2">
+                  <label className="block text-sm font-semibold text-slate-900">
+                    Màu sắc: <span className="text-brand-600 font-normal">{selectedColor}</span>
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {product.attributes.colors.map((clr: string) => (
+                      <button
+                        key={clr}
+                        type="button"
+                        onClick={() => setSelectedColor(clr)}
+                        className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all flex items-center gap-1.5 ${
+                          selectedColor === clr
+                            ? 'border-brand-600 bg-brand-50 text-brand-700 ring-2 ring-brand-100'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                        }`}
+                      >
+                        {selectedColor === clr && <Check className="w-3.5 h-3.5 text-brand-600" />}
+                        <span>{clr}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
           {/* Quantity Selector & Add to Cart */}
@@ -305,8 +402,8 @@ export const ProductDetailPage: React.FC = () => {
                 </span>
                 <button
                   type="button"
-                  onClick={() => setQuantity((q) => Math.min(product.stock, Math.min(99, q + 1)))}
-                  disabled={quantity >= product.stock || isOutOfStock}
+                  onClick={() => setQuantity((q) => Math.min(currentStock, Math.min(99, q + 1)))}
+                  disabled={quantity >= currentStock || isOutOfStock}
                   className="p-2.5 text-slate-600 hover:text-slate-900 disabled:opacity-40"
                 >
                   <Plus className="w-4 h-4" />

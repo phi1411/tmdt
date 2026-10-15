@@ -43,6 +43,26 @@ export interface HomeApplianceAttributes {
 
 export type ProductAttributes = ElectronicsAttributes | FashionAttributes | HomeApplianceAttributes | Record<string, any>;
 
+export interface TierVariation {
+  tier: number;
+  name: string;
+  options: string[];
+}
+
+export interface SkuItem {
+  skuId: string;
+  tierIndex?: number[];
+  price: number;
+  stock: number;
+  image?: string;
+}
+
+export interface RatingSummary {
+  averageRating: number;
+  totalReviews: number;
+  starsBreakdown?: Record<string, number>;
+}
+
 export interface Product {
   id: string;
   sku: string;
@@ -57,6 +77,9 @@ export interface Product {
   stock: number;
   images: string[];
   attributes: ProductAttributes;
+  tierVariations?: TierVariation[];
+  skus?: SkuItem[];
+  ratingSummary?: RatingSummary;
   version: number;
   createdAt: string;
   updatedAt: string;

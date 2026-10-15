@@ -163,17 +163,14 @@ export const CartPage: React.FC = () => {
 
                       {/* Selected Attributes info */}
                       {item.selectedAttributes && Object.keys(item.selectedAttributes).length > 0 && (
-                        <div className="flex flex-wrap gap-2 text-xs text-slate-500">
-                          {item.selectedAttributes.size && (
-                            <span className="px-2 py-0.5 rounded bg-slate-100 text-[11px] font-medium">
-                              Size: {item.selectedAttributes.size}
-                            </span>
-                          )}
-                          {item.selectedAttributes.color && (
-                            <span className="px-2 py-0.5 rounded bg-slate-100 text-[11px] font-medium">
-                              Màu: {item.selectedAttributes.color}
-                            </span>
-                          )}
+                        <div className="flex flex-wrap gap-1.5 text-xs text-slate-500">
+                          {Object.entries(item.selectedAttributes)
+                            .filter(([k]) => k !== 'skuId' && item.selectedAttributes[k])
+                            .map(([k, v]) => (
+                              <span key={k} className="px-2 py-0.5 rounded-md bg-slate-100 text-[11px] font-medium text-slate-700 border border-slate-200/60">
+                                {k === 'size' ? 'Size' : k === 'color' ? 'Màu' : k}: {String(v)}
+                              </span>
+                            ))}
                         </div>
                       )}
 

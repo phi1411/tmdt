@@ -74,4 +74,5 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 7 | Sweet Bakery (hoang) | Nâng cấp JSON Schema validator cho products (hỗ trợ tierVariations, skus, ratingSummary) và bổ sung validator reviews kèm indexes | `schema(db): upgrade product validator for tier variations and add reviews collection with indexes` | Database Engineer |
 | 8 | Sweet Bakery (hoang) | Cập nhật bộ kịch bản kiểm thử và xác thực ràng buộc DB cho collection reviews | `test(db): update verification probes and expected collections for reviews` | QA / Test Engineer |
 | 9 | Sweet Bakery (hoang) | Xây dựng script nạp sản phẩm thực tế đa biến thể SKU và reviews xác thực | `feat(seed): add realistic multi-tier sku products and authentic reviews generator` | Data Engineer |
+| 10 | Sweet Bakery (hoang) | Nâng cấp giao diện chọn phân loại đa tầng dynamic tier variations, cập nhật giá và kho real-time theo SKU và khắc phục lỗi cứng size | `feat(ui): support dynamic tier variations and real-time sku price updates` | Frontend Engineer |
 
