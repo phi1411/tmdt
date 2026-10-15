@@ -114,9 +114,28 @@ export const ProductDetailPage: React.FC = () => {
           const optionVal = product.tierVariations![tierIdx]?.options[optIdx];
           return optionVal === selectedTiers[tierIdx];
         });
-      }) || product.skus[0]
+      }) || null
     );
   }, [hasTierVariations, product, selectedTiers]);
+
+  // Check if an option has valid matching SKU with stock > 0
+  const isOptionAvailable = (targetTierIdx: number, targetOptVal: string) => {
+    if (!product?.skus || !product.tierVariations) return true;
+    const targetOptIdx = product.tierVariations[targetTierIdx]?.options.indexOf(targetOptVal);
+    if (targetOptIdx === -1) return false;
+
+    return product.skus.some((sku) => {
+      if (!sku.tierIndex || sku.tierIndex.length !== product.tierVariations!.length) return false;
+      if (sku.tierIndex[targetTierIdx] !== targetOptIdx) return false;
+      const matchesOtherTiers = sku.tierIndex.every((optIdx, tIdx) => {
+        if (tIdx === targetTierIdx) return true;
+        const currentSelected = selectedTiers[tIdx];
+        if (!currentSelected) return true;
+        return product.tierVariations![tIdx]?.options[optIdx] === currentSelected;
+      });
+      return matchesOtherTiers && sku.stock > 0;
+    });
+  };
 
   if (loading) {
     return (
@@ -147,10 +166,10 @@ export const ProductDetailPage: React.FC = () => {
     );
   }
 
-  const currentPrice = matchedSku ? matchedSku.price : product.price;
+  const currentPrice = matchedSku ? matchedSku.price : (product?.price ?? 0);
   const originalPrice = Math.round(currentPrice * 1.15);
-  const currentStock = matchedSku ? matchedSku.stock : product.stock;
-  const isOutOfStock = currentStock <= 0;
+  const currentStock = matchedSku ? matchedSku.stock : (hasTierVariations ? 0 : product.stock);
+  const isOutOfStock = !matchedSku || currentStock <= 0;
 
   const isFashion = product.productType === 'FASHION';
   const hasSizes = !hasTierVariations && isFashion && Array.isArray(product.attributes.sizes) && product.attributes.sizes.length > 0;
@@ -400,19 +419,27 @@ export const ProductDetailPage: React.FC = () => {
                     <div className="flex flex-wrap gap-2.5">
                       {tier.options.map((opt) => {
                         const isSelected = selectedTiers[tierIdx] === opt;
+                        const available = isOptionAvailable(tierIdx, opt);
                         return (
                           <button
                             key={opt}
                             type="button"
-                            onClick={() => setSelectedTiers((prev) => ({ ...prev, [tierIdx]: opt }))}
+                            disabled={!available}
+                            onClick={() => {
+                              if (!available) return;
+                              setSelectedTiers((prev) => ({ ...prev, [tierIdx]: opt }));
+                            }}
                             className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all flex items-center gap-1.5 relative ${
-                              isSelected
+                              !available
+                                ? 'border-dashed border-slate-200 bg-slate-100/70 text-slate-400 cursor-not-allowed opacity-60'
+                                : isSelected
                                 ? 'border-rose-600 bg-rose-50/60 text-rose-700 ring-2 ring-rose-200 shadow-xs'
                                 : 'border-slate-200 bg-white text-slate-700 hover:border-slate-400'
                             }`}
                           >
                             {isSelected && <Check className="w-3.5 h-3.5 text-rose-600" />}
                             <span>{opt}</span>
+                            {!available && <span className="text-[10px] text-slate-400 ml-0.5">(Hết hàng)</span>}
                           </button>
                         );
                       })}

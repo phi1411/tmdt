@@ -24,14 +24,14 @@ REAL_PRODUCTS = [
         "brand": "Apple",
         "description": "iPhone 16 Pro Max với khung viền Titan Cấp 5 bền bỉ, màn hình Super Retina XDR 6.9 inch cùng nút Điều Khiển Camera hoàn toàn mới. Trang bị chip A18 Pro đột phá mang lại thời lượng pin vượt trội.",
         "price": Int64(34990000),
-        "stock": 35,
+        "stock": 50,
         "images": [
             "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80",
             "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&auto=format&fit=crop&q=80"
         ],
         "attributes": {
             "ram": "8GB",
-            "storage": "256GB",
+            "storage": "256GB / 512GB / 1TB",
             "chip": "Apple A18 Pro 6 lõi",
             "screen": "6.9 inch OLED Super Retina XDR 120Hz",
             "battery": "4685 mAh sạc nhanh 30W"
@@ -49,13 +49,22 @@ REAL_PRODUCTS = [
             }
         ],
         "skus": [
+            # Titan Sa Mạc
             {"skuId": "IP16PM-DES-256", "tierIndex": [0, 0], "price": Int64(34990000), "stock": 10},
             {"skuId": "IP16PM-DES-512", "tierIndex": [0, 1], "price": Int64(40990000), "stock": 5},
             {"skuId": "IP16PM-DES-1TB", "tierIndex": [0, 2], "price": Int64(46990000), "stock": 2},
+            # Titan Tự Nhiên
             {"skuId": "IP16PM-NAT-256", "tierIndex": [1, 0], "price": Int64(34990000), "stock": 8},
             {"skuId": "IP16PM-NAT-512", "tierIndex": [1, 1], "price": Int64(40990000), "stock": 4},
-            {"skuId": "IP16PM-BLK-256", "tierIndex": [2, 0], "price": Int64(34990000), "stock": 4},
-            {"skuId": "IP16PM-WHT-256", "tierIndex": [3, 0], "price": Int64(34990000), "stock": 2}
+            {"skuId": "IP16PM-NAT-1TB", "tierIndex": [1, 2], "price": Int64(46990000), "stock": 3},
+            # Titan Đen
+            {"skuId": "IP16PM-BLK-256", "tierIndex": [2, 0], "price": Int64(34990000), "stock": 6},
+            {"skuId": "IP16PM-BLK-512", "tierIndex": [2, 1], "price": Int64(40990000), "stock": 4},
+            {"skuId": "IP16PM-BLK-1TB", "tierIndex": [2, 2], "price": Int64(46990000), "stock": 2},
+            # Titan Trắng
+            {"skuId": "IP16PM-WHT-256", "tierIndex": [3, 0], "price": Int64(34990000), "stock": 4},
+            {"skuId": "IP16PM-WHT-512", "tierIndex": [3, 1], "price": Int64(40990000), "stock": 3},
+            {"skuId": "IP16PM-WHT-1TB", "tierIndex": [3, 2], "price": Int64(46990000), "stock": 1}
         ]
     },
     {
@@ -66,14 +75,14 @@ REAL_PRODUCTS = [
         "brand": "Samsung",
         "description": "Galaxy S24 Ultra mở ra kỷ nguyên quyền năng Galaxy AI hoàn toàn mới với khung titan bền chắc, màn hình phẳng 6.8 inch và bút S-Pen tích hợp.",
         "price": Int64(28990000),
-        "stock": 25,
+        "stock": 35,
         "images": [
             "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&auto=format&fit=crop&q=80",
             "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&auto=format&fit=crop&q=80"
         ],
         "attributes": {
             "ram": "12GB",
-            "storage": "256GB",
+            "storage": "256GB / 512GB / 1TB",
             "chip": "Snapdragon 8 Gen 3 for Galaxy",
             "screen": "6.8 inch Dynamic AMOLED 2X 120Hz",
             "battery": "5000 mAh sạc nhanh 45W"
@@ -87,14 +96,22 @@ REAL_PRODUCTS = [
             {
                 "tier": 2,
                 "name": "Dung lượng",
-                "options": ["256GB", "512GB"]
+                "options": ["256GB", "512GB", "1TB"]
             }
         ],
         "skus": [
-            {"skuId": "S24U-GRY-256", "tierIndex": [0, 0], "price": Int64(28990000), "stock": 10},
+            # Xám Titan
+            {"skuId": "S24U-GRY-256", "tierIndex": [0, 0], "price": Int64(28990000), "stock": 8},
             {"skuId": "S24U-GRY-512", "tierIndex": [0, 1], "price": Int64(33990000), "stock": 4},
+            {"skuId": "S24U-GRY-1TB", "tierIndex": [0, 2], "price": Int64(39990000), "stock": 2},
+            # Đen Titan
             {"skuId": "S24U-BLK-256", "tierIndex": [1, 0], "price": Int64(28990000), "stock": 6},
-            {"skuId": "S24U-YEL-256", "tierIndex": [2, 0], "price": Int64(28990000), "stock": 5}
+            {"skuId": "S24U-BLK-512", "tierIndex": [1, 1], "price": Int64(33990000), "stock": 3},
+            {"skuId": "S24U-BLK-1TB", "tierIndex": [1, 2], "price": Int64(39990000), "stock": 2},
+            # Vàng Titan
+            {"skuId": "S24U-YEL-256", "tierIndex": [2, 0], "price": Int64(28990000), "stock": 5},
+            {"skuId": "S24U-YEL-512", "tierIndex": [2, 1], "price": Int64(33990000), "stock": 3},
+            {"skuId": "S24U-YEL-1TB", "tierIndex": [2, 2], "price": Int64(39990000), "stock": 2}
         ]
     },
     {
@@ -105,15 +122,15 @@ REAL_PRODUCTS = [
         "brand": "Apple",
         "description": "MacBook Pro 14 inch trang bị chip M3 Pro mang lại hiệu năng phi thường cho các tác vụ chuyên nghiệp nặng. Màn hình Liquid Retina XDR rực rỡ và thời lượng pin lên đến 18 giờ.",
         "price": Int64(49990000),
-        "stock": 15,
+        "stock": 30,
         "images": [
             "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80"
         ],
         "attributes": {
-            "ram": "18GB",
-            "storage": "512GB",
+            "ram": "18GB Unified Memory / 36GB Unified Memory",
+            "storage": "512GB SSD / 1TB SSD",
             "chip": "Apple M3 Pro 11-core CPU",
-            "screen": "14.2 inch Liquid Retina XDR 120Hz",
+            "screen": "14.2 inch Liquid Retina XDR 120Hz ProMotion",
             "battery": "70Wh Lithium-polymer"
         },
         "tierVariations": [
@@ -124,14 +141,26 @@ REAL_PRODUCTS = [
             },
             {
                 "tier": 2,
-                "name": "Bộ nhớ RAM",
-                "options": ["18GB", "36GB"]
+                "name": "Cấu hình RAM & SSD",
+                "options": [
+                    "18GB RAM / 512GB SSD",
+                    "18GB RAM / 1TB SSD",
+                    "36GB RAM / 512GB SSD",
+                    "36GB RAM / 1TB SSD"
+                ]
             }
         ],
         "skus": [
-            {"skuId": "MBP-BLK-18GB", "tierIndex": [0, 0], "price": Int64(49990000), "stock": 8},
-            {"skuId": "MBP-BLK-36GB", "tierIndex": [0, 1], "price": Int64(58990000), "stock": 3},
-            {"skuId": "MBP-SLV-18GB", "tierIndex": [1, 0], "price": Int64(49990000), "stock": 4}
+            # Space Black
+            {"skuId": "MBP-BLK-18G-512", "tierIndex": [0, 0], "price": Int64(49990000), "stock": 8},
+            {"skuId": "MBP-BLK-18G-1TB", "tierIndex": [0, 1], "price": Int64(54990000), "stock": 5},
+            {"skuId": "MBP-BLK-36G-512", "tierIndex": [0, 2], "price": Int64(59990000), "stock": 4},
+            {"skuId": "MBP-BLK-36G-1TB", "tierIndex": [0, 3], "price": Int64(65990000), "stock": 3},
+            # Silver
+            {"skuId": "MBP-SLV-18G-512", "tierIndex": [1, 0], "price": Int64(49990000), "stock": 5},
+            {"skuId": "MBP-SLV-18G-1TB", "tierIndex": [1, 1], "price": Int64(54990000), "stock": 3},
+            {"skuId": "MBP-SLV-36G-512", "tierIndex": [1, 2], "price": Int64(59990000), "stock": 3},
+            {"skuId": "MBP-SLV-36G-1TB", "tierIndex": [1, 3], "price": Int64(65990000), "stock": 2}
         ]
     },
     {
@@ -142,7 +171,7 @@ REAL_PRODUCTS = [
         "brand": "Sony",
         "description": "Tai nghe trùm đầu hàng đầu với công nghệ chống ồn Auto NC Optimizer, 8 micro tích hợp và chất lượng âm thanh chuẩn phòng thu Hi-Res Audio Wireless.",
         "price": Int64(7990000),
-        "stock": 20,
+        "stock": 25,
         "images": [
             "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80"
         ],
@@ -161,9 +190,9 @@ REAL_PRODUCTS = [
             }
         ],
         "skus": [
-            {"skuId": "WHXM5-BLK", "tierIndex": [0], "price": Int64(7990000), "stock": 10},
-            {"skuId": "WHXM5-SLV", "tierIndex": [1], "price": Int64(7990000), "stock": 6},
-            {"skuId": "WHXM5-BLU", "tierIndex": [2], "price": Int64(8290000), "stock": 4}
+            {"skuId": "WHXM5-BLK", "tierIndex": [0], "price": Int64(7990000), "stock": 12},
+            {"skuId": "WHXM5-SLV", "tierIndex": [1], "price": Int64(7990000), "stock": 8},
+            {"skuId": "WHXM5-BLU", "tierIndex": [2], "price": Int64(8290000), "stock": 5}
         ]
     },
 
@@ -176,7 +205,7 @@ REAL_PRODUCTS = [
         "brand": "Coolmate",
         "description": "Áo polo nam công nghệ dệt Pique tổ ong thoáng khí, thấm hút mồ hôi tối ưu, kháng khuẩn tự nhiên, phom dáng Regular Fit tôn dáng hiện đại.",
         "price": Int64(269000),
-        "stock": 80,
+        "stock": 120,
         "images": [
             "https://images.unsplash.com/photo-1625910513413-5bb2155fbe5b?w=800&auto=format&fit=crop&q=80",
             "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&auto=format&fit=crop&q=80"
@@ -200,12 +229,21 @@ REAL_PRODUCTS = [
             }
         ],
         "skus": [
+            # Đen
             {"skuId": "POLO-BLK-M", "tierIndex": [0, 0], "price": Int64(269000), "stock": 15},
             {"skuId": "POLO-BLK-L", "tierIndex": [0, 1], "price": Int64(269000), "stock": 20},
-            {"skuId": "POLO-BLK-XL", "tierIndex": [0, 2], "price": Int64(269000), "stock": 10},
+            {"skuId": "POLO-BLK-XL", "tierIndex": [0, 2], "price": Int64(269000), "stock": 15},
+            {"skuId": "POLO-BLK-2XL", "tierIndex": [0, 3], "price": Int64(269000), "stock": 10},
+            # Xanh Navy
             {"skuId": "POLO-NAVY-M", "tierIndex": [1, 0], "price": Int64(269000), "stock": 12},
-            {"skuId": "POLO-NAVY-L", "tierIndex": [1, 1], "price": Int64(269000), "stock": 15},
-            {"skuId": "POLO-WHT-L", "tierIndex": [2, 1], "price": Int64(269000), "stock": 8}
+            {"skuId": "POLO-NAVY-L", "tierIndex": [1, 1], "price": Int64(269000), "stock": 18},
+            {"skuId": "POLO-NAVY-XL", "tierIndex": [1, 2], "price": Int64(269000), "stock": 12},
+            {"skuId": "POLO-NAVY-2XL", "tierIndex": [1, 3], "price": Int64(269000), "stock": 8},
+            # Trắng
+            {"skuId": "POLO-WHT-M", "tierIndex": [2, 0], "price": Int64(269000), "stock": 10},
+            {"skuId": "POLO-WHT-L", "tierIndex": [2, 1], "price": Int64(269000), "stock": 15},
+            {"skuId": "POLO-WHT-XL", "tierIndex": [2, 2], "price": Int64(269000), "stock": 10},
+            {"skuId": "POLO-WHT-2XL", "tierIndex": [2, 3], "price": Int64(269000), "stock": 5}
         ]
     },
     {
@@ -221,7 +259,6 @@ REAL_PRODUCTS = [
             "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&auto=format&fit=crop&q=80"
         ],
         "attributes": {
-            "sizes": ["Tiêu chuẩn"],
             "colors": ["Nâu Bò", "Nâu Cà Phê", "Đen Tuyển"],
             "material": "Da bò sáp thật 100%",
             "gender": "Nam"
@@ -252,7 +289,6 @@ REAL_PRODUCTS = [
             "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&auto=format&fit=crop&q=80"
         ],
         "attributes": {
-            "sizes": ["Size 58mm"],
             "colors": ["Gọng Đen Tròng Đen", "Gọng Vàng Tròng Xanh G-15"],
             "material": "Gọng kim loại mạ titan cao cấp",
             "gender": "Unisex"
@@ -363,16 +399,48 @@ REAL_PRODUCTS = [
 ]
 
 REAL_REVIEWS_TEMPLATES = [
+    # MacBook Pro M3
+    ("MACBOOK-PRO-M3", 5, "Màu Silver sang chảnh cổ điển, bản 36GB RAM / 512GB SSD chạy máy ảo Docker và render After Effects không bị giật lag chút nào. Đáng đồng tiền bát gạo!", {"Màu sắc": "Silver", "Cấu hình RAM & SSD": "36GB RAM / 512GB SSD"}),
+    ("MACBOOK-PRO-M3", 5, "Bản 18GB RAM / 512GB SSD Space Black màu đen nhám hạn chế bám vân tay rất tốt. Bàn phím gõ êm, màn hình XDR 120Hz mượt mà.", {"Màu sắc": "Space Black", "Cấu hình RAM & SSD": "18GB RAM / 512GB SSD"}),
+    ("MACBOOK-PRO-M3", 5, "Hàng chính hãng SA/A chuẩn chỉ, bảo hành 12 tháng tại Apple Care. Pin dùng liên tục cả ngày từ sáng đến tối vẫn còn 35%.", {"Màu sắc": "Space Black", "Cấu hình RAM & SSD": "18GB RAM / 1TB SSD"}),
+    ("MACBOOK-PRO-M3", 4, "Máy mạnh, đóng gói bọc chống sốc 6 lớp. Trừ 1 sao vì đơn vị giao hàng chậm hơn dự kiến 1 ngày.", {"Màu sắc": "Silver", "Cấu hình RAM & SSD": "18GB RAM / 512GB SSD"}),
+
+    # iPhone 16 Pro Max
     ("IPHONE-16-PRO-MAX", 5, "Máy quá đẹp, màu Titan Sa Mạc bên ngoài sang hơn trong ảnh nhiều. Nút Camera Control bấm nhạy, pin trâu hơn hẳn 15 Pro Max.", {"Màu sắc": "Titan Sa Mạc", "Dung lượng": "256GB"}),
     ("IPHONE-16-PRO-MAX", 5, "Giao hàng đóng gói 5 lớp chống sốc nguyên seal chính hãng. Máy dùng mượt mà, màn hình 120Hz siêu nét.", {"Màu sắc": "Titan Tự Nhiên", "Dung lượng": "512GB"}),
-    ("SAM-S24-ULTRA", 5, "Tính năng AI dịch cuộc gọi và khoanh tròn tìm kiếm cực kỳ hữu ích cho công việc. Bút S-Pen tiện lợi.", {"Màu sắc": "Xám Titan", "Dung lượng": "256GB"}),
-    ("MACBOOK-PRO-M3", 5, "Màu Space Black hạn chế bám vân tay rất tốt. Chip M3 Pro render video 4K nhanh gấp 3 lần máy cũ.", {"Màu sắc": "Space Black", "Bộ nhớ RAM": "18GB"}),
-    ("COOLMATE-POLO", 5, "Vải pique dày dặn co giãn tốt, form áo ôm vừa vặn người mặc rất tôn dáng. Đã mua thêm màu thứ 2.", {"Màu sắc": "Đen", "Kích cỡ": "L"}),
-    ("COOLMATE-POLO", 4, "Áo đẹp mát, giặt máy không bị nhăn hay xù lông. Giao hàng trong 2 ngày rất nhanh.", {"Màu sắc": "Xanh Navy", "Kích cỡ": "M"}),
+    ("IPHONE-16-PRO-MAX", 5, "Màu Titan Đen nam tính, bản 1TB quay video ProRes 4K 120fps thoải mái không lo đầy bộ nhớ. Rất hài lòng!", {"Màu sắc": "Titan Đen", "Dung lượng": "1TB"}),
+    ("IPHONE-16-PRO-MAX", 4, "Camera chụp đêm cực sáng và rõ nét. Điểm trừ là sạc nhanh máy hơi ấm nhẹ.", {"Màu sắc": "Titan Trắng", "Dung lượng": "256GB"}),
+
+    # Galaxy S24 Ultra
+    ("SAM-S24-ULTRA", 5, "Tính năng Galaxy AI dịch cuộc gọi trực tiếp và khoanh tròn tìm kiếm cực kỳ hữu ích cho công việc. Bút S-Pen tiện lợi.", {"Màu sắc": "Xám Titan", "Dung lượng": "256GB"}),
+    ("SAM-S24-ULTRA", 5, "Màn hình phẳng chống chói Anti-Reflective đỉnh chóp, ra trời nắng gắt nhìn vẫn trong veo. Bản 512GB lưu trữ thoải mái.", {"Màu sắc": "Đen Titan", "Dung lượng": "512GB"}),
+    ("SAM-S24-ULTRA", 4, "Chụp zoom 5x và 10x chi tiết rõ nét. Shop giao nhanh trong 24h.", {"Màu sắc": "Vàng Titan", "Dung lượng": "256GB"}),
+
+    # Sony WH-1000XM5
+    ("SONY-WH1000XM5", 5, "Chống ồn chủ động ANC tốt nhất từng dùng, ngồi quán cafe bật nhạc lên là như ở không gian riêng. Đệm tai êm không đau vành tai.", {"Màu sắc": "Đen"}),
+    ("SONY-WH1000XM5", 5, "Màu Xanh Midnight độc quyền nhìn ngoài rất đẹp và lạ mắt. Pin nghe liên tục cả tuần mới phải cắm sạc.", {"Màu sắc": "Xanh Midnight"}),
+
+    # Áo Polo Coolmate
+    ("COOLMATE-POLO", 5, "Vải pique dày dặn co giãn tốt, form Regular Fit che bụng tốt. Mình cao 1m72 nặng 68kg mặc size L vừa như in.", {"Màu sắc": "Đen", "Kích cỡ": "L"}),
+    ("COOLMATE-POLO", 5, "Áo đẹp mát, giặt máy không bị nhăn hay xù lông. Đã mua chiếc thứ 3 ở shop.", {"Màu sắc": "Xanh Navy", "Kích cỡ": "M"}),
+    ("COOLMATE-POLO", 4, "Form áo đứng dáng, cổ áo cứng cáp mặc đi làm văn phòng hay đi chơi đều lịch sự.", {"Màu sắc": "Trắng", "Kích cỡ": "XL"}),
+
+    # Ví Da Lano
     ("LANO-WALLET", 5, "Da bò sáp thật ngửi thơm mùi da tự nhiên, nhiều ngăn đựng được đủ thẻ căn cước và bằng lái.", {"Màu sắc": "Nâu Bò"}),
-    ("PHILIPS-AIRFRYER", 5, "Nồi chiên làm nóng nhanh, khoai tây và cánh gà chiên giòn tan ráo dầu. Lòng nồi chống dính dễ vệ sinh.", {"Màu sắc": "Đen Bóng"}),
+    ("LANO-WALLET", 5, "Đường may thủ công chắc chắn, da mềm mịn càng dùng càng bóng đẹp. Hộp đóng gói lịch sự làm quà tặng người yêu rất ưng.", {"Màu sắc": "Nâu Cà Phê"}),
+
+    # Ray-Ban Aviator
+    ("RAYBAN-AVIATOR", 5, "Kính chuẩn chính hãng tròng G-15 dịu mắt dưới trời nắng gắt Sài Gòn. Form kính phi công kinh điển không bao giờ lỗi mốt.", {"Phân loại gọng & tròng": "Gọng Vàng Tròng Xanh G-15"}),
+
+    # Nồi chiên Philips
+    ("PHILIPS-AIRFRYER", 5, "Nồi chiên làm nóng nhanh, khoai tây và cánh gà chiên giòn tan ráo dầu. Lòng nồi chống dính Starfish dễ vệ sinh.", {"Màu sắc": "Đen Bóng"}),
     ("PHILIPS-AIRFRYER", 5, "Dùng hơn 1 tháng thấy rất tiện cho gia đình 4 người, bảng cảm ứng dễ dùng kể cả bố mẹ lớn tuổi.", {"Màu sắc": "Trắng Ngọc"}),
+
+    # Nồi cơm Tefal
     ("TEFAL-RICECOOKER", 5, "Nấu cơm gạo ST25 bằng chế độ cơm dẻo cực ngon, cơm tơi xốp giữ ấm 24h không bị thiu.", {"Dung tích & Phiên bản": "1.5L Tiêu Chuẩn"}),
+    ("TEFAL-RICECOOKER", 5, "Lòng nồi niêu dày dặn giữ nhiệt tốt, nấu cháo hầm gà đều rất nhanh mềm.", {"Dung tích & Phiên bản": "1.8L Nắp Cảm Ứng"}),
+
+    # Xiaomi Air Purifier
     ("XIAOMI-AIRPURIFIER", 5, "Máy chạy êm ái ban đêm hầu như không nghe tiếng, chỉ số không khí hiển thị trực quan qua màn hình OLED.", {"Màu sắc": "Trắng Tinh Khôi"})
 ]
 
@@ -384,7 +452,7 @@ def run_seed():
         users = list(db.users.find({'role': 'CUSTOMER'}))
         orders = list(db.orders.find({}))
 
-        print(f"Bắt đầu nạp {len(REAL_PRODUCTS)} sản phẩm thực tế vào ecommerce_dev...")
+        print(f"Bắt đầu cập nhật toàn bộ {len(REAL_PRODUCTS)} sản phẩm thực tế kèm ma trận SKU đầy đủ...")
         inserted_pids = {}
 
         for p in REAL_PRODUCTS:
@@ -416,7 +484,6 @@ def run_seed():
                     "starsBreakdown": {"5": 0, "4": 0, "3": 0, "2": 0, "1": 0}
                 }
             }
-            # Upsert into products
             res = db.products.update_one(
                 {"sku": p["sku"]},
                 {"$set": doc},
@@ -425,9 +492,9 @@ def run_seed():
             saved = db.products.find_one({"sku": p["sku"]})
             inserted_pids[p["sku"]] = saved["_id"]
 
-        print(f"Đã cập nhật/tạo mới {len(inserted_pids)} sản phẩm đa biến thể.")
+        print(f"Đã cập nhật hoàn chỉnh {len(inserted_pids)} sản phẩm.")
 
-        # Xóa các reviews cũ thuộc các sản phẩm này (nếu có)
+        # Xóa các reviews cũ của các sản phẩm này
         db.reviews.delete_many({"productId": {"$in": list(inserted_pids.values())}})
 
         review_docs = []
@@ -442,8 +509,8 @@ def run_seed():
             r_doc = {
                 "_id": ObjectId(),
                 "schemaVersion": 1,
-                "createdAt": START_TIME + timedelta(days=i),
-                "updatedAt": START_TIME + timedelta(days=i),
+                "createdAt": START_TIME + timedelta(days=i * 2),
+                "updatedAt": START_TIME + timedelta(days=i * 2),
                 "productId": pid,
                 "orderId": ord_id,
                 "orderCode": ord_code,
@@ -456,7 +523,7 @@ def run_seed():
                 "rating": rating,
                 "reviewText": text,
                 "images": [],
-                "helpfulCount": 3 + (i * 2),
+                "helpfulCount": 4 + (i * 3 % 20),
                 "status": "VISIBLE"
             }
             review_docs.append(r_doc)
@@ -466,7 +533,7 @@ def run_seed():
 
         if review_docs:
             db.reviews.insert_many(review_docs)
-            print(f"Đã nạp {len(review_docs)} reviews xác thực cho các sản phẩm.")
+            print(f"Đã nạp {len(review_docs)} đánh giá thực tế chi tiết.")
 
         # Cập nhật ratingSummary tương ứng
         for sku, stat in rating_stats.items():
@@ -483,7 +550,7 @@ def run_seed():
                     }}
                 )
 
-        print("Nạp dữ liệu thực tế và tính toán ratingSummary hoàn tất 100%!")
+        print("Nạp dữ liệu thực tế và ma trận biến thể hoàn tất 100%!")
 
     finally:
         client.close()

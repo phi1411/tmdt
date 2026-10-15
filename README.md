@@ -83,4 +83,5 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 16 | Sweet Bakery (hoang) | Mở rộng schema xác thực SELECTION của giỏ hàng chấp nhận thuộc tính phân loại đa tầng và khắc phục lỗi 422 | `fix(cart): expand SELECTION schema to accept multi-tier variant attributes` | Backend Engineer |
 | 17 | Sweet Bakery (hoang) | Xây dựng API và service truy vấn danh sách đánh giá sản phẩm cùng thống kê phân phối sao | `feat(api): add public product reviews and rating summary endpoint` | Backend Engineer |
 | 18 | Sweet Bakery (hoang) | Tái thiết kế toàn diện trang chi tiết sản phẩm theo chuẩn Shopee Mall: badge Yêu Thích+, voucher shop, nút Mua Ngay và khu vực đánh giá UGC thực tế | `feat(ui): redesign product detail to authentic shopee standards with mall badges, vouchers, and ugc reviews` | Frontend Engineer / UI-UX |
+| 19 | Sweet Bakery (hoang) | Hoàn thiện ma trận toàn bộ hoán vị SKU thực tế, fix lỗi nhảy giá biến thể MacBook M3 và xử lý vô hiệu hóa phân loại hết hàng | `fix(catalog): complete sku permutation matrix and disable out-of-stock variations` | Fullstack Developer |
 
