@@ -10,15 +10,23 @@ import { CustomApiError } from '../types/api';
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const redirectUrl = searchParams.get('redirect') || '/';
 
-  const { login } = useAuth();
+  const { login, isAuthenticated, isAdmin } = useAuth();
   const { success: toastSuccess } = useToast();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // If already authenticated, redirect to appropriate portal
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      const defaultDest = isAdmin ? '/admin/dashboard' : '/';
+      const dest = searchParams.get('redirect') || defaultDest;
+      navigate(dest, { replace: true });
+    }
+  }, [isAuthenticated, isAdmin, navigate, searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +41,9 @@ export const LoginPage: React.FC = () => {
     try {
       const user = await login({ email: email.trim(), password });
       toastSuccess(`Chào mừng trở lại, ${user.name}!`);
-      navigate(redirectUrl, { replace: true });
+      const defaultDest = user.role === 'ADMIN' ? '/admin/dashboard' : '/';
+      const destination = searchParams.get('redirect') || defaultDest;
+      navigate(destination, { replace: true });
     } catch (err: any) {
       if (err instanceof CustomApiError) {
         if (err.status === 401) {

@@ -84,4 +84,5 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 17 | Sweet Bakery (hoang) | Xây dựng API và service truy vấn danh sách đánh giá sản phẩm cùng thống kê phân phối sao | `feat(api): add public product reviews and rating summary endpoint` | Backend Engineer |
 | 18 | Sweet Bakery (hoang) | Tái thiết kế toàn diện trang chi tiết sản phẩm theo chuẩn Shopee Mall: badge Yêu Thích+, voucher shop, nút Mua Ngay và khu vực đánh giá UGC thực tế | `feat(ui): redesign product detail to authentic shopee standards with mall badges, vouchers, and ugc reviews` | Frontend Engineer / UI-UX |
 | 19 | Sweet Bakery (hoang) | Hoàn thiện ma trận toàn bộ hoán vị SKU thực tế, fix lỗi nhảy giá biến thể MacBook M3 và xử lý vô hiệu hóa phân loại hết hàng | `fix(catalog): complete sku permutation matrix and disable out-of-stock variations` | Fullstack Developer |
+| 20 | Sweet Bakery (hoang) | Sửa logic điều hướng đăng nhập Admin vào thẳng Dashboard, thêm nút truy cập nhanh Admin trên Navbar và bổ sung phạm vi toàn bộ dữ liệu seed cho biểu đồ phân tích | `fix(admin): route admin directly to dashboard on login and enhance navbar portal access` | Frontend Engineer |
 

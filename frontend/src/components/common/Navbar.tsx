@@ -93,6 +93,17 @@ export const Navbar: React.FC = () => {
               Sản phẩm
             </Link>
 
+            {/* Quick Admin Portal Button for Admin */}
+            {isAdmin && (
+              <Link
+                to="/admin/dashboard"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900 hover:bg-brand-600 text-white text-xs font-bold transition-all shadow-xs"
+              >
+                <ShieldAlert className="w-3.5 h-3.5 text-brand-400" />
+                <span>Quản Trị</span>
+              </Link>
+            )}
+
             {/* Cart Icon */}
             {isCustomer && (
               <Link

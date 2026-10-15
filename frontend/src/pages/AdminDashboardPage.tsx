@@ -39,10 +39,10 @@ import {
   Legend,
 } from 'recharts';
 
-type DatePreset = '7days' | '30days' | 'thisMonth';
+type DatePreset = '7days' | '30days' | '90days' | 'thisMonth';
 
 export const AdminDashboardPage: React.FC = () => {
-  const [preset, setPreset] = useState<DatePreset>('30days');
+  const [preset, setPreset] = useState<DatePreset>('90days');
   const [interval, setInterval] = useState<'day' | 'month'>('day');
 
   // Dashboard Data States
@@ -66,6 +66,8 @@ export const AdminDashboardPage: React.FC = () => {
       fromDate = new Date(now.getTime() - 7 * 86400000);
     } else if (preset === '30days') {
       fromDate = new Date(now.getTime() - 30 * 86400000);
+    } else if (preset === '90days') {
+      fromDate = new Date(now.getTime() - 120 * 86400000); // covers full seed dataset window
     } else {
       // thisMonth (from 1st of current month in VN)
       fromDate = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -137,12 +139,12 @@ export const AdminDashboardPage: React.FC = () => {
           {/* Preset Buttons */}
           <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-semibold">
             <button
-              onClick={() => setPreset('7days')}
+              onClick={() => setPreset('90days')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
-                preset === '7days' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                preset === '90days' ? 'bg-white text-slate-900 shadow-xs font-bold text-brand-600' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              7 ngày qua
+              Toàn bộ dữ liệu
             </button>
             <button
               onClick={() => setPreset('30days')}
@@ -151,6 +153,14 @@ export const AdminDashboardPage: React.FC = () => {
               }`}
             >
               30 ngày qua
+            </button>
+            <button
+              onClick={() => setPreset('7days')}
+              className={`px-3 py-1.5 rounded-lg transition-all ${
+                preset === '7days' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              7 ngày qua
             </button>
             <button
               onClick={() => setPreset('thisMonth')}
