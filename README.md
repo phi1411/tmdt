@@ -58,3 +58,17 @@ Bootstrap lần đầu tải runtime; có thể cung cấp -Python312 với đư
 DB tooling tại scripts/db,seed,validation,export,import; sources/evidence tại database. Backend foundation tại backend/app/tests và scripts/backend; sáu business collections users/categories/products/carts/orders/payment_attempts giữ nguyên. Foundation tests chỉ ghi fixture vào ecommerce_test riêng; full documents/validator/index fingerprint dev trước/sau trùng nhau. .tools/.local/.venv/.env/database/exports được ignore. Không tạo Git remote/PR/commit.
 
 Spec/extra variants/giá biên soạn cho demo từ cache [DummyJSON Products](https://dummyjson.com/docs/products), ảnh URL CDN không localhost, không download hàng loạt. Chưa rehearsal Compass UI/Web; VNPAY là metadata fixture. Full Auth/Product/Cart/Checkout/Order/Payment/Dashboard, frontend, reviews/Atlas/cloudmedia, full benchmark và deployment chờ phase tiếp theo do người dùng giao.
+
+## Lịch sử Commit Dự án
+
+Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập nhật liên tục theo chuẩn:
+
+| STT | Tác giả | Thay đổi | Tên commit | Vai trò |
+| :---: | :--- | :--- | :--- | :--- |
+| 1 | Nguyen Ngoc Phi | Tích hợp xác thực Auth, quản lý User và Catalog backend | `PHASE 05AB - Auth Users and Catalog integration pass` | Lead Developer / Backend Architect |
+| 2 | Nguyen Ngoc Phi | Kiểm thử full system và hoàn thiện cấu hình Render deploy | `Novamart full system verified and Render deployment ready` | Fullstack / DevOps |
+| 3 | Nguyen Ngoc Phi | Cấu hình hạ tầng Render compute và verify public deploy | `Configure approved Render compute and public deployment verification` | DevOps Engineer |
+| 4 | Nguyen Ngoc Phi | Xác thực Render public và làm rõ database badge | `Verify public Render deployment and clarify database badge` | QA / DevOps |
+| 5 | Nguyen Ngoc Phi | Ghi nhận tài liệu deployment và audit tên sản phẩm song song | `Record final deployment and concurrent product naming audit` | Technical Writer / QA |
+| 6 | Sweet Bakery (hoang) | Thiết lập quy chuẩn Conventional Commits, quy tắc chia nhỏ commit chi tiết và bảng nhật ký dự án | `docs(convention): enforce atomic commit policy and project ledger` | Fullstack Developer |
+

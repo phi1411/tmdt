@@ -111,3 +111,10 @@ Không refactor ngoài phạm vi, thêm role/dependency/collection hoặc đổi
 ## 12. Definition of Done
 
 Feature DONE khi code chạy, API và UI hoạt động, validation/authorization đúng, test liên quan pass, edge case chính được kiểm tra, docs cập nhật, không lỗi runtime đã biết. Nêu checks thực chạy và giới hạn còn lại. Phase02 DONE là khóa thiết kế/kiểm tra tĩnh; phase03 DONE là local rs0 + validators/indexes + seed/aggregation/constraint/roundtrip/reseed trên DB thật. Phase04 DONE là foundation startup/HTTP health + pytest thật + DB contract/data giữ nguyên + API/context docs; không đồng nghĩa business app/auth/payment/frontend hoặc benchmark đầy đủ DONE.
+
+## 13. Commit Policy & README Commit Ledger
+
+- **Conventional Commits**: Format `<type>(<scope>): <subject>`. Các type: `feat`, `fix`, `schema`, `refactor`, `test`, `docs`, `perf`, `seed`.
+- **Atomic Commits (Chia nhỏ tối đa)**: Tách các thay đổi thành nhiều commit nhỏ, cụ thể từng bước (càng nhiều commit càng tốt theo yêu cầu đồ án).
+- **Đồng bộ README bắt buộc**: Mọi commit từ thời điểm này PHẢI cập nhật ngay một dòng mới vào bảng `Lịch sử Commit Dự án` trong `README.md` trước hoặc đồng thời khi commit, đảm bảo đủ các cột: `Tác giả`, `Thay đổi`, `Tên commit`, `Vai trò`. Không được quên bước này.
+
