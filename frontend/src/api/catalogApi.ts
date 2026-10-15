@@ -58,4 +58,11 @@ export const catalogApi = {
     });
     return res.data;
   },
+
+  getProductReviews: async (slugOrId: string): Promise<{ reviews: import('../types/product').ProductReview[]; stats?: import('../types/product').RatingSummary }> => {
+    const res = await request<{ reviews: import('../types/product').ProductReview[]; stats?: import('../types/product').RatingSummary }>(`/products/${encodeURIComponent(slugOrId)}/reviews`, {
+      method: 'GET',
+    });
+    return res.data;
+  },
 };

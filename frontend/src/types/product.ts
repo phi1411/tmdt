@@ -63,6 +63,29 @@ export interface RatingSummary {
   starsBreakdown?: Record<string, number>;
 }
 
+export interface ProductReview {
+  id: string;
+  productId: string;
+  orderId?: string;
+  orderCode?: string;
+  userId?: string;
+  userSnapshot?: {
+    displayName: string;
+    avatarUrl?: string;
+  };
+  skuSpecSnapshot?: Record<string, string>;
+  rating: number;
+  reviewText: string;
+  images?: string[];
+  helpfulCount?: number;
+  sellerFeedback?: {
+    content: string;
+    respondedAt?: string;
+  };
+  status: string;
+  createdAt: string;
+}
+
 export interface Product {
   id: string;
   sku: string;
