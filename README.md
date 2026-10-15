@@ -78,4 +78,5 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 11 | Sweet Bakery (hoang) | Cập nhật logic tính giá giỏ hàng và projection kho theo SKU ma trận đa ngành | `feat(backend): support multi-tier sku pricing and cart resolution` | Backend Engineer |
 | 12 | Sweet Bakery (hoang) | Cập nhật file bằng chứng seed manifest ghi nhận collection reviews | `test(evidence): record seed manifest with reviews collection` | QA Engineer |
 | 13 | Sweet Bakery (hoang) | Cập nhật cấu hình fixture test backend cho collection reviews và ổn định kiểm tra mật khẩu môi trường test | `test(backend): add reviews collection to conftest fixture and stabilize seed password check` | QA / Test Engineer |
+| 14 | Sweet Bakery (hoang) | Bổ sung tài liệu đặc tả clean-room kiến trúc sàn TMĐT tham chiếu Shopee và TikTok Shop | `docs(spec): add clean-room e-commerce specifications for shopee and tiktok shop` | Solution Architect |
 
