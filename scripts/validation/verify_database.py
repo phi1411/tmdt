@@ -27,7 +27,10 @@ def content_digest(data):
 
 def validate_documents(db):
     rows = {name: list(db[name].find({}).sort('_id', 1)) for name in COLLECTIONS}
-    assert {k: len(v) for k, v in rows.items()} == {'users': 40, 'categories': 3, 'products': 180, 'carts': 0, 'orders': 100, 'payment_attempts': 30}
+    expected_counts = {'users': 40, 'categories': 3, 'products': 180, 'carts': 0, 'orders': 100, 'payment_attempts': 30}
+    if 'reviews' in rows:
+        expected_counts['reviews'] = len(rows['reviews'])
+    assert {k: len(v) for k, v in rows.items()} == expected_counts
     expected = expected_ids()
     for name, docs in rows.items():
         assert {d['_id'] for d in docs} == expected[name], f'{name} fixture IDs'
@@ -134,6 +137,20 @@ def live_constraints(client, test_db, rows):
     examples = {name: copy.deepcopy(docs[0]) for name, docs in rows.items() if docs}
     user = rows['users'][0]
     examples['carts'] = {'_id': ObjectId(), 'schemaVersion': 1, 'createdAt': START, 'updatedAt': START, 'userId': user['_id'], 'version': 1, 'items': []}
+    if 'reviews' not in examples and rows['products'] and rows['orders']:
+        examples['reviews'] = {
+            '_id': ObjectId(),
+            'schemaVersion': 1,
+            'createdAt': START,
+            'updatedAt': START,
+            'productId': rows['products'][0]['_id'],
+            'orderId': rows['orders'][0]['_id'],
+            'userId': user['_id'],
+            'orderCode': 'ORD-DEMO-001',
+            'rating': 5,
+            'reviewText': 'San pham tuyet voi',
+            'status': 'VISIBLE'
+        }
 
     def probe(name, doc, expected_code=None, label=''):
         doc = copy.deepcopy(doc)
@@ -303,7 +320,7 @@ def verify(database):
         explain = explain_baseline(db)
         assert before == content_digest({name: list(db[name].find({}).sort('_id', 1)) for name in COLLECTIONS})
         status = client.admin.command('replSetGetStatus')
-        report = {'status': 'LIVE_MONGODB_PASS', 'mongodbVersion': client.server_info()['version'], 'pythonVersion': sys.version.split()[0], 'database': db.name, 'replicaSet': status['set'], 'replicaMembers': [{k: m[k] for k in ('name', 'health', 'stateStr')} for m in status['members']], 'storageEngine': client.admin.command('serverStatus')['storageEngine']['name'], 'collections': list(COLLECTIONS), 'validatorsApplied': 6, 'validatorTests': probes, 'counts': {k: len(v) for k, v in rows.items()}, 'productDistribution': dict(Counter(p['productType'] for p in rows['products'])), 'orderStatusDistribution': dict(Counter(o['orderStatus'] for o in rows['orders'])), 'paymentMethodDistribution': dict(Counter(o['paymentMethod'] for o in rows['orders'])), 'paymentStatusDistribution': dict(Counter(o['paymentStatus'] for o in rows['orders'])), 'attemptStatusDistribution': dict(Counter(a['status'] for a in rows['payment_attempts'])), 'orderItemCountDistribution': dict(Counter(str(len(o['items'])) for o in rows['orders'])), 'productsWithImages': sum(bool(p['images']) for p in rows['products']), 'passwordsVerified': 40, 'snapshotOriginVerified': True, 'stockReconciled': True, 'aggregationsExecuted': 8, 'salesSummary': output['sales-summary'], 'revenueByMonth': output['revenue-month'], 'top5': output['top-products'], 'actualIndexes': indexes, 'declaredIndexes': 14, 'automaticIdIndexes': 6, 'explain': explain, 'contentDigestExcludingSaltedPasswords': before, 'businessFeaturesImplemented': False, 'frontendImplemented': False, 'fullBenchmarkRun': False}
+        report = {'status': 'LIVE_MONGODB_PASS', 'mongodbVersion': client.server_info()['version'], 'pythonVersion': sys.version.split()[0], 'database': db.name, 'replicaSet': status['set'], 'replicaMembers': [{k: m[k] for k in ('name', 'health', 'stateStr')} for m in status['members']], 'storageEngine': client.admin.command('serverStatus')['storageEngine']['name'], 'collections': list(COLLECTIONS), 'validatorsApplied': len(COLLECTIONS), 'validatorTests': probes, 'counts': {k: len(v) for k, v in rows.items()}, 'productDistribution': dict(Counter(p['productType'] for p in rows['products'])), 'orderStatusDistribution': dict(Counter(o['orderStatus'] for o in rows['orders'])), 'paymentMethodDistribution': dict(Counter(o['paymentMethod'] for o in rows['orders'])), 'paymentStatusDistribution': dict(Counter(o['paymentStatus'] for o in rows['orders'])), 'attemptStatusDistribution': dict(Counter(a['status'] for a in rows['payment_attempts'])), 'orderItemCountDistribution': dict(Counter(str(len(o['items'])) for o in rows['orders'])), 'productsWithImages': sum(bool(p['images']) for p in rows['products']), 'passwordsVerified': 40, 'snapshotOriginVerified': True, 'stockReconciled': True, 'aggregationsExecuted': 8, 'salesSummary': output['sales-summary'], 'revenueByMonth': output['revenue-month'], 'top5': output['top-products'], 'actualIndexes': indexes, 'declaredIndexes': len(selected_indexes()), 'automaticIdIndexes': len(COLLECTIONS), 'explain': explain, 'contentDigestExcludingSaltedPasswords': before, 'businessFeaturesImplemented': False, 'frontendImplemented': False, 'fullBenchmarkRun': False}
         write_ejson('database/evidence/verification.json', report)
         print({'status': report['status'], 'counts': report['counts'], 'accepted': len(probes['accepted']), 'invalidRejected': len(probes['rejected']), 'uniqueRejected': len(probes['uniqueRejected']), 'salesSummary': report['salesSummary'], 'digest': before})
         return report

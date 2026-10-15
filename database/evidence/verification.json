@@ -1,7 +1,7 @@
 {
   "status": "LIVE_MONGODB_PASS",
   "mongodbVersion": "8.0.32",
-  "pythonVersion": "3.12.14",
+  "pythonVersion": "3.11.15",
   "database": "ecommerce_dev",
   "replicaSet": "rs0",
   "replicaMembers": [
@@ -20,10 +20,11 @@
     "products",
     "carts",
     "orders",
-    "payment_attempts"
+    "payment_attempts",
+    "reviews"
   ],
   "validatorsApplied": {
-    "$numberInt": "6"
+    "$numberInt": "7"
   },
   "validatorTests": {
     "accepted": [
@@ -33,6 +34,7 @@
       "orders:valid",
       "payment_attempts:valid",
       "carts:valid",
+      "reviews:valid",
       "ELECTRONICS:polymorphic",
       "FASHION:polymorphic",
       "HOME_APPLIANCE:polymorphic"
@@ -142,6 +144,24 @@
       },
       {
         "case": "carts:type",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "reviews:required",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "reviews:enum",
+        "code": {
+          "$numberInt": "121"
+        }
+      },
+      {
+        "case": "reviews:type",
         "code": {
           "$numberInt": "121"
         }
@@ -303,6 +323,12 @@
         "code": {
           "$numberInt": "11000"
         }
+      },
+      {
+        "index": "uq_reviews_user_order_product",
+        "code": {
+          "$numberInt": "11000"
+        }
       }
     ],
     "probesRolledBack": true
@@ -325,6 +351,9 @@
     },
     "payment_attempts": {
       "$numberInt": "30"
+    },
+    "reviews": {
+      "$numberInt": "0"
     }
   },
   "productDistribution": {
@@ -813,13 +842,61 @@
           "status": "PENDING"
         }
       }
+    ],
+    "reviews": [
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "_id": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "_id_"
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "userId": {
+            "$numberInt": "1"
+          },
+          "orderId": {
+            "$numberInt": "1"
+          },
+          "productId": {
+            "$numberInt": "1"
+          }
+        },
+        "name": "uq_reviews_user_order_product",
+        "unique": true
+      },
+      {
+        "v": {
+          "$numberInt": "2"
+        },
+        "key": {
+          "productId": {
+            "$numberInt": "1"
+          },
+          "status": {
+            "$numberInt": "1"
+          },
+          "createdAt": {
+            "$numberInt": "-1"
+          }
+        },
+        "name": "ix_reviews_product_feed"
+      }
     ]
   },
   "declaredIndexes": {
-    "$numberInt": "14"
+    "$numberInt": "16"
   },
   "automaticIdIndexes": {
-    "$numberInt": "6"
+    "$numberInt": "7"
   },
   "explain": {
     "planner": {
@@ -1044,7 +1121,7 @@
       }
     }
   },
-  "contentDigestExcludingSaltedPasswords": "15abd857414775548c9a2575884ec95089af6ca9ef4762c825395f36d96996a4",
+  "contentDigestExcludingSaltedPasswords": "0ddf8697b1a75f5249b81eb7ebe897e59148453b3caf0c332dbc5af816fe442c",
   "businessFeaturesImplemented": false,
   "frontendImplemented": false,
   "fullBenchmarkRun": false

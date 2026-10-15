@@ -157,7 +157,7 @@ def build_orders(products, categories, users):
     return orders, attempts, ledger
 
 def expected_ids():
-    return {'categories': {oid('category', i) for i in range(3)}, 'products': {oid('product', i) for i in range(180)}, 'users': {oid('user', i) for i in range(40)}, 'orders': {oid('order', i) for i in range(100)}, 'carts': set(), 'payment_attempts': {oid('attempt', i) for i in list(range(40, 60))+list(range(65, 70))+list(range(95, 100))}}
+    return {'categories': {oid('category', i) for i in range(3)}, 'products': {oid('product', i) for i in range(180)}, 'users': {oid('user', i) for i in range(40)}, 'orders': {oid('order', i) for i in range(100)}, 'carts': set(), 'payment_attempts': {oid('attempt', i) for i in list(range(40, 60))+list(range(65, 70))+list(range(95, 100))}, 'reviews': set()}
 
 def run_seed(database):
     load_env()
