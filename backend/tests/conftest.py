@@ -41,7 +41,7 @@ def database(app):
     marker = json.loads((ROOT / '.local/ecommerce_test.ownership.json').read_text(encoding='utf-8'))
     assert marker == {'project': str(ROOT), 'database': 'ecommerce_test', 'endpoint': 'localhost:27017/rs0'}
     assert database.client.admin.command('hello')['setName'] == 'rs0'
-    assert {c['name'] for c in database.list_collections()} == {'users', 'categories', 'products', 'carts', 'orders', 'payment_attempts'}
+    assert {c['name'] for c in database.list_collections()} == {'users', 'categories', 'products', 'carts', 'orders', 'payment_attempts', 'reviews'}
     return database
 
 

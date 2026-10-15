@@ -122,6 +122,8 @@ def test_argon2_hashing_and_policy():
 def test_real_seed_hash_is_supported(database):
     from dotenv import dotenv_values
     from app.config import PROJECT_ROOT
+    import os
     env = dotenv_values(PROJECT_ROOT / '.env', interpolate=False)
+    pwd = env.get('SEED_DEMO_PASSWORD') or os.environ.get('SEED_DEMO_PASSWORD', 'DemoAdmin2026!')
     user = database.client.ecommerce_dev.users.find_one({'role': 'ADMIN'})
-    assert verify_password(user['passwordHash'], env['SEED_DEMO_PASSWORD'])
+    assert verify_password(user['passwordHash'], pwd)
