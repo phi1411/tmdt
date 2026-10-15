@@ -338,46 +338,6 @@ export const ProductsPage: React.FC = () => {
               </Button>
             </form>
           </div>
-
-          {/* Polymorphic Attribute: Fashion Size */}
-          <div className="space-y-3 pt-4 border-t border-slate-100">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Kích Cỡ (Thời trang)</h4>
-            <div className="flex flex-wrap gap-1.5">
-              {['S', 'M', 'L', 'XL', '38', '39', '40', '41', '42'].map((sz) => (
-                <button
-                  key={sz}
-                  onClick={() => updateParam('size', size === sz ? null : sz)}
-                  className={`px-2.5 py-1 text-xs rounded-lg border font-medium transition-colors ${
-                    size === sz
-                      ? 'bg-purple-600 border-purple-600 text-white'
-                      : 'border-slate-200 text-slate-600 hover:bg-slate-50'
-                  }`}
-                >
-                  {sz}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Polymorphic Attribute: Electronics RAM */}
-          <div className="space-y-3 pt-4 border-t border-slate-100">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Bộ Nhớ RAM (Điện tử)</h4>
-            <div className="flex flex-wrap gap-1.5">
-              {['4GB', '8GB', '16GB', '32GB'].map((r) => (
-                <button
-                  key={r}
-                  onClick={() => updateParam('ram', ram === r ? null : r)}
-                  className={`px-2.5 py-1 text-xs rounded-lg border font-medium transition-colors ${
-                    ram === r
-                      ? 'bg-brand-600 border-brand-600 text-white'
-                      : 'border-slate-200 text-slate-600 hover:bg-slate-50'
-                  }`}
-                >
-                  {r}
-                </button>
-              ))}
-            </div>
-          </div>
         </aside>
 
         {/* Products Grid Area */}
