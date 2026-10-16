@@ -63,32 +63,32 @@ Spec/extra variants/giá biên soạn cho demo từ cache [DummyJSON Products](h
 
 Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập nhật liên tục theo chuẩn:
 
-| STT | Tác giả | Thay đổi | Tên commit | Vai trò |
-| :---: | :--- | :--- | :--- | :--- |
-| 1 | Nguyen Ngoc Phi | Tích hợp xác thực Auth, quản lý User và Catalog backend | `PHASE 05AB - Auth Users and Catalog integration pass` | Lead Developer / Backend Architect |
-| 2 | Nguyen Ngoc Phi | Kiểm thử full system và hoàn thiện cấu hình Render deploy | `Novamart full system verified and Render deployment ready` | Fullstack / DevOps |
-| 3 | Nguyen Ngoc Phi | Cấu hình hạ tầng Render compute và verify public deploy | `Configure approved Render compute and public deployment verification` | DevOps Engineer |
-| 4 | Nguyen Ngoc Phi | Xác thực Render public và làm rõ database badge | `Verify public Render deployment and clarify database badge` | QA / DevOps |
-| 5 | Nguyen Ngoc Phi | Ghi nhận tài liệu deployment và audit tên sản phẩm song song | `Record final deployment and concurrent product naming audit` | Technical Writer / QA |
-| 6 | Sweet Bakery (hoang) | Thiết lập quy chuẩn Conventional Commits, quy tắc chia nhỏ commit chi tiết và bảng nhật ký dự án | `docs(convention): enforce atomic commit policy and project ledger` | Fullstack Developer |
-| 7 | Sweet Bakery (hoang) | Nâng cấp JSON Schema validator cho products (hỗ trợ tierVariations, skus, ratingSummary) và bổ sung validator reviews kèm indexes | `schema(db): upgrade product validator for tier variations and add reviews collection with indexes` | Database Engineer |
-| 8 | Sweet Bakery (hoang) | Cập nhật bộ kịch bản kiểm thử và xác thực ràng buộc DB cho collection reviews | `test(db): update verification probes and expected collections for reviews` | QA / Test Engineer |
-| 9 | Sweet Bakery (hoang) | Xây dựng script nạp sản phẩm thực tế đa biến thể SKU và reviews xác thực | `feat(seed): add realistic multi-tier sku products and authentic reviews generator` | Data Engineer |
-| 10 | Sweet Bakery (hoang) | Nâng cấp giao diện chọn phân loại đa tầng dynamic tier variations, cập nhật giá và kho real-time theo SKU và khắc phục lỗi cứng size | `feat(ui): support dynamic tier variations and real-time sku price updates` | Frontend Engineer |
-| 11 | Sweet Bakery (hoang) | Cập nhật logic tính giá giỏ hàng và projection kho theo SKU ma trận đa ngành | `feat(backend): support multi-tier sku pricing and cart resolution` | Backend Engineer |
-| 12 | Sweet Bakery (hoang) | Cập nhật file bằng chứng seed manifest ghi nhận collection reviews | `test(evidence): record seed manifest with reviews collection` | QA Engineer |
-| 13 | Sweet Bakery (hoang) | Cập nhật cấu hình fixture test backend cho collection reviews và ổn định kiểm tra mật khẩu môi trường test | `test(backend): add reviews collection to conftest fixture and stabilize seed password check` | QA / Test Engineer |
-| 14 | Sweet Bakery (hoang) | Bổ sung tài liệu đặc tả clean-room kiến trúc sàn TMĐT tham chiếu Shopee và TikTok Shop | `docs(spec): add clean-room e-commerce specifications for shopee and tiktok shop` | Solution Architect |
-| 15 | Sweet Bakery (hoang) | Nâng cấp JSON Schema validator cho carts và orders hỗ trợ biến thể thuộc tính động | `fix(schema): allow dynamic selectedAttributes in cart and order validators` | Database Engineer |
-| 16 | Sweet Bakery (hoang) | Mở rộng schema xác thực SELECTION của giỏ hàng chấp nhận thuộc tính phân loại đa tầng và khắc phục lỗi 422 | `fix(cart): expand SELECTION schema to accept multi-tier variant attributes` | Backend Engineer |
-| 17 | Sweet Bakery (hoang) | Xây dựng API và service truy vấn danh sách đánh giá sản phẩm cùng thống kê phân phối sao | `feat(api): add public product reviews and rating summary endpoint` | Backend Engineer |
-| 18 | Sweet Bakery (hoang) | Tái thiết kế toàn diện trang chi tiết sản phẩm theo chuẩn Shopee Mall: badge Yêu Thích+, voucher shop, nút Mua Ngay và khu vực đánh giá UGC thực tế | `feat(ui): redesign product detail to authentic shopee standards with mall badges, vouchers, and ugc reviews` | Frontend Engineer / UI-UX |
-| 19 | Sweet Bakery (hoang) | Hoàn thiện ma trận toàn bộ hoán vị SKU thực tế, fix lỗi nhảy giá biến thể MacBook M3 và xử lý vô hiệu hóa phân loại hết hàng | `fix(catalog): complete sku permutation matrix and disable out-of-stock variations` | Fullstack Developer |
-| 20 | Sweet Bakery (hoang) | Sửa logic điều hướng đăng nhập Admin vào thẳng Dashboard, thêm nút truy cập nhanh Admin trên Navbar và bổ sung phạm vi toàn bộ dữ liệu seed cho biểu đồ phân tích | `fix(admin): route admin directly to dashboard on login and enhance navbar portal access` | Frontend Engineer |
-| 21 | Sweet Bakery (hoang) | Loại bỏ toàn bộ các text vô hồn về đồ án/sinh viên/demo trên Navbar, Footer và Checkout; chuyển đổi thành giao diện thương mại điện tử chuyên nghiệp chuẩn thương hiệu | `style(ui): sanitize student project and demo disclaimer copy into professional ecommerce brand experience` | UI/UX Designer |
-| 22 | Sweet Bakery (hoang) | Dọn dẹp bộ lọc sidebar trang danh mục sản phẩm, loại bỏ các nút cứng kích cỡ thời trang và RAM điện tử | `refactor(ui): clean up product catalog sidebar by removing rigid polymorphic attribute filters` | Frontend Engineer |
-| 23 | Sweet Bakery (hoang) | Xây dựng các trang chính sách pháp lý TMĐT (điều khoản, bảo mật, đổi trả, giao hàng) và chuẩn hóa liên kết chân trang | `feat(policy): add ecommerce policy pages and sanitize promotional banner icons` | Frontend Engineer / Legal Compliance |
-| 24 | Sweet Bakery (hoang) | Nâng cấp thanh tìm kiếm thông minh SmartSearchBar với lịch sử tìm kiếm localStorage, gợi ý từ khóa hot và auto-suggest debounced | `feat(search): implement smart search bar with local history and instant suggestions` | Frontend Engineer |
-| 25 | Sweet Bakery (hoang) | Hoàn thiện luồng đánh giá sản phẩm sau khi đơn hoàn tất (UGC Reviews), tính toán cập nhật điểm sao atomic và modal gửi nhận xét | `feat(reviews): implement verified purchase review submission and atomic rating aggregation` | Fullstack Developer |
-| 26 | Sweet Bakery (hoang) | Xây dựng bộ test case toàn diện kiểm thử 5 phase nâng cấp chuẩn Shopee và tinh chỉnh cấu hình proxy phát triển | `test(parity): add comprehensive test suite for shopee parity features and dev proxy` | QA / Fullstack Engineer |
+| STT | Tác giả | Thay đổi | Tên commit |
+| :---: | :--- | :--- | :--- |
+| 1 | Nguyen Ngoc Phi | Tích hợp xác thực Auth, quản lý User và Catalog backend | `PHASE 05AB - Auth Users and Catalog integration pass` |
+| 2 | Nguyen Ngoc Phi | Kiểm thử full system và hoàn thiện cấu hình Render deploy | `Novamart full system verified and Render deployment ready` |
+| 3 | Nguyen Ngoc Phi | Cấu hình hạ tầng Render compute và verify public deploy | `Configure approved Render compute and public deployment verification` |
+| 4 | Nguyen Ngoc Phi | Xác thực Render public và làm rõ database badge | `Verify public Render deployment and clarify database badge` |
+| 5 | Nguyen Ngoc Phi | Ghi nhận tài liệu deployment và audit tên sản phẩm song song | `Record final deployment and concurrent product naming audit` |
+| 6 | Sweet Bakery (hoang) | Thiết lập quy chuẩn Conventional Commits, quy tắc chia nhỏ commit chi tiết và bảng nhật ký dự án | `docs(convention): enforce atomic commit policy and project ledger` |
+| 7 | Sweet Bakery (hoang) | Nâng cấp JSON Schema validator cho products (hỗ trợ tierVariations, skus, ratingSummary) và bổ sung validator reviews kèm indexes | `schema(db): upgrade product validator for tier variations and add reviews collection with indexes` |
+| 8 | Sweet Bakery (hoang) | Cập nhật bộ kịch bản kiểm thử và xác thực ràng buộc DB cho collection reviews | `test(db): update verification probes and expected collections for reviews` |
+| 9 | Sweet Bakery (hoang) | Xây dựng script nạp sản phẩm thực tế đa biến thể SKU và reviews xác thực | `feat(seed): add realistic multi-tier sku products and authentic reviews generator` |
+| 10 | Sweet Bakery (hoang) | Nâng cấp giao diện chọn phân loại đa tầng dynamic tier variations, cập nhật giá và kho real-time theo SKU và khắc phục lỗi cứng size | `feat(ui): support dynamic tier variations and real-time sku price updates` |
+| 11 | Sweet Bakery (hoang) | Cập nhật logic tính giá giỏ hàng và projection kho theo SKU ma trận đa ngành | `feat(backend): support multi-tier sku pricing and cart resolution` |
+| 12 | Sweet Bakery (hoang) | Cập nhật file bằng chứng seed manifest ghi nhận collection reviews | `test(evidence): record seed manifest with reviews collection` |
+| 13 | Sweet Bakery (hoang) | Cập nhật cấu hình fixture test backend cho collection reviews và ổn định kiểm tra mật khẩu môi trường test | `test(backend): add reviews collection to conftest fixture and stabilize seed password check` |
+| 14 | Sweet Bakery (hoang) | Bổ sung tài liệu đặc tả clean-room kiến trúc sàn TMĐT tham chiếu Shopee và TikTok Shop | `docs(spec): add clean-room e-commerce specifications for shopee and tiktok shop` |
+| 15 | Sweet Bakery (hoang) | Nâng cấp JSON Schema validator cho carts và orders hỗ trợ biến thể thuộc tính động | `fix(schema): allow dynamic selectedAttributes in cart and order validators` |
+| 16 | Sweet Bakery (hoang) | Mở rộng schema xác thực SELECTION của giỏ hàng chấp nhận thuộc tính phân loại đa tầng và khắc phục lỗi 422 | `fix(cart): expand SELECTION schema to accept multi-tier variant attributes` |
+| 17 | Sweet Bakery (hoang) | Xây dựng API và service truy vấn danh sách đánh giá sản phẩm cùng thống kê phân phối sao | `feat(api): add public product reviews and rating summary endpoint` |
+| 18 | Sweet Bakery (hoang) | Tái thiết kế toàn diện trang chi tiết sản phẩm theo chuẩn Shopee Mall: badge Yêu Thích+, voucher shop, nút Mua Ngay và khu vực đánh giá UGC thực tế | `feat(ui): redesign product detail to authentic shopee standards with mall badges, vouchers, and ugc reviews` |
+| 19 | Sweet Bakery (hoang) | Hoàn thiện ma trận toàn bộ hoán vị SKU thực tế, fix lỗi nhảy giá biến thể MacBook M3 và xử lý vô hiệu hóa phân loại hết hàng | `fix(catalog): complete sku permutation matrix and disable out-of-stock variations` |
+| 20 | Sweet Bakery (hoang) | Sửa logic điều hướng đăng nhập Admin vào thẳng Dashboard, thêm nút truy cập nhanh Admin trên Navbar và bổ sung phạm vi toàn bộ dữ liệu seed cho biểu đồ phân tích | `fix(admin): route admin directly to dashboard on login and enhance navbar portal access` |
+| 21 | Sweet Bakery (hoang) | Loại bỏ toàn bộ các text vô hồn về đồ án/sinh viên/demo trên Navbar, Footer và Checkout; chuyển đổi thành giao diện thương mại điện tử chuyên nghiệp chuẩn thương hiệu | `style(ui): sanitize student project and demo disclaimer copy into professional ecommerce brand experience` |
+| 22 | Sweet Bakery (hoang) | Dọn dẹp bộ lọc sidebar trang danh mục sản phẩm, loại bỏ các nút cứng kích cỡ thời trang và RAM điện tử | `refactor(ui): clean up product catalog sidebar by removing rigid polymorphic attribute filters` |
+| 23 | Sweet Bakery (hoang) | Xây dựng các trang chính sách pháp lý TMĐT (điều khoản, bảo mật, đổi trả, giao hàng) và chuẩn hóa liên kết chân trang | `feat(policy): add ecommerce policy pages and sanitize promotional banner icons` |
+| 24 | Sweet Bakery (hoang) | Nâng cấp thanh tìm kiếm thông minh SmartSearchBar với lịch sử tìm kiếm localStorage, gợi ý từ khóa hot và auto-suggest debounced | `feat(search): implement smart search bar with local history and instant suggestions` |
+| 25 | Sweet Bakery (hoang) | Hoàn thiện luồng đánh giá sản phẩm sau khi đơn hoàn tất (UGC Reviews), tính toán cập nhật điểm sao atomic và modal gửi nhận xét | `feat(reviews): implement verified purchase review submission and atomic rating aggregation` |
+| 26 | Sweet Bakery (hoang) | Xây dựng bộ test case toàn diện kiểm thử 5 phase nâng cấp chuẩn Shopee và tinh chỉnh cấu hình proxy phát triển | `test(parity): add comprehensive test suite for shopee parity features and dev proxy` |
 

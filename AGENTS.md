@@ -116,5 +116,5 @@ Feature DONE khi code chạy, API và UI hoạt động, validation/authorizatio
 
 - **Conventional Commits**: Format `<type>(<scope>): <subject>`. Các type: `feat`, `fix`, `schema`, `refactor`, `test`, `docs`, `perf`, `seed`.
 - **Atomic Commits (Chia nhỏ tối đa)**: Tách các thay đổi thành nhiều commit nhỏ, cụ thể từng bước (càng nhiều commit càng tốt theo yêu cầu đồ án).
-- **Đồng bộ README bắt buộc**: Mọi commit từ thời điểm này PHẢI cập nhật ngay một dòng mới vào bảng `Lịch sử Commit Dự án` trong `README.md` trước hoặc đồng thời khi commit, đảm bảo đủ các cột: `Tác giả`, `Thay đổi`, `Tên commit`, `Vai trò`. Không được quên bước này.
+- **Đồng bộ README bắt buộc**: Mọi commit từ thời điểm này PHẢI cập nhật ngay một dòng mới vào bảng `Lịch sử Commit Dự án` trong `README.md` trước hoặc đồng thời khi commit, đảm bảo đủ các cột: `Tác giả`, `Thay đổi`, `Tên commit`. Không được quên bước này.
 
