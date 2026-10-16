@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   ShoppingBag,
-  Search,
   User as UserIcon,
   Menu,
   X,
@@ -10,27 +9,20 @@ import {
   Package,
   MapPin,
   ShieldAlert,
+  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
 import { Button } from '../ui/Button';
+import { SmartSearchBar } from './SmartSearchBar';
 
 export const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated, isAdmin, isCustomer, logout } = useAuth();
   const { itemCount } = useCart();
 
-  const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
-      setMobileMenuOpen(false);
-    }
-  };
 
   const handleLogout = () => {
     logout();
@@ -41,8 +33,9 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
       {/* Top Promotional Bar */}
-      <div className="bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white text-xs py-1.5 px-4 text-center tracking-wide font-medium flex items-center justify-center gap-2">
-        <span>🎉 Chào mừng đến với NovaMart — Miễn phí vận chuyển toàn quốc cho đơn hàng từ 0đ!</span>
+      <div className="bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white text-xs py-1.5 px-4 text-center tracking-wide font-medium flex items-center justify-center gap-1.5">
+        <Sparkles className="w-3.5 h-3.5 text-amber-200 fill-amber-200 animate-pulse flex-shrink-0" />
+        <span>Chào mừng đến với NovaMart — Miễn phí vận chuyển toàn quốc cho đơn hàng từ 0đ!</span>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,25 +56,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Search Bar (Desktop) */}
-          <form
-            onSubmit={handleSearchSubmit}
-            className="hidden md:flex flex-1 max-w-lg relative items-center"
-          >
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Tìm kiếm điện tử, thời trang, đồ gia dụng..."
-              className="w-full bg-slate-100/80 hover:bg-slate-100 focus:bg-white text-sm text-slate-800 placeholder:text-slate-400 pl-10 pr-24 py-2.5 rounded-full border border-slate-200 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition-all shadow-inner"
-            />
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none" />
-            <button
-              type="submit"
-              className="absolute right-1.5 px-3 py-1 bg-brand-600 hover:bg-brand-700 text-white rounded-full text-xs font-semibold tracking-wide transition-colors"
-            >
-              Tìm kiếm
-            </button>
-          </form>
+          <SmartSearchBar className="hidden md:flex flex-1 max-w-lg" />
 
           {/* Navigation Links & Action Icons */}
           <div className="flex items-center gap-2 sm:gap-4">
@@ -232,16 +207,11 @@ export const Navbar: React.FC = () => {
         {/* Mobile Search & Menu Overlay */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-slate-100 space-y-4 animate-in fade-in">
-            <form onSubmit={handleSearchSubmit} className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Tìm kiếm sản phẩm..."
-                className="w-full bg-slate-100 text-sm pl-10 pr-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500"
-              />
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
-            </form>
+            <SmartSearchBar
+              className="w-full"
+              placeholder="Tìm kiếm sản phẩm..."
+              onSearchComplete={() => setMobileMenuOpen(false)}
+            />
 
             <nav className="flex flex-col gap-1 text-sm font-medium">
               <Link
