@@ -37,6 +37,7 @@ test-results/
 artifacts/
 .tools/
 .local/
+plans/
 database/exports/
 *.log
 .DS_Store

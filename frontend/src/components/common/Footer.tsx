@@ -113,12 +113,30 @@ export const Footer: React.FC = () => {
 
           <div>
             <h5 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">Chăm Sóc Khách Hàng</h5>
-            <div className="text-xs text-slate-400 space-y-1.5 leading-relaxed">
-              <p>Hotline: 1900 1234 (8:00 - 21:00)</p>
-              <p>Email: support@novamart.vn</p>
-              <p>Chính sách vận chuyển & bảo hành</p>
-              <p>Quy chế hoạt động sàn TMĐT</p>
-            </div>
+            <ul className="text-xs text-slate-400 space-y-2">
+              <li className="text-slate-300 font-medium">Hotline: 1900 1234 (8:00 - 21:00)</li>
+              <li className="text-slate-300 font-medium">Email: support@novamart.vn</li>
+              <li>
+                <Link to="/policy/shipping" className="hover:text-white transition-colors">
+                  Chính sách giao hàng & đồng kiểm
+                </Link>
+              </li>
+              <li>
+                <Link to="/policy/returns" className="hover:text-white transition-colors">
+                  Chính sách đổi trả & hoàn tiền 15 ngày
+                </Link>
+              </li>
+              <li>
+                <Link to="/policy/terms" className="hover:text-white transition-colors">
+                  Quy chế hoạt động & Điều khoản
+                </Link>
+              </li>
+              <li>
+                <Link to="/policy/privacy" className="hover:text-white transition-colors">
+                  Chính sách bảo mật thông tin
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 

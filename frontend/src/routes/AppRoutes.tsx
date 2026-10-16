@@ -21,6 +21,12 @@ import { RegisterPage } from '../pages/RegisterPage';
 import { PaymentReturnPage } from '../pages/PaymentReturnPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 
+// Policy Pages
+import { PolicyTermsPage } from '../pages/policies/PolicyTermsPage';
+import { PolicyPrivacyPage } from '../pages/policies/PolicyPrivacyPage';
+import { PolicyReturnsPage } from '../pages/policies/PolicyReturnsPage';
+import { PolicyShippingPage } from '../pages/policies/PolicyShippingPage';
+
 // Admin Pages
 import { AdminDashboardPage } from '../pages/AdminDashboardPage';
 import { AdminOrdersPage } from '../pages/AdminOrdersPage';
@@ -41,6 +47,12 @@ export const AppRoutes: React.FC = () => {
         <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+
+        {/* E-Commerce Policy Routes */}
+        <Route path="/policy/terms" element={<PolicyTermsPage />} />
+        <Route path="/policy/privacy" element={<PolicyPrivacyPage />} />
+        <Route path="/policy/returns" element={<PolicyReturnsPage />} />
+        <Route path="/policy/shipping" element={<PolicyShippingPage />} />
 
         {/* VNPAY Return Route (Public callback handler) */}
         <Route path="/payment/return" element={<PaymentReturnPage />} />
