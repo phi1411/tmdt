@@ -61,6 +61,13 @@ class ProductRepository:
     def insert(self, document, session):
         self.collection.insert_one(document, session=session)
 
+    def update_rating_summary(self, product_id, rating_summary, session=None):
+        return self.collection.update_one(
+            {'_id': product_id},
+            {'$set': {'ratingSummary': rating_summary}},
+            session=session
+        )
+
     def patch(self, product_id, version, fields, now, session):
         return self.collection.find_one_and_update({'_id': product_id, 'version': version},
             {'$set': {**fields, 'updatedAt': now}, '$inc': {'version': 1}}, projection=PRODUCT_PROJECTION,

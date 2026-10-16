@@ -1,5 +1,5 @@
 import { request } from './client';
-import { Category, Product, ProductFilterParams } from '../types/product';
+import { Category, Product, ProductFilterParams, ProductReview, RatingSummary } from '../types/product';
 import { ResponseMeta } from '../types/api';
 
 export const catalogApi = {
@@ -59,9 +59,20 @@ export const catalogApi = {
     return res.data;
   },
 
-  getProductReviews: async (slugOrId: string): Promise<{ reviews: import('../types/product').ProductReview[]; stats?: import('../types/product').RatingSummary }> => {
-    const res = await request<{ reviews: import('../types/product').ProductReview[]; stats?: import('../types/product').RatingSummary }>(`/products/${encodeURIComponent(slugOrId)}/reviews`, {
+  getProductReviews: async (slugOrId: string): Promise<{ reviews: ProductReview[]; stats?: RatingSummary }> => {
+    const res = await request<{ reviews: ProductReview[]; stats?: RatingSummary }>(`/products/${encodeURIComponent(slugOrId)}/reviews`, {
       method: 'GET',
+    });
+    return res.data;
+  },
+
+  createReview: async (
+    identifier: string,
+    payload: { orderId: string; rating: number; reviewText?: string; images?: string[] }
+  ): Promise<ProductReview> => {
+    const res = await request<ProductReview>(`/products/${encodeURIComponent(identifier)}/reviews`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
     });
     return res.data;
   },

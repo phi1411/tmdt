@@ -8,6 +8,7 @@ import {
   Clock,
   ShieldCheck,
   Ban,
+  Star,
 } from 'lucide-react';
 import { orderApi } from '../api/orderApi';
 import { paymentApi } from '../api/paymentApi';
@@ -18,6 +19,7 @@ import { Button } from '../components/ui/Button';
 import { Modal } from '../components/ui/Modal';
 import { Skeleton } from '../components/ui/Skeleton';
 import { ErrorState } from '../components/ui/ErrorState';
+import { ReviewModal, ReviewItemInfo } from '../components/reviews/ReviewModal';
 import { useToast } from '../contexts/ToastContext';
 import { CustomApiError } from '../types/api';
 
@@ -32,6 +34,7 @@ export const OrderDetailPage: React.FC = () => {
   const [showCancelModal, setShowCancelModal] = useState<boolean>(false);
   const [cancelling, setCancelling] = useState<boolean>(false);
   const [retryingPayment, setRetryingPayment] = useState<boolean>(false);
+  const [selectedReviewItem, setSelectedReviewItem] = useState<ReviewItemInfo | null>(null);
 
   const fetchOrderDetail = useCallback(async () => {
     if (!id) return;
@@ -261,6 +264,19 @@ export const OrderDetailPage: React.FC = () => {
                   <div className="text-sm font-bold text-slate-900 sm:mt-1">
                     {formatVND(item.lineTotal)}
                   </div>
+                  {order.orderStatus === 'COMPLETED' && (
+                    <div className="mt-2.5">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setSelectedReviewItem(item)}
+                        icon={<Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" />}
+                        className="text-xs border-amber-300 hover:bg-amber-50 text-amber-900"
+                      >
+                        Viết đánh giá
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -400,6 +416,17 @@ export const OrderDetailPage: React.FC = () => {
           </div>
         </div>
       </Modal>
+
+      {/* UGC Review Submission Modal */}
+      <ReviewModal
+        isOpen={!!selectedReviewItem}
+        onClose={() => setSelectedReviewItem(null)}
+        orderId={order.id}
+        item={selectedReviewItem}
+        onSuccess={async () => {
+          await fetchOrderDetail();
+        }}
+      />
     </div>
   );
 };
