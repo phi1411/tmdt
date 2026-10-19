@@ -1,0 +1,45 @@
+{
+  "recordedAtUtc": "2026-10-19T13:29:48.731600+00:00",
+  "counts": {
+    "users": 43,
+    "categories": 5,
+    "products": 182,
+    "carts": 2,
+    "orders": 101,
+    "payment_attempts": 30,
+    "reviews": 0
+  },
+  "fingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "orphans": {
+    "productCategory": 0,
+    "cartUser": 0,
+    "cartProduct": 0,
+    "orderUser": 0,
+    "orderProduct": 0,
+    "attemptOrder": 0,
+    "reviewReferences": 0
+  },
+  "validatorsMatch": true,
+  "declaredIndexesMatch": true,
+  "invalidDocuments": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "historicalPending": 5,
+  "resetReseed": false,
+  "isolatedTestCounts": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "isolatedDevFingerprint": "47d0aef36ea34a985e1eded84d527ee46d547d333ea5734684e5297228051cd5"
+}

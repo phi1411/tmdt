@@ -2,7 +2,7 @@
 
 ## Goal
 
-PHASE06A Payment backend IMPLEMENTED; COD giữ nguyên. Live Sandbox **BLOCKED LIVE SANDBOX** khi chưa có merchant credentials/IPN công khai. Frontend và rehearsal thật chưa DONE. [Contract](../api-contract.md), [review](../phase-06a-review.md), [setup](../payment-setup.md).
+PHASE06A Payment backend IMPLEMENTED; COD giữ nguyên. Follow-up19/10/2026 có merchant Sandbox và IPN cấu hình riêng; runtime/FE đã harden theo ADR014. Provider rehearsal chỉ nghiệm thu theo evidence live mới; không gán deterministic tests thành live PASS. [Contract](../api-contract.md), [review](../phase-06a-review.md), [setup](../payment-setup.md).
 
 ## Actors
 
@@ -49,7 +49,7 @@ Secret chỉ backend env, không hardcode/live credential trong tests, không l�
 
 ## UI Behavior
 
-Frontend đã được kiểm tra ở PHASE07A; live merchant/IPN vẫn BLOCKED LIVE SANDBOX. Dùng paymentUrl từ checkout/retry để redirect Sandbox; Return hiển thị đang xác minh trước IPN, người dùng chủ động poll Order, failed/invalid/review message từ server. Retry trên UI chỉ dành cho VNPAY/PENDING order, payment FAILED, chưa review và còn deadline; không mời tạo attempt mới khi initial attempt đang PENDING. Retry URL fault/network503 giữ cùng Idempotency-Key/expectedVersion để khôi phục attempt đã commit. Initial URL recovery dùng nguyên checkout key/body theo Checkout, không tạo attempt mới. Review flag cần đối soát thủ công ngoài ứng dụng. Không tự set paid từ query browser. Evidence giả lập contract frontend được ghi riêng và không thay thế provider rehearsal.
+Frontend đã được kiểm tra ở PHASE07A và harden19/10/2026. Merchant/Render env/SIT IPN đã cấu hình; bank OTP/automatic IPN còn PENDING_USER_TERMS_CONFIRMATION theo [review hiện hành](../vnpay-sandbox-final-review.md). Dùng paymentUrl từ checkout/retry để redirect Sandbox; Return hiển thị đang xác minh trước IPN, người dùng chủ động poll Order, failed/invalid/review message từ server. Retry trên UI chỉ dành cho VNPAY/PENDING order, payment FAILED, chưa review và còn deadline; không mời tạo attempt mới khi initial attempt đang PENDING. Retry URL fault/network503 giữ cùng Idempotency-Key/expectedVersion để khôi phục attempt đã commit. Initial URL recovery dùng nguyên checkout key/body theo Checkout, không tạo attempt mới. Review flag cần đối soát thủ công ngoài ứng dụng. Không tự set paid từ query browser. Evidence giả lập contract frontend được ghi riêng và không thay thế provider rehearsal.
 
 ## Acceptance Criteria
 
@@ -62,7 +62,8 @@ Backend atomic checkout/attempt, valid URL/signature, Return read-only, IPN idem
 - [x] Return pending/success/failed/invalid/review read-only, no PII.
 - [x] IPN duplicate/out-of-order/late/second-success, version caps, unique transactionNo, rollback/ambiguous commit.
 - [x] Retry idempotency/deadline/creation race và expiry/cancel/IPN concurrency trên real rs0; worker --once/failure handling.
-- [ ] Real Sandbox redirect/bank/IPN rehearsal: missing merchant/IPN config; BLOCKED LIVE SANDBOX.
+- [x] Real Sandbox signed redirect tới gateway và biểu mẫu NCB, cấu hình IPN lưu thành công tại SIT.
+- [ ] Bank OTP/automatic IPN: PENDING_USER_TERMS_CONFIRMATION, chưa claim Live Sandbox PASS; credentials hiện đã có, không còn blocker thiếu merchant.
 - [ ] Frontend Payment Result page/poll UI: deferred theo phạm vi.
 
 

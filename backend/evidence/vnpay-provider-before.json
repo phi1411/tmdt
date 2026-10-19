@@ -1,0 +1,21 @@
+{
+  "recordedAtUtc": "2026-10-19T13:24:51.184283+00:00",
+  "run": "vnp-live-26ee69b5a0ed",
+  "orderCode": "ORD-6AD6193689D15B8F21C03A0B",
+  "orderStatus": "PENDING",
+  "paymentStatus": "PENDING",
+  "paymentReviewRequired": false,
+  "total": 130000,
+  "rootStock": 9,
+  "skuStocks": [
+    6,
+    3
+  ],
+  "attempts": [
+    {
+      "status": "PENDING",
+      "providerTransactionNo": null,
+      "hasVerifiedCallbackFingerprint": false
+    }
+  ]
+}

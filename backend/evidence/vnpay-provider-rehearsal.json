@@ -1,0 +1,34 @@
+{
+  "gateway": "VNPAY_SANDBOX_NCB_FORM_REACHED",
+  "bankOtp": "PENDING_USER_TERMS_CONFIRMATION",
+  "automaticIpn": "NOT_YET_VERIFIED",
+  "sitIpnConfig": "SAVED_SUCCESSFULLY",
+  "state": {
+    "recordedAtUtc": "2026-10-19T13:29:02.735543+00:00",
+    "run": "vnp-live-26ee69b5a0ed",
+    "orderCode": "ORD-6AD6193689D15B8F21C03A0B",
+    "orderStatus": "PENDING",
+    "paymentStatus": "PENDING",
+    "paymentReviewRequired": false,
+    "total": 130000,
+    "rootStock": 8,
+    "skuStocks": [
+      5,
+      3
+    ],
+    "attempts": [
+      {
+        "status": "PENDING",
+        "providerTransactionNo": null,
+        "hasVerifiedCallbackFingerprint": false
+      }
+    ]
+  },
+  "additionalOrders": [
+    {
+      "orderCode": "ORD-6AD61AE689D15B8F21C03A1B",
+      "orderStatus": "PENDING",
+      "paymentStatus": "PENDING"
+    }
+  ]
+}

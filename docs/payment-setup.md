@@ -1,6 +1,6 @@
 # VNPAY Sandbox — cấu hình và vận hành PHASE06A
 
-Backend đã có adapter/attempt/Return/IPN/expiry. Hiện máy thiếu VNP_* merchant/IPN config; **BLOCKED LIVE SANDBOX**, không có bằng chứng thanh toán ngân hàng/IPN provider thật. [Contract](api-contract.md), [review](phase-06a-review.md), [VNPAY protocol chính thức](https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html).
+Backend đã có adapter/attempt/Return/IPN/expiry. Follow-up19/10/2026: người dùng đã cung cấp merchant Sandbox, đăng ký IPN trong SIT và cấu hình backend Render riêng. Live gate phải đối chiếu evidence provider thực trong báo cáo follow-up; các phase cũ BLOCKED không là trạng thái cấu hình hiện tại. [Contract](api-contract.md), [review](phase-06a-review.md), [VNPAY protocol chính thức](https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html).
 
 ## Environment
 
@@ -37,7 +37,7 @@ Worker quét tối đa100 eligible Orders mỗi30s; state/restore/invalidate cù
 
 CUSTOMER login→Cart→GET quote paymentMethod=VNPAY→POST /orders với nguyên quote và Idempotency-Key→nhận Order/initial attempt/paymentUrl→redirect URL. Return verify trả safe envelope nhưng không xác nhận paid; poll Bearer owner GET /orders/:id. IPN server provider verify+transaction mới authoritative. Retry POST /orders/:id/payment-attempts với expectedVersion mới và key cho ý định mới khi failure/no pending và trước deadline; timeout replay nguyên key/body. Không gửi client price/state/merchant/URL.
 
-Deadline15phút không gia hạn. Late/second success chỉ review, không hồi sinh đơn; không refund/resolve-review endpoint. Provider retry trả02 sau receipt đã commit; lỗi processing99, không falsely acknowledge00. Public HTTPS ingress/proxy phải chuyển nguyên provider query, không ghi full URL/query; backend không tin X-Forwarded-For. Tunnel/merchant registration chưa cấu hình bởi worker này.
+Deadline15phút không gia hạn. Late/second success chỉ review, không hồi sinh đơn; không refund/resolve-review endpoint. Provider retry trả02 sau receipt đã commit; lỗi processing99, không falsely acknowledge00. Public HTTPS ingress/proxy phải chuyển nguyên provider query, không ghi full URL/query; backend không tin X-Forwarded-For. Ghi chú PHASE06A lịch sử: tunnel/merchant registration chưa cấu hình trong worker đó. Hiện IPN đã lưu ở SIT; bank/automatic IPN phải theo [review follow-up](vnpay-sandbox-final-review.md), không suy ra từ việc lưu URL.
 
 ## Verification
 

@@ -22,5 +22,7 @@
     }
   },
   "databaseResetReseed": false,
-  "providerLiveVerification": "PENDING_REHEARSAL"
+  "providerLiveVerification": "PENDING_USER_TERMS_CONFIRMATION",
+  "publicCodReviewChecks": 62,
+  "databaseExactCleanup": true
 }

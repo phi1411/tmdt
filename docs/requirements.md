@@ -21,8 +21,8 @@
 
 - **P0 — bám barem:** Category/Product CRUD, dữ liệu đa hình, Cart/Checkout COD, Order snapshot, Dashboard doanh thu theo thời gian/Top 5, seed, index/explain, Compass và demo.
 - **P1 — sản phẩm người dùng yêu cầu:** JWT, profile/địa chỉ, search/filter, lịch sử/hủy đơn, quản lý User/Order, các metric Dashboard bổ sung và VNPAY Sandbox. Đây vẫn là phần dự kiến phải hoàn thành, chỉ làm sau P0.
-- **DEFERRED:** Review và shadcn/ui; không blocker MVP, không tạo reviews collection phase02.
-- **Ngoài phạm vi hiện tại:** Seller/Shipper/Staff, marketplace nhiều người bán, payment production, refund tự động, coupon, tồn kho/giá riêng từng biến thể, guest checkout, tải media lên dịch vụ ngoài.
+- **Follow-up hiện hành:** Reviews và tồn kho/giá theo SKU đã được người dùng giao bổ sung, triển khai và kiểm thử theo [ADR013](decisions/013-sku-review-hardening.md) và [review](sku-review-hardening-review.md); shadcn/ui vẫn DEFERRED. Quyết định không tạo reviews ở phase02 là lịch sử, không là kiến trúc hiện tại.
+- **Ngoài phạm vi hiện tại:** Seller/Shipper/Staff, marketplace nhiều người bán, payment production, refund tự động, coupon, guest checkout, tải media lên dịch vụ ngoài.
 
 Target seed: 180 Product (60 mỗi ngành), 40 User (1 Admin + 39 Customer), đúng 100 Order với 2–5 item; chọn trong mức yêu cầu, không biến 180 thành định mức giảng viên mới. Demo tạo thêm đơn làm count live tăng; định mức áp dụng bộ seed sạch.
 
