@@ -1,5 +1,5 @@
+from app.services.product_selection import snapshot_stock_groups
 """VNPAY attempts, authoritative IPN and once-only expiry with locked states."""
-from collections import Counter
 from datetime import datetime, timezone
 from bson import ObjectId
 from bson.int64 import Int64
@@ -117,11 +117,10 @@ class PaymentService:
             return order
         changed = self.orders.patch_payment(order, {'orderStatus': 'EXPIRED', 'paymentStatus': 'FAILED',
             'expiredAt': now, 'stockReleasedAt': now}, now, session)
-        quantities = Counter()
-        for item in order['items']:
-            quantities[item['productId']] += item['quantity']
+        quantities, sku_counts = snapshot_stock_groups(order['items'])
         for product_id in sorted(quantities):
-            if not self.products.restore_stock(product_id, quantities[product_id], now, session):
+            extra = {'sku_quantities': sku_counts[product_id]} if sku_counts.get(product_id) else {}
+            if not self.products.restore_stock(product_id, quantities[product_id], now, session, **extra):
                 current_app.logger.error('Stock restoration failed', extra={'event': 'payment.stock_restore_failed'})
                 raise ConflictError(code='STOCK_RESTORE_FAILED')
         self.attempts.invalidate_pending(order['_id'], now, session)

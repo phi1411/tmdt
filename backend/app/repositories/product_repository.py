@@ -44,16 +44,41 @@ class ProductRepository:
     def find_many(self, product_ids, session=None):
         return list(self.collection.find({'_id': {'$in': list(product_ids)}}, PRODUCT_PROJECTION, session=session))
 
-    def decrement_stock(self, product, quantity, now, session):
-        return self.collection.update_one(
-            {'_id': product['_id'], 'version': product['version'], 'status': 'ACTIVE',
-             'stock': {'$gte': quantity}, '$and': [{'version': {'$lt': 2147483647}}]},
-            {'$inc': {'stock': -quantity, 'version': 1}, '$set': {'updatedAt': now}}, session=session).matched_count
+    def decrement_stock(self, product, quantity, now, session, sku_quantities=None):
+        predicate = {'_id': product['_id'], 'version': product['version'], 'status': 'ACTIVE',
+                     'stock': {'$gte': quantity}, '$and': [{'version': {'$lt': 2147483647}}]}
+        fields = {'updatedAt': now}
+        if product.get('tierVariations'):
+            if not sku_quantities or sum(sku_quantities.values()) != quantity:
+                return False
+            variants = [dict(sku) for sku in product['skus']]
+            by_id = {sku['skuId']: sku for sku in variants}
+            for sku_id, count in sku_quantities.items():
+                if sku_id not in by_id or by_id[sku_id]['stock'] < count:
+                    return False
+                by_id[sku_id]['stock'] -= count
+                predicate['$and'].append({'skus': {'$elemMatch': {'skuId': sku_id, 'stock': {'$gte': count}}}})
+            fields['skus'] = variants
+        return self.collection.update_one(predicate,
+            {'$inc': {'stock': -quantity, 'version': 1}, '$set': fields}, session=session).matched_count
 
-    def restore_stock(self, product_id, quantity, now, session):
-        return self.collection.update_one(
-            {'_id': product_id, 'version': {'$lt': 2147483647}, 'stock': {'$lte': 2147483647 - quantity}},
-            {'$inc': {'stock': quantity, 'version': 1}, '$set': {'updatedAt': now}}, session=session).matched_count
+    def restore_stock(self, product_id, quantity, now, session, sku_quantities=None):
+        fields = {'updatedAt': now}
+        predicate = {'_id': product_id, 'version': {'$lt': 2147483647}, 'stock': {'$lte': 2147483647 - quantity}}
+        if sku_quantities:
+            product = self.find(product_id, session)
+            if not product or sum(sku_quantities.values()) != quantity:
+                return False
+            variants = [dict(sku) for sku in product.get('skus', [])]
+            by_id = {sku['skuId']: sku for sku in variants}
+            for sku_id, count in sku_quantities.items():
+                if sku_id not in by_id or by_id[sku_id]['stock'] > 2147483647 - count:
+                    return False
+                by_id[sku_id]['stock'] += count
+            predicate['version'] = product['version']
+            fields['skus'] = variants
+        return self.collection.update_one(predicate,
+            {'$inc': {'stock': quantity, 'version': 1}, '$set': fields}, session=session).matched_count
 
     def referenced(self, category_id, session):
         return self.collection.find_one({'categoryId': category_id}, {'_id': 1}, session=session) is not None
@@ -61,12 +86,10 @@ class ProductRepository:
     def insert(self, document, session):
         self.collection.insert_one(document, session=session)
 
-    def update_rating_summary(self, product_id, rating_summary, session=None):
-        return self.collection.update_one(
-            {'_id': product_id},
-            {'$set': {'ratingSummary': rating_summary}},
-            session=session
-        )
+    def update_rating_summary(self, product_id, rating_summary, session=None, expected_version=None, now=None):
+        query = {'_id': product_id, 'version': expected_version}
+        return self.collection.update_one(query,
+            {'$set': {'ratingSummary': rating_summary, 'updatedAt': now}, '$inc': {'version': 1}}, session=session)
 
     def patch(self, product_id, version, fields, now, session):
         return self.collection.find_one_and_update({'_id': product_id, 'version': version},

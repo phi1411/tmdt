@@ -3,6 +3,7 @@ import copy
 import hashlib
 import json
 from collections import Counter
+from app.services.product_selection import resolve_selection
 from bson.int64 import Int64
 from app.repositories.product_repository import ProductRepository
 from app.repositories.category_repository import CategoryRepository
@@ -18,28 +19,7 @@ def line_id(product_id, selection):
 
 
 def valid_selection(product, selection):
-    # Case 1: Product has tierVariations
-    tier_variations = product.get('tierVariations')
-    if tier_variations and len(tier_variations) > 0:
-        expected_keys = {t['name'] for t in tier_variations}
-        user_keys = {k for k in selection if k != 'skuId'}
-        if user_keys != expected_keys:
-            return False
-        for tier in tier_variations:
-            val = selection.get(tier['name'])
-            if val not in tier['options']:
-                return False
-        return True
-
-    # Case 2: Legacy fallback for FASHION
-    allowed = {}
-    if product['productType'] == 'FASHION':
-        for key, attribute in [('size', 'sizes'), ('color', 'colors')]:
-            choices = product['attributes'].get(attribute, [])
-            if choices:
-                allowed[key] = choices
-    user_keys = {k for k in selection if k != 'skuId'}
-    return set(user_keys) == set(allowed) and all(selection[key] in choices for key, choices in allowed.items())
+    return resolve_selection(product, selection)[0]
 
 
 def resolve_cart(cart, session=None):
@@ -62,17 +42,9 @@ def resolve_cart(cart, session=None):
         active_price = product['price'] if product else 0
         active_stock = product['stock'] if product else 0
 
-        if product and product.get('skus'):
-            sku_id = item['selectedAttributes'].get('skuId')
-            matched_sku = next((s for s in product['skus'] if s['skuId'] == sku_id), None)
-            if not matched_sku and product.get('tierVariations'):
-                matched_sku = next((s for s in product['skus'] if s.get('tierIndex') and all(
-                    product['tierVariations'][tier_idx]['options'][opt_idx] == item['selectedAttributes'].get(product['tierVariations'][tier_idx]['name'])
-                    for tier_idx, opt_idx in enumerate(s['tierIndex']) if tier_idx < len(product['tierVariations'])
-                )), None)
-            if matched_sku:
-                active_price = matched_sku['price']
-                active_stock = matched_sku['stock']
+        valid, matched_sku = resolve_selection(product, item['selectedAttributes']) if product else (False, None)
+        if matched_sku:
+            active_price, active_stock = matched_sku['price'], min(product['stock'], matched_sku['stock'])
 
         if product is None:
             reasons.append('PRODUCT_MISSING')
@@ -81,9 +53,10 @@ def resolve_cart(cart, session=None):
                 reasons.append('PRODUCT_UNAVAILABLE')
             if not category or category['status'] != 'ACTIVE' or category['productType'] != product['productType']:
                 reasons.append('CATEGORY_UNAVAILABLE')
-            if not valid_selection(product, item['selectedAttributes']):
+            if not valid:
                 reasons.append('SELECTION_CHANGED')
-            if quantities[item['productId']] > active_stock:
+            selected_quantity = sum(other['quantity'] for other in items if other['productId'] == item['productId'] and resolve_selection(product, other['selectedAttributes'])[1] == matched_sku) if matched_sku else quantities[item['productId']]
+            if selected_quantity > active_stock or quantities[item['productId']] > product['stock']:
                 reasons.append('STOCK_CONFLICT')
 
         total = int(active_price) * item['quantity'] if product else 0
@@ -109,21 +82,17 @@ def snapshot_items(cart, products, categories):
         product = products[line['productId']]
         category = categories[product['categoryId']]
         price = product['price']
-        if product.get('skus'):
-            sku_id = line['selectedAttributes'].get('skuId')
-            matched_sku = next((s for s in product['skus'] if s['skuId'] == sku_id), None)
-            if not matched_sku and product.get('tierVariations'):
-                matched_sku = next((s for s in product['skus'] if s.get('tierIndex') and all(
-                    product['tierVariations'][tier_idx]['options'][opt_idx] == line['selectedAttributes'].get(product['tierVariations'][tier_idx]['name'])
-                    for tier_idx, opt_idx in enumerate(s['tierIndex']) if tier_idx < len(product['tierVariations'])
-                )), None)
-            if matched_sku:
-                price = matched_sku['price']
+        valid, sku = resolve_selection(product, line['selectedAttributes'])
+        if not valid:
+            raise ValueError('Snapshot requires validated selections')
+        if sku:
+            price = sku['price']
+        selection = {**line['selectedAttributes'], **({'skuId': sku['skuId']} if sku else {})}
         result.append({'productId': product['_id'], 'sku': product['sku'], 'productName': product['name'],
                        'image': product['images'][0] if product['images'] else '',
                        'productType': product['productType'], 'categoryId': category['_id'],
                        'categoryName': category['name'], 'attributesSnapshot': copy.deepcopy(product['attributes']),
-                       'selectedAttributes': copy.deepcopy(line['selectedAttributes']),
+                       'selectedAttributes': copy.deepcopy(selection),
                        'priceAtPurchase': Int64(price), 'quantity': line['quantity'],
                        'lineTotal': Int64(int(price) * line['quantity'])})
     return result

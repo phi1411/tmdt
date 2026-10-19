@@ -25,14 +25,14 @@ def public_detail(slug):
 
 @products_blueprint.get('/products/<identifier>/reviews')
 def product_reviews(identifier):
-    from bson import ObjectId
-    if ObjectId.is_valid(identifier):
-        pid = ObjectId(identifier)
-    else:
-        product = ProductService().detail({'slug': identifier, 'status': 'ACTIVE'}, public=True)
-        pid = product['_id']
-    reviews, stats = ReviewService().get_product_reviews(pid)
-    return success({'reviews': reviews, 'stats': stats})
+    from app.schemas.pagination import Pagination, query_integer
+    from app.errors import ValidationError
+    values = single_query_values(request.args, {'page', 'pageSize', 'rating', 'hasComment'})
+    rating = query_integer(values['rating'], 'rating', 1, 5) if 'rating' in values else None
+    if values.get('hasComment', 'false') not in {'true', 'false'}:
+        raise ValidationError(details=[{'field': 'hasComment', 'reason': 'Giá trị phải là true/false'}])
+    reviews, stats, meta = ReviewService().get_product_reviews(identifier, Pagination.from_query(values), rating, values.get('hasComment') == 'true')
+    return success({'reviews': reviews, 'stats': stats}, meta=meta)
 
 
 @products_blueprint.post('/products/<identifier>/reviews')

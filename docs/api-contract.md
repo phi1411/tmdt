@@ -212,3 +212,17 @@ Frontend, Reviews/refund/resolve payment review và live Sandbox rehearsal chưa
 Production deployment retains the same `/api/v1` contract. `APP_ENV=production` uses an explicit Atlas SRV URI, expected `MONGODB_REPLICA_SET`, separate JWT secret and exact HTTPS frontend origin; it does not auto-load the local `.env`. React reads build-time `VITE_API_BASE_URL` (backend URL + `/api/v1`); local default remains `/api/v1`. See [deployment](features/deployment.md) and [ADR012](decisions/012-render-production-runtime.md). This configuration does not imply that a public Render deployment has passed verification.
 
 Máy hiện tại chạy `http://127.0.0.1:5001/api/v1/health`; API_PORT trong .env quyết định port, example mặc định5000. CORS mặc định FRONTEND_ORIGIN từ env (http://localhost:5173), exactallowlist, supportscredentials=false; Authorization/Content-Type/Idempotency-Key được phép. Payload tối đa1MiB configurable. [Cách chạy](backend-setup.md), [review/evidence](phase-04-review.md). Không cần đọc backend internals để hiểu status/body/params.
+
+
+## SKU và Reviews — hardening19/10/2026 (ADR013)
+
+Contract bổ sung thay proposal SKU/reviews cũ; giữ tất cả endpoints Auth/Catalog/Commerce/Payment/Admin đã triển khai. User hiện yêu cầu hoàn tất COD trước, VNPAY_ENABLED=false.
+
+Admin create/patch Product nhận optional tierVariations/skus; patch ma trận gửi cả hai arrays. Tối đa4tầng/100SKU; tierIndex đủ tầng và trong options, SKU ID/tổ hợp duy nhất. Giá SKU integer VND1..1e9, stock int>=0. Root price=minSKUprice, stock=sumSKUstock do server tính. Legacy arrays absent/empty dùng giá/kho chung. Không cho thay identity ma trận khi có PENDING/CONFIRMED/SHIPPING Order giữ kho:409SKU_IN_USE; thay giá/kho cùng identity vẫn version guarded. Product DTO thêm tierVariations/skus/ratingSummary.
+
+Cart selectedAttributes phải chọn đủ tiers; skuId optional để tương thích request cũ, nếu có phải khớp chính xác tổ hợp. Unknown/mismatch422; duplicate selections cộng quantity theo SKU; cùng Product các SKU có stock độc lập. Order snapshot selectedAttributes luôn có canonical skuId khi dùng matrix, priceAtPurchase đúng SKU. Checkout/cancel/expiry ghi root+SKU cùng transaction, once-only release, history không JOIN.
+
+GET /products/:slugOrId/reviews IMPLEMENTED: page/pageSize(default20,max100),rating?1..5,hasComment?true/false. 200 data{reviews,stats}, meta pagination; public Product/Category visibility404, malformed400/422. Public review không orderId/orderCode/userId/schemaVersion.
+POST /products/:slugOrId/reviews IMPLEMENTED: CUSTOMERACTIVE {orderId,rating1..5,reviewText?<=2000,images?<=5HTTPSURLs}. 201 owner review; 404ownership/visibility,409ORDER_NOT_COMPLETED/PRODUCT_NOT_IN_ORDER/ALREADY_REVIEWED,422validation. Một review/User/Order/Product COMPLETED+PAID. Summary/cache/version atomic cùng review, lỗi rollback. Chi tiết DTO/permissions tại features/reviews.md.
+
+Tổng route nghiệp vụ hiện có54method/path (52cũ+2reviews); không refresh/logout/Seller/Shipper/refund/voucher/chat endpoints.

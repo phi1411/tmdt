@@ -381,7 +381,7 @@ def test_review_success_atomic_rating_and_deduplication(client, parity_setup, da
     assert data['orderCode'] == order['orderCode']
     assert data['status'] == 'VISIBLE'
     assert 'userSnapshot' in data
-    assert data['userSnapshot']['displayName'] == 'Nguyễn Văn Parity'
+    assert '***' in data['userSnapshot']['displayName']
 
     # 2. Check Product ratingSummary atomic increment in MongoDB
     updated_prod = database.products.find_one({'_id': prod['_id']})
@@ -402,7 +402,7 @@ def test_review_success_atomic_rating_and_deduplication(client, parity_setup, da
     assert get_res.status_code == 200
     reviews_list = get_res.json['data']['reviews']
     assert len(reviews_list) == 1
-    assert reviews_list[0]['orderCode'] == order['orderCode']
+    assert not {'orderCode', 'orderId', 'userId'} & set(reviews_list[0])
     assert get_res.json['data']['stats']['totalReviews'] == 1
 
 

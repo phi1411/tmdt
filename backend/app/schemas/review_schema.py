@@ -26,11 +26,12 @@ CREATE_REVIEW_SCHEMA = object_schema({
 }, ['orderId', 'rating'])
 
 REVIEW_PUBLIC_FIELDS = (
-    '_id', 'productId', 'orderId', 'orderCode', 'userId',
+    '_id', 'productId',
     'userSnapshot', 'skuSpecSnapshot', 'rating', 'reviewText',
     'images', 'helpfulCount', 'sellerFeedback', 'status', 'createdAt', 'updatedAt'
 )
 
 
-def review_response(review):
-    return {key: review[key] for key in REVIEW_PUBLIC_FIELDS if key in review}
+def review_response(review, owner=False):
+    fields = REVIEW_PUBLIC_FIELDS + (('orderId', 'orderCode', 'userId') if owner else ())
+    return {key: review[key] for key in fields if key in review}

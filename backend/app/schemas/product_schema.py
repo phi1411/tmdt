@@ -7,10 +7,12 @@ from app.schemas.pagination import Pagination, query_integer
 from app.schemas.query_contract import PRODUCT_QUERY_FIELDS, PRODUCT_SORTS, DEFAULT_PRODUCT_SORT
 from app.schemas.validation import single_query_values, validate_payload
 from app.utils.ids import parse_object_id
+from app.schemas.product_variants import validate_variants
 
 PRODUCT_FIELDS = ('sku', 'name', 'slug', 'categoryId', 'productType', 'brand', 'description',
                   'price', 'stock', 'images', 'attributes', 'status')
-PROPERTIES, CANONICAL = properties('products', PRODUCT_FIELDS)
+VARIANT_FIELDS = ('tierVariations', 'skus')
+PROPERTIES, CANONICAL = properties('products', PRODUCT_FIELDS + VARIANT_FIELDS)
 CREATE_SCHEMA = body_schema(PROPERTIES, PRODUCT_FIELDS)
 PATCH_SCHEMA = body_schema({**{k: v for k, v in PROPERTIES.items() if k != 'sku'},
                             'expectedVersion': VERSION_SCHEMA}, ['expectedVersion'])
@@ -23,7 +25,9 @@ def validate_product(payload):
     if not normalize(payload['name']):
         raise ValidationError(details=[{'field': 'name', 'reason': 'Tên chuẩn hóa không được trống'}])
     parse_object_id(payload['categoryId'], 'categoryId')
-    for url in payload['images']:
+    image_urls = [('images', url) for url in payload['images']]
+    image_urls += [('skus.image', sku['image']) for sku in payload.get('skus', []) if sku.get('image')]
+    for field, url in image_urls:
         try:
             parts = urlsplit(url)
             valid = parts.hostname and not parts.username and not parts.password and not re.search(r'\s|[\\\x00-\x1f\x7f]', url)
@@ -32,8 +36,9 @@ def validate_product(payload):
         except ValueError:
             valid = False
         if not valid:
-            raise ValidationError(details=[{'field': 'images', 'reason': 'Ảnh phải là URL HTTPS hoặc HTTP loopback'}])
+            raise ValidationError(details=[{'field': field, 'reason': 'Ảnh phải là URL HTTPS hoặc HTTP loopback'}])
     validate_numbers(payload['attributes'])
+    validate_variants(payload)
 
 
 def validate_numbers(value):

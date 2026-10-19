@@ -1,10 +1,15 @@
 from datetime import datetime, timezone
+from urllib.parse import urlsplit
 from bson import ObjectId
-from app.errors import ConflictError, NotFoundError
+from pymongo.errors import DuplicateKeyError
+from app.errors import ConflictError, NotFoundError, ValidationError
 from app.repositories.review_repository import ReviewRepository
 from app.repositories.product_repository import ProductRepository
+from app.repositories.category_repository import CategoryRepository
 from app.repositories.order_repository import OrderRepository
 from app.schemas.review_schema import review_response
+from app.schemas.pagination import Pagination
+from app.services.catalog_transaction import catalog_transaction
 from app.utils.ids import parse_object_id
 
 
@@ -14,80 +19,65 @@ class ReviewService:
         self.products = ProductRepository()
         self.orders = OrderRepository()
 
-    def get_product_reviews(self, product_id, limit=20):
-        items = self.reviews.list_by_product(product_id, limit=limit)
-        product = self.products.find(product_id, None)
-        stats = product.get('ratingSummary') if product else None
-        return items, stats
+    def public_product(self, identifier, session=None):
+        query = {'_id': ObjectId(identifier)} if ObjectId.is_valid(identifier) else {'slug': identifier}
+        product = self.products.collection.find_one({**query, 'status': 'ACTIVE'}, session=session)
+        category = CategoryRepository().find({'_id': product['categoryId']}, session) if product else None
+        if not product or not category or category['status'] != 'ACTIVE' or category['productType'] != product['productType']:
+            raise NotFoundError(message='Không tìm thấy sản phẩm')
+        return product
+
+    def get_product_reviews(self, identifier, pagination=None, rating=None, has_comment=False):
+        product = self.public_product(str(identifier))
+        pagination = pagination or Pagination()
+        items, total = self.reviews.feed(product['_id'], pagination, rating, has_comment)
+        return [review_response(item) for item in items], self.reviews.rating_summary(product['_id']), pagination.metadata(total)
 
     def create_review(self, user, identifier, data):
-        if ObjectId.is_valid(identifier):
-            product = self.products.find(ObjectId(identifier), None)
-        else:
-            product = self.products.collection.find_one({'slug': identifier, 'status': 'ACTIVE'})
-        if not product:
-            raise NotFoundError(message='Không tìm thấy sản phẩm')
-
+        for url in data.get('images', []):
+            try:
+                parsed = urlsplit(url)
+                valid = parsed.hostname and not parsed.username and not parsed.password and not any(c.isspace() or ord(c) < 32 or c == '\\' for c in url)
+                valid = valid and (parsed.scheme == 'https' or (parsed.scheme == 'http' and parsed.hostname in {'localhost', '127.0.0.1'}))
+                parsed.port
+            except ValueError:
+                valid = False
+            if not valid:
+                raise ValidationError(details=[{'field': 'images', 'reason': 'Ảnh phải là URL HTTPS hợp lệ'}])
         order_id = parse_object_id(data['orderId'].lower(), 'orderId')
-        order = self.orders.find(user['_id'], order_id)
-        if not order:
-            raise NotFoundError(message='Không tìm thấy đơn hàng')
+        now, review_id = datetime.now(timezone.utc), ObjectId()
 
-        if order.get('orderStatus') != 'COMPLETED':
-            raise ConflictError(code='ORDER_NOT_COMPLETED', message='Chỉ có thể đánh giá đơn hàng đã hoàn tất')
+        def write(session):
+            product = self.public_product(identifier, session)
+            order = self.orders.find(user['_id'], order_id, session)
+            if not order:
+                raise NotFoundError(message='Không tìm thấy đơn hàng')
+            if order.get('orderStatus') != 'COMPLETED' or order.get('paymentStatus') != 'PAID':
+                raise ConflictError(code='ORDER_NOT_COMPLETED', message='Chỉ đánh giá đơn đã hoàn tất và thanh toán')
+            item = next((item for item in order['items'] if item['productId'] == product['_id']), None)
+            if not item:
+                raise ConflictError(code='PRODUCT_NOT_IN_ORDER')
+            if self.reviews.find_user_review(user['_id'], order_id, product['_id'], session):
+                raise ConflictError(code='ALREADY_REVIEWED')
+            if product['version'] >= 2147483647:
+                raise ConflictError(code='VERSION_LIMIT')
+            name = user.get('name') or order['customerSnapshot']['name']
+            document = {'_id': review_id, 'schemaVersion': 1, 'createdAt': now, 'updatedAt': now,
+                'productId': product['_id'], 'orderId': order_id, 'orderCode': order['orderCode'], 'userId': user['_id'],
+                'userSnapshot': {'displayName': name[:1] + '***' + name[-1:] if len(name) > 2 else 'Khách hàng'},
+                'rating': data['rating'], 'helpfulCount': 0, 'status': 'VISIBLE',
+                'reviewText': data.get('reviewText', '').strip(), 'images': data.get('images', [])}
+            if item.get('selectedAttributes'):
+                document['skuSpecSnapshot'] = item['selectedAttributes']
+            self.reviews.insert(document, session)
+            summary = self.reviews.rating_summary(product['_id'], session)
+            changed = self.products.update_rating_summary(product['_id'], summary, session,
+                expected_version=product['version'], now=now)
+            if not changed.matched_count:
+                raise ConflictError(code='PRODUCT_CHANGED')
+            return review_response(document, owner=True)
 
-        items = order.get('items', [])
-        matching_item = next((it for it in items if it.get('productId') == product['_id']), None)
-        if not matching_item:
-            raise ConflictError(code='PRODUCT_NOT_IN_ORDER', message='Sản phẩm không thuộc đơn hàng này')
-
-        existing = self.reviews.find_user_review(user['_id'], order['_id'], product['_id'])
-        if existing:
-            raise ConflictError(code='ALREADY_REVIEWED', message='Bạn đã đánh giá sản phẩm này cho đơn hàng này rồi')
-
-        now = datetime.now(timezone.utc)
-        display_name = (user.get('name') or order.get('customerSnapshot', {}).get('name') or 'Khách hàng')[:100]
-
-        review_doc = {
-            '_id': ObjectId(),
-            'schemaVersion': 1,
-            'createdAt': now,
-            'updatedAt': now,
-            'productId': product['_id'],
-            'orderId': order['_id'],
-            'userId': user['_id'],
-            'orderCode': order.get('orderCode', ''),
-            'userSnapshot': {
-                'displayName': display_name,
-            },
-            'rating': int(data['rating']),
-            'helpfulCount': 0,
-            'status': 'VISIBLE',
-        }
-        if matching_item.get('selectedAttributes'):
-            review_doc['skuSpecSnapshot'] = matching_item['selectedAttributes']
-        if 'reviewText' in data and data['reviewText'] is not None:
-            review_doc['reviewText'] = str(data['reviewText'])
-        if 'images' in data and data['images'] is not None:
-            review_doc['images'] = list(data['images'])
-
-        self.reviews.insert(review_doc)
-
-        # Update product ratingSummary
-        rating_summary = product.get('ratingSummary') or {}
-        old_total = rating_summary.get('totalReviews', 0)
-        old_breakdown = rating_summary.get('starsBreakdown') or {}
-        new_breakdown = {str(i): int(old_breakdown.get(str(i), 0)) for i in range(1, 6)}
-        new_breakdown[str(data['rating'])] += 1
-        new_total = old_total + 1
-        total_stars = sum(int(k) * v for k, v in new_breakdown.items())
-        new_average = round(float(total_stars) / new_total, 1)
-
-        updated_summary = {
-            'averageRating': float(new_average),
-            'totalReviews': int(new_total),
-            'starsBreakdown': new_breakdown,
-        }
-        self.products.update_rating_summary(product['_id'], updated_summary)
-
-        return review_response(review_doc)
+        try:
+            return catalog_transaction(write)
+        except DuplicateKeyError:
+            raise ConflictError(code='ALREADY_REVIEWED') from None

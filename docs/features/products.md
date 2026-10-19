@@ -51,6 +51,10 @@ Allowlist public projection; plain-text description; không HTML raw. Image là 
 
 Cards VND/ảnh/tồn; detail render attributes theo nhóm và unknown approved key label; Fashion yêu cầu selections; login trước add nếu Guest. Loading/empty/404/error rõ, không pretend available khi API lỗi.
 
+**Cập nhật UI 19/10/2026:** Size/màu/cấu hình là lựa chọn khi mua. Nút mua ở card và trang chi tiết mở `ProductPurchaseModal`; không hiển thị dãy nút phân loại thường trực trên trang hoặc bộ lọc danh mục. Modal dùng `tierVariations`/`skus` đã có; Fashion legacy dùng `attributes.sizes/colors` và sản phẩm thường vẫn mua được. Không tự chọn phân loại. Khách chọn đủ options và quantity rồi xác nhận; thiếu lựa chọn/SKU hết hàng thì disable xác nhận. SKU ID gửi cùng đúng tổ hợp được khớp; giá chỉ hiển thị theo dữ liệu API. Add thành công mới đóng, Mua ngay thành công chuyển tới Cart; lỗi giữ modal. Modal đóng được bằng nút/overlay/Escape, giữ focus, bố cục vừa màn hình mobile. Không đổi API/DB hoặc nghiệm thu các lỗi SKU backend đã ghi trong review17/10.
+
+Dependency UI: `components/common/ProductPurchaseModal.tsx`, `utils/productSelection.ts`, `ProductCard.tsx`, `pages/ProductDetailPage.tsx`, CartContext hiện có.
+
 ## Acceptance Criteria
 
 Ba nhóm cùng collection browse/detail đúng fields; status/category filter đúng; price/stock current từ backend; CRUD dùng contract Admin; Order cũ độc lập.
@@ -60,3 +64,8 @@ Ba nhóm cùng collection browse/detail đúng fields; status/category filter đ
 - [x] Ba schema shapes/type mismatch, bounded unknown attributes, public projection.
 - [x] ACTIVE/inactive category/stock0/unknown404, integer price BSON long/API numeric.
 - [ ] Attributes render/selections và không HTML injection.
+
+
+## Cập nhật19/10/2026 — ADR013
+
+SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. VNPAY disabled theo lựa chọn hiện hành.

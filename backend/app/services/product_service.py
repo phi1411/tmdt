@@ -5,7 +5,7 @@ from app.errors import ConflictError, NotFoundError, ValidationError
 from app.repositories.category_repository import CategoryRepository
 from app.repositories.product_repository import ProductRepository
 from app.schemas.catalog_schema import normalize
-from app.schemas.product_schema import PRODUCT_FIELDS, validate_product
+from app.schemas.product_schema import PRODUCT_FIELDS, VARIANT_FIELDS, validate_product
 from app.services.catalog_transaction import catalog_transaction
 from app.utils.ids import parse_object_id
 
@@ -30,6 +30,7 @@ class ProductService:
 
     def create(self, payload):
         validate_product(payload)
+        payload = self.variant_money(payload)
         now = datetime.now(timezone.utc)
         product_id = ObjectId()
         category_id = parse_object_id(payload['categoryId'], 'categoryId')
@@ -61,11 +62,19 @@ class ProductService:
                 raise ConflictError(code='INVALID_TRANSITION')
             if changes.get('productType', current['productType']) != current['productType'] and 'attributes' not in changes:
                 raise ValidationError(details=[{'field': 'attributes', 'reason': 'Đổi loại cần gửi thuộc tính tương hợp'}])
-            fields = {**{k: current[k] for k in PRODUCT_FIELDS}, **changes}
+            fields = {**{k: current[k] for k in PRODUCT_FIELDS}, **{k: current[k] for k in VARIANT_FIELDS if k in current}, **changes}
             if 'price' not in changes:
                 fields['price'] = int(fields['price'])
             fields['categoryId'] = str(fields['categoryId'])
+            if 'skus' not in changes and 'skus' in fields:
+                fields['skus'] = [{**sku, 'price': int(sku['price'])} for sku in fields['skus']]
             validate_product(fields)
+            before = self.variant_identity(current)
+            after = self.variant_identity(fields)
+            if before != after and self.products.collection.database.orders.find_one({
+                'items.productId': product_id, 'stockReleasedAt': {'$exists': False},
+                'orderStatus': {'$in': ['PENDING', 'CONFIRMED', 'SHIPPING']}}, {'_id': 1}, session=session):
+                raise ConflictError(code='SKU_IN_USE', message='Phân loại đang được giữ trong đơn chưa hoàn tất')
             category_id = parse_object_id(fields['categoryId'], 'categoryId')
             category = self.categories.find({'_id': category_id}, session)
             if category is None or category['productType'] != fields['productType']:
@@ -75,6 +84,13 @@ class ProductService:
             if moved or published:
                 self.guard_category(category_id, fields['productType'], now, session)
             stored = dict(changes)
+            if fields.get('tierVariations'):
+                stored.update(price=Int64(fields['price']), stock=fields['stock'])
+            if any(key in changes for key in VARIANT_FIELDS):
+                if not all(key in changes for key in VARIANT_FIELDS):
+                    raise ValidationError(details=[{'field': 'skus', 'reason': 'Cần gửi đồng thời phân loại và SKU'}])
+                stored.update({key: fields[key] for key in VARIANT_FIELDS})
+            stored = self.variant_money(stored)
             if 'categoryId' in stored:
                 stored['categoryId'] = category_id
             if 'price' in stored:
@@ -88,6 +104,18 @@ class ProductService:
                 raise ConflictError(code='PRODUCT_CHANGED')
             return result
         return self.with_category(catalog_transaction(write))
+
+    @staticmethod
+    def variant_money(fields):
+        if 'skus' in fields:
+            fields = {**fields, 'skus': [{**sku, 'price': Int64(sku['price'])} for sku in fields['skus']]}
+        return fields
+
+    @staticmethod
+    def variant_identity(product):
+        tiers = product.get('tierVariations') or []
+        return sorted((sku['skuId'], tuple((tier['name'], tier['options'][index])
+            for tier, index in zip(tiers, sku.get('tierIndex', [])))) for sku in product.get('skus', []))
 
     def with_category(self, product):
         category = self.categories.find({'_id': product['categoryId']})

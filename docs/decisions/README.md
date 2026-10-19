@@ -18,3 +18,5 @@ Cấu trúc phase01 đã được người dùng chấp nhận; PHASE02 khóa de
 | [012](012-render-production-runtime.md) | Separate production Atlas configuration and Waitress runtime; Render Free blueprint | Prepared; public deployment pending repository/hosting |
 
 Không thêm role/CSDL ngoài requirement; reviews DEFERRED không MVP blocker. Future breaking change cần ADR superseding/migration/contract/tests. Exact validators/index/pipelines ở database/, meaning ở database-schema, behaviors ở business-rules, không copy exact spec nhiều nơi.
+
+- [ADR013 — SKU, reviews và dependency hardening](013-sku-review-hardening.md).

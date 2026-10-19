@@ -1,63 +1,63 @@
-# Product Reviews — tùy chọn
+# Đánh giá sản phẩm đã mua
 
 ## Goal
 
-**DEFERRED theo PHASE02**. Review xác minh khách đã mua không thuộc MVP bắt buộc; không tạo collection/API/UI và không block backend. Phần bên dưới giữ proposal cho tương lai, không contract active.
+IMPLEMENTED19/10/2026: khách đánh giá sản phẩm từ đơn COMPLETED+PAID; công khai VISIBLE và tổng sao đúng. Thay proposal DEFERRED cũ bằng contract tại ADR013. Không có edit/delete/moderation/helpful vote/reply API trong phạm vi này.
 
 ## Actors
 
-Guest/Customer đọc VISIBLE; Customer đã mua tạo/sửa/xóa review của mình; Admin moderation ẩn/hiện nếu feature bật.
+Guest/Customer/Admin đọc sản phẩm public; chỉ CUSTOMER ACTIVE gửi đánh giá từ đơn của mình.
 
 ## Functional Requirements
 
-List rating/comment paginated, owner create/update/delete, Admin visibility. Không upload ảnh review/reply/helpful vote trong baseline đề xuất.
+GET reviews phân trang, lọc rating1..5/hasComment; POST một đánh giá mỗi User/Order/Product. Modal trong Order Detail; Product Detail hiển thị summary/counts/empty/loading/error thật.
 
 ## Business Rules
 
-Order owner có productId và COMPLETED+PAID mới review; một review/User/Product (unique). orderId reference kiểm tra eligibility, không làm đơn join giá lịch sử. Rating1..5, comment plain text. Admin không sửa nội dung thành lời khách.
+Đơn đúng owner, COMPLETED+PAID, có productId trong items; Product và Category ACTIVE. Unique(userId,orderId,productId). Insert review và cập nhật Product.ratingSummary/version cùng transaction snapshot/majority; aggregate chỉ VISIBLE. Retry transient giới hạn theo shared utility; duplicate409 ALREADY_REVIEWED. Không sửa Order snapshot/totals. Tên public được che; không coi template seed là mua thật.
 
 ## Permission
 
-Public read visible, Customer owner writes eligible, Admin moderation. Trước feature enable không expose các endpoints dự kiến.
+POST Guest401/Admin403, blocked/tokenVersion invalid401; order khác owner404. GET không lộ product/category inactive, orderId/orderCode/userId/email/địa chỉ/password.
 
 ## API
 
-**Đề xuất nếu bật; chưa khóa contract**:
+Prefix /api/v1; success/error envelope chuẩn.
 
-| Method / path | Request | Response data | Error |
+| Method/path | Request | Response | Errors |
 | --- | --- | --- | --- |
-| GET /products/:id/reviews | page/pageSize | 200 visible reviews | 404 Product;422 |
-| POST /products/:id/reviews | {orderId,rating,comment} | 201 review | 403 ineligible;409 duplicate;422 |
-| PATCH /reviews/:id | {rating?,comment?} | 200 review | 404 owner;422 |
-| DELETE /reviews/:id | Bearer | 204 | 404 owner |
-| PATCH /admin/reviews/:id | {status:VISIBLE/HIDDEN} | 200 review | 401/403/404/422 |
+| GET /products/:slugOrId/reviews | page/pageSize (1/20,max100), rating?1..5, hasComment?true/false | 200 data{reviews,stats}, meta{page,pageSize,total,totalPages,requestId} | 404visibility,400/422query |
+| POST /products/:slugOrId/reviews | Bearer; {orderId,rating,reviewText?,images?} | 201 owner review | 401/403/404,409ORDER_NOT_COMPLETED/PRODUCT_NOT_IN_ORDER/ALREADY_REVIEWED,422,503 |
+
+Public review: id,productId,userSnapshot.displayName,skuSpecSnapshot?,rating,reviewText?,images?,helpfulCount,status,createdAt,updatedAt. POST owner response có thêm orderId/orderCode/userId; GET tuyệt đối không trả các trường này. stats{averageRating,totalReviews,starsBreakdown:{1..5}} toàn Product, meta.total theo filter. Không có fake rating/review count.
 
 ## Data
 
-Read/write reviews, read orders ownership/items/state; read products public status. Reference all linked aggregates, không embed unbounded reviews vào Product. Future paths review API/service/repository/schema + `features/reviews/`; dependencies Orders eligibility/Auth/Product, không Payment provider internals.
+reviews collection + uq_reviews_user_order_product và ix_reviews_product_feed. Product.ratingSummary là cache cập nhật atomic với insert; endpoint stats tính từ VISIBLE reviews. Paths api/products.py; services/review_service.py; repositories/review_repository.py; schemas/review_schema.py; FE components/reviews/ProductReviews.tsx,ReviewModal.tsx. Dependencies Auth, public Product/Category visibility, Order ownership/state/items, shared transaction.
 
 ## Validation
 
-rating integer1..5 no bool; comment đề xuất1..2000; object IDs valid; eligibility and unique index. UI không gửi reviewerName/avatar authoritative; projection public chỉ tên hiển thị đã duyệt, no email/phone/address.
+Rating JSONinteger1..5 (không bool/float); reviewText<=2000, images<=5 URLs HTTPS (HTTP loopback dev), URL<=2048; ObjectId và body allowlist. Không nhận owner/name/status/counter từ client. Text hiển thị plain escaped.
 
 ## Edge Cases
 
-Multiple Orders cùng Product vẫn one review; duplicate concurrent submission; Order cancelled/not completed, Product archived, hidden review update không tự unhide. Policy xóa rồi tạo lại và Product archived cần chốt khi enable.
+Hai review khác đơn đồng thời không mất count; duplicate cùng đơn409; summary write fail rollback cả review; Product version limit; archived Product404; old invalid seeded reviews PENDING_AUDIT qua migration có backup, không xóa.
 
 ## Security
 
-Ownership/verified purchase server; plain text XSS escaping; rate limits bounded comments. Không lộ Order detail/orderCode/user PII trong list review public.
+Owner/liveJWT guards; masked public displayName; no order/user identifiers in public DTO. HTTPS imageURL-only, không backend fetch; hidden reviews bị loại; unknown/repeated query reject. Không thêm quyền user/admin mới.
 
 ## UI Behavior
 
-Nếu disabled không có review tab/star rating giả. Nếu enabled, empty state, verified badge server-proven, own form và Admin hide; aggregate rating nếu cần phải bổ sung contract/data design, không tải toàn review để tính client.
+Customer COMPLETED order mở modal chọn sao/nhận xét/URLảnh. Lỗi giữ modal; duplicate có thông báo. ProductReviews dùng pagination/filter backend; empty0 và lỗi tải tách biệt; không giả lập like/helpful/chat hay seller metrics.
 
 ## Acceptance Criteria
 
-Chỉ triển khai nếu người dùng sau này yêu cầu bật Review và chốt proposal contract; eligibility/ownership/visibility/unique enforced, UI/API/tests chạy. Disabled được ghi rõ optional, không claim đã có review.
+Verified eligibility/visibility/privacy; transaction exact under concurrency/failure; pagination đúng count/filter; UI roundtrip và full backend/build pass. Không claim VNPAY Live.
 
 ## Testing Checklist
 
-- [ ] Eligibility completed/owner/product, duplicate/concurrent review.
-- [ ] Public PII projection/hidden review, owner vs admin actions.
-- [ ] Rating/comment/input injection and UI disabled/empty states.
+- Eligibility/ownership/role, bounds và injection.
+- Duplicate, concurrent distinct orders, transaction rollback và summary exact.
+- Public projection/archived Category/page/filter/empty.
+- UI completed COD→review→feed, server pagination và lỗi tải.

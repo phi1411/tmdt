@@ -1,3 +1,5 @@
+from collections import Counter
+from app.services.product_selection import resolve_selection
 """Signed quotes and atomic COD/VNPAY checkout; provider URL only after commit."""
 import hashlib
 import re
@@ -145,7 +147,14 @@ class CheckoutService:
                 if self.categories.guard_active(category_id, product_type, now, session) is None:
                     raise ConflictError(code='CATEGORY_UNAVAILABLE')
             for product_id in sorted(quantities):
-                if not self.products.decrement_stock(products[product_id], quantities[product_id], now, session):
+                product = products[product_id]
+                sku_counts = Counter()
+                if product.get('tierVariations'):
+                    for line in cart['items']:
+                        if line['productId'] == product_id:
+                            sku_counts[resolve_selection(product, line['selectedAttributes'])[1]['skuId']] += line['quantity']
+                extra = {'sku_quantities': sku_counts} if sku_counts else {}
+                if not self.products.decrement_stock(product, quantities[product_id], now, session, **extra):
                     raise ConflictError(code='STOCK_CONFLICT')
             order = {'_id': order_id, 'schemaVersion': 1, 'createdAt': now, 'updatedAt': now,
                      'orderCode': 'ORD-' + str(order_id).upper(), 'userId': identity['_id'],

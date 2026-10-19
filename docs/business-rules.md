@@ -71,3 +71,8 @@ Callback success cạnh tranh với cancel/expiry phải serial bằng transacti
 - Không có dữ liệu → metric 0, Top 5=[], series ngày/tháng hiển thị bucket 0. Backend được điền bucket trống sau aggregation, không tải Orders để tính.
 
 Aggregation có unwind phải cộng tiền từng item. Không sum order.total sau unwind (sẽ nhân số dòng) hoặc đếm số Order bằng số item. Refund/discount allocation nếu bổ sung phải đổi metric contract + ADR trước implementation.
+
+
+## Cập nhật19/10/2026 — ADR013
+
+SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. VNPAY disabled theo lựa chọn hiện hành.

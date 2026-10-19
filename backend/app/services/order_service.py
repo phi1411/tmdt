@@ -1,5 +1,5 @@
+from app.services.product_selection import snapshot_stock_groups
 """Snapshot-only history and transactionally guarded once-only cancellation."""
-from collections import Counter
 from datetime import datetime, timezone
 from flask import current_app, g
 from app.errors import ConflictError, NotFoundError
@@ -52,11 +52,10 @@ class OrderService:
             changed = self.orders.cancel(order, payment_status, now, session)
             if changed is None:
                 raise ConflictError(code='ORDER_CHANGED')
-            quantities = Counter()
-            for item in order['items']:
-                quantities[item['productId']] += item['quantity']
+            quantities, sku_counts = snapshot_stock_groups(order['items'])
             for product_id in sorted(quantities):
-                if not self.products.restore_stock(product_id, quantities[product_id], now, session):
+                extra = {'sku_quantities': sku_counts[product_id]} if sku_counts.get(product_id) else {}
+                if not self.products.restore_stock(product_id, quantities[product_id], now, session, **extra):
                     current_app.logger.error('Stock restoration failed', extra={'event': 'commerce.stock_restore_failed'})
                     raise ConflictError(code='STOCK_RESTORE_FAILED', message='Không thể hoàn tồn kho; cần kiểm tra dữ liệu')
             self.attempts.invalidate_pending(order_id, now, session)

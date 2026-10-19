@@ -311,7 +311,8 @@
           "required": [
             "skuId",
             "price",
-            "stock"
+            "stock",
+            "tierIndex"
           ],
           "properties": {
             "skuId": {
@@ -324,7 +325,8 @@
               "minItems": 0,
               "maxItems": 4,
               "items": {
-                "bsonType": "int"
+                "bsonType": "int",
+                "minimum": 0
               }
             },
             "price": {
@@ -358,7 +360,37 @@
             "minimum": 0
           },
           "starsBreakdown": {
-            "bsonType": "object"
+            "bsonType": "object",
+            "additionalProperties": false,
+            "properties": {
+              "1": {
+                "bsonType": "int",
+                "minimum": 0
+              },
+              "2": {
+                "bsonType": "int",
+                "minimum": 0
+              },
+              "3": {
+                "bsonType": "int",
+                "minimum": 0
+              },
+              "4": {
+                "bsonType": "int",
+                "minimum": 0
+              },
+              "5": {
+                "bsonType": "int",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
           }
         }
       }

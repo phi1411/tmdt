@@ -74,3 +74,8 @@ Create/read/update/archive Web/API cả3 ngành, Category integration đúng; sn
 - [x] Patch price chỉ price, stale expectedVersion không overwrite stock; concurrent patch một success/một409.
 - [x] Archive/repeat archive/reactivate/type move, dev/history fingerprint unchanged.
 - [ ] Checkout stock race, Cart impact, dynamic forms/error states: thuộc phases sau.
+
+
+## Cập nhật19/10/2026 — ADR013
+
+SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. VNPAY disabled theo lựa chọn hiện hành.
