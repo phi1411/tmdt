@@ -61,3 +61,6 @@ Verified eligibility/visibility/privacy; transaction exact under concurrency/fai
 - Duplicate, concurrent distinct orders, transaction rollback và summary exact.
 - Public projection/archived Category/page/filter/empty.
 - UI completed COD→review→feed, server pagination và lỗi tải.
+
+
+Follow-up19/10: identifier ưu tiên existing ObjectId, nếu không có ID đó thì tìm slug kể cả slug24hex. Không fallback từ ID đã tồn tại nhưng inactive sang Product khác. FE truyền Product.id cho reviews để tránh ambiguity với slug trùng ID của Product khác. Regression read/create/reviewCount và collision precedence có test trên real rs0.

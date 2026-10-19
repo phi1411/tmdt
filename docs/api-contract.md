@@ -226,3 +226,5 @@ GET /products/:slugOrId/reviews IMPLEMENTED: page/pageSize(default20,max100),rat
 POST /products/:slugOrId/reviews IMPLEMENTED: CUSTOMERACTIVE {orderId,rating1..5,reviewText?<=2000,images?<=5HTTPSURLs}. 201 owner review; 404ownership/visibility,409ORDER_NOT_COMPLETED/PRODUCT_NOT_IN_ORDER/ALREADY_REVIEWED,422validation. Một review/User/Order/Product COMPLETED+PAID. Summary/cache/version atomic cùng review, lỗi rollback. Chi tiết DTO/permissions tại features/reviews.md.
 
 Tổng route nghiệp vụ hiện có54method/path (52cũ+2reviews); không refresh/logout/Seller/Shipper/refund/voucher/chat endpoints.
+
+VNPAY operations ADR014: production entrypoint supervises expiry process; fixed worker createdAt cutover không thay đổi REST contract. Return UI status lấy Order hiện hành, network verification failure không được coi là bank decline. Reviews slugOrId ưu tiên existing ID rồi mới fallback slug; hex slug hợp lệ không bị404 vì nhầm ID.

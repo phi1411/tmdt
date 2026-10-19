@@ -321,7 +321,7 @@ export const ProductDetailPage: React.FC = () => {
         </div>
       </div>
 
-      <ProductReviews key={product.id} slug={product.slug} />
+      <ProductReviews key={product.id} slug={product.id} />
       {purchaseIntent && <ProductPurchaseModal key={product.id} product={product} intent={purchaseIntent} onClose={() => setPurchaseIntent(null)} />}
     </div>
   );

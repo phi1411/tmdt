@@ -32,6 +32,24 @@ def selection(data, index=0):
     return {**{tier['name']: tier['options'][option] for tier, option in zip(product['tierVariations'], sku['tierIndex'])}, 'skuId': sku['skuId']}
 
 
+def test_hexadecimal_product_slug_can_read_and_submit_reviews(client, commerce, database):
+    slug=uuid4().hex[:24]
+    database.products.update_one({'_id':commerce['product']['_id']},{'$set':{'slug':slug}})
+    assert client.get('/api/v1/products/'+slug+'/reviews').status_code==200
+    response=client.post('/api/v1/products/'+slug+'/reviews',headers=commerce['headers_customer'],json={
+        'orderId':str(commerce['order']['_id']),'rating':5})
+    assert response.status_code==201
+    assert client.get('/api/v1/products/'+slug+'/reviews').json['data']['stats']['totalReviews']==1
+
+
+def test_review_identifier_uses_existing_id_before_colliding_slug(client, commerce, database):
+    pid=commerce['product_with_skus']['_id']
+    database.products.update_one({'_id':commerce['product']['_id']},{'$set':{'slug':str(pid)}})
+    assert client.post('/api/v1/products/'+str(commerce['product']['_id'])+'/reviews',headers=commerce['headers_customer'],json={
+        'orderId':str(commerce['order']['_id']),'rating':5}).status_code==201
+    assert client.get('/api/v1/products/'+str(pid)+'/reviews').json['data']['stats']['totalReviews']==0
+
+
 def add(client, data, index=0, quantity=1, headers=None):
     headers = headers or data['headers_customer']
     cart = client.get('/api/v1/cart', headers=headers).json['data']

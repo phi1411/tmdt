@@ -20,10 +20,11 @@ class ReviewService:
         self.orders = OrderRepository()
 
     def public_product(self, identifier, session=None):
-        query = {'_id': ObjectId(identifier)} if ObjectId.is_valid(identifier) else {'slug': identifier}
-        product = self.products.collection.find_one({**query, 'status': 'ACTIVE'}, session=session)
+        product = self.products.collection.find_one({'_id': ObjectId(identifier)}, session=session) if ObjectId.is_valid(identifier) else None
+        if product is None:
+            product = self.products.collection.find_one({'slug': identifier}, session=session)
         category = CategoryRepository().find({'_id': product['categoryId']}, session) if product else None
-        if not product or not category or category['status'] != 'ACTIVE' or category['productType'] != product['productType']:
+        if not product or product['status'] != 'ACTIVE' or not category or category['status'] != 'ACTIVE' or category['productType'] != product['productType']:
             raise NotFoundError(message='Không tìm thấy sản phẩm')
         return product
 
