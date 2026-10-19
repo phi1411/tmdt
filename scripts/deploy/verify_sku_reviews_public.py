@@ -170,7 +170,7 @@ def main():
             'afterCounts':{name:db[name].count_documents({}) for name in COLLECTIONS},'invalidDocuments':invalid,
             'removedOwnedDocuments':removed,'validators':7,'declaredIndexes':len(selected_indexes()),
             'canonicalValidatorsMatch':validators_match,'canonicalIndexesMatch':indexes_match,
-            'vnpayLive':'DISABLED_NOT_TESTED','resetReseed':False}
+            'vnpayLive':'NOT_EXERCISED_BY_THIS_COD_REVIEW_CHECK','resetReseed':False}
         args.report.parent.mkdir(parents=True,exist_ok=True)
         args.report.write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf-8')
         client.close()

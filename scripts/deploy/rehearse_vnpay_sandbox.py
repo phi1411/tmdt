@@ -80,10 +80,13 @@ def prepare(db,admin_file):
 def additional_order(db,journal):
     token=http('POST','/auth/login',{'email':journal['email'],'password':journal['password']})['accessToken']
     profile=http('GET','/users/me',token=token)
-    address=profile['defaultAddressId']
+    address=profile['defaultAddressId'] or profile['addresses'][0]['id']
     cart=http('GET','/cart',token=token)
-    cart=http('POST','/cart/items',{'cartVersion':cart['version'],'productId':journal['productId'],'quantity':1,
-        'selectedAttributes':{'Size':'M','skuId':journal['sku']+'-M'}},token)
+    if not cart['items']:
+        cart=http('POST','/cart/items',{'cartVersion':cart['version'],'productId':journal['productId'],'quantity':1,
+            'selectedAttributes':{'Size':'M','skuId':journal['sku']+'-M'}},token)
+    else:
+        assert len(cart['items'])==1 and cart['items'][0]['productId']==journal['productId'] and cart['items'][0]['quantity']==1
     quote=http('GET','/checkout/quote?'+urlencode({'addressId':address,'paymentMethod':'VNPAY'}),token=token)
     key=journal['run']+'-'+secrets.token_hex(4)
     journal.setdefault('additionalKeys',[]).append(key);save(journal)
