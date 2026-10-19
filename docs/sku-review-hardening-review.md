@@ -39,10 +39,18 @@ Tái lập: tạo private JSON chứa `uri` và `database` trong `.local`, chạ
 
 ## Deployment và giới hạn
 
-Rollout Render đang được thực hiện sau checkpoint local/Atlas. Chỉ claim public PASS khi có `backend/evidence/sku-review-public-smoke.json` và đối chiếu commit Live của cả hai dịch vụ. Tool `scripts/deploy/verify_sku_reviews_public.py` dùng fixtures ngẫu nhiên có journal/backup, test HTTPS COD/SKU/reviews/security và exact transaction cleanup; không chạy seed lên Atlas.
+**PUBLIC SKU/REVIEW/COD VERIFICATION PASS.** Cả hai dịch vụ Render đã Deploy succeeded|Live với application commit`928b6c8201ae5480396bc44c98b1170998bff11f`. Backenddeploy`dep-dbas334s728c739fccs0`; frontenddeploy URL ghi tại browser receipt. **62HTTPS checks PASS**, COD/SKU reserve+cancel-once/snapshot120k→live140k/Adminlifecycle/revenue+120k no shipping/reviews eligibility+duplicate+privacy/guest+CustomerACL+ownership+invalidJWT+blocked/tampering/CORS. Exact cleanup2Users1Cart2Orders1Product1Category1Review0Attempts, full fingerprint479699... khớp, toàn bộ7validators/16indexes match canonical và0orphans. Receipts: `backend/evidence/sku-review-public-smoke.json`, `sku-review-public-browser.json`, `sku-review-final-integrity.json`. Website: https://novamart-web.onrender.com ; API health: https://novamart-api.onrender.com/api/v1/health .
+
+Public browser kiểm tra7nhóm scoped: mobile390home/catalog/filter/modallegacy chọn size/color; tablet768detail/AdminSKUeditor4rows; desktop1280Dashboard3sectors/1area/6bars và modal; không tràn ngang, captured console error/warn logs rỗng. Admin form chỉ draft, không submit public browser; real SKU mutation đã chứng minh qua Web owned local +62publicHTTP. Không claim đã rerun toàn bộ public UI suite.
+
+Tool `scripts/deploy/verify_sku_reviews_public.py` dùng fixtures ngẫu nhiên có journal/backup, test HTTPS COD/SKU/reviews/security và exact transaction cleanup; không chạy seed lên Atlas.
 
 - **VNPAY disabled, Live Sandbox chưa kiểm thử** theo lựa chọn người dùng; không có thanh toán tiền thật.
 - Build còn warning bundle JS928kB; audit0không đồng nghĩa bảo đảm security toàn sản phẩm.
-- Tool viewport set390 nhưng DOM vẫn1280 kể cả tab mới/reload, vì vậy mobile/tablet sau dependency upgrade **MANUAL PENDING**, không gán PASS từ kích thước desktop. Reset override đã thực hiện.
+- Viewport thử local ban đầu áp dụng vào tab đang selected khác nên DOM mục tiêu vẫn1280; lần follow-up public áp dụng đúng active tab đã đo thật390/768/1280 và kiểm tra layout/modal. Đóng pending responsive trong phạm vi các trang đã liệt kê, không suy rộng thành mọi trang. Đã reset override và logout Admin.
 - Compass GUI, rehearsal nhóm3người có bấm giờ và offline OS là manual gates của checkpoint07D; chưa có evidence mới để đóng.
 - Backend Render vẫn dịch vụ$7/tháng hiện có; không tạo thêm dịch vụ trả phí/expiry worker. Phải suspend/delete khi hết tháng demo nếu không muốn tiếp tục tính phí.
+
+## Trạng thái bàn giao
+
+Đã push3commit implementation (ee66a77/08a3a25/928b6c8) và manual deploy cả backend/static trên dịch vụ hiện hữu. Commit tiếp theo chỉ đóng evidence/docs, không thay runtime. Local Mongo/API/preview kiểm thử riêng đã dừng sau kiểm tra7testcollections0; isolated dev fingerprint47d0aef... không đổi, original checkout/storage không đụng. Original uncommitted helper/demo files không đưa vào các commit này. Còn người dùng chuẩn bị merchant khi muốn VNPAY, và tự rehearsal Compass/nhóm3người có bấm giờ/offlineOS.

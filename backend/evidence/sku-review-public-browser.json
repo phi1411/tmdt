@@ -1,0 +1,47 @@
+{
+  "applicationCommit": "928b6c8201ae5480396bc44c98b1170998bff11f",
+  "backendDeploy": "dep-dbas334s728c739fccs0",
+  "frontendDeployUrl": "https://dashboard.render.com/static/srv-db7jdkavcj2c73dsht8g/deploys/dep-dbas39vbtjjs738d1ci0?r=2026-10-19%4007%3A06%3A19%7E2026-10-19%4007%3A08%3A47",
+  "checks": [
+    {
+      "check": "Public mobile homepage/catalog/filter at390; no horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "Public mobile purchase modal requires explicit legacy size/color, contained at390",
+      "pass": true
+    },
+    {
+      "check": "Public tablet product detail at768; scroll760/no broken loaded images",
+      "pass": true
+    },
+    {
+      "check": "Public Admin login/Dashboard/revenue/top5/charts desktop1280",
+      "pass": true
+    },
+    {
+      "check": "Public Admin SKU editor generates S/M/L/XL; tablet768 contained, no database submit",
+      "pass": true
+    },
+    {
+      "check": "Public desktop1280 purchase modal/empty reviews; no horizontal overflow",
+      "pass": true
+    },
+    {
+      "check": "Captured public browser console error/warn logs empty for scoped pages",
+      "pass": true
+    }
+  ],
+  "charts": {
+    "sectors": 3,
+    "areas": 1,
+    "bars": 6
+  },
+  "viewportScope": [
+    390,
+    768,
+    1280
+  ],
+  "publicFullUiSuiteRerun": false,
+  "mutations": "Public browser read-only except normal login/logout and unsaved form draft"
+}

@@ -1,6 +1,6 @@
 # Sàn thương mại điện tử đa ngành — đồ án NoSQL
 
-**Cập nhật19/10/2026:** Backend SKU/reviews hardening701tests PASS, frontend strict/build PASS, npm audit0findings. ADR013 khóa selection, tồn kho theoSKU, verified reviews và migration additive. Deployment follow-up đang kiểm chứng; không gán kết quả này cho bản public cũ. [ADR013](docs/decisions/013-sku-review-hardening.md).
+**Cập nhật19/10/2026:** Backend SKU/reviews hardening701tests PASS, frontend strict/build PASS, npm audit0findings. ADR013 khóa selection, tồn kho theoSKU, verified reviews và migration additive. Đã deploy cả backend/frontend Render,62publicHTTPS checks PASS, cleanup/fingerprint Atlas giữ nguyên và0orphans. Browser scoped390/768/1280 PASS; VNPAY disabled theo người dùng. [Review hiện tại](docs/sku-review-hardening-review.md), [ADR013](docs/decisions/013-sku-review-hardening.md).
 
 **Checkpoint14/10/2026 (lịch sử):** NovaMart đã có React frontend, Flask backend, Auth/User, Catalog, Cart/Checkout/COD, Orders, Admin Dashboard và Payment implementation. Fullbackend674tests PASS; rehearsal với ảnh mới12nhóm PASS. [Website public](https://novamart-web.onrender.com) và [API health](https://novamart-api.onrender.com/api/v1/health) đã chạy trên Render/Atlas;50publicHTTP checks và exact cleanup PASS. Backend$7/tháng,Static Site/Atlas free. [Review deployment và giới hạn](docs/render-public-deployment-review.md) có dependency audit cần follow-up; VNPAY Live Sandbox chưa PASS và đang disabled.
 
@@ -97,3 +97,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 27 | Nguyen Ngoc Phi | Hoàn thiện transaction tồn kho SKU, xác thực phân loại và reviews atomic, cập nhật contract | `fix(commerce): enforce SKU stock and verified review invariants` |
 | 28 | Nguyen Ngoc Phi | Bảng chọn khi mua, quản trị SKU, reviews phân trang và nâng dependency để đóng audit | `fix(frontend): complete purchase selection and SKU administration` |
 | 29 | Nguyen Ngoc Phi | Migration Atlas additive giữ nguyên corpus, seed an toàn, design checker và evidence kiểm thử | `fix(tooling): migrate SKU review schema with exact integrity evidence` |
+| 30 | Nguyen Ngoc Phi | Ghi nhận cả hai Render Live, 62 public checks, responsive và exact cleanup Atlas | `docs(deploy): record public SKU review verification and clean baseline` |
