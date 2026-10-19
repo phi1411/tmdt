@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { paymentApi } from '../api/paymentApi';
 import { orderApi } from '../api/orderApi';
@@ -7,6 +7,7 @@ import { OrderDetail } from '../types/order';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
 import { formatVND } from '../utils/formatters';
+import { paymentViewStatus } from '../utils/paymentStatus';
 import { Button } from '../components/ui/Button';
 import {
   CheckCircle,
@@ -30,42 +31,57 @@ export const PaymentReturnPage: React.FC = () => {
   const [order, setOrder] = useState<OrderDetail | null>(null);
   const [polling, setPolling] = useState<boolean>(false);
   const [retrying, setRetrying] = useState<boolean>(false);
+  const [verificationError, setVerificationError] = useState(false);
+  const verificationGeneration = useRef(0);
 
   const verifyPayment = useCallback(async () => {
+    const generation = ++verificationGeneration.current;
     setLoading(true);
+    setVerificationError(false);
+    setReturnResult(null);
+    setOrder(null);
     try {
       const res = await paymentApi.verifyReturn(location.search);
+      if (generation !== verificationGeneration.current) return;
       setReturnResult(res);
 
       // If orderId is available and user is authenticated, fetch live order state
       if (res.orderId && isAuthenticated) {
         try {
           const ord = await orderApi.getById(res.orderId);
+          if (generation !== verificationGeneration.current) return;
           setOrder(ord);
         } catch {
           // Soft fail for order fetch
         }
       }
     } catch (err: any) {
+      if (generation !== verificationGeneration.current) return;
+      setVerificationError(true);
       toastError(err?.message || 'Không thể xác thực kết quả thanh toán từ máy chủ.');
     } finally {
-      setLoading(false);
+      if (generation === verificationGeneration.current) setLoading(false);
     }
   }, [location.search, isAuthenticated, toastError]);
 
   useEffect(() => {
     verifyPayment();
+    return () => { verificationGeneration.current += 1; };
   }, [verifyPayment]);
 
   // Poll order state when pending
   const handlePollOrder = async () => {
     if (!returnResult?.orderId) return;
+    const generation = verificationGeneration.current;
     setPolling(true);
     try {
       const updatedOrder = await orderApi.getById(returnResult.orderId);
+      if (generation !== verificationGeneration.current) return;
       setOrder(updatedOrder);
 
-      if (updatedOrder.paymentStatus === 'PAID') {
+      if (updatedOrder.paymentReviewRequired) {
+        toastWarning('Giao dịch cần quản trị viên đối soát thêm.');
+      } else if (updatedOrder.paymentStatus === 'PAID') {
         toastSuccess('Đơn hàng đã được xác nhận thanh toán thành công!');
       } else {
         toastWarning(`Trạng thái hiện tại: ${updatedOrder.paymentStatus} / ${updatedOrder.orderStatus}`);
@@ -108,8 +124,19 @@ export const PaymentReturnPage: React.FC = () => {
     );
   }
 
-  const resultStatus = returnResult?.result || 'FAILED';
-  const isConfirmed = returnResult?.confirmed || order?.paymentStatus === 'PAID';
+  if (verificationError) {
+    return (
+      <div role="alert" className="max-w-xl mx-auto my-16 p-8 bg-white rounded-2xl border border-amber-200 text-center space-y-4">
+        <h1 className="text-xl font-bold">Chưa xác minh được giao dịch</h1>
+        <p>Không thể kết nối để kiểm tra kết quả. Bạn có thể thử lại hoặc xem trạng thái trong đơn hàng.</p>
+        <Button onClick={verifyPayment}>Thử lại xác minh</Button>
+        <Link to="/orders" className="block text-brand-700">Xem đơn hàng của tôi</Link>
+      </div>
+    );
+  }
+
+  const { status: resultStatus, needsReview } = paymentViewStatus(returnResult, order);
+  const isConfirmed = resultStatus === 'SUCCESS';
 
   return (
     <div className="max-w-2xl mx-auto my-12 px-4 space-y-6">
@@ -150,7 +177,7 @@ export const PaymentReturnPage: React.FC = () => {
             {resultStatus === 'SUCCESS' || isConfirmed
               ? 'Đơn hàng của bạn đã được ghi nhận thanh toán hoàn tất qua cổng VNPAY Sandbox. Chúng tôi sẽ sớm tiến hành đóng gói và giao hàng.'
               : resultStatus === 'PENDING'
-              ? 'Giao dịch đang chờ thông báo xác nhận chính thức (IPN) từ VNPAY và ngân hàng. Dữ liệu sẽ tự động đồng bộ trong giây lát.'
+              ? 'Giao dịch đang chờ xác nhận từ VNPAY và ngân hàng. Bấm Kiểm tra lại trạng thái để lấy kết quả mới nhất.'
               : resultStatus === 'INVALID_SIGNATURE' || resultStatus === 'INVALID_RESPONSE'
               ? 'Chữ ký số hoặc định dạng phản hồi từ cổng thanh toán không khớp với dữ liệu bảo mật được ký duyệt.'
               : 'Giao dịch qua cổng VNPAY đã bị hủy hoặc không thành công từ phía ngân hàng phát hành thẻ.'}
@@ -158,7 +185,7 @@ export const PaymentReturnPage: React.FC = () => {
         </div>
 
         {/* Review Required Warning */}
-        {returnResult?.paymentReviewRequired && (
+        {needsReview && (
           <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-2.5 text-left">
             <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
             <div>
