@@ -98,3 +98,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 28 | Nguyen Ngoc Phi | Bảng chọn khi mua, quản trị SKU, reviews phân trang và nâng dependency để đóng audit | `fix(frontend): complete purchase selection and SKU administration` |
 | 29 | Nguyen Ngoc Phi | Migration Atlas additive giữ nguyên corpus, seed an toàn, design checker và evidence kiểm thử | `fix(tooling): migrate SKU review schema with exact integrity evidence` |
 | 30 | Nguyen Ngoc Phi | Ghi nhận cả hai Render Live, 62 public checks, responsive và exact cleanup Atlas | `docs(deploy): record public SKU review verification and clean baseline` |
+| 31 | Nguyen Ngoc Phi | Giám sát API/expiry và mốc vận hành Sandbox giữ nguyên seed | `fix(payment): supervise expiry and preserve historical demo fixtures` |

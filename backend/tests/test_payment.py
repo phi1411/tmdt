@@ -108,7 +108,28 @@ def test_canonical_encoding_known_hmac_vector():
     expected = 'vnp_Amount=10000000&vnp_OrderInfo=Thanh+toan+A%2BB+%C4%90%E1%BB%93+test&vnp_ReturnUrl=https%3A%2F%2Fexample.test%2Fpayment%2Freturn%3Fa%3D1%26b%3Dx+y&vnp_TxnRef=ABC123'
     assert canonical_parameters(values) == expected
     assert sign_parameters(values, 'deterministic-vector-key') == '3217ed433c233e5f0bf611f8e12a1e632f404f5dacba7e1af33066e7ad2c6dae1effc69e8589a846206dfe64313cd5fefe3ae7242e19221b5b720615782a61bb'
+
     assert sign_parameters({**values, 'vnp_SecureHash': 'ignored', 'vnp_SecureHashType': 'ignored'}, 'deterministic-vector-key') == sign_parameters(values, 'deterministic-vector-key')
+
+
+def test_expiry_cutover_preserves_historical_fixture_and_releases_new_hold_once(app, payment, database):
+    p=payment
+    now=datetime.now(timezone.utc)
+    cutoff=now-timedelta(hours=1)
+    p['age'](cutoff-timedelta(minutes=5))
+    recent=p['checkout']()
+    created,deadline=now-timedelta(minutes=20),now-timedelta(minutes=5)
+    database.orders.update_one({'_id':recent['orderId']},{'$set':{'createdAt':created,'paymentExpiresAt':deadline}})
+    database.payment_attempts.update_many({'orderId':recent['orderId']},{'$set':{
+        'createdAt':created,'expiresAt':deadline,'paymentRequest.createdAt':created,'paymentRequest.expiresAt':deadline}})
+    with app.app_context():
+        first=PaymentService().expire_due(created_after=cutoff)
+        second=PaymentService().expire_due(created_after=cutoff)
+    assert first=={'scanned':1,'expired':1,'failed':0} and second['scanned']==0
+    assert order(database,p)['orderStatus']=='PENDING'
+    assert stored_attempt(database,p)['status']=='PENDING'
+    assert database.orders.find_one({'_id':recent['orderId']})['orderStatus']=='EXPIRED'
+    assert database.products.find_one({'_id':p['product']['_id']})['stock']==9
 
 
 def test_initial_checkout_atomic_metadata_url_and_replay(payment, database):

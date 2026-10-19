@@ -20,3 +20,6 @@ Cấu trúc phase01 đã được người dùng chấp nhận; PHASE02 khóa de
 Không thêm role/CSDL ngoài requirement; reviews DEFERRED không MVP blocker. Future breaking change cần ADR superseding/migration/contract/tests. Exact validators/index/pipelines ở database/, meaning ở database-schema, behaviors ở business-rules, không copy exact spec nhiều nơi.
 
 - [ADR013 — SKU, reviews và dependency hardening](013-sku-review-hardening.md).
+# VNPAY operations follow-up
+
+- [ADR014 — VNPAY Sandbox operations](014-vnpay-sandbox-operations.md): supervised expiry, fixed demo cutover và Payment Return UI correctness.

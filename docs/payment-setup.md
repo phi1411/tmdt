@@ -50,3 +50,8 @@ Set-Location ..
 ```
 
 Test writes chỉ owned ecommerce_test rs0; không reset/reseed/drop dev. Runtime real localhost HTTP dùng fixture credentials giả rõ ràng, không gửi signed fixture URL tới provider. Dev fingerprint trước/sau gồm documents/options/validators/indexes, cleanup exact fixture IDs. Live rehearsal chỉ có thể ghi PASS sau khi dùng merchant thật, mở gateway/redirect, thanh toán Sandbox và nhận IPN server thật; offline signed callback không phải evidence live.
+
+
+## VNPAY operations19/10/2026 — ADR014
+
+Merchant Sandbox đã cung cấp; IPN đăng ký trên SIT tại backend public `/api/v1/payments/vnpay/ipn`, Return tới SPA `/payment/return`. Runtime `backend/serve.py` supervises API/expiry ở hai process riêng trên dịch vụ hiện hữu, bật tự động khi VNPAY enabled. Giữ `PAYMENT_EXPIRY_WORKER_ENABLED=true` kể cả khi tắt creation để giải phóng holds đang có. Fixed `PAYMENT_EXPIRY_CREATED_AFTER` UTC loại fixture lịch sử khỏi auto-scan; không thay mốc sau restart. Không TTL/reset/reseed. Khi một child chết supervisor dừng child còn lại và exit nonzero; shutdown bounded. Source `backend/service_supervisor.py`, `scripts/payment/expire_pending.py`; ADR014 khóa cutover/verification. Return UI lấy trạng thái Order mới đúng id, cảnh báo review sau poll, lỗi mạng hiện chưa xác minh và có retry. Chỉ evidence provider redirect/bank/IPN thực mới đóng live gate; cấu hình đủ hoặc signed fixture không thay thế live PASS.

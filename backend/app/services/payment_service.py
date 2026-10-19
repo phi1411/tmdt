@@ -138,10 +138,10 @@ class PaymentService:
             return self.expire_in_session(order, now, session)
         return catalog_transaction(write)
 
-    def expire_due(self, limit=100):
+    def expire_due(self, limit=100, created_after=None):
         now = datetime.now(timezone.utc)
         result = {'scanned': 0, 'expired': 0, 'failed': 0}
-        for order_id in self.orders.due_ids(now, limit):
+        for order_id in self.orders.due_ids(now, limit, created_after):
             result['scanned'] += 1
             try:
                 changed = self.expire(order_id, now=now)

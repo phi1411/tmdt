@@ -21,9 +21,12 @@ class OrderRepository:
     def find_payment(self, order_id, session=None):
         return self.collection.find_one({'_id': order_id}, session=session)
 
-    def due_ids(self, now, limit=100):
-        return [o['_id'] for o in self.collection.find({'paymentMethod': 'VNPAY', 'orderStatus': 'PENDING',
-            'paymentStatus': {'$in': ['PENDING', 'FAILED']}, 'paymentExpiresAt': {'$lte': now}}, {'_id': 1})
+    def due_ids(self, now, limit=100, created_after=None):
+        query = {'paymentMethod': 'VNPAY', 'orderStatus': 'PENDING',
+            'paymentStatus': {'$in': ['PENDING', 'FAILED']}, 'paymentExpiresAt': {'$lte': now}}
+        if created_after is not None:
+            query['createdAt'] = {'$gte': created_after}
+        return [o['_id'] for o in self.collection.find(query, {'_id': 1})
             .sort([('paymentExpiresAt', 1), ('_id', 1)]).limit(limit)]
 
     def patch_payment(self, order, fields, now, session):
