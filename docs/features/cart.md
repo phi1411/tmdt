@@ -52,6 +52,8 @@ Owner enforced in query; input operators reject, no trust frontend totals; bound
 
 Quantity controls/loading per line, conflicts refresh Cart, unavailable issue và delete; show giá hiện tại và ghi giá kiểm tra lại ở Checkout. Checkout button disabled empty/issues, server vẫn validate độc lập.
 
+UI19/10/2026: Product card/detail mở bảng chọn phân loại trước add. Confirm gửi productId/quantity/selectedAttributes qua CartContext hiện hữu; không gọi mutation trước khi khách xác nhận đầy đủ. Không đóng/chuyển Cart nếu API add thất bại; backend tiếp tục quyết định giá/tồn/validation. Mua ngay chuyển Cart sau add thành công, không tự đặt đơn hoặc thanh toán.
+
 ## Acceptance Criteria
 
 Add/update/delete/clear persist cùng owner; current pricing; stock/selection/version enforced; multi-selection không vượt pool stock; lazy-create race không duplicate Cart.

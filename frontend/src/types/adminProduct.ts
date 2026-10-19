@@ -1,4 +1,4 @@
-import { ProductType, CategorySummary } from './product';
+import { ProductType, CategorySummary, TierVariation, SkuItem } from './product';
 
 export type ProductStatus = 'ACTIVE' | 'INACTIVE' | 'ARCHIVED';
 
@@ -15,6 +15,8 @@ export interface AdminProduct {
   price: number;
   stock: number;
   images: string[];
+  tierVariations?: TierVariation[];
+  skus?: SkuItem[];
   attributes: Record<string, any>;
   status: ProductStatus;
   version: number;
@@ -33,6 +35,8 @@ export interface AdminProductCreate {
   price: number;
   stock: number;
   images: string[];
+  tierVariations?: TierVariation[];
+  skus?: SkuItem[];
   attributes: Record<string, any>;
   status: ProductStatus;
 }
@@ -47,6 +51,8 @@ export interface AdminProductPatch {
   price?: number;
   stock?: number;
   images?: string[];
+  tierVariations?: TierVariation[];
+  skus?: SkuItem[];
   attributes?: Record<string, any>;
   status?: ProductStatus;
   expectedVersion: number;

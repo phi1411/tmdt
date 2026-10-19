@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-white text-sm">Chính Sách Đổi Trả</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Đổi trả miễn phí trong 15 ngày</p>
+                <p className="text-xs text-slate-400 mt-0.5">Xem điều kiện hỗ trợ đổi trả</p>
               </div>
             </div>
 
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-white text-sm">Hỗ Trợ Khách Hàng</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Tư vấn tận tâm 24/7</p>
+                <p className="text-xs text-slate-400 mt-0.5">Thông tin hỗ trợ và chính sách</p>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              NovaMart — Sàn thương mại điện tử hàng đầu cung cấp sản phẩm chính hãng, trải nghiệm mua sắm tiện lợi và giao hàng nhanh chóng trên toàn quốc.
+              NovaMart — Sàn thương mại điện tử đa ngành, trải nghiệm mua sắm tiện lợi và giao hàng nhanh chóng trên toàn quốc.
             </p>
           </div>
 
@@ -114,8 +114,8 @@ export const Footer: React.FC = () => {
           <div>
             <h5 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">Chăm Sóc Khách Hàng</h5>
             <ul className="text-xs text-slate-400 space-y-2">
-              <li className="text-slate-300 font-medium">Hotline: 1900 1234 (8:00 - 21:00)</li>
-              <li className="text-slate-300 font-medium">Email: support@novamart.vn</li>
+              <li className="text-slate-300 font-medium">Cần hỗ trợ? Liên hệ nhóm quản trị.</li>
+              <li className="text-slate-300 font-medium">Thông tin đơn hàng nằm trong tài khoản của bạn.</li>
               <li>
                 <Link to="/policy/shipping" className="hover:text-white transition-colors">
                   Chính sách giao hàng & đồng kiểm

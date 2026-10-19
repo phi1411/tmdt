@@ -51,6 +51,8 @@ Server allowlist/escape tokens, no operator injection, bounded queries; no expla
 
 Debounce search, URL filter state, reset page khi đổi filter, discard stale network responses. Supported attributes theo nhóm; loading/empty/error tách rõ. Frontend chỉ hiển thị server result/pagination.
 
+UI19/10/2026: Bộ lọc danh mục chỉ dùng tiêu chí tìm kiếm chung; không đưa size/màu/RAM/dung tích lựa chọn khi mua vào sidebar hoặc active chips. Các query lựa chọn cũ được bỏ khỏi URL UI, giữ search/category/type/brand/price/sort. API filter cũ giữ nguyên để không đổi contract; modal mua sản phẩm sở hữu lựa chọn phân loại.
+
 ## Acceptance Criteria
 
 Name có/không dấu tìm đúng theo ADR008, filters/sort stable đúng server và public statusguard; compound price-filter có explain evidence ở phaseperformance sau. Không Atlas-only dependency hoặc frontend tải toàn catalogue để lọc.

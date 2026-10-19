@@ -369,6 +369,7 @@ export const AdminOrderDetailPage: React.FC = () => {
                         <span>•</span>
                         <span className="text-brand-600">
                           {Object.entries(item.selectedAttributes)
+                            .filter(([k]) => k !== 'skuId')
                             .map(([k, v]) => `${k}: ${v}`)
                             .join(', ')}
                         </span>

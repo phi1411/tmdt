@@ -56,8 +56,14 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
     const trimmed = imageUrlInput.trim();
     if (!trimmed) return;
 
-    if (!/^https?:\/\/.+/i.test(trimmed)) {
-      setErrorMessage('Đường dẫn ảnh phải bắt đầu bằng http:// hoặc https://');
+    let validUrl = false;
+    try {
+      const parsed = new URL(trimmed);
+      validUrl = !parsed.username && !parsed.password && !/[\s\\\x00-\x1f\x7f]/.test(trimmed) &&
+        (parsed.protocol === 'https:' || (parsed.protocol === 'http:' && ['localhost', '127.0.0.1'].includes(parsed.hostname)));
+    } catch { /* Invalid URL is shown in the form. */ }
+    if (!validUrl) {
+      setErrorMessage('Ảnh phải là URL HTTPS; HTTP chỉ dùng cho localhost.');
       return;
     }
 
@@ -119,7 +125,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
   };
 
   const selectedAttrs = item.selectedAttributes
-    ? Object.entries(item.selectedAttributes).map(([k, v]) => `${k === 'size' ? 'Size' : k === 'color' ? 'Màu' : k}: ${String(v)}`).join(' • ')
+    ? Object.entries(item.selectedAttributes).filter(([k]) => k !== 'skuId').map(([k, v]) => `${k === 'size' ? 'Size' : k === 'color' ? 'Màu' : k}: ${String(v)}`).join(' • ')
     : '';
 
   return (

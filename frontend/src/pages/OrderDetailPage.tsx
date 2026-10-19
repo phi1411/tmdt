@@ -247,7 +247,7 @@ export const OrderDetailPage: React.FC = () => {
                     {/* Snapshot Selected Attributes */}
                     {item.selectedAttributes && Object.keys(item.selectedAttributes).length > 0 && (
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {Object.entries(item.selectedAttributes).map(([k, v]) => (
+                        {Object.entries(item.selectedAttributes).filter(([k]) => k !== 'skuId').map(([k, v]) => (
                           <span key={k} className="px-2 py-0.5 rounded bg-slate-100 text-[11px] font-medium text-slate-700">
                             {k === 'size' ? 'Size' : k === 'color' ? 'Màu' : k}: {String(v)}
                           </span>

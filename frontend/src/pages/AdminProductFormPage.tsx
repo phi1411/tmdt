@@ -4,7 +4,8 @@ import { adminProductsApi } from '../api/adminProductsApi';
 import { adminCategoriesApi } from '../api/adminCategoriesApi';
 import { ProductStatus } from '../types/adminProduct';
 import { AdminCategory } from '../types/adminCategory';
-import { ProductType } from '../types/product';
+import { ProductType, TierVariation, SkuItem } from '../types/product';
+import { ProductVariantsEditor } from '../components/admin/ProductVariantsEditor';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Skeleton } from '../components/ui/Skeleton';
@@ -27,6 +28,14 @@ export const AdminProductFormPage: React.FC = () => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [currentVersion, setCurrentVersion] = useState<number>(1);
   const [originalAttributes, setOriginalAttributes] = useState<Record<string, any>>({});
+
+  const [tiers, setTiers] = useState<TierVariation[]>([]);
+  const [skus, setSkus] = useState<SkuItem[]>([]);
+  const [pendingVariants, setPendingVariants] = useState(false);
+  const changeVariants = (nextTiers: TierVariation[], nextSkus: SkuItem[]) => {
+    setTiers(nextTiers); setSkus(nextSkus);
+    if (nextSkus.length) { setPrice(Math.min(...nextSkus.map(x=>x.price))); setStock(nextSkus.reduce((sum,x)=>sum+x.stock,0)); }
+  };
 
   // Common Form States
   const [sku, setSku] = useState<string>('');
@@ -70,6 +79,8 @@ export const AdminProductFormPage: React.FC = () => {
         if (isEdit && id) {
           const prod = await adminProductsApi.getById(id);
           setCurrentVersion(prod.version);
+          setTiers(prod.tierVariations || []);
+          setSkus(prod.skus || []);
           setSku(prod.sku);
           setName(prod.name);
           setSlug(prod.slug);
@@ -130,6 +141,7 @@ export const AdminProductFormPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (pendingVariants) { toastWarning('Hãy cập nhật bảng phân loại trước khi lưu.'); return; }
 
     if (!name.trim() || !slug.trim() || !categoryId) {
       toastWarning('Vui lòng điền đầy đủ các thông tin bắt buộc (*)');
@@ -193,6 +205,7 @@ export const AdminProductFormPage: React.FC = () => {
           stock: Math.max(0, Math.floor(Number(stock))),
           images,
           attributes,
+          tierVariations: tiers, skus,
           status,
           expectedVersion: currentVersion,
         });
@@ -212,6 +225,7 @@ export const AdminProductFormPage: React.FC = () => {
           stock: Math.max(0, Math.floor(Number(stock))),
           images,
           attributes,
+          tierVariations: tiers, skus,
           status,
         });
 
@@ -220,7 +234,7 @@ export const AdminProductFormPage: React.FC = () => {
       }
     } catch (err: any) {
       if (err?.code === 'CONFLICT' || err?.status === 409) {
-        toastWarning('Mã SKU hoặc Slug đã tồn tại, hoặc phiên bản dữ liệu đã thay đổi.');
+        toastWarning(err?.message || 'Dữ liệu đã thay đổi. Vui lòng kiểm tra và thử lại.');
       } else {
         toastError(err?.message || 'Không thể lưu sản phẩm.');
       }
@@ -360,6 +374,7 @@ export const AdminProductFormPage: React.FC = () => {
               type="number"
               required
               min={0}
+              disabled={tiers.length > 0}
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
               helperText="Số nguyên VND lưu trữ dưới dạng BSON Int64."
@@ -370,6 +385,7 @@ export const AdminProductFormPage: React.FC = () => {
               type="number"
               required
               min={0}
+              disabled={tiers.length > 0}
               value={stock}
               onChange={(e) => setStock(Number(e.target.value))}
               helperText="Kiểm soát trừ kho đồng thời bằng Conditional Update & OCC."
@@ -405,6 +421,8 @@ export const AdminProductFormPage: React.FC = () => {
             />
           </div>
         </div>
+
+        <ProductVariantsEditor tiers={tiers} skus={skus} basePrice={price} onChange={changeVariants} onPendingChange={setPendingVariants} />
 
         {/* Section 2: Polymorphic Attributes Form */}
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-xs space-y-6">

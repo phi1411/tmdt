@@ -95,3 +95,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 26 | Sweet Bakery (hoang) | Xây dựng bộ test case toàn diện kiểm thử 5 phase nâng cấp chuẩn Shopee và tinh chỉnh cấu hình proxy phát triển | `test(parity): add comprehensive test suite for shopee parity features and dev proxy` |
 
 | 27 | Nguyen Ngoc Phi | Hoàn thiện transaction tồn kho SKU, xác thực phân loại và reviews atomic, cập nhật contract | `fix(commerce): enforce SKU stock and verified review invariants` |
+| 28 | Nguyen Ngoc Phi | Bảng chọn khi mua, quản trị SKU, reviews phân trang và nâng dependency để đóng audit | `fix(frontend): complete purchase selection and SKU administration` |

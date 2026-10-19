@@ -59,11 +59,11 @@ export const catalogApi = {
     return res.data;
   },
 
-  getProductReviews: async (slugOrId: string): Promise<{ reviews: ProductReview[]; stats?: RatingSummary }> => {
+  getProductReviews: async (slugOrId: string, params?: { page?: number; pageSize?: number; rating?: number; hasComment?: boolean }): Promise<{ reviews: ProductReview[]; stats?: RatingSummary; meta: ResponseMeta }> => {
     const res = await request<{ reviews: ProductReview[]; stats?: RatingSummary }>(`/products/${encodeURIComponent(slugOrId)}/reviews`, {
-      method: 'GET',
+      method: 'GET', params: params ? { ...params, hasComment: params.hasComment ? 'true' : undefined } : undefined,
     });
-    return res.data;
+    return { ...res.data, meta: res.meta };
   },
 
   createReview: async (

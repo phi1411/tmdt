@@ -37,12 +37,18 @@ export const ProductsPage: React.FC = () => {
   const brand = searchParams.get('brand') || '';
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');
-  const size = searchParams.get('size') || '';
-  const color = searchParams.get('color') || '';
-  const ram = searchParams.get('ram') || '';
-  const capacity = searchParams.get('capacity') || '';
   const sort = (searchParams.get('sort') as ProductSortOption) || 'latest';
   const page = parseInt(searchParams.get('page') || '1', 10);
+
+  // Legacy variant query parameters are purchase choices, not catalog filters.
+  useEffect(() => {
+    const keys = ['size', 'color', 'ram', 'capacity'];
+    if (keys.some((key) => searchParams.has(key))) {
+      const next = new URLSearchParams(searchParams);
+      keys.forEach((key) => next.delete(key));
+      setSearchParams(next, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   // Load categories list for filter sidebar
   useEffect(() => {
@@ -74,10 +80,6 @@ export const ProductsPage: React.FC = () => {
     if (brand) filterPayload.brand = brand;
     if (minPrice) filterPayload.minPrice = parseInt(minPrice, 10);
     if (maxPrice) filterPayload.maxPrice = parseInt(maxPrice, 10);
-    if (size) filterPayload.size = size;
-    if (color) filterPayload.color = color;
-    if (ram) filterPayload.ram = ram;
-    if (capacity) filterPayload.capacity = capacity;
 
     try {
       const res = await catalogApi.getProducts(filterPayload);
@@ -89,7 +91,7 @@ export const ProductsPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [q, categoryId, productType, brand, minPrice, maxPrice, size, color, ram, capacity, sort, page]);
+  }, [q, categoryId, productType, brand, minPrice, maxPrice, sort, page]);
 
   useEffect(() => {
     fetchProducts();
@@ -140,10 +142,6 @@ export const ProductsPage: React.FC = () => {
     brand,
     minPrice,
     maxPrice,
-    size,
-    color,
-    ram,
-    capacity,
   ].filter(Boolean).length;
 
   return (
@@ -221,38 +219,6 @@ export const ProductsPage: React.FC = () => {
                   updateParam('maxPrice', null);
                 }}
               >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </span>
-          )}
-          {size && (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-brand-700 border border-brand-200 text-xs">
-              Size: {size}
-              <button onClick={() => updateParam('size', null)}>
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </span>
-          )}
-          {color && (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-brand-700 border border-brand-200 text-xs">
-              Màu: {color}
-              <button onClick={() => updateParam('color', null)}>
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </span>
-          )}
-          {ram && (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-brand-700 border border-brand-200 text-xs">
-              RAM: {ram}
-              <button onClick={() => updateParam('ram', null)}>
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </span>
-          )}
-          {capacity && (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-brand-700 border border-brand-200 text-xs">
-              Dung tích: {capacity}
-              <button onClick={() => updateParam('capacity', null)}>
                 <X className="w-3.5 h-3.5" />
               </button>
             </span>

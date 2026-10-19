@@ -35,7 +35,7 @@ export const Navbar: React.FC = () => {
       {/* Top Promotional Bar */}
       <div className="bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white text-xs py-1.5 px-4 text-center tracking-wide font-medium flex items-center justify-center gap-1.5">
         <Sparkles className="w-3.5 h-3.5 text-amber-200 fill-amber-200 animate-pulse flex-shrink-0" />
-        <span>Chào mừng đến với NovaMart — Miễn phí vận chuyển toàn quốc cho đơn hàng từ 0đ!</span>
+        <span>Chào mừng đến với NovaMart — Khám phá điện tử, thời trang và đồ gia dụng!</span>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

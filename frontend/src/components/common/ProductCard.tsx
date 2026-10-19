@@ -4,7 +4,8 @@ import { ShoppingCart, Eye, ImageOff } from 'lucide-react';
 import { Product } from '../../types/product';
 import { formatVND } from '../../utils/formatters';
 import { Badge } from '../ui/Badge';
-import { useCart } from '../../contexts/CartContext';
+import { ProductPurchaseModal } from './ProductPurchaseModal';
+import { hasPurchasableStock, purchaseOptions } from '../../utils/productSelection';
 
 export interface ProductCardProps {
   product: Product;
@@ -12,25 +13,17 @@ export interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [imageError, setImageError] = useState(false);
-  const { addToCart } = useCart();
-  const [adding, setAdding] = useState(false);
+  const [purchaseOpen, setPurchaseOpen] = useState(false);
 
   const primaryImage = product.images?.[0] || '';
 
-  const isOutOfStock = product.stock <= 0;
-  const isFashion = product.productType === 'FASHION';
+  const isOutOfStock = !hasPurchasableStock(product);
+  const hasOptions = purchaseOptions(product).length > 0;
 
-  const handleQuickAdd = async (e: React.MouseEvent) => {
+  const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    // If fashion, user must pick size/color on detail page
-    if (isFashion) {
-      window.location.href = `/products/${product.slug}`;
-      return;
-    }
-    setAdding(true);
-    await addToCart(product.id, 1, {});
-    setAdding(false);
+    setPurchaseOpen(true);
   };
 
   const getProductTypeLabel = () => {
@@ -138,15 +131,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
           <button
             onClick={handleQuickAdd}
-            disabled={isOutOfStock || adding}
+            disabled={isOutOfStock}
             className="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-brand-600 hover:text-white disabled:opacity-40 disabled:pointer-events-none transition-colors flex items-center gap-1.5 text-xs font-semibold"
-            title={isFashion ? 'Chọn kích cỡ/màu sắc' : 'Thêm vào giỏ'}
+            title={hasOptions ? 'Chọn phân loại để mua' : 'Thêm vào giỏ'}
           >
             <ShoppingCart className="w-4 h-4" />
-            <span className="hidden sm:inline">{isFashion ? 'Chọn mua' : 'Thêm'}</span>
+            <span className="hidden sm:inline">{hasOptions ? 'Chọn mua' : 'Thêm'}</span>
           </button>
         </div>
       </div>
+      {purchaseOpen && <ProductPurchaseModal product={product} intent="cart" onClose={() => setPurchaseOpen(false)} />}
     </div>
   );
 };
