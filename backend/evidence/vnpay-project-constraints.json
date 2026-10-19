@@ -1,0 +1,24 @@
+{
+  "productTypeCounts": [
+    {
+      "_id": "FASHION",
+      "count": 61
+    },
+    {
+      "_id": "HOME_APPLIANCE",
+      "count": 60
+    },
+    {
+      "_id": "ELECTRONICS",
+      "count": 61
+    }
+  ],
+  "seedOrders": 100,
+  "seedOrderMinItems": 2,
+  "seedOrderMaxItems": 5,
+  "historicalPendingUnchanged": 5,
+  "declaredIndexes": 16,
+  "validators": 7,
+  "currency": "integer VND",
+  "revenueRule": "COMPLETED+PAID/completedAt/items snapshot/no shipping/no product lookup"
+}

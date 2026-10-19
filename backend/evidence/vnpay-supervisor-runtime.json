@@ -1,0 +1,14 @@
+{
+  "productionReadiness": "PASS",
+  "apiHealth": 200,
+  "explicitApiAndWorkerStarted": true,
+  "expiryScan": {
+    "scanned": 0,
+    "expired": 0,
+    "failed": 0
+  },
+  "localPort": 5003,
+  "localProbeStopped": true,
+  "faultProbeOnWindows": "INCONCLUSIVE_WRAPPER_PID_ENUMERATION",
+  "realChildFailureAndShutdownTests": "PASS_UNIT_TESTS"
+}

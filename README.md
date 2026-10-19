@@ -101,3 +101,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 31 | Nguyen Ngoc Phi | Giám sát API/expiry và mốc vận hành Sandbox giữ nguyên seed | `fix(payment): supervise expiry and preserve historical demo fixtures` |
 | 32 | Nguyen Ngoc Phi | Đồng bộ kết quả VNPAY với Order, phân biệt lỗi mạng và trạng thái ngân hàng | `fix(frontend): reconcile payment result with current order state` |
 | 33 | Nguyen Ngoc Phi | Sửa reviews404 cho slug24hex và khóa ưu tiên existing ID khi trùng | `fix(reviews): resolve valid hexadecimal product slugs` |
+| 34 | Nguyen Ngoc Phi | Bổ sung công cụ rehearsal Sandbox có journal/cleanup, evidence710tests và rà soát định mức | `test(payment): add owned sandbox rehearsal and hardening evidence` |

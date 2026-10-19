@@ -1,0 +1,26 @@
+{
+  "backend": {
+    "tests": "710",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "226.015"
+  },
+  "frontend": {
+    "strictBuild": "PASS",
+    "buildSeconds": 34.69,
+    "paymentStatusTests": 6,
+    "paymentStatusTestsPassed": 6,
+    "bundleWarning": true,
+    "npmAudit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    }
+  },
+  "databaseResetReseed": false,
+  "providerLiveVerification": "PENDING_REHEARSAL"
+}
