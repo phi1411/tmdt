@@ -118,3 +118,7 @@ Feature DONE khi code chạy, API và UI hoạt động, validation/authorizatio
 - **Atomic Commits (Chia nhỏ tối đa)**: Tách các thay đổi thành nhiều commit nhỏ, cụ thể từng bước (càng nhiều commit càng tốt theo yêu cầu đồ án).
 - **Đồng bộ README bắt buộc**: Mọi commit từ thời điểm này PHẢI cập nhật ngay một dòng mới vào bảng `Lịch sử Commit Dự án` trong `README.md` trước hoặc đồng thời khi commit, đảm bảo đủ các cột: `Tác giả`, `Thay đổi`, `Tên commit`. Không được quên bước này.
 
+
+## Follow-up19/10/2026 — SKU/Reviews/COD hardening
+
+Người dùng yêu cầu hoàn tất phần thiếu trong bản GitHub mới và chọn COD trước vì chưa có VNPAY merchant. ADR013 thay thế giới hạn Product-only stock/Reviews deferred của các phase cũ:7collections/16declared+7_id_indexes, SKU selection binding + atomic reserve/restore, Admin matrix, verified reviews atomic/private publicDTO/pagination. Full701tests pass/0fail/error/skip; npm ci/strict/buildPASS, audit0knownfindings. Atlas additive migration đã backup và apply,43Users5Categories182Products2Carts101Orders30Attempts0Reviews, document fingerprint479699... trước/sau khớp; không reset/reseed/xóa data người dùng. Local kiểm thử dùng storage riêng trong clone tmdt-review-20261017, test7collections cleanup0, originalcheckout/storage không ghi. Xem docs/sku-review-hardening-review.md; rollout Render phải có evidence riêng trước claim public PASS. Mobile/tablet override tool chưa thực áp dụng (DOM1280), không claim responsive mới PASS. VNPAYdisabled/liveuserdeferred, Compass/human rehearsal/offlineOS manualgates giữ nguyên.

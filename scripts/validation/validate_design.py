@@ -14,7 +14,7 @@ from pathlib import Path
 from jsonschema import Draft4Validator, ValidationError, validators
 
 ROOT = Path(__file__).resolve().parents[2]
-COLLECTIONS = ("users", "categories", "products", "carts", "orders", "payment_attempts")
+COLLECTIONS = ("users", "categories", "products", "carts", "orders", "payment_attempts", "reviews")
 
 
 class ObjectId(str):
@@ -243,6 +243,10 @@ def main():
         for sample in data[collection]:
             BSONValidator(schemas[collection]).validate(sample)
     invariants(data)
+    for review in data['reviews']:
+        order = next(o for o in data['orders'] if o['_id'] == review['orderId'])
+        assert order['userId'] == review['userId'] and order['orderStatus'] == 'COMPLETED' and order['paymentStatus'] == 'PAID'
+        assert any(item['productId'] == review['productId'] for item in order['items'])
     failures_checked = 0
 
     def reject(collection, mutate):
@@ -252,6 +256,7 @@ def main():
         assert list(BSONValidator(schemas[collection]).iter_errors(sample)), f"Invalid case accepted: {collection}"
         failures_checked += 1
 
+    reject("reviews", lambda x: x.update(rating=Int32(6)))
     reject("users", lambda x: x.update(role="SELLER"))
     reject("users", lambda x: x.update(passwordHash="plaintext"))
     reject("categories", lambda x: x.update(parentId=ObjectId("0" * 24)))

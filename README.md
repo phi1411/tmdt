@@ -96,3 +96,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 
 | 27 | Nguyen Ngoc Phi | Hoàn thiện transaction tồn kho SKU, xác thực phân loại và reviews atomic, cập nhật contract | `fix(commerce): enforce SKU stock and verified review invariants` |
 | 28 | Nguyen Ngoc Phi | Bảng chọn khi mua, quản trị SKU, reviews phân trang và nâng dependency để đóng audit | `fix(frontend): complete purchase selection and SKU administration` |
+| 29 | Nguyen Ngoc Phi | Migration Atlas additive giữ nguyên corpus, seed an toàn, design checker và evidence kiểm thử | `fix(tooling): migrate SKU review schema with exact integrity evidence` |

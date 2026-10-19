@@ -1,0 +1,33 @@
+[
+  {
+    "_id": {
+      "$oid": "000000000000000000000301"
+    },
+    "schemaVersion": {
+      "$numberInt": "1"
+    },
+    "createdAt": {
+      "$date": "2026-09-10T01:00:00Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-10T01:00:00Z"
+    },
+    "productId": {
+      "$oid": "000000000000000000000065"
+    },
+    "orderId": {
+      "$oid": "000000000000000000000191"
+    },
+    "userId": {
+      "$oid": "0000000000000000000000c9"
+    },
+    "rating": {
+      "$numberInt": "5"
+    },
+    "status": "VISIBLE",
+    "userSnapshot": {
+      "displayName": "K***o"
+    },
+    "reviewText": "Sản phẩm đúng mô tả"
+  }
+]

@@ -1,5 +1,5 @@
 """Seed authentic, realistic e-commerce products with multi-tier SKU variations,
-dynamic attributes, and verified UGC reviews for NovaMart NoSQL project.
+dynamic attributes, for NovaMart; review text templates are illustrative, not verified purchases.
 """
 from __future__ import annotations
 import os
@@ -444,116 +444,41 @@ REAL_REVIEWS_TEMPLATES = [
     ("XIAOMI-AIRPURIFIER", 5, "Máy chạy êm ái ban đêm hầu như không nghe tiếng, chỉ số không khí hiển thị trực quan qua màn hình OLED.", {"Màu sắc": "Trắng Tinh Khôi"})
 ]
 
-def run_seed():
-    client, db = connection('ecommerce_dev', claim=True)
+def run_seed(apply=False):
+    import copy
+    from common import COLLECTIONS
+    client, db = connection('ecommerce_dev', claim=apply)
     try:
-        categories = list(db.categories.find({}))
-        cat_map = {c['productType']: c['_id'] for c in categories}
-        users = list(db.users.find({'role': 'CUSTOMER'}))
-        orders = list(db.orders.find({}))
-
-        print(f"Bắt đầu cập nhật toàn bộ {len(REAL_PRODUCTS)} sản phẩm thực tế kèm ma trận SKU đầy đủ...")
-        inserted_pids = {}
-
-        for p in REAL_PRODUCTS:
-            cid = cat_map.get(p['productType'])
-            doc = {
-                "schemaVersion": 1,
-                "createdAt": START_TIME,
-                "updatedAt": START_TIME,
-                "sku": p["sku"],
-                "name": p["name"],
-                "slug": p["slug"],
-                "productType": p["productType"],
-                "categoryId": cid,
-                "brand": p["brand"],
-                "description": p["description"],
-                "nameNormalized": normalize(p["name"]),
-                "brandNormalized": normalize(p["brand"]),
-                "price": p["price"],
-                "stock": p["stock"],
-                "images": p["images"],
-                "attributes": p["attributes"],
-                "tierVariations": p.get("tierVariations", []),
-                "skus": p.get("skus", []),
-                "status": "ACTIVE",
-                "version": 1,
-                "ratingSummary": {
-                    "averageRating": 5.0,
-                    "totalReviews": 0,
-                    "starsBreakdown": {"5": 0, "4": 0, "3": 0, "2": 0, "1": 0}
-                }
-            }
-            res = db.products.update_one(
-                {"sku": p["sku"]},
-                {"$set": doc},
-                upsert=True
-            )
-            saved = db.products.find_one({"sku": p["sku"]})
-            inserted_pids[p["sku"]] = saved["_id"]
-
-        print(f"Đã cập nhật hoàn chỉnh {len(inserted_pids)} sản phẩm.")
-
-        # Xóa các reviews cũ của các sản phẩm này
-        db.reviews.delete_many({"productId": {"$in": list(inserted_pids.values())}})
-
-        review_docs = []
-        rating_stats = {sku: {"count": 0, "sum": 0, "stars": {"1":0,"2":0,"3":0,"4":0,"5":0}} for sku in inserted_pids}
-
-        for i, (sku, rating, text, spec) in enumerate(REAL_REVIEWS_TEMPLATES):
-            pid = inserted_pids[sku]
-            u = users[i % len(users)]
-            ord_id = orders[i % len(orders)]["_id"] if orders else ObjectId()
-            ord_code = orders[i % len(orders)]["orderCode"] if orders else f"ORD-REAL-{i+1:04d}"
-
-            r_doc = {
-                "_id": ObjectId(),
-                "schemaVersion": 1,
-                "createdAt": START_TIME + timedelta(days=i * 2),
-                "updatedAt": START_TIME + timedelta(days=i * 2),
-                "productId": pid,
-                "orderId": ord_id,
-                "orderCode": ord_code,
-                "userId": u["_id"],
-                "userSnapshot": {
-                    "displayName": u["name"][0] + "***" + u["name"][-1] if len(u["name"]) > 2 else "h***g",
-                    "avatarUrl": ""
-                },
-                "skuSpecSnapshot": spec,
-                "rating": rating,
-                "reviewText": text,
-                "images": [],
-                "helpfulCount": 4 + (i * 3 % 20),
-                "status": "VISIBLE"
-            }
-            review_docs.append(r_doc)
-            rating_stats[sku]["count"] += 1
-            rating_stats[sku]["sum"] += rating
-            rating_stats[sku]["stars"][str(rating)] += 1
-
-        if review_docs:
-            db.reviews.insert_many(review_docs)
-            print(f"Đã nạp {len(review_docs)} đánh giá thực tế chi tiết.")
-
-        # Cập nhật ratingSummary tương ứng
-        for sku, stat in rating_stats.items():
-            if stat["count"] > 0:
-                avg = round(stat["sum"] / stat["count"], 1)
-                db.products.update_one(
-                    {"sku": sku},
-                    {"$set": {
-                        "ratingSummary": {
-                            "averageRating": float(avg),
-                            "totalReviews": stat["count"],
-                            "starsBreakdown": stat["stars"]
-                        }
-                    }}
-                )
-
-        print("Nạp dữ liệu thực tế và ma trận biến thể hoàn tất 100%!")
-
+        if apply and set(db.list_collection_names()) != set(COLLECTIONS):
+            raise RuntimeError('Apply the reviewed additive migration first')
+        products=[]
+        for source in REAL_PRODUCTS:
+            if db.products.find_one({'sku':source['sku']}, {'_id':1}):
+                continue  # Never reset stock, versions, user reviews or existing documents.
+            category=db.categories.find_one({'productType':source['productType'],'status':'ACTIVE'})
+            if not category:
+                raise RuntimeError('An active category is required for every product type')
+            product=copy.deepcopy(source)
+            product.update(_id=ObjectId(),schemaVersion=1,createdAt=START_TIME,updatedAt=START_TIME,
+                categoryId=category['_id'],nameNormalized=normalize(product['name']),
+                brandNormalized=normalize(product['brand']),status='ACTIVE',version=1)
+            product['stock']=sum(sku['stock'] for sku in product['skus'])
+            product['price']=Int64(min(sku['price'] for sku in product['skus']))
+            product['ratingSummary']={'averageRating':0.0,'totalReviews':0,'starsBreakdown':{str(i):0 for i in range(1,6)}}
+            products.append(product)
+        print({'mode':'APPLY' if apply else 'DRY_RUN','newProducts':len(products),'generatedReviews':0,
+            'note':'Review templates are illustrative only. Verified reviews must be submitted from a matching completed and paid order.'})
+        if apply and products:
+            with client.start_session() as session:
+                with session.start_transaction():
+                    db.products.insert_many(products,session=session)
     finally:
         client.close()
 
+
 if __name__ == '__main__':
-    run_seed()
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--apply',action='store_true',help='Insert missing sample products only; never overwrite data')
+    args=parser.parse_args()
+    run_seed(args.apply)

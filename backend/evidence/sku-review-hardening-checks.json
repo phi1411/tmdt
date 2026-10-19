@@ -1,0 +1,95 @@
+{
+  "recordedAtUtc": "2026-10-19T07:04:46.390189+00:00",
+  "backend": {
+    "tests": 701,
+    "passed": 701,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 131.789
+  },
+  "frontend": {
+    "npmCi": "PASS",
+    "typescriptStrict": "PASS",
+    "productionBuild": "PASS",
+    "buildSeconds": 15.69,
+    "chunkSizeWarning": true,
+    "audit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    }
+  },
+  "browser": [
+    {
+      "check": "admin login and dashboard",
+      "pass": true
+    },
+    {
+      "check": "Admin creates SKU product; derived total stock 5 and minimum price 100000",
+      "pass": true
+    },
+    {
+      "check": "Admin edit reload retains SKU ids/options/prices/stocks",
+      "pass": true
+    },
+    {
+      "check": "Buy modal only appears on purchase; explicit SKU selection uses 120000 in cart",
+      "pass": true
+    },
+    {
+      "check": "COD order success with SKU120000 + shipping30000",
+      "pass": true
+    },
+    {
+      "check": "Admin COD confirm -> ship -> complete/PAID",
+      "pass": true
+    },
+    {
+      "check": "Snapshot SKU unit price remains120000 after live SKU140000",
+      "pass": true
+    },
+    {
+      "check": "Review submitted from completed paid COD order",
+      "pass": true
+    },
+    {
+      "check": "Review feed shows real 5.0/1 review and masked N***1 without private order/user IDs",
+      "pass": true
+    },
+    {
+      "check": "Customer cancel transitions CANCELLED; exact DB root4/SKUs2+2 after one completed and one cancelled order",
+      "pass": true
+    },
+    {
+      "check": "Browser console error/warn logs empty for scoped journey",
+      "pass": true
+    },
+    {
+      "check": "Responsive viewport override",
+      "pass": false,
+      "note": "Tool set390 but DOM still1280; mobile/tablet not re-certified after dependency upgrade"
+    }
+  ],
+  "testDatabaseCleanup": {
+    "carts": 0,
+    "reviews": 0,
+    "payment_attempts": 0,
+    "products": 0,
+    "orders": 0,
+    "categories": 0,
+    "users": 0
+  },
+  "vnpay": "DISABLED_USER_DEFERRED",
+  "staticDesign": {
+    "status": "PASS",
+    "validators": 7,
+    "negativeCases": 22,
+    "aggregationDesigns": 8,
+    "candidateIndexes": 20,
+    "declaredIndexes": 16
+  }
+}
