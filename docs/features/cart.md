@@ -64,3 +64,8 @@ Add/update/delete/clear persist cùng owner; current pricing; stock/selection/ve
 - [x] Stock0/inactive/category archived/missing/price changed; invalid line vẫn remove được.
 - [x] Stale/concurrent CAS, lazy insert unique guard và empty/clear retained version.
 - [ ] Frontend Cart UI/E2E deferred.
+
+
+## Audit20/10/2026 — canonical SKU identity
+
+Cùng SKU phải gộp thành một dòng dù request có/không gửi skuId optional. POST add chuẩn hóa selection theo SKU server đã resolve và gộp các alias hợp lệ có sẵn của đúng SKU đó trong Cart, giữ thứ tự dòng đầu; áp dụng giới hạn99 sau khi cộng tất cả alias. SKU khác và dòng không còn resolve hợp lệ không bị gộp. Không đổi GET hoặc tự migration toàn DB; mutation vẫn cartVersion CAS, reject/stock conflict không ghi Cart. Regression4cases: hai thứ tự optional skuId, không bypass99 và merge Cart legacy trước checkout snapshot.

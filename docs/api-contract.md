@@ -228,3 +228,6 @@ POST /products/:slugOrId/reviews IMPLEMENTED: CUSTOMERACTIVE {orderId,rating1..5
 Tổng route nghiệp vụ hiện có54method/path (52cũ+2reviews); không refresh/logout/Seller/Shipper/refund/voucher/chat endpoints.
 
 VNPAY operations ADR014: production entrypoint supervises expiry process; fixed worker createdAt cutover không thay đổi REST contract. Return UI status lấy Order hiện hành, network verification failure không được coi là bank decline. Reviews slugOrId ưu tiên existing ID rồi mới fallback slug; hex slug hợp lệ không bị404 vì nhầm ID.
+
+
+Cart canonical SKU follow-up20/10/2026: POST add resolve SKU phía server, chuẩn hóa selectedAttributes.skuId và gộp alias có/không skuId của cùng SKU trong Cart hiện có trước quantity<=99/line-limit/stock check. Legacy request không skuId vẫn hợp lệ. GET không tự migration; CAS/selection validation/ownership/giá/tồn giữ nguyên.

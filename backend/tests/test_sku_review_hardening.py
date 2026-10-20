@@ -229,3 +229,51 @@ def test_review_public_projection_pagination_and_visibility(client, commerce, da
     assert client.get('/api/v1/products/'+str(ObjectId())+'/reviews').status_code==404
     database.categories.update_one({'_id':commerce['product']['categoryId']},{'$set':{'status':'ARCHIVED'}})
     assert client.get('/api/v1/products/'+commerce['product']['slug']+'/reviews').status_code==404
+
+
+@pytest.mark.parametrize('id_first', [False, True])
+def test_same_sku_merges_with_optional_sku_id(client, commerce, id_first):
+    chosen=selection(commerce)
+    without={k:v for k,v in chosen.items() if k!='skuId'}
+    choices=[chosen,without] if id_first else [without,chosen]
+    cart={'version':0}
+    for value in choices:
+        response=client.post('/api/v1/cart/items',headers=commerce['headers_customer'],json={
+            'cartVersion':cart['version'],'productId':str(commerce['product_with_skus']['_id']),
+            'quantity':1,'selectedAttributes':value})
+        assert response.status_code==200
+        cart=response.json['data']
+    assert len(cart['items'])==1
+    assert cart['items'][0]['quantity']==2
+    assert cart['items'][0]['selectedAttributes']==chosen
+
+
+def test_optional_sku_id_cannot_bypass_line_quantity_limit(client, commerce, database):
+    pid=commerce['product_with_skus']['_id']
+    database.products.update_one({'_id':pid},{'$set':{'skus.0.stock':200,'stock':215}})
+    chosen=selection(commerce);without={k:v for k,v in chosen.items() if k!='skuId'}
+    first=client.post('/api/v1/cart/items',headers=commerce['headers_customer'],json={
+        'cartVersion':0,'productId':str(pid),'quantity':99,'selectedAttributes':without})
+    assert first.status_code==200
+    again=client.post('/api/v1/cart/items',headers=commerce['headers_customer'],json={
+        'cartVersion':first.json['data']['version'],'productId':str(pid),'quantity':1,'selectedAttributes':chosen})
+    assert again.status_code==422
+    assert client.get('/api/v1/cart',headers=commerce['headers_customer']).json['data']==first.json['data']
+
+
+def test_add_merges_existing_optional_sku_alias_lines(client, commerce, database):
+    from app.services.commerce_pricing import line_id
+    pid=commerce['product_with_skus']['_id'];chosen=selection(commerce)
+    without={k:v for k,v in chosen.items() if k!='skuId'}
+    first=add(client,commerce).json['data']
+    database.carts.update_one({'userId':commerce['user']['_id']},{'$set':{'items':[
+        {'lineId':line_id(pid,value),'productId':pid,'quantity':1,'selectedAttributes':value}
+        for value in [without,chosen]]}})
+    response=client.post('/api/v1/cart/items',headers=commerce['headers_customer'],json={
+        'cartVersion':first['version'],'productId':str(pid),'quantity':1,'selectedAttributes':without})
+    assert response.status_code==200
+    cart=response.json['data'];assert len(cart['items'])==1 and cart['items'][0]['quantity']==3
+    assert cart['items'][0]['selectedAttributes']==chosen
+    order=checkout(client,commerce).json['data']['order']
+    assert len(order['items'])==1 and order['items'][0]['quantity']==3
+    assert order['items'][0]['selectedAttributes']==chosen

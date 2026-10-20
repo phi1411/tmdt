@@ -106,3 +106,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 36 | Nguyen Ngoc Phi | Ghi nhận Render Sandbox config,710tests,62publicchecks,exact cleanup và gate điều khoản chưa xác nhận | `docs(payment): record sandbox readiness and pending provider consent` |
 | 37 | Nguyen Ngoc Phi | Kiểm tra runtime/Atlas sau resume và ghi rõ browser chưa kết nối, không phát sinh đơn thử | `docs(payment): record readonly resume checks and browser handoff` |
 | 38 | Nguyen Ngoc Phi | Xác minh hai giao dịch NCB Sandbox/automaticIPN, checkout Web, Admin/revenue và exact cleanup | `docs(payment): verify real sandbox checkout and callback integrity` |
+| 39 | Nguyen Ngoc Phi | Sửa gộp SKU optional id trong Cart, khóa giới hạn99 và bổ sung4regression realrs0 | `fix(cart): merge equivalent SKU selections before quantity checks` |

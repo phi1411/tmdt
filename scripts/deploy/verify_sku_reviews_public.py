@@ -93,7 +93,10 @@ def main():
             selection={'Size':['S','XL'][index], 'skuId':sku+['-S','-XL'][index]}
             http('POST','/cart/items',422,payload={'productId':pid,'quantity':1,'cartVersion':cart['version'],
                 'selectedAttributes':{**selection,'skuId':'UNKNOWN'}},token=customer)
+            cart=http('POST','/cart/items',payload={'productId':pid,'quantity':1,'cartVersion':cart['version'],'selectedAttributes':{k:v for k,v in selection.items() if k!='skuId'}},token=customer)
             cart=http('POST','/cart/items',payload={'productId':pid,'quantity':1,'cartVersion':cart['version'],'selectedAttributes':selection},token=customer)
+            assert len(cart['items'])==1 and cart['items'][0]['quantity']==2 and cart['items'][0]['selectedAttributes']==selection
+            cart=http('PATCH','/cart/items/'+cart['items'][0]['lineId'],payload={'quantity':1,'cartVersion':cart['version']},token=customer)
             quote=http('GET','/checkout/quote?'+urlencode({'addressId':address,'paymentMethod':'COD'}),token=customer)
             intent={'addressId':address,'paymentMethod':'COD','cartVersion':cart['version'],'quoteToken':quote['quoteToken']}
             http('POST','/orders',422,payload={**intent,'total':1},token=customer,key=run+'-tamper')
@@ -137,7 +140,7 @@ def main():
         blocked=http('GET','/admin/users/'+users[1]['id'],token=admin)
         http('PATCH','/admin/users/'+users[1]['id']+'/status',payload={'expectedVersion':blocked['version'],'status':'BLOCKED'},token=admin)
         http('GET','/auth/me',401,token=other)
-        results.update(skuCod='PASS',cancelOnce='PASS',snapshot='PASS',adminLifecycle='PASS',reviews='PASS',security='PASS',revenueDelta=120000)
+        results.update(canonicalSkuMerge='PASS',skuCod='PASS',cancelOnce='PASS',snapshot='PASS',adminLifecycle='PASS',reviews='PASS',security='PASS',revenueDelta=120000)
     finally:
         owners=[u['_id'] for u in db.users.find({'email':{'$in':emails}}, {'_id':1})]
         found=db.products.find_one({'sku':sku})

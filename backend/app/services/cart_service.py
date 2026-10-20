@@ -4,6 +4,8 @@ from datetime import datetime, timezone
 from pymongo.errors import DuplicateKeyError
 from app.errors import ConflictError, NotFoundError, ValidationError
 from app.repositories.cart_repository import CartRepository
+from app.repositories.product_repository import ProductRepository
+from app.services.product_selection import resolve_selection
 from app.services.commerce_pricing import line_id, resolve_cart
 
 
@@ -23,6 +25,24 @@ class CartService:
         items = copy.deepcopy(cart['items']) if cart else []
         if action == 'add':
             selection = selection or {}
+            products = ProductRepository().find_many([product_id])
+            product = products[0] if products else None
+            valid, sku = resolve_selection(product, selection) if product else (False, None)
+            if valid and sku:
+                selection = {**selection, 'skuId': sku['skuId']}
+                canonical_id = line_id(product_id, selection)
+                normalized, first = [], None
+                for line in items:
+                    valid_alias, alias = (resolve_selection(product, line['selectedAttributes'])
+                        if line['productId'] == product_id else (False, None))
+                    if valid_alias and alias and alias['skuId'] == sku['skuId']:
+                        if first is not None:
+                            first['quantity'] += line['quantity']
+                            continue
+                        line.update(lineId=canonical_id, selectedAttributes=selection)
+                        first = line
+                    normalized.append(line)
+                items = normalized
             target = line_id(product_id, selection)
             existing = next((line for line in items if line['lineId'] == target), None)
             if existing:
