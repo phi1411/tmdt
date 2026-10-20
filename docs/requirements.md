@@ -38,7 +38,7 @@ Auth/Cart/Payment cần phân công bổ sung khi lập sprint, không tự thay
 
 ## Trạng thái
 
-Hiện20/10/2026: các nhómP0/P1 đã có API/UI/evidence, SKU/reviews theo ADR013, VNPAY Sandbox realWeb/testOTP/automaticIPN scoped PASS; xem [audit hiện hành](full-project-audit-20261020.md). Compass/nhóm3SV có bấm giờ/offlineOS và formalSIT vẫn là gate riêng; các đoạn theo phase bên dưới là lịch sử.
+Hiện20/10/2026: các nhómP0/P1 có API/UI/evidence, SKU/reviews theo ADR013; VNPAY Sandbox realWeb/testOTP/automaticIPN và bộ SIT chính thức6/6Đạt. Xem [audit](full-project-audit-20261020.md), [payment review](vnpay-sandbox-final-review.md) và [báo cáo tổng hợp](final-project-report.md). Compass GUI và rehearsal3SV có bấm giờ vẫn cần người thật; offlineOS là kiểm tra dự phòng chưa thực hiện, không phải yêu cầu mới của barem. Các đoạn theo phase bên dưới là lịch sử.
 
 PHASE07B nghiệm thu performance evidence riêng: real MongoDB explain/compound index/cardinality/repeated latency, benchmark dataset tách dev, index audit/storage và reproducible scripts. [Review07B](phase-07b-performance-review.md), [evidence](evidence/performance/README.md). Không thay barem/scope/schema/business rules; đây là bằng chứng đo mới, không claim feature/UI/deployment hoặc Compass07C completion. Các DEFERRED/NOT_MEASURED ở đoạn lịch sử05C bên dưới giữ ngữ cảnh thời điểm đó.
 

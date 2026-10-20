@@ -1,8 +1,10 @@
 # Category
 
+**Trạng thái hiện hành20/10/2026:** API và giao diện của feature đã triển khai; các mốc phase/deferred bên dưới là lịch sử. Evidence tại [full audit](../full-project-audit-20261020.md) và [handoff](../defense-final-handoff-20261020.md). Không chạy lại toàn bộ UI suite trong lần đồng bộ tài liệu này.
+
 ## Goal
 
-Danh mục một cấp, CRUD quản trị và browse public, chứng minh>=3 ngành. P0; API IMPLEMENTED PHASE05B, UI chưa làm. [Contract](../api-contract.md), [review](../phase-05b-review.md).
+Danh mục một cấp, CRUD quản trị và browse public, chứng minh>=3 ngành. P0; API IMPLEMENTED PHASE05B, UI đã triển khai. [Contract](../api-contract.md), [review](../phase-05b-review.md).
 
 ## Actors
 

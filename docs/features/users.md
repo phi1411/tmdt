@@ -1,8 +1,10 @@
 # Profile và địa chỉ
 
+**Trạng thái hiện hành20/10/2026:** API và giao diện của feature đã triển khai; các mốc phase/deferred bên dưới là lịch sử. Evidence tại [full audit](../full-project-audit-20261020.md) và [handoff](../defense-final-handoff-20261020.md). Không chạy lại toàn bộ UI suite trong lần đồng bộ tài liệu này.
+
 ## Goal
 
-Customer quản lý dữ liệu sống dùng ở checkout; Order giữ bản sao độc lập. Backend PHASE05A IMPLEMENTED, frontend chưa triển khai.
+Customer quản lý dữ liệu sống dùng ở checkout; Order giữ bản sao độc lập. Backend PHASE05A IMPLEMENTED, frontend đã tích hợp.
 
 ## Actors
 

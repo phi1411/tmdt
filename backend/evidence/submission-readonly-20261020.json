@@ -1,0 +1,32 @@
+{
+  "checkedAtUtc": "2026-10-20T12:38:23.787149+00:00",
+  "readOnly": true,
+  "counts": {
+    "users": 44,
+    "categories": 6,
+    "products": 184,
+    "carts": 3,
+    "orders": 102,
+    "payment_attempts": 30,
+    "reviews": 1
+  },
+  "invalidDocuments": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "validatorsMatchCanonical": true,
+  "indexesIncludingId": 23,
+  "beforeFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+  "afterFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+  "health": {
+    "publicApi": 200,
+    "publicFrontend": 200,
+    "localApi": 200,
+    "localFrontend": 200
+  }
+}

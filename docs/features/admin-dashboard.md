@@ -1,8 +1,10 @@
 # Admin Dashboard và MongoDB Aggregation
 
+**Trạng thái hiện hành20/10/2026:** API và giao diện của feature đã triển khai; các mốc phase/deferred bên dưới là lịch sử. Evidence tại [full audit](../full-project-audit-20261020.md) và [handoff](../defense-final-handoff-20261020.md). Không chạy lại toàn bộ UI suite trong lần đồng bộ tài liệu này.
+
 ## Goal
 
-Dashboard chứng minh MongoDB xử lý doanh thu/time/Top5 và các metric sản phẩm. Backend PHASE06B IMPLEMENTED:5API/8canonical pipelines trên MongoDB thật; frontend chưa làm. Đọc BR-REPORT/ADR-005 và [review06B](../phase-06b-review.md).
+Dashboard chứng minh MongoDB xử lý doanh thu/time/Top5 và các metric sản phẩm. Backend PHASE06B IMPLEMENTED:5API/8canonical pipelines trên MongoDB thật; frontend đã tích hợp; giới hạn bằng chứng theo review hiện hành. Đọc BR-REPORT/ADR-005 và [review06B](../phase-06b-review.md).
 
 ## Actors
 

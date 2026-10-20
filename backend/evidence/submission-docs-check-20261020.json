@@ -1,0 +1,12 @@
+{
+  "relativeLinksChecked": 49,
+  "brokenRelativeLinks": 0,
+  "jsonExamplesParsed": 4,
+  "pipelineBlocksEqualCanonical": true,
+  "polymorphicTypes": 3,
+  "snapshotExampleContainsPrivateCustomerFields": false,
+  "references714TestReceiptExactly": true,
+  "applicationSchemaPipelineSourceChanged": false,
+  "runtimeReadOnlyFingerprintPreserved": true,
+  "notes": "Docs/static verification only, not a backend/UI test rerun"
+}

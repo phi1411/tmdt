@@ -1,8 +1,10 @@
 # Product và Product Detail
 
+**Trạng thái hiện hành20/10/2026:** API và giao diện của feature đã triển khai; các mốc phase/deferred bên dưới là lịch sử. Evidence tại [full audit](../full-project-audit-20261020.md) và [handoff](../defense-final-handoff-20261020.md). Không chạy lại toàn bộ UI suite trong lần đồng bộ tài liệu này.
+
 ## Goal
 
-Catalogue đa ngành và contract Product dùng chung; CRUD/UI contract tại admin-products. P0; read API IMPLEMENTED PHASE05B, UI chưa làm. [Contract](../api-contract.md), [review](../phase-05b-review.md).
+Catalogue đa ngành và contract Product dùng chung; CRUD/UI contract tại admin-products. P0; read API IMPLEMENTED PHASE05B, UI đã triển khai. [Contract](../api-contract.md), [review](../phase-05b-review.md).
 
 ## Actors
 
@@ -14,7 +16,7 @@ List ACTIVE với Category ACTIVE, detail bằng slug, fields/ảnh/thuộc tín
 
 ## Business Rules
 
-BR-CATALOG: một products collection, productType+attributes; categoryId reference đúng type. SKU/slug unique; một SKU stock/price chung selections. Versioned patch, archive không hard-delete; price/tên đổi không sửa Order. Không check Category ACTIVE bằng field category snapshot stale.
+BR-CATALOG: một products collection, productType+attributes; categoryId reference đúng type. SKU/slug unique; Product legacy dùng stock/price chung selections. MatrixSKU theo ADR013 dùng giá và tồn riêng, rootprice=minSKUprice/rootstock=sumSKUstock; xem mục SKU/Reviews của API contract. Versioned patch, archive không hard-delete; price/tên đổi không sửa Order. Không check Category ACTIVE bằng field category snapshot stale.
 
 ## Permission
 

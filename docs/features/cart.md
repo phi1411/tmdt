@@ -1,5 +1,7 @@
 # Shopping Cart
 
+**Trạng thái hiện hành20/10/2026:** API và giao diện của feature đã triển khai; các mốc phase/deferred bên dưới là lịch sử. Evidence tại [full audit](../full-project-audit-20261020.md) và [handoff](../defense-final-handoff-20261020.md). Không chạy lại toàn bộ UI suite trong lần đồng bộ tài liệu này.
+
 ## Goal
 
 Giỏ hàng persist server, source of truth để checkout. **Backend và frontend IMPLEMENTED**; trạng thái hiện hành theo audit20/10/2026. Đọc ADR-004, BR-CART, [API contract](../api-contract.md) và [review](../phase-05c-review.md).
@@ -63,7 +65,7 @@ Add/update/delete/clear persist cùng owner; current pricing; stock/selection/ve
 - [x] Backend merge/canonical selection/shared total qty/invalid price và ownership.
 - [x] Stock0/inactive/category archived/missing/price changed; invalid line vẫn remove được.
 - [x] Stale/concurrent CAS, lazy insert unique guard và empty/clear retained version.
-- [ ] Frontend Cart UI/E2E deferred.
+- [x] Frontend Cart đã triển khai; E2E lịch sử và các public checks có phạm vi/ngày riêng, không claim rerun toàn bộ UI suite hôm nay.
 
 
 ## Audit20/10/2026 — canonical SKU identity

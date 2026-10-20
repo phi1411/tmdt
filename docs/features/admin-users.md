@@ -1,8 +1,10 @@
 # Admin User Management
 
+**Trạng thái hiện hành20/10/2026:** API và giao diện của feature đã triển khai; các mốc phase/deferred bên dưới là lịch sử. Evidence tại [full audit](../full-project-audit-20261020.md) và [handoff](../defense-final-handoff-20261020.md). Không chạy lại toàn bộ UI suite trong lần đồng bộ tài liệu này.
+
 ## Goal
 
-Quản lý tài khoản trong hai persisted roles hiện có. Backend PHASE05A IMPLEMENTED; frontend chưa triển khai. Không mở rộng sang Seller/Staff.
+Quản lý tài khoản trong hai persisted roles hiện có. Backend PHASE05A IMPLEMENTED; frontend đã tích hợp. Không mở rộng sang Seller/Staff.
 
 ## Actors
 

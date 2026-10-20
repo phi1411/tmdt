@@ -1,5 +1,7 @@
 # Order history và chi tiết đơn
 
+**Trạng thái hiện hành20/10/2026:** API và giao diện của feature đã triển khai; các mốc phase/deferred bên dưới là lịch sử. Evidence tại [full audit](../full-project-audit-20261020.md) và [handoff](../defense-final-handoff-20261020.md). Không chạy lại toàn bộ UI suite trong lần đồng bộ tài liệu này.
+
 ## Goal
 
 Customer đọc lịch sử bằng dữ liệu snapshot và hủy khi đủ điều kiện. **PHASE05C backend snapshot/history/cancel IMPLEMENTED**, PHASE06A thêm lazy online expiry/races; frontend OrdersPage/OrderDetailPage đã triển khai, Admin Orders có API/UI và evidence riêng. POST tạo đơn thuộc checkout. [Contract](../api-contract.md), [review](../phase-05c-review.md), [Payment](payment.md).
@@ -63,7 +65,7 @@ History paginated đúng owner/date; detail độc lập live Product/User; canc
 - [x] Cancel repeats/stale/concurrent once, CONFIRMED COD, online attempt invalidation, forbidden paid/review flag/shipping/completed/expired.
 - [x] Cancel rollback missing Product/fail second restore/fail attempt invalidation trên rs0.
 - [x] PHASE06A IPN/cancel/expiry race, once-only stock restore và late review trên test rs0.
-- [ ] Frontend deferred; Admin Orders có worker/evidence riêng.
+- [x] Frontend Customer/Admin Orders đã triển khai; xem evidence07A và audit20/10 theo scope, không gọi lượt docs này là UI rerun.
 
 
 ## Cập nhật19/10/2026 — ADR013

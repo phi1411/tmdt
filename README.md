@@ -1,5 +1,7 @@
 # Sàn thương mại điện tử đa ngành — đồ án NoSQL
 
+**Gói nội dung nộp20/10/2026:** [Báo cáo tổng hợp](docs/final-project-report.md), [đối chiếu barem](docs/final-rubric-matrix.md), [checklist nộp](docs/submission-checklist.md). Phần mềm chính đã triển khai/kiểm thử; thông tin bìa báo cáo, định dạng trường yêu cầu và Compass/rehearsal của nhóm cần xác nhận, không tự chấm điểm hoặc đánh dấu người thật đã demo.
+
 **Hiện hành20/10/2026:** Backend714/714tests PASS, frontend strict/build/6status tests PASS,66publicHTTPchecks. VNPAY Sandbox đã2luồng NCB/testOTP/automaticIPN và bộSITchínhthức6/6Đạt; không tiền thật. Đã chuẩn bị demoSKU/review/snapshot và bản sao local đầy đủ7collections,20localCODchecks/exactcleanupPASS. LocalWeb5173/API5000 dùngDBriêng `ecommerce_defense`; publicWeb dùngAtlas. [Bàn giao cuối và tài khoản private](docs/defense-final-handoff-20261020.md), [audit toàn bài](docs/full-project-audit-20261020.md), [payment review](docs/vnpay-sandbox-final-review.md). CompassGUI/rehearsal baSV/offlineOS cần người thật; không claim đã xong các gate đó.
 
 **Checkpoint19/10/2026 (lịch sử):** Backend SKU/reviews hardening701tests PASS, frontend strict/build PASS, npm audit0findings. ADR013 khóa selection, tồn kho theoSKU, verified reviews và migration additive. Đã deploy cả backend/frontend Render,62publicHTTPS checks PASS, cleanup/fingerprint Atlas giữ nguyên và0orphans. Browser scoped390/768/1280 PASS; VNPAY disabled theo người dùng. [Review hiện tại](docs/sku-review-hardening-review.md), [ADR013](docs/decisions/013-sku-review-hardening.md).
@@ -112,3 +114,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 40 | Nguyen Ngoc Phi | Chốt audit barem/DB/714tests/66publicchecks và các gate demo còn lại, đồng bộ docs hiện hành | `docs(audit): record full project verification and remaining demo gates` |
 | 41 | Nguyen Ngoc Phi | Hoàn tất6ca SIT chính thức, xác minh state/stock và exact cleanup Sandbox | `docs(payment): record six official sandbox SIT cases passing` |
 | 42 | Nguyen Ngoc Phi | Chuẩn bị demoSKU/review/snapshot, canonicalcopylocal và20checks COD; cập nhật hướng dẫn/gate người thật | `test(demo): prepare retained fixtures and verified local fallback` |
+| 43 | Nguyen Ngoc Phi | Tổng hợp báo cáo/barem/checklist nộp; đồng bộ feature status, kiểm tra links/JSON và runtime chỉ đọc | `docs(report): consolidate submission evidence and completion status` |
