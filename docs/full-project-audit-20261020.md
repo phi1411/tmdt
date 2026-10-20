@@ -60,3 +60,6 @@ Evidence `backend/evidence/full-audit-20261020-{tests,public,browser,deep-integr
 - VNPAY20/10 đã2realSandbox testcard/OTP→automaticIPN→ReturnPAID, có fullWebcheckout; formalSIT riêng chưa hoàn tất vì portal không hiện giao dịch/extraUIerrors. Không claim certification/tiền thật, refund tự động không thuộc scope.
 - JS bundle khoảng930kB còn warning; audit0knownfindings không là bảo đảm security toàn sản phẩm. Không thêm code-splitting redesign chỉ để tắt warning.
 - Không benchmark production/write throughput/pentest toàn diện hoặc chứng nhận SLA trong audit này. Renderexisting$7/mo cần người dùng suspend/delete khi hết demo.
+
+
+Follow-up sau audit: bộ VNPAY SIT chính thức đã6/6Đạt, exactcleanup về479699...; xem [payment review](vnpay-sandbox-final-review.md#follow-up-cuối2010--official-sandbox-sit-66-pass). Dữ liệu demo/SKU/review và bản sao local được bàn giao riêng tại [handoff](defense-final-handoff-20261020.md); baseline audit bên trên giữ đúng thời điểm đã đo.

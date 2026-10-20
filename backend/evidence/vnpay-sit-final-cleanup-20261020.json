@@ -1,0 +1,24 @@
+{
+  "run": "vnp-live-49ca9554b291",
+  "beforeFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "afterFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "exactCleanup": true,
+  "removedOwnedDocuments": {
+    "reviews": 0,
+    "payment_attempts": 2,
+    "orders": 2,
+    "carts": 1,
+    "users": 1,
+    "products": 1,
+    "categories": 1
+  },
+  "counts": {
+    "users": 43,
+    "categories": 5,
+    "products": 182,
+    "carts": 2,
+    "orders": 101,
+    "payment_attempts": 30,
+    "reviews": 0
+  }
+}

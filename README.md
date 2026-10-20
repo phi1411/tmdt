@@ -108,3 +108,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 38 | Nguyen Ngoc Phi | Xác minh hai giao dịch NCB Sandbox/automaticIPN, checkout Web, Admin/revenue và exact cleanup | `docs(payment): verify real sandbox checkout and callback integrity` |
 | 39 | Nguyen Ngoc Phi | Sửa gộp SKU optional id trong Cart, khóa giới hạn99 và bổ sung4regression realrs0 | `fix(cart): merge equivalent SKU selections before quantity checks` |
 | 40 | Nguyen Ngoc Phi | Chốt audit barem/DB/714tests/66publicchecks và các gate demo còn lại, đồng bộ docs hiện hành | `docs(audit): record full project verification and remaining demo gates` |
+| 41 | Nguyen Ngoc Phi | Hoàn tất6ca SIT chính thức, xác minh state/stock và exact cleanup Sandbox | `docs(payment): record six official sandbox SIT cases passing` |

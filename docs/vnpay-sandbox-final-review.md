@@ -2,7 +2,7 @@
 
 ## Kết quả hiện tại
 
-**VNPAY SANDBOX END-TO-END PASS cho luồng thực đã kiểm thử.** Hai giao dịch130.000VND đã thanh toán bằng thẻ NCB và OTP test tại gateway chính thức; IPN tự động đã xác minh và commit Order CONFIRMED/PAID +attempt SUCCEEDED trước khi agent gửi bất kỳ replay/probe nào. Không phải callback tự ký hoặc cập nhật DB thành paid. **Chưa nghiệm thu bộ SIT/certification riêng của nhà cung cấp**, không thanh toán tiền thật.
+**VNPAY SANDBOX END-TO-END PASS cho luồng thực đã kiểm thử.** Hai giao dịch130.000VND đã thanh toán bằng thẻ NCB và OTP test tại gateway chính thức; IPN tự động đã xác minh và commit Order CONFIRMED/PAID +attempt SUCCEEDED trước khi agent gửi bất kỳ replay/probe nào. Không phải callback tự ký hoặc cập nhật DB thành paid. **Bộ SIT chính thức đã đạt 6/6 ca trong follow-up cuối20/10 bên dưới.** Không thanh toán tiền thật hoặc tuyên bố được chứng nhận vận hành production.
 
 Website: https://novamart-web.onrender.com ; health: https://novamart-api.onrender.com/api/v1/health . Application `ef9a481d6c01f84c380b66bcce9e13de7c9078d2` đang Live backend/static trên Render hiện hữu. VNPAY_ENABLED=true, merchant secret chỉ backend/private; Return `/payment/return`, IPN `/api/v1/payments/vnpay/ipn`. API+expiry cùng supervisor, fixedcutover2026-10-19T12:57:14Z bảo toàn5seedonline PENDING lịch sử. Không thêm dịch vụ trả phí hoặc đổi application source trong lượt20/10.
 
@@ -51,3 +51,23 @@ Receipts backend/evidence: `vnpay-sandbox-cleanup-20261020.json`, `vnpay-web-cle
 19/10 đã tới gateway nhưng dừng xin xác nhận điều khoản, exact cleanup; evidence cũ không được sửa thành paid.20/10 người dùng xác nhận tiếp tục; lần đầu browser inventory rỗng, readonly health/Atlas giữ nguyên (`vnpay-resume-20261020.json`). Follow-up cùng ngày đã mở đúng chat trên host qua Codex navigation, browser kết nối lại và hoàn tất hai lượt ngân hàng/UI ở trên. Không còn blocker thiếu merchant, điều khoản hoặc kết nối browser trong scoped rehearsal này.
 
 Compass GUI/import-export live, nhóm3SV rehearsal5–10phút có bấm giờ và offlineOS vẫn là manual gates lịch sử, chưa có evidence mới để đóng. Bộ SIT chính thức chưa hoàn tất như giới hạn đã nêu. Các phần API/UI/DB bám barem và demo pack đã có; không tuyên bố tất cả gate người thật đã xong. Backend Render$7/tháng hiện có+staticfree, không lịch tự ngừng; suspend/delete khi kết thúc demo nếu không muốn tiếp tục tính phí. VNPAY vẫn chỉ Sandbox, không tiền thật.
+
+
+## Follow-up cuối20/10 — OFFICIAL SANDBOX SIT 6/6 PASS
+
+Sau khi tạo tuần tự hai giao dịch mới và đưa từng giao dịch tới màn hình OTP, portal VNPAYGW SIT Testing đã liệt kê cả hai. Chọn giao dịch thứ hai cho ca thất bại và chạy bộ kiểm tra chính thức. Không gửi OTP hoặc tự ký IPN trong lượt SIT này; hai lượt bank/testOTP ở phần trước là bằng chứng độc lập. Danh sách `DS GD đã test` xác nhận giao dịch VN6AD714CFEC77AC8C719DAEFA **Thành công** lúc14:18:30 ngày20/10/2026. Không suy đoán nguyên nhân của lỗi danh sách rỗng trước đó.
+
+| Ca provider | Expected/actual RspCode | Portal |
+| --- | --- | --- |
+| Thanh toán thành công | 00 / 00 | Đạt |
+| Thanh toán thất bại | 00 / 00 | Đạt |
+| Không tìm thấy giao dịch | 01 / 01 | Đạt |
+| Callback đã xử lý | 02 / 02 | Đạt |
+| Sai số tiền có checksum hợp lệ | 04 / 04 | Đạt |
+| Sai checksum | 97 / 97 | Đạt |
+
+Order thành công ORD-6AD714CFEC77AC8C719DAEF9 →CONFIRMED/PAID, attemptSUCCEEDED/provider15709390; Order thất bại ORD-6AD714F6EC77AC8C719DAEFB →PENDING/FAILED, attemptFAILED/provider15709393. Không review flag; rootstock8=SKU5+3 sau hai lần reserve từ10. Callback lỗi/trùng không reserve thêm hoặc sửa state thành công. Ca thất bại vẫn giữ Order để retry trước deadline theo contract; cleanup exact chỉ xóa toàn bộ fixture riêng, không cộng kho seed.
+
+Evidence an toàn: `backend/evidence/vnpay-sit-final-20261020.json` và `vnpay-sit-final-cleanup-20261020.json`. Screenshot private `.local/defense-final/sit-success.png`. Cleanup đúng1User/1Cart/2Orders/2Attempts/1Product/1Category,0Reviews; canonical full fingerprint trước/sau **47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2** và counts43/5/182/2/101/30/0 khớp. Generic cleanup19 và các evidence lịch sử được giữ nguyên.
+
+Đóng gate bộ6case SIT; không cần người dùng chạy lại để hoàn tất tích hợp Sandbox. Đây là kết quả test của portal Sandbox, không phải chấp thuận merchant production/tiền thật. Bản application backend hiện hành ef5e553 chứa bản sửa Cart; frontend ef9a481 không đổi trong follow-up này. Latest app validation là714backend tests và66public checks tại [audit20/10](full-project-audit-20261020.md), không chạy lại vì lượt SIT không sửa application/tests. Dữ liệu demo mới được giữ có chủ đích sau cleanup này được ghi riêng tại [bàn giao cuối](defense-final-handoff-20261020.md).

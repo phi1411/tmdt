@@ -1,0 +1,77 @@
+{
+  "recordedAtUtc": "2026-10-20T07:19:36.874477+00:00",
+  "source": "Official VNPAYGW SIT Testing portal",
+  "terminal": "EGI1G83W",
+  "ipnUrl": "https://novamart-api.onrender.com/api/v1/payments/vnpay/ipn",
+  "cases": [
+    [
+      "Kết quả trả về mong muốn tại đầu IPN\n                            \n                                {\"Message\":\"Confirm Success\",\"RspCode\":\"00\"}\n                            \n                            Merchant Response\n                            \n                                {\"RspCode\":\"00\",\"Message\":\"Confirm Success\",\"TerminalId\":null,\"OrderId\":null,\"Localdate\":null,\"Signature\":null}",
+      "Kết quả\n                            \n                                Đạt"
+    ],
+    [
+      "Kết quả trả về mong muốn tại đầu IPN\n                            \n                                {\"Message\":\"Confirm Success\",\"RspCode\":\"00\"}\n                            \n                            Merchant Response\n                            \n                                {\"RspCode\":\"00\",\"Message\":\"Confirm Success\",\"TerminalId\":null,\"OrderId\":null,\"Localdate\":null,\"Signature\":null}",
+      "Kết quả\n                            \n                                Đạt"
+    ],
+    [
+      "Kết quả trả về mong muốn tại đầu IPN\n                            \n                                {\"Message\":\"Order Not Found\",\"RspCode\":\"01\"}\n                            \n                            Merchant Response\n                            \n                                {\"RspCode\":\"01\",\"Message\":\"Order not found\",\"TerminalId\":null,\"OrderId\":null,\"Localdate\":null,\"Signature\":null}",
+      "Kết quả\n                            \n                                Đạt"
+    ],
+    [
+      "Kết quả trả về mong muốn tại đầu IPN\n                            \n                                {\"Message\":\"Order already confirmed\",\"RspCode\":\"02\"}\n                            \n                            Merchant Response\n                            \n                                {\"RspCode\":\"02\",\"Message\":\"Order already confirmed\",\"TerminalId\":null,\"OrderId\":null,\"Localdate\":null,\"Signature\":null}",
+      "Kết quả\n                            \n                                Đạt"
+    ],
+    [
+      "Kết quả trả về mong muốn tại đầu IPN\n                            \n                                {\"Message\":\"Invalid amount\",\"RspCode\":\"04\"}\n                            \n                            Merchant Response\n                            \n                                {\"RspCode\":\"04\",\"Message\":\"Invalid amount\",\"TerminalId\":null,\"OrderId\":null,\"Localdate\":null,\"Signature\":null}",
+      "Kết quả\n                            \n                                Đạt"
+    ],
+    [
+      "Kết quả trả về mong muốn tại đầu IPN\n                            \n                                {\"Message\":\"Invalid Checksum\",\"RspCode\":\"97\"}\n                            \n                            Merchant Response\n                            \n                                {\"RspCode\":\"97\",\"Message\":\"Invalid signature\",\"TerminalId\":null,\"OrderId\":null,\"Localdate\":null,\"Signature\":null}",
+      "Kết quả\n                            \n                                Đạt"
+    ]
+  ],
+  "successOrder": {
+    "recordedAtUtc": "2026-10-20T07:19:36.796210+00:00",
+    "run": "vnp-live-49ca9554b291",
+    "orderCode": "ORD-6AD714CFEC77AC8C719DAEF9",
+    "orderStatus": "CONFIRMED",
+    "paymentStatus": "PAID",
+    "paymentReviewRequired": false,
+    "total": 130000,
+    "rootStock": 8,
+    "skuStocks": [
+      5,
+      3
+    ],
+    "attempts": [
+      {
+        "status": "SUCCEEDED",
+        "providerTransactionNo": "15709390",
+        "hasVerifiedCallbackFingerprint": true
+      }
+    ]
+  },
+  "failureOrder": {
+    "recordedAtUtc": "2026-10-20T07:19:36.874477+00:00",
+    "run": "vnp-live-49ca9554b291",
+    "orderCode": "ORD-6AD714F6EC77AC8C719DAEFB",
+    "orderStatus": "PENDING",
+    "paymentStatus": "FAILED",
+    "paymentReviewRequired": false,
+    "total": 130000,
+    "rootStock": 8,
+    "skuStocks": [
+      5,
+      3
+    ],
+    "attempts": [
+      {
+        "status": "FAILED",
+        "providerTransactionNo": "15709393",
+        "hasVerifiedCallbackFingerprint": true
+      }
+    ]
+  },
+  "allSixProviderCasesPassed": true,
+  "stockReservedExactlyTwice": true,
+  "scope": "Sandbox SIT only; not real funds or production certification"
+}
