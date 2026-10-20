@@ -1,0 +1,143 @@
+{
+  "uniqueImageUrls": 320,
+  "passed": 294,
+  "verifiedAfterRetry": 294,
+  "remainingUnverified": [
+    {
+      "url": "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/glass/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/grater-black/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/mug-tree-stand/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/silver-pot-with-glass-cap/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/4.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/3.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/3.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-magsafe-battery-pack/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/monopod/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-lamp-with-iphone/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/3.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-f19-pro-plus/1.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s8/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-s1/3.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/tops/blue-frock/3.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    },
+    {
+      "url": "https://cdn.dummyjson.com/product-images/womens-shoes/red-shoes/2.webp",
+      "status": "UNVERIFIED",
+      "errorType": "str"
+    }
+  ],
+  "browserCounterexample": {
+    "product": "silver-pot-with-glass-cap-149",
+    "naturalWidth": 1000,
+    "loaded": true
+  },
+  "interpretation": "26 CLI checks unverified/denied; not confirmed broken browser images; URLs were not replaced"
+}

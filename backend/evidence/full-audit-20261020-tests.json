@@ -1,0 +1,39 @@
+{
+  "baseline": {
+    "tests": "710",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "117.750"
+  },
+  "reproduction": {
+    "tests": "4",
+    "failures": "4",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.955"
+  },
+  "scopedFixed": {
+    "tests": "23",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "4.198"
+  },
+  "final": {
+    "tests": "714",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "116.247"
+  },
+  "frontend": {
+    "strictBuild": "PASS",
+    "buildSeconds": 13.11,
+    "paymentStatusTests": 6,
+    "passed": 6,
+    "npmAuditKnownFindings": 0,
+    "bundleWarning": true
+  },
+  "pipCheck": "PASS"
+}

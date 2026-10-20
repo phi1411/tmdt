@@ -1,5 +1,7 @@
 # Quy tắc nghiệp vụ
 
+Trạng thái hiện hành20/10/2026: extension SKU/reviews đã triển khai theo ADR013 (7collections/16declaredindexes), frontend/backend/Atlas đã public; VNPAY Sandbox đã realWeb/testOTP/automaticIPN scoped PASS theo ADR014. Các đoạn v1/phase02 bên dưới giữ lịch sử; đọc cùng phần cập nhật cuối file và [review hiện hành](full-project-audit-20261020.md).
+
 **LOCKED DESIGN v1 — PHASE02**, giữ nguyên qua backend05A Auth/User,05B Catalog và05C Commerce COD. Trạng thái implementation/evidence từng feature tại [API contract](api-contract.md), [review05C](phase-05c-review.md); VNPAY/Admin Orders/Dashboard/Frontend còn deferred theo phase. Đây là nguồn chuẩn behavior; exact shape ở database/validators, defaults/limits ở [foundation-decisions](foundation-decisions.md). Feature docs tham chiếu BR-* thay vì tự chọn rule.
 
 ## BR-AUTH — phân quyền và tài khoản
@@ -14,7 +16,7 @@ ProductType phải khớp Category. Product ACTIVE và Category ACTIVE mới đ�
 
 ## BR-CART — Cart và giá
 
-Backend là source of truth. Thêm/sửa cần Product tồn tại, ACTIVE, Category ACTIVE, số nguyên quantity >=1, selection hợp lệ, và tổng quantity của **mọi dòng cùng productId** không vượt stock. Cùng Product/selection gộp dòng; các selection khác vẫn dùng chung stock. Cart không giữ hàng; tồn có thể thay đổi sau add.
+Backend là source of truth. Thêm/sửa cần Product tồn tại, ACTIVE, Category ACTIVE, số nguyên quantity >=1, selection hợp lệ, và tổng quantity của **mọi dòng cùng productId** không vượt stock. Cùng Product/canonical selection gộp dòng; legacy selections dùng pool Product, matrix SKU dùng kho SKU riêng đồng thời giữ root tổng. POST add canonicalize skuId optional và gộp alias trước giới hạn99. Cart không giữ hàng; tồn có thể thay đổi sau add.
 
 Client chỉ gửi productId/quantity/selectedAttributes/cartVersion; gửi price/lineTotal bị 422. Response Cart dùng field version; request dùng cartVersion để phân biệt với Product.version. GET Cart lấy currentPrice từ Product, đánh dấu missing/inactive/out-of-stock nhưng không tự xóa item. Stale version →409. Fashion: nếu Product có sizes/colors không rỗng, yêu cầu size/color thuộc danh sách; không nhận tùy chọn lạ hay full attributes tự khai.
 
@@ -75,4 +77,4 @@ Aggregation có unwind phải cộng tiền từng item. Không sum order.total 
 
 ## Cập nhật19/10/2026 — ADR013
 
-SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. VNPAY disabled theo lựa chọn hiện hành.
+SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. Ghi chú lựa chọn COD trước/VNPAY disabled ở19/10 đã được thay bằng config enabled và rehearsal Sandbox20/10; xem payment-setup và vnpay-sandbox-final-review.

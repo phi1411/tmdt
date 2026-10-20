@@ -1,5 +1,7 @@
 # MongoDB schema — LOCKED DESIGN v1
 
+Trạng thái hiện hành20/10/2026: extension SKU/reviews đã triển khai theo ADR013 (7collections/16declaredindexes), frontend/backend/Atlas đã public; VNPAY Sandbox đã realWeb/testOTP/automaticIPN scoped PASS theo ADR014. Các đoạn v1/phase02 bên dưới giữ lịch sử; đọc cùng phần cập nhật cuối file và [review hiện hành](full-project-audit-20261020.md).
+
 Ngày07/10/2026: PHASE02 đã duyệt, PHASE03 apply nguyên sáu validator trên MongoDB8.0.32 local rs0, chọn14declared indexes và nạp/verify dữ liệu thật. **Schema v1 giữ nguyên** qua backend05A Auth/User,05B Catalog và05C Commerce COD; [review05C](phase-05c-review.md) xác minh fingerprint dev không đổi. Meaning ở file này; exact shape/type/bounds canonical tại [validators](../database/validators/README.md), ví dụ thiết kế tại [samples](../database/samples/README.md), evidence runtime tại [phase03 review](phase-03-review.md). Không copy JSON Schema sang nhiều docs/backend.
 
 ## Mục lục
@@ -16,7 +18,7 @@ Ngày07/10/2026: PHASE02 đã duyệt, PHASE03 apply nguyên sáu validator trê
 
 ## 1. Quy ước
 
-Collections: users, categories, products, carts, orders, payment_attempts. reviews **DEFERRED**, không tạo collection MVP. Mỗi document có `_id:ObjectId`, `schemaVersion:int=1`, `createdAt/updatedAt:Date UTC`. Entity mutable có `version:int>=1`; User thêm tokenVersion>=0. API `_id`→id hex24, Date→ISO UTC, long→safe JSON integer.
+Collections hiện hành: users, categories, products, carts, orders, payment_attempts, reviews. V1 ban đầu có6collections; reviews bổ sung bằng ADR013, không còn DEFERRED. Mỗi document có `_id:ObjectId`, `schemaVersion:int=1`, `createdAt/updatedAt:Date UTC`. Entity mutable có `version:int>=1`; User thêm tokenVersion>=0. API `_id`→id hex24, Date→ISO UTC, long→safe JSON integer.
 
 Money: integer VND, BSON long qua `bson.int64.Int64` explicit, không double/string/bool. Quantity/stock/version BSON int, reject bool. Defaults/limits/config canonical tại [foundation-decisions](foundation-decisions.md); Root fields strict, dynamic data chỉ trong attributes. Date optional omit nếu chưa có, không null; defaultAddressId cho phép null.
 
@@ -74,7 +76,7 @@ Tất cả nằm **một collection products**; không products_electronics/fash
 | FASHION | sizes:[S,M,L], colors:[Black,White], material:Cotton, gender:Unisex |
 | HOME_APPLIANCE | power1700W/capacity6L/voltage220V/material strings |
 
-Known attributes optional theo thiết bị (tai nghe không cần RAM); unknown safe keys được lưu scalar/arrays/bounded objects qua patternProperties. Service validate key names/finite numeric/depth/bounds, không yêu cầu ADR để thêm key spec thông thường hợp lệ. Thêm productType mới hoặc biến thể tồn/giá riêng cần ADR. Một Product=oneSKU/oneprice/onepoolstock, sizes/colors không có stock riêng.
+Known attributes optional theo thiết bị (tai nghe không cần RAM); unknown safe keys được lưu scalar/arrays/bounded objects qua patternProperties. Service validate key names/finite numeric/depth/bounds, không yêu cầu ADR để thêm key spec thông thường hợp lệ. Thêm productType mới hoặc biến thể tồn/giá riêng cần ADR. Legacy Product không có matrix dùng oneprice/onepoolstock; Product có tierVariations/skus dùng từng SKU price/stock và root dẫn xuất theo ADR013.
 
 SKU immutable sau create để trace demo/simple links; slug/name/brand/attributes có thể sửa theo version. Category move sang type khác cần update attributes tương hợp trong cùng request/transaction, không làm snapshot cũ đổi. DELETE=archive, không hard-delete. Current Product sample điện thoại12 triệu nhưng snapshot Order10 triệu là có chủ đích.
 
@@ -168,4 +170,4 @@ SchemaVersion1 locked; phase03 đã create/load/test sáu validator thật, seed
 
 ## Cập nhật19/10/2026 — ADR013
 
-SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. VNPAY disabled theo lựa chọn hiện hành.
+SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. Ghi chú lựa chọn COD trước/VNPAY disabled ở19/10 đã được thay bằng config enabled và rehearsal Sandbox20/10; xem payment-setup và vnpay-sandbox-final-review.

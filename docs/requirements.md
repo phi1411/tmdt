@@ -38,6 +38,8 @@ Auth/Cart/Payment cần phân công bổ sung khi lập sprint, không tự thay
 
 ## Trạng thái
 
+Hiện20/10/2026: các nhómP0/P1 đã có API/UI/evidence, SKU/reviews theo ADR013, VNPAY Sandbox realWeb/testOTP/automaticIPN scoped PASS; xem [audit hiện hành](full-project-audit-20261020.md). Compass/nhóm3SV có bấm giờ/offlineOS và formalSIT vẫn là gate riêng; các đoạn theo phase bên dưới là lịch sử.
+
 PHASE07B nghiệm thu performance evidence riêng: real MongoDB explain/compound index/cardinality/repeated latency, benchmark dataset tách dev, index audit/storage và reproducible scripts. [Review07B](phase-07b-performance-review.md), [evidence](evidence/performance/README.md). Không thay barem/scope/schema/business rules; đây là bằng chứng đo mới, không claim feature/UI/deployment hoặc Compass07C completion. Các DEFERRED/NOT_MEASURED ở đoạn lịch sử05C bên dưới giữ ngữ cảnh thời điểm đó.
 
 Phase01 tạo docs/thư mục; phase02 khóa thiết kế và tạo declarative artifacts/checker tĩnh. Các phase tiếp theo có evidence riêng: PHASE03 MongoDB/seed, PHASE04 foundation, PHASE05A Auth/User, PHASE05B Catalog và PHASE05AB integration đã pass. PHASE05C triển khai backend Cart/Checkout COD/Order snapshot/history/cancel theo yêu cầu hiện hành, [review](phase-05c-review.md). VNPAY gateway/online creation, Admin Orders/Dashboard/Frontend/demo Web và full benchmark vẫn DEFERRED/NOT MEASURED. Barem/scope không đổi; backend completion không đồng nghĩa hoàn thành đồ án hoặc frontend.

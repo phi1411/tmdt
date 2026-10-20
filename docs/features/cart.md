@@ -2,7 +2,7 @@
 
 ## Goal
 
-Giỏ hàng persist server, source of truth để checkout. **PHASE05C backend IMPLEMENTED**, frontend deferred. Đọc ADR-004, BR-CART, [API contract](../api-contract.md) và [review](../phase-05c-review.md).
+Giỏ hàng persist server, source of truth để checkout. **Backend và frontend IMPLEMENTED**; trạng thái hiện hành theo audit20/10/2026. Đọc ADR-004, BR-CART, [API contract](../api-contract.md) và [review](../phase-05c-review.md).
 
 ## Actors
 
@@ -34,7 +34,7 @@ lineId là SHA256 hex64 canonical do server tạo, truyền nguyên trong URL. G
 
 ## Data
 
-Read/write carts, read products/categories; no Orders/payments writes. Backend paths `app/api/cart.py`, `app/services/cart_service.py`, `app/services/commerce_pricing.py`, `app/repositories/cart_repository.py`, ProductRepository.find_many/CategoryRepository.find, `app/schemas/cart_schema.py`; tests `backend/tests/test_commerce.py`. Dependency Auth/current User và shared validation/errors/serialization. Frontend `features/cart/` chưa tạo. Owner/version CAS và unique userId index xử lý lazy insert race→CART_CHANGED409, không cơ chế version khác.
+Read/write carts, read products/categories; no Orders/payments writes. Backend paths `app/api/cart.py`, `app/services/cart_service.py`, `app/services/commerce_pricing.py`, `app/repositories/cart_repository.py`, ProductRepository.find_many/CategoryRepository.find, `app/schemas/cart_schema.py`; tests `backend/tests/test_commerce.py`. Dependency Auth/current User và shared validation/errors/serialization. Frontend thực tế `frontend/src/pages/CartPage.tsx` và `frontend/src/contexts/CartContext.tsx`. Owner/version CAS và unique userId index xử lý lazy insert race→CART_CHANGED409, không cơ chế version khác.
 
 ## Validation
 

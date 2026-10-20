@@ -1,0 +1,46 @@
+{
+  "views": [
+    {
+      "brokenImages": 0,
+      "documentWidth": 382,
+      "page": "catalog-fashion",
+      "productImages": 16,
+      "viewport": 390
+    },
+    {
+      "documentWidth": 382,
+      "page": "mobile-filters-open",
+      "viewport": 390
+    },
+    {
+      "brokenImages": 0,
+      "documentWidth": 760,
+      "page": "fashion-detail-tablet",
+      "viewport": 768
+    },
+    {
+      "documentWidth": 768,
+      "page": "purchase-modal-tablet",
+      "viewport": 768
+    },
+    {
+      "brokenImages": 0,
+      "documentWidth": 1272,
+      "page": "electronics-detail-desktop",
+      "viewport": 1280
+    },
+    {
+      "brokenImages": 0,
+      "documentWidth": 1272,
+      "page": "home-appliance-detail-desktop",
+      "viewport": 1280
+    },
+    {
+      "page": "guest-admin-guard",
+      "url": "https://novamart-web.onrender.com/login?redirect=%2Fadmin%2Fdashboard",
+      "loginShown": 1
+    }
+  ],
+  "logs": [],
+  "scope": "read-only public catalog/detail/modal/guest guard, not complete historic UI suite"
+}

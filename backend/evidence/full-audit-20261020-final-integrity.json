@@ -1,0 +1,48 @@
+{
+  "checkedAtUtc": "2026-10-20T06:57:33.003321+00:00",
+  "routes": {
+    "methodPaths": 54,
+    "blueprints": 13,
+    "collisions": 0,
+    "allApiV1": true
+  },
+  "atlas": {
+    "counts": {
+      "users": 43,
+      "categories": 5,
+      "products": 182,
+      "carts": 2,
+      "orders": 101,
+      "payment_attempts": 30,
+      "reviews": 0
+    },
+    "beforeFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+    "afterFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+    "collectionOptionsUnchanged": true,
+    "indexesUnchanged": true
+  },
+  "local": {
+    "testCounts": {
+      "users": 0,
+      "categories": 0,
+      "products": 0,
+      "carts": 0,
+      "orders": 0,
+      "payment_attempts": 0,
+      "reviews": 0
+    },
+    "devFingerprint": "47d0aef36ea34a985e1eded84d527ee46d547d333ea5734684e5297228051cd5",
+    "dbPathMatchesOwned": true,
+    "ownedMongoStoppedAfterChecks": true
+  },
+  "aggregations": {
+    "canonicalPipelines": 8,
+    "usesLookup": false,
+    "qualifiedOrders": 60,
+    "expectedRevenue": 10103259022,
+    "expectedUnits": 434,
+    "top5MatchesSnapshotRecomputation": true,
+    "dayMonthCategoryRevenueMatch": true
+  },
+  "databaseResetReseed": false
+}

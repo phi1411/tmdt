@@ -1,0 +1,390 @@
+{
+  "recordedAtUtc": "2026-10-20T06:56:09.712899+00:00",
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/products?productType=ELECTRONICS&pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/dien-thoai-apple-iphone-5s",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products?productType=FASHION&pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/ao-thun-nam-gigabyte-aorus",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products?productType=HOME_APPLIANCE&pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/silver-pot-with-glass-cap-149",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products?q=07C",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/register",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/register",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/users/me/addresses",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/admin/categories",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/admin/products",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/cart/items/22093fe61270064002cb11d13be5aded3c93e2a64508c2e0f845f4237b3b1a55",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/checkout/quote?addressId=6ad7107eec77ac8c719daee8&paymentMethod=COD",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/orders/6ad71080ec77ac8c719daeec",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/products/6ad7107fec77ac8c719daeea/reviews",
+      "status": 409
+    },
+    {
+      "method": "POST",
+      "path": "/orders/6ad71080ec77ac8c719daeec/cancel",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders/6ad71080ec77ac8c719daeec/cancel",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6ad7107fec77ac8c719daeea",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/summary?from=2026-10-19T06%3A56%3A01.771679%2B00%3A00&to=2026-10-21T06%3A56%3A01.771679%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/cart/items/cfb5ea69f61dc67681c5dbf422a439aa748e217ff3de1020fb360cd8ef2fe7a8",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/checkout/quote?addressId=6ad7107eec77ac8c719daee8&paymentMethod=COD",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6ad7107fec77ac8c719daeea",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/admin/products/6ad7107fec77ac8c719daeea",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/orders/6ad71084ec77ac8c719daeef",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/admin/orders/6ad71084ec77ac8c719daeef/confirm",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/admin/orders/6ad71084ec77ac8c719daeef/ship",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/admin/orders/6ad71084ec77ac8c719daeef/complete",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/summary?from=2026-10-19T06%3A56%3A01.771679%2B00%3A00&to=2026-10-21T06%3A56%3A01.771679%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/revenue?from=2026-10-19T06%3A56%3A01.771679%2B00%3A00&to=2026-10-21T06%3A56%3A01.771679%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/top-products?from=2026-10-19T06%3A56%3A01.771679%2B00%3A00&to=2026-10-21T06%3A56%3A01.771679%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/category-revenue?from=2026-10-19T06%3A56%3A01.771679%2B00%3A00&to=2026-10-21T06%3A56%3A01.771679%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/dashboard/order-status?from=2026-10-19T06%3A56%3A01.771679%2B00%3A00&to=2026-10-21T06%3A56%3A01.771679%2B00%3A00",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/products/6ad7107fec77ac8c719daeea/reviews",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/products/6ad7107fec77ac8c719daeea/reviews",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/products/6ad7107fec77ac8c719daeea/reviews",
+      "status": 409
+    },
+    {
+      "method": "GET",
+      "path": "/products/hardening-dfe36d405189/reviews?pageSize=1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/hardening-dfe36d405189/reviews?rating=4",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6ad7107fec77ac8c719daeea",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/users/6ad7107dec77ac8c719daee7",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/admin/users/6ad7107dec77ac8c719daee7/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "status": 401
+    }
+  ],
+  "results": {
+    "canonicalSkuMerge": "PASS",
+    "skuCod": "PASS",
+    "cancelOnce": "PASS",
+    "snapshot": "PASS",
+    "adminLifecycle": "PASS",
+    "reviews": "PASS",
+    "security": "PASS",
+    "revenueDelta": 120000
+  },
+  "beforeFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "afterFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "exactCleanup": true,
+  "counts": {
+    "users": 43,
+    "categories": 5,
+    "products": 182,
+    "carts": 2,
+    "orders": 101,
+    "payment_attempts": 30,
+    "reviews": 0
+  },
+  "afterCounts": {
+    "users": 43,
+    "categories": 5,
+    "products": 182,
+    "carts": 2,
+    "orders": 101,
+    "payment_attempts": 30,
+    "reviews": 0
+  },
+  "invalidDocuments": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "removedOwnedDocuments": {
+    "reviews": 1,
+    "payment_attempts": 0,
+    "orders": 2,
+    "carts": 1,
+    "users": 2,
+    "products": 1,
+    "categories": 1
+  },
+  "validators": 7,
+  "declaredIndexes": 16,
+  "canonicalValidatorsMatch": true,
+  "canonicalIndexesMatch": true,
+  "vnpayLive": "NOT_EXERCISED_BY_THIS_COD_REVIEW_CHECK",
+  "resetReseed": false
+}

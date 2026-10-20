@@ -2,7 +2,7 @@
 
 ## Goal
 
-Customer đọc lịch sử bằng dữ liệu snapshot và hủy khi đủ điều kiện. **PHASE05C backend snapshot/history/cancel IMPLEMENTED**, PHASE06A thêm lazy online expiry/races; frontend deferred, Admin Orders thuộc worker06B/evidence riêng. POST tạo đơn thuộc checkout. [Contract](../api-contract.md), [review](../phase-05c-review.md), [Payment](payment.md).
+Customer đọc lịch sử bằng dữ liệu snapshot và hủy khi đủ điều kiện. **PHASE05C backend snapshot/history/cancel IMPLEMENTED**, PHASE06A thêm lazy online expiry/races; frontend OrdersPage/OrderDetailPage đã triển khai, Admin Orders có API/UI và evidence riêng. POST tạo đơn thuộc checkout. [Contract](../api-contract.md), [review](../phase-05c-review.md), [Payment](payment.md).
 
 ## Actors
 
@@ -32,7 +32,7 @@ List dateBasis=createdAt, stable sort createdAt desc/_id desc. Không trả raw 
 
 ## Data
 
-Read orders only cho history/detail; cancel write orders + products + active payment_attempts invalidation chung transaction. Source `app/api/orders.py`, `app/services/order_service.py`, `app/repositories/order_repository.py`, `app/repositories/payment_attempt_repository.py`, ProductRepository.restore_stock, `app/schemas/order_schema.py`; tests `backend/tests/test_commerce.py`. Reuse shared catalog_transaction bounded snapshot/majority orchestration; owner enforced queries, DTO allowlist. Dependency Auth live role/identity, checkout snapshot contract/payment state guard, không Product detail cho history. Frontend `features/orders/` chưa tạo.
+Read orders only cho history/detail; cancel write orders + products + active payment_attempts invalidation chung transaction. Source `app/api/orders.py`, `app/services/order_service.py`, `app/repositories/order_repository.py`, `app/repositories/payment_attempt_repository.py`, ProductRepository.restore_stock, `app/schemas/order_schema.py`; tests `backend/tests/test_commerce.py`. Reuse shared catalog_transaction bounded snapshot/majority orchestration; owner enforced queries, DTO allowlist. Dependency Auth live role/identity, checkout snapshot contract/payment state guard, không Product detail cho history. Frontend thực tế `frontend/src/pages/OrdersPage.tsx` và `OrderDetailPage.tsx`.
 
 ## Validation
 

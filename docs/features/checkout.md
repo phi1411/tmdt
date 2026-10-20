@@ -2,7 +2,7 @@
 
 ## Goal
 
-Từ Cart/address tới Order snapshot, pricing/tồn kho nhất quán. **PHASE05C COD +PHASE06A VNPAY backend IMPLEMENTED** khi đủ cấu hình; frontend deferred, live Sandbox chưa rehearsal. Đây là transaction orchestration owner. [Contract](../api-contract.md), [review05C](../phase-05c-review.md), [Payment](payment.md).
+Từ Cart/address tới Order snapshot, pricing/tồn kho nhất quán. **PHASE05C COD +PHASE06A VNPAY backend IMPLEMENTED** khi đủ cấu hình; frontend CheckoutPage đã triển khai; real Web VNPAY/testOTP/automaticIPN scoped PASS20/10/2026 theo vnpay-sandbox-final-review. Đây là transaction orchestration owner. [Contract](../api-contract.md), [review05C](../phase-05c-review.md), [Payment](payment.md).
 
 ## Actors
 
@@ -31,7 +31,7 @@ Order creation thuộc feature này; Orders doc chỉ detail/history/cancel, kh�
 
 ## Data
 
-Read User/Cart/Category/Product; write Product stock/version, Category guard version, Order, Cart version/clear và initial payment_attempts nếu online. Paths `app/api/checkout.py`, `app/services/checkout_service.py`, `app/services/commerce_pricing.py`, cart/order/category/product/user repositories, `app/schemas/checkout_schema.py`; PHASE06A dependency trực tiếp `PaymentService.initial_attempt/checkout_result`, `VnpayProvider` và PaymentAttemptRepository. Reuse `app/services/catalog_transaction.py` snapshot/majority, tối đa3 transaction attempts/3 commit attempts, finite transient backoff20/40ms; unknown commit chỉ retry commit. Dependencies Auth live identity, Cart, Orders immutable/state contract, shared errors/validation/serialization. Tests `backend/tests/test_commerce.py`, `test_payment.py`; HTTP `scripts/backend/verify_commerce_runtime.py`, `verify_payment_runtime.py`; frontend `features/checkout/` chưa tạo.
+Read User/Cart/Category/Product; write Product stock/version, Category guard version, Order, Cart version/clear và initial payment_attempts nếu online. Paths `app/api/checkout.py`, `app/services/checkout_service.py`, `app/services/commerce_pricing.py`, cart/order/category/product/user repositories, `app/schemas/checkout_schema.py`; PHASE06A dependency trực tiếp `PaymentService.initial_attempt/checkout_result`, `VnpayProvider` và PaymentAttemptRepository. Reuse `app/services/catalog_transaction.py` snapshot/majority, tối đa3 transaction attempts/3 commit attempts, finite transient backoff20/40ms; unknown commit chỉ retry commit. Dependencies Auth live identity, Cart, Orders immutable/state contract, shared errors/validation/serialization. Tests `backend/tests/test_commerce.py`, `test_payment.py`; HTTP `scripts/backend/verify_commerce_runtime.py`, `verify_payment_runtime.py`; frontend thực tế `frontend/src/pages/CheckoutPage.tsx`.
 
 ## Validation
 

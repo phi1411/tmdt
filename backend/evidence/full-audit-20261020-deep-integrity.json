@@ -1,0 +1,36 @@
+{
+  "recordedAtUtc": "2026-10-20T06:46:54.911454+00:00",
+  "counts": {
+    "users": 43,
+    "categories": 5,
+    "products": 182,
+    "carts": 2,
+    "orders": 101,
+    "payment_attempts": 30,
+    "reviews": 0
+  },
+  "fingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "roleCounts": {
+    "CUSTOMER": 42,
+    "ADMIN": 1
+  },
+  "productTypeCounts": {
+    "FASHION": 61,
+    "ELECTRONICS": 61,
+    "HOME_APPLIANCE": 60
+  },
+  "productsWithoutImages": 0,
+  "skuProducts": 0,
+  "invalidDocuments": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "invariantFindings": [],
+  "expiredHistoricalSeedHolds": 5,
+  "databaseWrites": 0
+}
