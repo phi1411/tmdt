@@ -42,3 +42,10 @@ Windows production supervisor fault probe riêng có kết quả INCONCLUSIVE_WR
 3. Rehearsal nhóm3SV: Compass xem2ngành/embedded snapshot/import-export và bấm giờ5–10phút; offline OS là gate thủ công lịch sử. Nội dung báo cáo/demo pack có sẵn, chưa chứng minh các thao tác người thật này trong phiên.
 
 Backend/static vẫn dùng dịch vụ Render hiện hữu$7/tháng+static free; worker nằm cùng dịch vụ. Không hẹn lịch tự ngừng; người dùng suspend/delete khi kết thúc demo. Secret chỉ private/backend config, không nằm trong diff được commit.
+
+
+## Resume20/10/2026
+
+Người dùng trả lời “tiếp tục” sau yêu cầu xác nhận điều khoản Sandbox; đã nhận xác nhận tiếp tục luồng đã mô tả, không yêu cầu gửi lại merchant. Phiên trình duyệt trước không còn khả dụng: inventory không có app/browser, mở trang qua Codex được queued, chưa có browser kết nối. **Provider bank/OTP/automaticIPN hiện PENDING_BROWSER_CONNECTION**, không còn chờ câu trả lời điều khoản của lượt trước; nếu xuất hiện điều khoản mới khác nội dung phải đối chiếu trước khi chấp nhận. Không tạo Order/giữ kho mới khi chưa thể mở gateway.
+
+Read-only public health200/backend+database+replicaSet OK; unsigned IPN97 đúng signature guard. Atlas43/5/182/2/101/30/0, fullfingerprint479699... khớp baseline,5historicalpending giữ nguyên; databasewrites0. Safe receipt `backend/evidence/vnpay-resume-20261020.json`. Chưa rerun710tests/build vì không có application change. Cần mở Browser trong chính chat này để tiếp tục thẻ test/OTP/providerIPN, không claim Live Sandbox PASS.

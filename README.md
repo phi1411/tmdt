@@ -104,3 +104,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 34 | Nguyen Ngoc Phi | Bổ sung công cụ rehearsal Sandbox có journal/cleanup, evidence710tests và rà soát định mức | `test(payment): add owned sandbox rehearsal and hardening evidence` |
 | 35 | Nguyen Ngoc Phi | Cho rehearsal dùng địa chỉ đã có khi chưa đặt mặc định và báo đúng phạm vi COD regression | `fix(tooling): resume owned sandbox fixtures without a default address` |
 | 36 | Nguyen Ngoc Phi | Ghi nhận Render Sandbox config,710tests,62publicchecks,exact cleanup và gate điều khoản chưa xác nhận | `docs(payment): record sandbox readiness and pending provider consent` |
+| 37 | Nguyen Ngoc Phi | Kiểm tra runtime/Atlas sau resume và ghi rõ browser chưa kết nối, không phát sinh đơn thử | `docs(payment): record readonly resume checks and browser handoff` |

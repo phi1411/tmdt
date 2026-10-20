@@ -1,0 +1,40 @@
+{
+  "checkedAtUtc": "2026-10-20T02:38:29.320048+00:00",
+  "health": {
+    "httpStatus": 200,
+    "body": {
+      "data": {
+        "status": "ok",
+        "checks": {
+          "backend": "ok",
+          "database": "ok",
+          "replicaSet": "ok"
+        }
+      },
+      "meta": {
+        "requestId": "26c95e02dfb945738b4f8d32a564ad50"
+      }
+    }
+  },
+  "ipn": {
+    "httpStatus": 200,
+    "body": {
+      "RspCode": "97",
+      "Message": "Invalid signature"
+    }
+  },
+  "counts": {
+    "users": 43,
+    "categories": 5,
+    "products": 182,
+    "carts": 2,
+    "orders": 101,
+    "payment_attempts": 30,
+    "reviews": 0
+  },
+  "fingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "historicalPending": 5,
+  "matchesPreviousBaseline": true,
+  "browserStatus": "UNAVAILABLE_NO_CONNECTED_BROWSER",
+  "databaseWrites": 0
+}
