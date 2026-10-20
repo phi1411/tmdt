@@ -49,7 +49,7 @@ Secret chỉ backend env, không hardcode/live credential trong tests, không l�
 
 ## UI Behavior
 
-Frontend đã được kiểm tra ở PHASE07A và harden19/10/2026. Merchant/Render env/SIT IPN đã cấu hình; bank OTP/automatic IPN còn PENDING_USER_TERMS_CONFIRMATION theo [review hiện hành](../vnpay-sandbox-final-review.md). Dùng paymentUrl từ checkout/retry để redirect Sandbox; Return hiển thị đang xác minh trước IPN, người dùng chủ động poll Order, failed/invalid/review message từ server. Retry trên UI chỉ dành cho VNPAY/PENDING order, payment FAILED, chưa review và còn deadline; không mời tạo attempt mới khi initial attempt đang PENDING. Retry URL fault/network503 giữ cùng Idempotency-Key/expectedVersion để khôi phục attempt đã commit. Initial URL recovery dùng nguyên checkout key/body theo Checkout, không tạo attempt mới. Review flag cần đối soát thủ công ngoài ứng dụng. Không tự set paid từ query browser. Evidence giả lập contract frontend được ghi riêng và không thay thế provider rehearsal.
+Frontend đã được kiểm tra ở PHASE07A và harden19/10/2026. Merchant/Render env/SIT IPN đã cấu hình; bank OTP/automatic IPN đã scoped PASS20/10/2026 theo [review hiện hành](../vnpay-sandbox-final-review.md). Dùng paymentUrl từ checkout/retry để redirect Sandbox; Return hiển thị đang xác minh trước IPN, người dùng chủ động poll Order, failed/invalid/review message từ server. Retry trên UI chỉ dành cho VNPAY/PENDING order, payment FAILED, chưa review và còn deadline; không mời tạo attempt mới khi initial attempt đang PENDING. Retry URL fault/network503 giữ cùng Idempotency-Key/expectedVersion để khôi phục attempt đã commit. Initial URL recovery dùng nguyên checkout key/body theo Checkout, không tạo attempt mới. Review flag cần đối soát thủ công ngoài ứng dụng. Không tự set paid từ query browser. Evidence giả lập contract frontend được ghi riêng và không thay thế provider rehearsal.
 
 ## Acceptance Criteria
 
@@ -63,8 +63,8 @@ Backend atomic checkout/attempt, valid URL/signature, Return read-only, IPN idem
 - [x] IPN duplicate/out-of-order/late/second-success, version caps, unique transactionNo, rollback/ambiguous commit.
 - [x] Retry idempotency/deadline/creation race và expiry/cancel/IPN concurrency trên real rs0; worker --once/failure handling.
 - [x] Real Sandbox signed redirect tới gateway và biểu mẫu NCB, cấu hình IPN lưu thành công tại SIT.
-- [ ] Bank OTP/automatic IPN: PENDING_USER_TERMS_CONFIRMATION, chưa claim Live Sandbox PASS; credentials hiện đã có, không còn blocker thiếu merchant.
-- [ ] Frontend Payment Result page/poll UI: deferred theo phạm vi.
+- [x] Bank testOTP/automaticIPN/Return PAID và checkout Web scoped PASS20/10/2026; bộ SIT certification riêng chưa hoàn tất.
+- [x] Frontend Payment Result/poll status hardening:6deterministic tests và real Web Return PAID PASS; không claim mọi provider edge case đều chạy live.
 
 
 ## Cập nhật19/10/2026 — ADR013

@@ -1,0 +1,35 @@
+{
+  "vnpayAdminLifecycle": [
+    {
+      "action": "ship",
+      "orderStatus": "SHIPPING",
+      "paymentStatus": "PAID"
+    },
+    {
+      "action": "complete",
+      "orderStatus": "COMPLETED",
+      "paymentStatus": "PAID"
+    }
+  ],
+  "manualConfirmRejected": true,
+  "paidAtUnchanged": true,
+  "snapshotUnchanged": true,
+  "revenueDelta": 100000,
+  "shippingExcluded": 30000,
+  "cancelledUnpaidSandboxOrders": [
+    {
+      "orderCode": "ORD-6AD7073889D15B8F21C03A24",
+      "orderStatus": "CANCELLED",
+      "paymentStatus": "FAILED",
+      "cancelReplayUnchanged": true
+    },
+    {
+      "orderCode": "ORD-6AD7073B89D15B8F21C03A26",
+      "orderStatus": "CANCELLED",
+      "paymentStatus": "FAILED",
+      "cancelReplayUnchanged": true
+    }
+  ],
+  "providerSit": "NOT_COMPLETED_PROVIDER_UI_ERROR_OR_EMPTY_TRANSACTION_LIST",
+  "applicationSourceChanges": 0
+}

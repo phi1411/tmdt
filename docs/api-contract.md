@@ -216,7 +216,7 @@ Máy hiện tại chạy `http://127.0.0.1:5001/api/v1/health`; API_PORT trong .
 
 ## SKU và Reviews — hardening19/10/2026 (ADR013)
 
-Contract bổ sung thay proposal SKU/reviews cũ; giữ tất cả endpoints Auth/Catalog/Commerce/Payment/Admin đã triển khai. User hiện yêu cầu hoàn tất COD trước, VNPAY_ENABLED=false.
+Contract bổ sung thay proposal SKU/reviews cũ; giữ tất cả endpoints Auth/Catalog/Commerce/Payment/Admin đã triển khai. Lựa chọn COD trước/VNPAY_ENABLED=false là lịch sử ở thời điểm SKU hardening. Follow-up20/10/2026: merchant đã cung cấp, VNPAY enabled trên Render, real NCB/testOTP/automaticIPN/WebReturn scoped PASS; [review](vnpay-sandbox-final-review.md), không thanh toán tiền thật.
 
 Admin create/patch Product nhận optional tierVariations/skus; patch ma trận gửi cả hai arrays. Tối đa4tầng/100SKU; tierIndex đủ tầng và trong options, SKU ID/tổ hợp duy nhất. Giá SKU integer VND1..1e9, stock int>=0. Root price=minSKUprice, stock=sumSKUstock do server tính. Legacy arrays absent/empty dùng giá/kho chung. Không cho thay identity ma trận khi có PENDING/CONFIRMED/SHIPPING Order giữ kho:409SKU_IN_USE; thay giá/kho cùng identity vẫn version guarded. Product DTO thêm tierVariations/skus/ratingSummary.
 

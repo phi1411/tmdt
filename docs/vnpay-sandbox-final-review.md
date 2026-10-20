@@ -1,51 +1,53 @@
-# VNPAY Sandbox và rà soát ràng buộc — 19/10/2026
+# VNPAY Sandbox và rà soát ràng buộc — chốt20/10/2026
 
-## Phạm vi và trạng thái
+## Kết quả hiện tại
 
-Người dùng cung cấp merchant Sandbox và giao hoàn tất tích hợp, rà soát/sửa logic còn thiếu. Source làm trên clone `tmdt-review-20261017`, giữ nguyên các thay đổi chưa commit và storage của checkout gốc. Chỉ môi trường test, không thanh toán tiền thật, không dịch vụ trả phí mới. Website: https://novamart-web.onrender.com ; health: https://novamart-api.onrender.com/api/v1/health .
+**VNPAY SANDBOX END-TO-END PASS cho luồng thực đã kiểm thử.** Hai giao dịch130.000VND đã thanh toán bằng thẻ NCB và OTP test tại gateway chính thức; IPN tự động đã xác minh và commit Order CONFIRMED/PAID +attempt SUCCEEDED trước khi agent gửi bất kỳ replay/probe nào. Không phải callback tự ký hoặc cập nhật DB thành paid. **Chưa nghiệm thu bộ SIT/certification riêng của nhà cung cấp**, không thanh toán tiền thật.
 
-Application commit `ef9a481d6c01f84c380b66bcce9e13de7c9078d2` đã Live trên backend và static Render hiện hữu. Backend có cấu hình merchant riêng, VNPAY_ENABLED=true, API và expiry worker cùng supervisor; khóa bí mật không nằm trong source/frontend/evidence. IPN đã lưu thành công tại SIT của VNPAY; việc lưu cấu hình này tự nó không chứng minh gateway đã gửi IPN tự động.
+Website: https://novamart-web.onrender.com ; health: https://novamart-api.onrender.com/api/v1/health . Application `ef9a481d6c01f84c380b66bcce9e13de7c9078d2` đang Live backend/static trên Render hiện hữu. VNPAY_ENABLED=true, merchant secret chỉ backend/private; Return `/payment/return`, IPN `/api/v1/payments/vnpay/ipn`. API+expiry cùng supervisor, fixedcutover2026-10-19T12:57:14Z bảo toàn5seedonline PENDING lịch sử. Không thêm dịch vụ trả phí hoặc đổi application source trong lượt20/10.
 
-**CODE/BUILD/PUBLIC REGRESSION PASS; PROVIDER BANK/IPN PENDING_USER_TERMS_CONFIRMATION.** Real gateway nhận signed URL và mở biểu mẫu thẻ NCB/Test130.000VND. Sau nhập thẻ test, gateway yêu cầu chấp nhận điều khoản; agent đã xin xác nhận tại bước này và chưa nhận câu trả lời khi chốt. Không bấm chấp nhận, không nhập OTP, không đánh dấu Order PAID hoặc claim automatic IPN/Live Sandbox PASS. SIT nhận hai mã giao dịch thử nhưng chưa chạy bộ case IPN do cần hoàn thành bước provider prerequisite. Không dùng callback tự ký để thay bằng chứng ngân hàng Sandbox.
+## Provider và Web thật20/10
 
-## Lỗi thực tế đã sửa
-
-| Vấn đề | Sửa và kiểm chứng |
+| Kiểm tra | Kết quả / evidence |
 | --- | --- |
-| Render chỉ chạy API, thiếu worker chủ động giải phóng kho khi người mua bỏ thanh toán | Supervisor hai process API/expiry trong cùng dịch vụ. Child chết dừng peer và exit nonzero; shutdown có giới hạn. Bật worker khi bật VNPAY; giữ worker khi tắt tạo link. Real child-process tests PASS. |
-| Seed có5online PENDING lịch sử quá hạn, bật worker thẳng sẽ đụng corpus demo | Mốc createdAt vận hành cố định `2026-10-19T12:57:14Z`; chỉ scanner lọc mốc, không reset/đổi fixture. Real rs0 test hoàn kho once và giữ Order trước mốc PASS. Không được nâng mốc sau restart. |
-| Return giữ thông báo PENDING cũ sau khi Order FAILED/EXPIRED; review flag và lỗi mạng gây hiểu sai | View lấy Order mới đúng id, signature guard giữ nguyên; hiển thị review sau poll, lỗi mạng là chưa xác minh và có retry; bỏ kết quả async cũ.6FE tests PASS. |
-| Reviews404 khi slug hợp lệ nhưng giống24ký tự ObjectId | Existing ID có ưu tiên, ID không tồn tại thì fallback slug; UI dùng product.id.2real DB tests bao gồm collision PASS. |
+| Gateway/NCB/OTP/automaticIPN/Return | PASS. Order ORD-6AD706D789D15B8F21C03A22, provider15709300; CONFIRMED/PAID, SUCCEEDED, callbackFingerprint có;130.000VND. `backend/evidence/vnpay-provider-live-20261020.json`. |
+| Luồng hoàn toàn từ UI | Login→Product detail→Mua ngay→SizeM→Cart→checkout chọn địa chỉ có sẵn→VNPAY quote→xác nhận trên Web→gateway/NCB/testOTP→Return PAID. Order ORD-6AD7088889D15B8F21C03A2F/provider15709315; SKU100.000+ship30.000; Cart0, rootstock9=SKU6+3. `vnpay-web-live-20261020.json`. Không claim UI tạo mới địa chỉ/register ở lượt này; fixtures được chuẩn bị qua API. |
+| Return readonly | Signed provider query đã thu từ redirect: verified/confirmed=true, authoritative=false, SUCCESS; full owned Order/attempt/Product digest không đổi. |
+| Replay IPN thực đã ghi nhận | Gửi lại nguyên callback provider đã thu qua HTTPS→02, không đổi state/stock/timestamps. Đây là probe replay riêng sau automatic IPN, không thay bằng chứng IPN tự động. |
+| Tamper | Sửa amount trong callback mà không ký lại→97, state giữ nguyên; signed amount mismatch/unknown reference/late/concurrency/rollback đã có deterministic real rs0 tests, không claim SIT live cho các case chưa chạy. |
+| Admin sau payment | Không cho Admin manual confirm VNPAY409; ship→SHIPPING→complete→COMPLETED/PAID, paidAt/snapshot không đổi. Dashboard +100.000VND tiền hàng, loại30.000VND ship. `vnpay-post-payment-20261020.json`. |
+| Hủy2unpaid Orders chuẩn bị SIT | CANCELLED/FAILED, replay cancel không đổi, giữ once-only stock restore; không trả kho thêm khi cleanup. |
+| Browser | Hai màn hình Return PAID, Web Order COMPLETED; captured error/warn logs rỗng trong scoped final Web journey. Không claim mọi request/page/phiên đều không lỗi. Screenshots private `.local/vnpay-sandbox/bank-success-20261020.png`, `web-bank-success-20261020.png`, `order-completed-20261020.png`. |
 
-Không thay API nghiệp vụ/schema/index/pipeline trong đợt này. Không thêm Seller/Shipper/Staff/refund/coupon. COD và doanh thu vẫn giữ invariant cũ. ADR014 ghi quyết định vận hành; ADR013 là quyết định đã được giao về SKU/reviews, thay giới hạn lịch sử ở phase02.
+Portal SIT đăng nhập thành công nhưng danh sách giao dịch rỗng sau chọn terminal; một lượt NCB bổ sung báo đơn không tồn tại/đã xử lý và một lượt báo lỗi xử lý. Mở lại tuần tự một giao dịch đã tới OTP, chưa kết luận nguyên nhân hoặc claim đã sửa provider. Không chạy bộ6case SIT trên dữ liệu seed hoặc các Order đã hủy. Hai giao dịch ngân hàng Sandbox thực ở trên thành công và IPN tự động đã được đối chiếu độc lập; **không suy rộng thành VNPAY chứng nhận SIT đầy đủ**. Không gửi email/support thay người dùng.
 
-## Kiểm chứng source cuối
+## Lỗi thực tế đã sửa19/10
 
-- Full backend MongoDB rs0 thật: **710 passed/0failed/0errors/0skipped,226.015s**. JUnit gốc lưu riêng tại `.local/vnpay-sandbox/pytest-audit-final.xml`; safe receipt `backend/evidence/vnpay-audit-checks.json`.
-- Frontend TypeScript strict + production build PASS34.69s;6/6payment status tests PASS; npm audit0knownfindings. Bundle JS còn cảnh báo kích thước khoảng930kB; không claim zero warning hoặc security tuyệt đối.
-- Route audit54method/path,13blueprints,0collision, prefix/api/v1 nhất quán. Auth/User/Catalog/Commerce/Payment/Admin/Reviews cùng tồn tại.
-- Design checker STATIC_PASS:7validators,22negativecases,8canonicalpipelines,20candidateindexes. Database demo dùng16declared+7_id_indexes, không apply index candidate khác.
-- Rà soát seed:182Products gồm61Electronics/61Fashion/60HomeAppliance;100seedOrders có2–5items. Live101Orders bao gồm fixture bảo vệ cố ý giữ, không là seed sai định mức.
-- Snapshot item/product/category/address và tiền BSON long VND giữ nguyên; Revenue=COMPLETED+PAID/completedAt/items snapshot, không shipping hoặc lookup giá Product sống. Canonical aggregation8pipelines không đổi; bằng chứng snapshot/concurrency/rollback/ownership/amount tampering nằm trong full suite và public regression.
+| Vấn đề | Thay đổi và kiểm chứng |
+| --- | --- |
+| Render chỉ API, thiếu worker chủ động hoàn kho | Supervisor hai process API/expiry trong dịch vụ hiện hữu; child dừng bất thường thì stop peer/exit nonzero, bounded shutdown. Giữ worker khi tắt creation. Real child-process tests PASS. |
+| Bật worker sẽ expire5online seed cũ | Fixed createdAt cutover, không nâng mốc sau restart; real rs0 cutoff/stock-once PASS. Lazy expiry/IPN không bỏ invariant cũ. |
+| Return giữ PENDING/review cũ hoặc báo bank failure khi lỗi mạng | Lấy Order hiện hành đúng id, giữ signature guard; phân biệt chưa xác minh, retry; discard async cũ.6FE tests PASS. |
+| Reviews404 với slug24hex | Existing ID có ưu tiên; ID không tồn tại fallback slug; UI dùng product.id.2real DB tests PASS. |
 
-## Bằng chứng public, cleanup và giới hạn
+ADR013 là quyết định SKU/reviews được giao trước đó, ADR014 khóa vận hành payment. Không thêm Seller/Shipper/Staff/refund/coupon, đổi schema/index/API nghiệp vụ hoặc pipeline trong đợt này. Helper d09f6e6 hỗ trợ rehearsal dùng địa chỉ chưa default và tiếp tục đúng Cart riêng.
 
-Public regression sau khi bật VNPAY: **62HTTPS checks PASS**, COD/SKU reserve/cancel-once/snapshot/Adminlifecycle/revenue+120.000VND không shipping/reviews/ownership/blocked/invalidJWT/payload/CORS. Exact cleanup2Users1Cart2Orders1Product1Category1Review0Attempts, canonical7validators/16indexes match và0invaliddocuments. Receipt `backend/evidence/vnpay-cod-review-regression.json`; fingerprint lượt này bao gồm fixture VNPAY đang PENDING, trước/sau c20920d... khớp. Không nhầm fingerprint trung gian này với baseline cuối479699.... Kết thúc lượt kiểm tra chờ người dùng: cleanup đúng1User1Cart2Orders2Attempts1Product1Category;0Reviews. Atlas về43Users/5Categories/182Products/2Carts/101Orders/30Attempts/0Reviews, fingerprint **47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2** khớp baseline trước cả đợt;7validators/16declaredindexes match canonical/0invaliddocuments/0orphans,5historicalpending giữ nguyên. Isolated test7collections0, dev47d0aef... không đổi. Receipts `vnpay-sandbox-cleanup.json`, `vnpay-final-integrity.json`, `vnpay-provider-rehearsal.json` trong backend/evidence. Không xóa dữ liệu người dùng/seed hoặc reset/reseed. Chỉ dọn đúng fixture có journal và backup riêng.
+## Source tests và barem
 
-Windows production supervisor fault probe riêng có kết quả INCONCLUSIVE_WRAPPER_PID_ENUMERATION; không suy rộng thành lỗi trên Render Linux. API/worker local đã health/scan và real child-process unit checks PASS; Render đã thực chạy cả hai process. Các gate Compass GUI/nhóm3người rehearsal có bấm giờ/offline OS vẫn cần người dùng làm theo demo pack, không được tự đóng bằng browser scoped tests.
+- **710passed/0failed/0errors/0skipped,226.015s**, full real rs0 run19/10. Frontend strict+build PASS34.69s;6/6status tests; npm audit0knownfindings. Không rerun suite20/10 vì không đổi app/tests. Safe receipt `backend/evidence/vnpay-audit-checks.json`; JUnit/log gốc ignored `.local/vnpay-sandbox`. Build còn warning bundle khoảng930kB; không claim security tuyệt đối.
+- Route54method/path/13blueprints/0collision/all/api/v1. Auth/User/Catalog/Commerce/Payment/Admin/Reviews cùng tồn tại.
+- Design checker7validators/22negativecases/8canonicalpipelines/20candidateindexes STATIC_PASS; live16declared+7_id_indexes, không apply candidates khác.
+-182Products:61Electronics/61Fashion/60HomeAppliance;100seedOrders mỗi2–5items, live101bao gồm fixture bảo vệ giữ có chủ ý. Polymorphic cùng products; Order snapshots/embedded và BSONlong VND giữ nguyên; revenueCOMPLETED+PAID/completedAt/items snapshot/no shipping/no live Product lookup.
+-62publicHTTPS regression19/10 PASS: COD/SKU/cancel-once/snapshot/Admin/revenue/reviews/ACL/ownership/blocked/invalidJWT/payload/CORS. Receipt `vnpay-cod-review-regression.json` fingerprint trung gian bao gồm fixture online PENDING, trước/sau bằng nhau. Không nhầm với baseline cuối.
 
+## Database integrity và cleanup
 
-## Việc cần người dùng
+Hai lượt20/10 cleanup exact có journal/private backup: tổng2Users/2Carts/5Orders/5Attempts/2Products/2Categories,0Reviews. Mỗi lượt về đúng baseline **43Users/5Categories/182Products/2Carts/101Orders/30Attempts/0Reviews**, full canonical BSON fingerprint **47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2**.7validators/16declaredindexes match canonical,0invaliddocuments/0orphans,5historicalpending giữ nguyên. Không reset/reseed/rollback seed hoặc xóa account người dùng/fixture bảo vệ. Local Mongo/storage/checkout gốc không khởi động hoặc ghi trong20/10.
 
-1. Xác nhận đồng ý điều khoản sử dụng **VNPAY Sandbox** để agent tạo giao dịch mới và tiếp tục qua OTP test; hoặc tự thao tác bước đó trên trình duyệt. Các Order của lượt đang chờ đã được dọn nên không tái dùng đường dẫn cũ.
-2. Sau bank OTP thành công phải đối chiếu IPN server thật và Return readonly. Nếu gateway không tự gửi IPN, merchant cần đăng ký URL public với VNPAY; việc lưu trong SIT không thay thế xác nhận nhà cung cấp. Agent chưa gửi email/support message.
-3. Rehearsal nhóm3SV: Compass xem2ngành/embedded snapshot/import-export và bấm giờ5–10phút; offline OS là gate thủ công lịch sử. Nội dung báo cáo/demo pack có sẵn, chưa chứng minh các thao tác người thật này trong phiên.
+Receipts backend/evidence: `vnpay-sandbox-cleanup-20261020.json`, `vnpay-web-cleanup-20261020.json`, `vnpay-final-integrity-20261020.json`. Evidence19/10 được giữ nguyên, generic cleanup19không bị ghi đè. Full source working clone `tmdt-review-20261017`; các uncommitted helper/demo files checkout gốc giữ nguyên.
 
-Backend/static vẫn dùng dịch vụ Render hiện hữu$7/tháng+static free; worker nằm cùng dịch vụ. Không hẹn lịch tự ngừng; người dùng suspend/delete khi kết thúc demo. Secret chỉ private/backend config, không nằm trong diff được commit.
+## Lịch sử gate và việc còn lại
 
+19/10 đã tới gateway nhưng dừng xin xác nhận điều khoản, exact cleanup; evidence cũ không được sửa thành paid.20/10 người dùng xác nhận tiếp tục; lần đầu browser inventory rỗng, readonly health/Atlas giữ nguyên (`vnpay-resume-20261020.json`). Follow-up cùng ngày đã mở đúng chat trên host qua Codex navigation, browser kết nối lại và hoàn tất hai lượt ngân hàng/UI ở trên. Không còn blocker thiếu merchant, điều khoản hoặc kết nối browser trong scoped rehearsal này.
 
-## Resume20/10/2026
-
-Người dùng trả lời “tiếp tục” sau yêu cầu xác nhận điều khoản Sandbox; đã nhận xác nhận tiếp tục luồng đã mô tả, không yêu cầu gửi lại merchant. Phiên trình duyệt trước không còn khả dụng: inventory không có app/browser, mở trang qua Codex được queued, chưa có browser kết nối. **Provider bank/OTP/automaticIPN hiện PENDING_BROWSER_CONNECTION**, không còn chờ câu trả lời điều khoản của lượt trước; nếu xuất hiện điều khoản mới khác nội dung phải đối chiếu trước khi chấp nhận. Không tạo Order/giữ kho mới khi chưa thể mở gateway.
-
-Read-only public health200/backend+database+replicaSet OK; unsigned IPN97 đúng signature guard. Atlas43/5/182/2/101/30/0, fullfingerprint479699... khớp baseline,5historicalpending giữ nguyên; databasewrites0. Safe receipt `backend/evidence/vnpay-resume-20261020.json`. Chưa rerun710tests/build vì không có application change. Cần mở Browser trong chính chat này để tiếp tục thẻ test/OTP/providerIPN, không claim Live Sandbox PASS.
+Compass GUI/import-export live, nhóm3SV rehearsal5–10phút có bấm giờ và offlineOS vẫn là manual gates lịch sử, chưa có evidence mới để đóng. Bộ SIT chính thức chưa hoàn tất như giới hạn đã nêu. Các phần API/UI/DB bám barem và demo pack đã có; không tuyên bố tất cả gate người thật đã xong. Backend Render$7/tháng hiện có+staticfree, không lịch tự ngừng; suspend/delete khi kết thúc demo nếu không muốn tiếp tục tính phí. VNPAY vẫn chỉ Sandbox, không tiền thật.

@@ -1,0 +1,54 @@
+{
+  "providerFlow": "REAL_NCB_SANDBOX_TEST_CARD_AND_OTP",
+  "automaticIpnBeforeSit": {
+    "recordedAtUtc": "2026-10-20T06:16:16.132612+00:00",
+    "run": "vnp-live-0d1983bc11fe",
+    "orderCode": "ORD-6AD706D789D15B8F21C03A22",
+    "orderStatus": "CONFIRMED",
+    "paymentStatus": "PAID",
+    "paymentReviewRequired": false,
+    "total": 130000,
+    "rootStock": 9,
+    "skuStocks": [
+      6,
+      3
+    ],
+    "attempts": [
+      {
+        "status": "SUCCEEDED",
+        "providerTransactionNo": "15709300",
+        "hasVerifiedCallbackFingerprint": true
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "readonlyReturn",
+      "httpStatus": 200,
+      "result": {
+        "verified": true,
+        "confirmed": true,
+        "authoritative": false,
+        "result": "SUCCESS"
+      }
+    },
+    {
+      "name": "duplicateCapturedProviderCallback",
+      "httpStatus": 200,
+      "result": {
+        "RspCode": "02",
+        "Message": "Order already confirmed"
+      }
+    },
+    {
+      "name": "tamperAmountWithoutResigning",
+      "httpStatus": 200,
+      "result": {
+        "RspCode": "97",
+        "Message": "Invalid signature"
+      }
+    }
+  ],
+  "ownedBeforeDigest": "38ca9e09c2ae107e3592e881ecf06f09cf622c1973b62b508b883434dc8de2d4",
+  "ownedAfterDigest": "38ca9e09c2ae107e3592e881ecf06f09cf622c1973b62b508b883434dc8de2d4"
+}

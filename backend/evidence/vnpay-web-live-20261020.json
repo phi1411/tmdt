@@ -1,0 +1,38 @@
+{
+  "checkedAtUtc": "2026-10-20T06:23:00.918880+00:00",
+  "journey": [
+    "Web login",
+    "Product detail",
+    "Buy now",
+    "Select SKU M",
+    "Cart",
+    "Checkout existing address",
+    "VNPAY quote",
+    "Web confirm order",
+    "NCB test card",
+    "Test OTP",
+    "Automatic IPN",
+    "Return PAID"
+  ],
+  "orderCode": "ORD-6AD7088889D15B8F21C03A2F",
+  "orderStatus": "CONFIRMED",
+  "paymentStatus": "PAID",
+  "total": 130000,
+  "selectedAttributes": {
+    "Size": "M",
+    "skuId": "VNP-LIVE-02BDCAB7CC97-M"
+  },
+  "priceAtPurchase": 100000,
+  "attemptStatus": "SUCCEEDED",
+  "providerTransactionNo": "15709315",
+  "hasVerifiedCallbackFingerprint": true,
+  "rootStock": 9,
+  "skuStocks": [
+    6,
+    3
+  ],
+  "cartItems": 0,
+  "consoleErrorWarnCaptured": 0,
+  "prepareOnlyOrderCancelled": true,
+  "snapshot": "web-bank-success-20261020.png (private local artifact)"
+}

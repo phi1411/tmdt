@@ -1,6 +1,6 @@
 # VNPAY Sandbox — cấu hình và vận hành PHASE06A
 
-Backend đã có adapter/attempt/Return/IPN/expiry. Follow-up19/10/2026: người dùng đã cung cấp merchant Sandbox, đăng ký IPN trong SIT và cấu hình backend Render riêng. Live gate phải đối chiếu evidence provider thực trong báo cáo follow-up; các phase cũ BLOCKED không là trạng thái cấu hình hiện tại. [Contract](api-contract.md), [review](phase-06a-review.md), [VNPAY protocol chính thức](https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html).
+Backend đã có adapter/attempt/Return/IPN/expiry. Follow-up19/10/2026: người dùng đã cung cấp merchant Sandbox, đăng ký IPN trong SIT và cấu hình backend Render riêng. Follow-up20/10/2026 đã kiểm thử hai giao dịch NCB/OTP test, automaticIPN và Return PAID, gồm checkout từ Web; [review](vnpay-sandbox-final-review.md) ghi phạm vi PASS và giới hạn SIT riêng; các phase cũ BLOCKED không là trạng thái cấu hình hiện tại. [Contract](api-contract.md), [review](phase-06a-review.md), [VNPAY protocol chính thức](https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html).
 
 ## Environment
 

@@ -4,7 +4,8 @@
     "failures": "0",
     "errors": "0",
     "skipped": "0",
-    "time": "226.015"
+    "time": "226.015",
+    "executedAtDate": "2026-10-19"
   },
   "frontend": {
     "strictBuild": "PASS",
@@ -22,7 +23,8 @@
     }
   },
   "databaseResetReseed": false,
-  "providerLiveVerification": "PENDING_USER_TERMS_CONFIRMATION",
+  "providerLiveVerification": "SCOPED_REAL_NCB_SANDBOX_WEB_E2E_PASS_20261020",
   "publicCodReviewChecks": 62,
-  "databaseExactCleanup": true
+  "databaseExactCleanup": true,
+  "providerSitCertification": "NOT_COMPLETED"
 }

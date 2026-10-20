@@ -2,6 +2,8 @@
 
 ## Trạng thái và phạm vi
 
+Cập nhật vận hành20/10/2026: frontend/backend/Atlas đã public Render, SKU/reviews theo ADR013 và VNPAY Sandbox theo ADR014; real Web checkout→NCB/testOTP→automaticIPN→Return PAID scoped PASS. [Review hiện hành](vnpay-sandbox-final-review.md). Các đoạn phase riêng bên dưới giữ lịch sử phạm vi từng lần nghiệm thu, không biểu thị frontend/payment hiện chưa triển khai.
+
 LOCKED DESIGN v1 — PHASE02/03/04 và PHASE05C đã duyệt; PHASE05A implement13 Auth/User/Admin User, PHASE05B14 Catalog, PHASE05C10 Customer Commerce và PHASE06B11 Admin Orders/Dashboard endpoints trên Flask foundation/MongoDB đã khóa, không thay mô hình DB. PHASE06B dừng để review, không tự chuyển phase; Frontend chưa làm. Mỗi feature có worker/phase evidence riêng; Payment thuộc worker06A đồng thời. Modular monolith phù hợp nhóm3SV, MongoDB là CSDL chính. Quyết định tại [foundation](foundation-decisions.md) và [ADR index](decisions/README.md); bàn giao [phase05A](phase-05a-review.md), [phase05B](phase-05b-review.md), [phase05C](phase-05c-review.md), [phase06B](phase-06b-review.md), [API contract](api-contract.md); lịch sử [phase04](phase-04-review.md), [phase03](phase-03-review.md), [phase02](phase-02-review.md). Sơ đồ dưới đây mô tả đích thiết kế, không khẳng định mọi component đã chạy.
 
 ## Luồng hệ thống

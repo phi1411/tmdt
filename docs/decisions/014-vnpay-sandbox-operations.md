@@ -15,3 +15,6 @@ Rà soát FE phát hiện Return page giữ PENDING cũ sau khi poll Order đã 
 ## Acceptance và kiểm tra
 
 Real child-process supervision shutdown/failure tests; real rs0 cutoff/stock restore-once; full backend suite và strict/build, FE status tests; provider redirect/test card/IPN/Return nếu provider reachable; kiểm tra duplicate/amount tamper, hết hạn và COD regression. Cleanup exact owned fixtures, fingerprint corpus trước/sau; không fake callback rồi claim provider live PASS. Callback provider và file log phải được xử lý riêng vì Render request logs có thể lưu query; không commit signed URL/raw callback/secret.
+
+
+Verification20/10/2026: hai real NCB Sandbox/testOTP/automaticIPN/Return PAID PASS, gồm WebSKU/Cart/quote/createOrder journey; replay02/tamper97/readonlyReturn digest unchanged/Adminship-complete/revenue100k exclude30kship/exactcleanup PASS. Bộ SIT provider riêng chưa hoàn tất do emptylist/extraUIerrors, không gán deterministic cases thành SIT PASS. Xem docs/vnpay-sandbox-final-review.md và backend/evidence/vnpay-*-20261020.json.
