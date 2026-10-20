@@ -1,0 +1,34 @@
+{
+  "recordedAtUtc": "2026-10-20T07:29:39.940395+00:00",
+  "status": "CANONICAL_EXPORT_IMPORT_PASS",
+  "sourceDatabase": "novamart_demo",
+  "destinationDatabase": "ecommerce_defense",
+  "sourceReadOnly": true,
+  "resetReseedOrOverwrite": false,
+  "counts": {
+    "users": 44,
+    "categories": 6,
+    "products": 184,
+    "carts": 3,
+    "orders": 102,
+    "payment_attempts": 30,
+    "reviews": 1
+  },
+  "sourceFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+  "destinationFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+  "bsonTypesPreserved": true,
+  "validatorsOptionsIndexesEqual": true,
+  "invalidDocuments": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "localDevFingerprint": "47d0aef36ea34a985e1eded84d527ee46d547d333ea5734684e5297228051cd5",
+  "localDevUnchanged": true,
+  "compassGuiImportExport": "MANUAL_NOT_PERFORMED",
+  "privateExportDirectory": ".local/defense-final/compass-export"
+}

@@ -1,0 +1,57 @@
+{
+  "recordedAtUtc": "2026-10-20T07:29:35.852533+00:00",
+  "status": "RETAINED_DEMO_PASS",
+  "intentionalPersistentFixtures": true,
+  "database": "novamart_demo",
+  "orderCode": "ORD-6AD71662EC77AC8C719DAF03",
+  "products": [
+    {
+      "sku": "DEFENSE-FINAL-SKU",
+      "slug": "ao-demo-sku-m-xl",
+      "stock": 19,
+      "skuStocks": [
+        9,
+        10
+      ]
+    },
+    {
+      "sku": "DEFENSE-FINAL-SNAPSHOT",
+      "slug": "ao-demo-snapshot-gia-cu",
+      "stock": 9,
+      "currentPrice": 60000,
+      "orderSnapshotPrice": 50000
+    }
+  ],
+  "review": {
+    "rating": 4,
+    "verifiedPurchase": true,
+    "labelledDemo": true
+  },
+  "orderState": "COMPLETED/PAID",
+  "counts": {
+    "users": 44,
+    "categories": 6,
+    "products": 184,
+    "carts": 3,
+    "orders": 102,
+    "payment_attempts": 30,
+    "reviews": 1
+  },
+  "originalCorpusFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "originalCorpusUnchanged": true,
+  "fullFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+  "invalidDocuments": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "validators": 7,
+  "declaredIndexes": 16,
+  "revenueDeltaVnd": 150000,
+  "shippingExcludedVnd": 30000,
+  "seedResetOrReseed": false
+}

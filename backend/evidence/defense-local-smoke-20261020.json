@@ -1,0 +1,124 @@
+{
+  "recordedAtUtc": "2026-10-20T07:24:19.289021+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "expectedStatus": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/ao-demo-sku-m-xl",
+      "expectedStatus": 200
+    },
+    {
+      "method": "GET",
+      "path": "/products/ao-demo-sku-m-xl/reviews",
+      "expectedStatus": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "expectedStatus": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/register",
+      "expectedStatus": 201
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "expectedStatus": 200
+    },
+    {
+      "method": "GET",
+      "path": "/users/me",
+      "expectedStatus": 200
+    },
+    {
+      "method": "POST",
+      "path": "/users/me/addresses",
+      "expectedStatus": 201
+    },
+    {
+      "method": "POST",
+      "path": "/admin/categories",
+      "expectedStatus": 201
+    },
+    {
+      "method": "POST",
+      "path": "/admin/products",
+      "expectedStatus": 201
+    },
+    {
+      "method": "GET",
+      "path": "/cart",
+      "expectedStatus": 200
+    },
+    {
+      "method": "POST",
+      "path": "/cart/items",
+      "expectedStatus": 200
+    },
+    {
+      "method": "GET",
+      "path": "/checkout/quote?addressId=6ad7172248d9aff6bee198c1&paymentMethod=VNPAY",
+      "expectedStatus": 503
+    },
+    {
+      "method": "GET",
+      "path": "/checkout/quote?addressId=6ad7172248d9aff6bee198c1&paymentMethod=COD",
+      "expectedStatus": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "expectedStatus": 201
+    },
+    {
+      "method": "POST",
+      "path": "/orders",
+      "expectedStatus": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6ad7172248d9aff6bee198c3",
+      "expectedStatus": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders/6ad7172348d9aff6bee198c5/cancel",
+      "expectedStatus": 200
+    },
+    {
+      "method": "POST",
+      "path": "/orders/6ad7172348d9aff6bee198c5/cancel",
+      "expectedStatus": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/products/6ad7172248d9aff6bee198c3",
+      "expectedStatus": 200
+    }
+  ],
+  "httpChecks": 20,
+  "codIdempotencyCancelStockOnce": true,
+  "vnpayDisabled503": true,
+  "beforeFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+  "afterFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+  "exactCleanup": true,
+  "removedOwnedDocuments": {
+    "reviews": 0,
+    "payment_attempts": 0,
+    "orders": 1,
+    "carts": 1,
+    "users": 1,
+    "products": 1,
+    "categories": 1
+  },
+  "localDevUnchanged": true,
+  "osInternetDisconnected": false,
+  "scope": "Loopback Flask/Vite/Mongo functional check, not physical offline proof"
+}

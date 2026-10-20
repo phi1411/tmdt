@@ -1,5 +1,9 @@
 # Evidence index phục vụ bảo vệ và báo cáo
 
+## Hiện hành20/10/2026
+
+[Full audit714tests/66publicchecks](full-project-audit-20261020.md), [VNPAY2bank+6/6SIT](vnpay-sandbox-final-review.md), [bàn giao demo/local](defense-final-handoff-20261020.md). Evidence mới: backend/evidence/defense-demo-final-20261020.json, defense-export-import-20261020.json, defense-local-smoke-20261020.json, defense-final-integrity-20261020.json. GUI Compass/timing baSV/offlineOS vẫn cần người thật thực hiện; các bảng bên dưới là lịch sử theo thời điểm.
+
 Evidence lịch sử là kết quả lần chạy tương ứng, không thay thế trạng thái GUI/source hiện tại. JSON/EJSON/raw plan giữ nguyên; credentials không nằm trong index này. Danh sách dưới đây đã đối chiếu file trên workspace 08/10/2026.
 
 **Follow-up14/10/2026:** [Web price editor fix review](phase-07d-price-editor-fix-review.md), [browser11checks/147HTTP](../database/evidence/phase07d-fix-browser.json), [cleanup/integrity](../database/evidence/phase07d-fix-integrity.json), [full backend rerun](../backend/evidence/phase07d-fix-pytest.xml). Đã đóng lỗi07Dimages=[]; snapshotA→Bđược chứng minh qua AdminWeb, khôngAPIfallback. Manual Compass/timing/offlineOS vẫnPENDING; không thay evidence12/10.

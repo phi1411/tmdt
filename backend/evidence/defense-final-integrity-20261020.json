@@ -1,0 +1,91 @@
+{
+  "recordedAtUtc": "2026-10-20T07:30:38.345097+00:00",
+  "atlas": {
+    "database": "novamart_demo",
+    "counts": {
+      "users": 44,
+      "categories": 6,
+      "products": 184,
+      "carts": 3,
+      "orders": 102,
+      "payment_attempts": 30,
+      "reviews": 1
+    },
+    "fullFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+    "invalidDocuments": {
+      "users": 0,
+      "categories": 0,
+      "products": 0,
+      "carts": 0,
+      "orders": 0,
+      "payment_attempts": 0,
+      "reviews": 0
+    },
+    "referenceOrInvariantFindings": [],
+    "declaredIndexes": 16,
+    "totalIndexes": 23
+  },
+  "localCopy": {
+    "database": "ecommerce_defense",
+    "counts": {
+      "users": 44,
+      "categories": 6,
+      "products": 184,
+      "carts": 3,
+      "orders": 102,
+      "payment_attempts": 30,
+      "reviews": 1
+    },
+    "fullFingerprint": "10ebf1a6b6fe36dc472c487f299a55436a8fb236c5e9e908f28177d48cd6dbb7",
+    "invalidDocuments": {
+      "users": 0,
+      "categories": 0,
+      "products": 0,
+      "carts": 0,
+      "orders": 0,
+      "payment_attempts": 0,
+      "reviews": 0
+    },
+    "referenceOrInvariantFindings": [],
+    "declaredIndexes": 16,
+    "totalIndexes": 23
+  },
+  "allOriginalDocumentsUnchanged": true,
+  "originalCorpusFingerprint": "47969975612b28c5851bb056a462f8cf8a23ef3f66ebc54d58a62cd8b4ffddc2",
+  "newFixturesIntentionallyRetained": true,
+  "localDevUnchanged": true,
+  "testCounts": {
+    "users": 0,
+    "categories": 0,
+    "products": 0,
+    "carts": 0,
+    "orders": 0,
+    "payment_attempts": 0,
+    "reviews": 0
+  },
+  "healthStatuses": {
+    "publicHealth": 200,
+    "publicDemo": 200,
+    "localHealth": 200,
+    "localFrontend": 200
+  },
+  "browser": {
+    "publicDemoReview4Stars": true,
+    "publicPurchaseModalXLPrice": 120000,
+    "publicPurchaseModalXLStock": 10,
+    "localCustomerLoginMyOrdersDetailSnapshot": true,
+    "localOrderSnapshotPrice": 50000,
+    "localOrderTotal": 180000,
+    "capturedLocalConsoleErrorsAndWarnings": 0,
+    "scope": "Only new demo pages/modal/order; not a full UI rerun"
+  },
+  "manualGates": {
+    "nativeCompassGui": "NOT_EXECUTABLE_WITH_CURRENT_BROWSER_ONLY_CONTROL",
+    "threeStudentsTimedRehearsal": "HUMANS_REQUIRED",
+    "osInternetDisconnected": "NOT_PERFORMED"
+  },
+  "applicationSourceChanged": false,
+  "latestFullBackendTests": 714,
+  "latestFullBackendSourceRun": "audit20Oct2026 prior to this tooling-only follow-up",
+  "noResetReseed": true
+}

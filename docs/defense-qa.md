@@ -78,6 +78,6 @@ Business rule chỉ tính Order `COMPLETED` và `PAID`, theo `completedAt`, vớ
 
 Tiền là số nguyên VND để tránh sai số float, validator yêu cầu BSON long. Thời điểm lưu BSON Date UTC để so sánh nhất quán; báo cáo cắt ngày/tháng theo múi giờ Việt Nam. Export/import Extended JSON giữ ObjectId/Date/long và nested document, còn JSON thường có thể làm mất kiểu.
 
-## 20. VNPAY chưa demo live thì chứng minh gì? Mất mạng có bảo vệ được không?
+## 20. VNPAY đã kiểm thử tới đâu? Mất mạng thì sao?
 
-Backend đã implement integration và có deterministic tests; thiếu merchant credentials/public registered IPN nên LIVE SANDBOX vẫn BLOCKED. Return chỉ đọc trạng thái, IPN được xác minh mới cập nhật authoritative; không giả giao dịch ngân hàng đã chạy. Luồng bảo vệ chính là COD local, Compass và aggregation không cần internet; fixture không dùng ảnh ngoài mạng và evidence lưu sẵn trên máy.
+Sandbox đã có hai giao dịch thực qua gateway NCB/testOTP/automaticIPN/Return và bộ SIT chính thức6/6 Đạt (00/00/01/02/04/97). Đây là môi trường thử, không tiền thật/chứng nhận production. Chỉ IPN hợp lệ cập nhật authoritative; Return chỉ đọc. COD local chạy trên rs0/API/Web loopback; ảnhCDN và VNPAY cầnInternet. Export/import full7collections giữ BSON/options/indexes đã PASS; CompassGUI và rehearsal ba SV có bấm giờ/ngắt Internet OS vẫn cần người thật thực hiện. Xem [handoff20/10](defense-final-handoff-20261020.md).
