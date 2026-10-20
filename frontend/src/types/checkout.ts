@@ -1,4 +1,5 @@
 import { OrderDetail } from './order';
+import { Coupon } from './cart';
 
 export interface QuoteItem {
   productId: string;
@@ -13,6 +14,7 @@ export interface QuoteItem {
   priceAtPurchase: number;
   quantity: number;
   lineTotal: number;
+  discountAllocated?: number;
 }
 
 export interface CheckoutQuote {
@@ -21,6 +23,7 @@ export interface CheckoutQuote {
   subtotal: number;
   shippingFee: number;
   discount: number;
+  coupon?: Coupon;
   total: number;
   currency: 'VND';
   quoteToken: string;

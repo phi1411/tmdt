@@ -1,0 +1,29 @@
+{
+  "database": "ecommerce_dev",
+  "compatible": true,
+  "applied": true,
+  "documentsAndIndexesUnchanged": true,
+  "fingerprint": "d28c097577b48d6ae0e532f75872101e9ee6ac6d6fa11aac4d32f1a917eb34b6",
+  "allDocumentsAndIndexesBefore": "b89ad5e9c1e2123089b1aa4ca65cfb3dfc68699fa575a890c3e8252cb8cdcf8c",
+  "allDocumentsAndIndexesAfter": "b89ad5e9c1e2123089b1aa4ca65cfb3dfc68699fa575a890c3e8252cb8cdcf8c",
+  "changedOptions": [
+    "orders",
+    "carts"
+  ],
+  "counts": {
+    "orders": 101,
+    "carts": 1,
+    "users": 42,
+    "payment_attempts": 30,
+    "categories": 3,
+    "products": 182
+  },
+  "invalid": {
+    "orders": 0,
+    "carts": 0,
+    "users": 0,
+    "payment_attempts": 0,
+    "categories": 0,
+    "products": 0
+  }
+}

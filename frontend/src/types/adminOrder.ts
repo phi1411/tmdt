@@ -1,3 +1,4 @@
+import { Coupon } from './cart';
 import {
   OrderStatus,
   PaymentStatus,
@@ -20,6 +21,7 @@ export interface AdminOrder {
   subtotal: number;
   shippingFee: number;
   discount: number;
+  coupon?: Coupon;
   total: number;
   currency: 'VND';
   paymentMethod: PaymentMethod;

@@ -22,7 +22,7 @@
 - **P0 — bám barem:** Category/Product CRUD, dữ liệu đa hình, Cart/Checkout COD, Order snapshot, Dashboard doanh thu theo thời gian/Top 5, seed, index/explain, Compass và demo.
 - **P1 — sản phẩm người dùng yêu cầu:** JWT, profile/địa chỉ, search/filter, lịch sử/hủy đơn, quản lý User/Order, các metric Dashboard bổ sung và VNPAY Sandbox. Đây vẫn là phần dự kiến phải hoàn thành, chỉ làm sau P0.
 - **Follow-up hiện hành:** Reviews và tồn kho/giá theo SKU đã được người dùng giao bổ sung, triển khai và kiểm thử theo [ADR013](decisions/013-sku-review-hardening.md) và [review](sku-review-hardening-review.md); shadcn/ui vẫn DEFERRED. Quyết định không tạo reviews ở phase02 là lịch sử, không là kiến trúc hiện tại.
-- **Ngoài phạm vi hiện tại:** Seller/Shipper/Staff, marketplace nhiều người bán, payment production, refund tự động, coupon, guest checkout, tải media lên dịch vụ ngoài.
+- **Ngoài phạm vi hiện tại:** Seller/Shipper/Staff, marketplace nhiều người bán, payment production, refund tự động, guest checkout, tải media lên dịch vụ ngoài.
 
 Target seed: 180 Product (60 mỗi ngành), 40 User (1 Admin + 39 Customer), đúng 100 Order với 2–5 item; chọn trong mức yêu cầu, không biến 180 thành định mức giảng viên mới. Demo tạo thêm đơn làm count live tăng; định mức áp dụng bộ seed sạch.
 
@@ -43,3 +43,6 @@ Hiện20/10/2026: các nhómP0/P1 có API/UI/evidence, SKU/reviews theo ADR013; 
 PHASE07B nghiệm thu performance evidence riêng: real MongoDB explain/compound index/cardinality/repeated latency, benchmark dataset tách dev, index audit/storage và reproducible scripts. [Review07B](phase-07b-performance-review.md), [evidence](evidence/performance/README.md). Không thay barem/scope/schema/business rules; đây là bằng chứng đo mới, không claim feature/UI/deployment hoặc Compass07C completion. Các DEFERRED/NOT_MEASURED ở đoạn lịch sử05C bên dưới giữ ngữ cảnh thời điểm đó.
 
 Phase01 tạo docs/thư mục; phase02 khóa thiết kế và tạo declarative artifacts/checker tĩnh. Các phase tiếp theo có evidence riêng: PHASE03 MongoDB/seed, PHASE04 foundation, PHASE05A Auth/User, PHASE05B Catalog và PHASE05AB integration đã pass. PHASE05C triển khai backend Cart/Checkout COD/Order snapshot/history/cancel theo yêu cầu hiện hành, [review](phase-05c-review.md). VNPAY gateway/online creation, Admin Orders/Dashboard/Frontend/demo Web và full benchmark vẫn DEFERRED/NOT MEASURED. Barem/scope không đổi; backend completion không đồng nghĩa hoàn thành đồ án hoặc frontend.
+
+
+Bổ sung theo người dùng20/10/2026: mã giảm giá Cart NOVA25, đơn tiền hàng từ500.000đ giảm25% tối đa50.000đ; COD/VNPAY chung tổng sau giảm. Chưa thêm giá vốn hoặc kiểm soát lợi nhuận thực tế, quản trị chiến dịch, giới hạn lượt/người. ADR015 và features/coupons.md là phạm vi được giao, thay coupon ngoài scope v1.

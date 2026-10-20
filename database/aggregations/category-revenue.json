@@ -29,7 +29,17 @@
         "$first": "$items.categoryName"
       },
       "revenue": {
-        "$sum": "$items.lineTotal"
+        "$sum": {
+          "$subtract": [
+            "$items.lineTotal",
+            {
+              "$ifNull": [
+                "$items.discountAllocated",
+                0
+              ]
+            }
+          ]
+        }
       }
     }
   },

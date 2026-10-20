@@ -31,7 +31,7 @@ Client chỉ gửi productId/quantity/selectedAttributes/cartVersion; gửi pric
 
 Hash idempotency gồm request intent `cartVersion,addressId,paymentMethod,quoteToken`; check Order existing trước đọc Cart hiện tại. Replay cùng key/hash trả cùng kết quả ngay cả khi Cart đã clear hoặc quote đã hết hạn; khác hash →409. Body mới phải có key mới; UI không sinh key mới mỗi retry network.
 
-Tổng: `lineTotal = priceAtPurchase × quantity`; `subtotal = ΣlineTotal`; `discount=0`; `total=subtotal+shippingFee`. Không có coupon/VAT riêng trong phạm vi; ship flat default30000 VND cấu hình server, quote phải nêu rõ. VNPAY cap9.999.999.999 VND (amount×100 có tối đa12chữ số) reject trước khi trừ kho; COD dùng cap Order5e12. Không client override phí. Mọi tiền integer VND, không negative, không overflow.
+Tổng: `lineTotal = priceAtPurchase × quantity`; `subtotal = ΣlineTotal`; `discount` tính theo BR-COUPON/ADR015 (v1 trước đây bằng0); `total=subtotal-discount+shippingFee`. Không có VAT riêng; ship flat default30000 VND cấu hình server, quote phải nêu rõ. VNPAY cap9.999.999.999 VND (amount×100 có tối đa12chữ số) reject trước khi trừ kho; COD dùng cap Order5e12. Không client override phí. Mọi tiền integer VND, không negative, không overflow.
 
 ## BR-ORDER — trạng thái, trả hàng và snapshot
 
@@ -78,3 +78,10 @@ Aggregation có unwind phải cộng tiền từng item. Không sum order.total 
 ## Cập nhật19/10/2026 — ADR013
 
 SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. Ghi chú lựa chọn COD trước/VNPAY disabled ở19/10 đã được thay bằng config enabled và rehearsal Sandbox20/10; xem payment-setup và vnpay-sandbox-final-review.
+
+
+## BR-COUPON — mã giảm giá giỏ hàng (ADR015)
+
+Theo yêu cầu20/10/2026, bổ sung NOVA25: từ500.000đ tiền hàng hợp lệ giảm25%, tối đa50.000đ/đơn, không giảm phí giao hàng. Không cộng dồn mã, chưa giới hạn lượt hoặc quản trị chiến dịch. Chưa biết giá vốn nên chỉ giới hạn mức giảm, không bảo đảm lợi nhuận. Ô mã trên cổng VNPAY do provider quản lý; mã Novamart nhập tại Cart, dùng được cả COD/VNPAY.
+
+Cart lưu couponCode tùy chọn, mutation CAS tăngversion; quote/checkout tính lại và ký pricing snapshot. Giỏ không còn đủ điều kiện phải bỏ mã hoặc điều chỉnh, không âm thầm đặt giá khác. Order lưu coupon snapshot và item.discountAllocated; chia theo lineTotal bằng phần nguyên/largest remainder, tổng chính xác bằng discount, không float. Top Product/Category tính lineTotal-discountAllocated, fallback0 cho lịch sử; Summary/ngày/tháng vẫn subtotal-discount. Phí giao hàng không là doanh thu hàng hóa. Clear/checkout bỏ mã cùng transaction/CAS, replay không áp giảm thêm lần nữa. Các phát biểu discount0 ở evidence trước đây chỉ mô tả baseline lúc đó.

@@ -71,3 +71,8 @@ Add/update/delete/clear persist cùng owner; current pricing; stock/selection/ve
 ## Audit20/10/2026 — canonical SKU identity
 
 Cùng SKU phải gộp thành một dòng dù request có/không gửi skuId optional. POST add chuẩn hóa selection theo SKU server đã resolve và gộp các alias hợp lệ có sẵn của đúng SKU đó trong Cart, giữ thứ tự dòng đầu; áp dụng giới hạn99 sau khi cộng tất cả alias. SKU khác và dòng không còn resolve hợp lệ không bị gộp. Không đổi GET hoặc tự migration toàn DB; mutation vẫn cartVersion CAS, reject/stock conflict không ghi Cart. Regression4cases: hai thứ tự optional skuId, không bypass99 và merge Cart legacy trước checkout snapshot.
+
+
+## Cập nhật mã giảm giá20/10/2026
+
+[Coupons](coupons.md) và [ADR015](../decisions/015-cart-coupons.md) bổ sung mã tại Cart, thay baseline discount=0. Quote/checkout tính và ký discount/coupon từ Cart; total=subtotal-discount+shippingFee. Không đổi request tạo Order, lifecycle hoặc replay. Dữ liệu Order giữ giá gốc và phân bổ giảm theo dòng; Top Product/Category dùng doanh thu sau giảm, fallback0 cho đơn cũ. Validation/ACL/CAS giữ nguyên. Cần migration carts/orders trước runtime mới; không tự reset/reseed.

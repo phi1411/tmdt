@@ -401,7 +401,7 @@ export const AdminOrderDetailPage: React.FC = () => {
           </div>
           <div className="flex justify-between w-64 text-slate-600">
             <span>Giảm giá:</span>
-            <span className="font-semibold text-slate-900">{formatVND(order.discount || 0)}</span>
+            <span className="font-semibold text-emerald-700">{order.discount ? '−' : ''}{formatVND(order.discount || 0)}</span>
           </div>
           <div className="flex justify-between w-64 pt-2 border-t border-slate-200 text-sm font-bold text-slate-900">
             <span>Tổng thanh toán:</span>

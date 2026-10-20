@@ -6,7 +6,7 @@ from app.schemas.user_schema import object_schema, VERSION
 STATUSES = {'PENDING', 'CONFIRMED', 'SHIPPING', 'COMPLETED', 'CANCELLED', 'EXPIRED'}
 CANCEL_SCHEMA = object_schema({'expectedVersion': VERSION}, ['expectedVersion'])
 PUBLIC_FIELDS = ('_id', 'orderCode', 'userId', 'customerSnapshot', 'shippingAddress', 'items',
-                 'subtotal', 'shippingFee', 'discount', 'total', 'currency', 'paymentMethod',
+                 'subtotal', 'shippingFee', 'discount', 'coupon', 'total', 'currency', 'paymentMethod',
                  'paymentStatus', 'paymentReviewRequired', 'orderStatus', 'version',
                  'createdAt', 'updatedAt', 'paymentExpiresAt', 'paidAt', 'completedAt',
                  'cancelledAt', 'expiredAt', 'stockReleasedAt')

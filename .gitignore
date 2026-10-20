@@ -35,6 +35,7 @@ test-results/
 
 # Local data and generated artifacts
 artifacts/
+output/
 .tools/
 .local/
 plans/

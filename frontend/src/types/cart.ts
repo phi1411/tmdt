@@ -20,6 +20,13 @@ export interface CartItem {
   lineTotal: number;
 }
 
+export interface Coupon {
+  code: string;
+  percent: number;
+  minSubtotal: number;
+  maxDiscount: number;
+}
+
 export interface Cart {
   version: number;
   items: CartItem[];
@@ -27,6 +34,9 @@ export interface Cart {
   currency: 'VND';
   issues: CartIssueType[];
   checkoutAllowed: boolean;
+  discount: number;
+  coupon: Coupon | null;
+  couponIssue: string | null;
 }
 
 export interface AddToCartRequest {

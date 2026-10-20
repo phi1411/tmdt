@@ -1,13 +1,20 @@
 """Customer cart HTTP boundary; owner is always the live JWT identity."""
 from flask import Blueprint, request
 from app.auth import get_current_user, require_roles
-from app.schemas.cart_schema import ADD_SCHEMA, UPDATE_SCHEMA, VERSION_SCHEMA
+from app.schemas.cart_schema import ADD_SCHEMA, UPDATE_SCHEMA, VERSION_SCHEMA, COUPON_SCHEMA
 from app.schemas.validation import parse_json_body, single_query_values
 from app.services.cart_service import CartService
 from app.utils.ids import parse_object_id
 from app.utils.responses import success, no_content
 
 cart_blueprint = Blueprint('cart', __name__)
+
+
+@cart_blueprint.patch('/cart/coupon')
+@require_roles('CUSTOMER')
+def set_coupon():
+    payload = values(COUPON_SCHEMA)
+    return success(CartService().coupon(get_current_user()['_id'], payload['cartVersion'], payload['code']))
 
 
 def values(schema):

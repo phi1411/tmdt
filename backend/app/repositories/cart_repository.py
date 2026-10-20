@@ -18,7 +18,20 @@ class CartRepository:
         return cart
 
     def replace_items(self, user_id, version, items, now, session=None):
+        update = {'$set': {'items': items, 'updatedAt': now}, '$inc': {'version': 1}}
+        if not items:
+            update['$unset'] = {'couponCode': ''}
         return self.collection.find_one_and_update(
             {'userId': user_id, 'version': version, '$and': [{'version': {'$lt': 2147483647}}]},
-            {'$set': {'items': items, 'updatedAt': now}, '$inc': {'version': 1}},
+            update,
             return_document=ReturnDocument.AFTER, session=session)
+
+    def set_coupon(self, user_id, version, code, now):
+        update = {'$set': {'updatedAt': now}, '$inc': {'version': 1}}
+        if code:
+            update['$set']['couponCode'] = code
+        else:
+            update['$unset'] = {'couponCode': ''}
+        return self.collection.find_one_and_update(
+            {'userId': user_id, 'version': version, '$and': [{'version': {'$lt': 2147483647}}]},
+            update, return_document=ReturnDocument.AFTER)

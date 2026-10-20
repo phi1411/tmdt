@@ -294,7 +294,7 @@ export const OrderDetailPage: React.FC = () => {
             </div>
             <div className="flex justify-between text-slate-600">
               <span>Giảm giá:</span>
-              <span className="font-semibold text-slate-900">0 ₫</span>
+              <span className="font-semibold text-emerald-700">{order.discount ? '−' : ''}{formatVND(order.discount)}</span>
             </div>
             <div className="flex justify-between pt-3 border-t border-slate-100 items-baseline">
               <span className="font-bold text-slate-900 text-base">Tổng thanh toán:</span>

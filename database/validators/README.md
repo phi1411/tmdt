@@ -11,3 +11,6 @@ Các default được service/seed ghi explicit (schema không tự thêm): sche
 DB validator enforce shape/types/enums/bounds và một số status/time-field presence. Service vẫn chịu trách nhiệm reference/ownership, normalization, selectedAttributes membership, arithmetic, timestamp ordering, legal transitions, immutable snapshots và once-only stock/payment side effects. Unique constraints nằm ở candidate-indexes.json; không được tuyên bố JSON Schema tự bảo đảm chúng.
 
 Kiểm tra tĩnh: `python scripts/validation/validate_design.py` (cần jsonschema trong môi trường kiểm tra). Script chỉ đọc artifacts/đánh giá mẫu, không kết nối MongoDB. Kết quả không thay thế việc MongoDB8.0 thật chấp nhận validator ở phase foundation runtime.
+
+
+ADR015: Cart.couponCode optional; Order.discount long0..50000 thay enum0, coupon snapshot và items.discountAllocated optional cho legacy. Đơn có coupon bắt buộc phân bổ và kiểm tra tiền/điều kiện bằng $expr. `scripts/db/migrate_cart_coupons.py --database ecommerce_test --apply` áp dụng cộng thêm, không sửa document/index; dừng runtime writer khi migration để fingerprint có ý nghĩa. Bản cũ backup riêng trong .local, không commit thông tin riêng.

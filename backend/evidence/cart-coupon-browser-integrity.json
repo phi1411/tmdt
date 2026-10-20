@@ -1,0 +1,15 @@
+{
+  "developmentFingerprintBefore": "712742569280ac7cb48bdccab8c09e253117d7a3812dddf2c1ad14b68cfbcc99",
+  "developmentFingerprintAfter": "712742569280ac7cb48bdccab8c09e253117d7a3812dddf2c1ad14b68cfbcc99",
+  "testFingerprintBefore": "26c9a194710eaa8111d86864fd9c2f11ad5c88695e57ee46d78107c2d6049e61",
+  "testFingerprintAfter": "26c9a194710eaa8111d86864fd9c2f11ad5c88695e57ee46d78107c2d6049e61",
+  "testCounts": {
+    "users": 0,
+    "payment_attempts": 0,
+    "carts": 0,
+    "reviews": 0,
+    "orders": 0,
+    "products": 0,
+    "categories": 0
+  }
+}

@@ -7,6 +7,7 @@ from app.repositories.cart_repository import CartRepository
 from app.repositories.product_repository import ProductRepository
 from app.services.product_selection import resolve_selection
 from app.services.commerce_pricing import line_id, resolve_cart
+from app.services.coupon_service import normalize_code, require_coupon
 
 
 class CartService:
@@ -15,6 +16,23 @@ class CartService:
 
     def get(self, user_id):
         return resolve_cart(self.carts.find(user_id))[0]
+
+    def coupon(self, user_id, version, code):
+        cart = self.carts.find(user_id)
+        if (cart['version'] if cart else 0) != version:
+            raise ConflictError(code='CART_CHANGED')
+        if version >= 2147483647:
+            raise ConflictError(code='VERSION_LIMIT')
+        if not cart or not cart['items']:
+            if normalize_code(code):
+                raise ConflictError(code='CART_EMPTY')
+            return self.get(user_id)
+        code = normalize_code(code)
+        require_coupon(resolve_cart({**cart, 'couponCode': code})[0])
+        updated = self.carts.set_coupon(user_id, version, code, datetime.now(timezone.utc))
+        if updated is None:
+            raise ConflictError(code='CART_CHANGED')
+        return resolve_cart(updated)[0]
 
     def mutate(self, user_id, version, action, product_id=None, quantity=None, selection=None, target=None):
         cart = self.carts.find(user_id)

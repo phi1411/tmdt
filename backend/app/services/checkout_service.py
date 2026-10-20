@@ -20,6 +20,7 @@ from app.services.catalog_transaction import catalog_transaction
 from app.services.commerce_pricing import canonical_hash, resolve_cart, snapshot_items
 from app.utils.serialization import to_api
 from app.services.payment_service import PaymentService
+from app.services.coupon_service import require_coupon, allocate_discount
 
 ADDRESS_FIELDS = ('receiverName', 'phone', 'addressLine', 'province', 'ward', 'district')
 
@@ -81,14 +82,19 @@ class CheckoutService:
             code = ('STOCK_CONFLICT' if 'STOCK_CONFLICT' in codes else
                     'PRICE_CHANGED' if 'SELECTION_CHANGED' in codes else 'PRODUCT_UNAVAILABLE')
             raise ConflictError(code=code, details=response['issues'])
+        require_coupon(response)
         items = snapshot_items(cart, products, categories)
         subtotal = sum(int(item['lineTotal']) for item in items)
         fee = current_app.config['SHIPPING_FEE_VND']
-        total = subtotal + fee
+        discount = response['discount']
+        total = subtotal - discount + fee
         if total > (9999999999 if method == 'VNPAY' else 5000000000000):
             raise ValidationError(details=[{'field': 'total', 'reason': 'Tổng tiền vượt giới hạn'}])
-        pricing = {'items': items, 'subtotal': subtotal, 'shippingFee': fee, 'discount': 0,
+        pricing = {'items': items, 'subtotal': subtotal, 'shippingFee': fee, 'discount': discount,
                    'total': total, 'currency': 'VND'}
+        if response['coupon']:
+            pricing['coupon'] = response['coupon']
+            allocate_discount(items, discount)
         bindings = {'userId': str(identity['_id']), 'cartVersion': cart['version'],
                     'addressId': str(address_id), 'addressHash': canonical_hash(shipping_address),
                     'paymentMethod': method, 'pricingHash': canonical_hash(to_api(pricing))}
@@ -166,6 +172,9 @@ class CheckoutService:
                      'orderStatus': 'PENDING', 'version': 1}
             for field in ('subtotal', 'shippingFee', 'discount', 'total'):
                 order[field] = Int64(order[field])
+            if 'coupon' in order:
+                for field in ('minSubtotal', 'maxDiscount'):
+                    order['coupon'][field] = Int64(order['coupon'][field])
             if order['paymentMethod'] == 'VNPAY':
                 order['paymentExpiresAt'] = now + timedelta(minutes=current_app.config['PAYMENT_HOLD_MINUTES'])
             self.orders.insert(order, session)

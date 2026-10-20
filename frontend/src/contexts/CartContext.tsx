@@ -14,6 +14,7 @@ interface CartContextValue {
   updateQuantity: (lineId: string, quantity: number) => Promise<boolean>;
   removeItem: (lineId: string) => Promise<boolean>;
   clearCart: () => Promise<boolean>;
+  setCoupon: (code: string) => Promise<boolean>;
 }
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
@@ -155,6 +156,25 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const itemCount = cart?.items?.reduce((sum: number, item: CartItem) => sum + item.quantity, 0) || 0;
 
+  const setCoupon = async (code: string): Promise<boolean> => {
+    if (!cart) return false;
+    try {
+      const updated = await cartApi.setCoupon(code, cart.version);
+      setCart(updated);
+      toastSuccess(code.trim() ? 'Đã áp dụng mã giảm giá.' : 'Đã bỏ mã giảm giá.');
+      return true;
+    } catch (err: unknown) {
+      if (err instanceof CustomApiError) {
+        toastError(err.details[0]?.reason || (err.code === 'CART_CHANGED'
+          ? 'Giỏ hàng đã thay đổi. Vui lòng thử lại.' : err.message));
+      } else {
+        toastError('Không thể cập nhật mã giảm giá. Vui lòng thử lại.');
+      }
+      await refreshCart();
+      return false;
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -166,6 +186,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         updateQuantity,
         removeItem,
         clearCart,
+        setCoupon,
       }}
     >
       {children}

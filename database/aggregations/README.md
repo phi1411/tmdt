@@ -19,7 +19,7 @@ Representative binding: từ `2026-08-31T17:00:00Z` inclusive đến `2026-09-30
 | [order-status.json](order-status.json) | orders | match createdAt→group orderStatus→sort/project | {status,count} |
 | [customer-count.json](customer-count.json) | users | match role CUSTOMER→count (global) | {totalCustomers} |
 
-Qualified=`COMPLETED AND PAID`, revenue=`subtotal-discount`, discount0, phí ship loại. COD/VNPAY cùng thời điểm completedAt; trả online trước khi giao chưa phải revenue. Cancelled/expired/review-required không qualify. Product/Category name lấy `$first` sau sort completedAt desc/_id desc trong tập qualified. Có thể cùng Product nhiều selections trong một Order nhưng cùng name snapshot; quantity group đúng shared productId.
+Qualified=`COMPLETED AND PAID`, revenue=`subtotal-discount`, phí ship loại. ADR015: Top Product/Category dùng `lineTotal-ifNull(discountAllocated,0)`; dữ liệu cũ không phân bổ tương đương0. COD/VNPAY cùng thời điểm completedAt; trả online trước khi giao chưa phải revenue. Cancelled/expired/review-required không qualify. Product/Category name lấy `$first` sau sort completedAt desc/_id desc trong tập qualified. Có thể cùng Product nhiều selections trong một Order nhưng cùng name snapshot; quantity group đúng shared productId.
 
 Không `$lookup`, không tải raw Orders lên frontend, không sum Order.total sau unwind. Revenue pipeline order-level không unwind; Top5 đủ `$match/$unwind/$group/$sort/$limit`. Backend chỉ chuyển ID/date/money và điền bucket0, không tính lại metrics từ raw documents. Empty aggregation→0/[]; revenue buckets backend tạo khoảng ngày/month tối đa366 ngày theo local calendar.
 

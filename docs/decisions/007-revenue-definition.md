@@ -19,3 +19,6 @@ PaidAt cash-in report hữu ích đối soát nhưng khác sales-revenue metric,
 ## Consequences / validation
 
 Dashboard chưa tăng revenue ngay khi checkout/online paid; demo hoàn tất COD rồi refresh. Snapshot categoryId/name giúp report không JOIN. Metadata/fixtures/time boundary kiểm tra ở canonical aggregation designs, runtime sau review. Second successful txn cần đối soát nhưng không xóa/cộng lại legitimate sale trước đó.
+
+
+Follow-up20/10/2026: ADR015 triển khai coupon allocation. Top/category dùng lineTotal-ifNull(discountAllocated,0); tổng/ngày/tháng giữ subtotal-discount. Những mô tả discount0 ở trên là baseline trước promotion; qualified sale/completedAt/no shipping không đổi.

@@ -23,3 +23,5 @@ Không thêm role/CSDL ngoài requirement; reviews DEFERRED không MVP blocker. 
 # VNPAY operations follow-up
 
 - [ADR014 — VNPAY Sandbox operations](014-vnpay-sandbox-operations.md): supervised expiry, fixed demo cutover và Payment Return UI correctness.
+
+- [ADR015 — Mã giảm giá tại giỏ hàng](015-cart-coupons.md): yêu cầu mới của người dùng, thay discount0 bằng campaign có trần và phân bổ doanh thu.

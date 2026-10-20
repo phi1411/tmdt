@@ -1,0 +1,10 @@
+{
+  "tests": 737,
+  "passed": 704,
+  "failed": 0,
+  "errors": 33,
+  "skipped": 0,
+  "durationSeconds": 152.18,
+  "cause": "Test Product validator predates existing SKU fields; setup rejected tierVariations/skus",
+  "resolution": "Synchronized canonical Product/Review validators on owned ecommerce_test only; final full rerun737pass. Added missing two canonical Review indexes then focused56pass."
+}

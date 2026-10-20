@@ -371,6 +371,11 @@
               "bsonType": "long",
               "minimum": 1,
               "maximum": 99000000000
+            },
+            "discountAllocated": {
+              "bsonType": "long",
+              "minimum": 0,
+              "maximum": 50000
             }
           }
         }
@@ -387,9 +392,8 @@
       },
       "discount": {
         "bsonType": "long",
-        "enum": [
-          0
-        ]
+        "minimum": 0,
+        "maximum": 50000
       },
       "total": {
         "bsonType": "long",
@@ -455,6 +459,42 @@
       },
       "expiredAt": {
         "bsonType": "date"
+      },
+      "coupon": {
+        "bsonType": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "percent",
+          "minSubtotal",
+          "maxDiscount"
+        ],
+        "properties": {
+          "code": {
+            "bsonType": "string",
+            "enum": [
+              "NOVA25"
+            ]
+          },
+          "percent": {
+            "bsonType": "int",
+            "enum": [
+              25
+            ]
+          },
+          "minSubtotal": {
+            "bsonType": "long",
+            "enum": [
+              500000
+            ]
+          },
+          "maxDiscount": {
+            "bsonType": "long",
+            "enum": [
+              50000
+            ]
+          }
+        }
       }
     },
     "allOf": [
@@ -843,6 +883,150 @@
                 ]
               }
             }
+          }
+        ]
+      },
+      {
+        "oneOf": [
+          {
+            "not": {
+              "required": [
+                "coupon"
+              ]
+            },
+            "properties": {
+              "discount": {
+                "enum": [
+                  0
+                ]
+              }
+            }
+          },
+          {
+            "required": [
+              "coupon"
+            ],
+            "properties": {
+              "discount": {
+                "minimum": 1
+              },
+              "items": {
+                "items": {
+                  "required": [
+                    "discountAllocated"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "$expr": {
+    "$cond": [
+      {
+        "$eq": [
+          {
+            "$type": "$coupon"
+          },
+          "missing"
+        ]
+      },
+      true,
+      {
+        "$and": [
+          {
+            "$eq": [
+              "$subtotal",
+              {
+                "$sum": "$items.lineTotal"
+              }
+            ]
+          },
+          {
+            "$eq": [
+              "$discount",
+              {
+                "$sum": "$items.discountAllocated"
+              }
+            ]
+          },
+          {
+            "$eq": [
+              "$total",
+              {
+                "$subtract": [
+                  {
+                    "$add": [
+                      "$subtotal",
+                      "$shippingFee"
+                    ]
+                  },
+                  "$discount"
+                ]
+              }
+            ]
+          },
+          {
+            "$gte": [
+              "$subtotal",
+              "$coupon.minSubtotal"
+            ]
+          },
+          {
+            "$eq": [
+              "$discount",
+              {
+                "$min": [
+                  {
+                    "$floor": {
+                      "$divide": [
+                        {
+                          "$multiply": [
+                            "$subtotal",
+                            "$coupon.percent"
+                          ]
+                        },
+                        100
+                      ]
+                    }
+                  },
+                  "$coupon.maxDiscount"
+                ]
+              }
+            ]
+          },
+          {
+            "$allElementsTrue": [
+              {
+                "$map": {
+                  "input": "$items",
+                  "as": "item",
+                  "in": {
+                    "$and": [
+                      {
+                        "$eq": [
+                          "$$item.lineTotal",
+                          {
+                            "$multiply": [
+                              "$$item.priceAtPurchase",
+                              "$$item.quantity"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "$lte": [
+                          "$$item.discountAllocated",
+                          "$$item.lineTotal"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
           }
         ]
       }

@@ -77,6 +77,12 @@
             }
           }
         }
+      },
+      "couponCode": {
+        "bsonType": "string",
+        "enum": [
+          "NOVA25"
+        ]
       }
     }
   }

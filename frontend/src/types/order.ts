@@ -1,3 +1,5 @@
+import { Coupon } from './cart';
+
 export type OrderStatus =
   | 'PENDING'
   | 'CONFIRMED'
@@ -43,6 +45,7 @@ export interface OrderItemSnapshot {
   priceAtPurchase: number;
   quantity: number;
   lineTotal: number;
+  discountAllocated?: number;
 }
 
 export interface OrderSummary {
@@ -67,6 +70,7 @@ export interface OrderDetail extends OrderSummary {
   subtotal: number;
   shippingFee: number;
   discount: number;
+  coupon?: Coupon;
   paidAt?: string | null;
   completedAt?: string | null;
   cancelledAt?: string | null;

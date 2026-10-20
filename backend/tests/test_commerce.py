@@ -104,7 +104,8 @@ def commerce(app, client, identities, database):
 
 def test_cart_lifecycle_lazy_merge_update_delete_clear(commerce, database):
     c = commerce
-    assert c['cart']() == {'version': 0, 'items': [], 'subtotal': 0, 'currency': 'VND', 'issues': [], 'checkoutAllowed': False}
+    assert c['cart']() == {'version': 0, 'items': [], 'subtotal': 0, 'currency': 'VND', 'issues': [],
+                          'checkoutAllowed': False, 'discount': 0, 'coupon': None, 'couponIssue': None}
     assert database.carts.count_documents({'userId': c['owned'][0]}) == 0
     c['call']('delete', '/cart', {'cartVersion': 0}, expected=204)
     p = c['product']()

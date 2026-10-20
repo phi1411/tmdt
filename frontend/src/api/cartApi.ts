@@ -8,6 +8,12 @@ import {
 } from '../types/cart';
 
 export const cartApi = {
+  setCoupon: async (code: string, cartVersion: number): Promise<Cart> => {
+    const res = await request<Cart>('/cart/coupon', {
+      method: 'PATCH', body: JSON.stringify({ code, cartVersion }),
+    });
+    return res.data;
+  },
   getCart: async (): Promise<Cart> => {
     const res = await request<Cart>('/cart', {
       method: 'GET',

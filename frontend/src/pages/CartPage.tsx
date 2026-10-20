@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Trash2,
@@ -18,8 +18,16 @@ import { Skeleton } from '../components/ui/Skeleton';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
-  const { cart, loading, updateQuantity, removeItem, clearCart, refreshCart } = useCart();
+  const { cart, loading, updateQuantity, removeItem, clearCart, refreshCart, setCoupon } = useCart();
   const [updatingLineId, setUpdatingLineId] = useState<string | null>(null);
+  const [couponCode, setCouponCode] = useState('');
+  const [couponBusy, setCouponBusy] = useState(false);
+  useEffect(() => { setCouponCode(cart?.coupon?.code || ''); }, [cart?.coupon?.code]);
+
+  const handleCoupon = async (code: string) => {
+    setCouponBusy(true);
+    try { await setCoupon(code); } finally { setCouponBusy(false); }
+  };
 
   const handleUpdateQty = async (lineId: string, currentQty: number, delta: number) => {
     const nextQty = currentQty + delta;
@@ -103,7 +111,7 @@ export const CartPage: React.FC = () => {
       </div>
 
       {/* Cart Issues Warning Alert */}
-      {hasIssues && (
+      {(cart?.issues.length ?? 0) > 0 && (
         <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-3 text-amber-900">
           <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
           <div className="text-sm leading-relaxed">
@@ -244,6 +252,23 @@ export const CartPage: React.FC = () => {
             Tóm Tắt Đơn Hàng
           </h2>
 
+          <form onSubmit={(e) => { e.preventDefault(); void handleCoupon(couponCode); }} className="space-y-2">
+            <label htmlFor="cart-coupon" className="text-sm font-semibold text-slate-800">Mã giảm giá của sàn</label>
+            <p className="text-xs text-slate-500">NOVA25: giảm 25% tiền hàng từ 500.000đ, tối đa 50.000đ. Không áp dụng phí giao hàng.</p>
+            <div className="flex gap-2">
+              <input id="cart-coupon" value={couponCode} onChange={(e) => setCouponCode(e.target.value)}
+                maxLength={32} autoComplete="off" placeholder="Nhập mã giảm giá"
+                disabled={couponBusy} className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm uppercase" />
+              <Button type="submit" variant="outline" loading={couponBusy} disabled={!couponCode.trim() || !!updatingLineId}>Áp dụng</Button>
+            </div>
+            {cart?.coupon && <div className="flex items-center justify-between gap-2 text-sm">
+              <span className="text-emerald-700">Đã chọn {cart.coupon.code}</span>
+              <Button type="button" variant="ghost" size="sm" disabled={couponBusy || !!updatingLineId}
+                onClick={() => void handleCoupon('')}>Bỏ mã</Button>
+            </div>}
+            {cart?.couponIssue && <p role="alert" className="text-sm text-rose-600">{cart.couponIssue}</p>}
+          </form>
+
           <div className="space-y-3 text-sm">
             <div className="flex justify-between text-slate-600">
               <span>Tạm tính hàng hóa:</span>
@@ -255,7 +280,7 @@ export const CartPage: React.FC = () => {
             </div>
             <div className="flex justify-between text-slate-600">
               <span>Giảm giá:</span>
-              <span className="font-semibold text-slate-900">0 ₫</span>
+              <span className="font-semibold text-emerald-700">{cart?.discount ? '−' : ''}{formatVND(cart?.discount || 0)}</span>
             </div>
           </div>
 
@@ -263,7 +288,7 @@ export const CartPage: React.FC = () => {
             <span className="text-base font-bold text-slate-900">Tổng cộng tạm tính:</span>
             <div className="text-right">
               <span className="text-2xl font-extrabold text-brand-700">
-                {formatVND(cart?.subtotal || 0)}
+                {formatVND((cart?.subtotal || 0) - (cart?.discount || 0))}
               </span>
               <p className="text-[11px] text-slate-400 mt-0.5">Chưa gồm phí ship</p>
             </div>
@@ -273,7 +298,7 @@ export const CartPage: React.FC = () => {
             variant="primary"
             size="lg"
             className="w-full shadow-md shadow-brand-500/20"
-            disabled={hasIssues}
+            disabled={hasIssues || couponBusy || !!updatingLineId}
             onClick={() => navigate('/checkout')}
             icon={<ArrowRight className="w-4 h-4" />}
           >

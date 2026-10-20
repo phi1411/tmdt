@@ -48,3 +48,6 @@ Expiry implementation contract: command/worker riêng chạy mỗi30 giây, phá
 Atlas/deployment domain, cloud upload, multi-level taxonomy, variant inventory, Review, fuzzy/full-text search, refresh/forgot-password, refund automation và persistent audit store: DEFERRED, không MVP blocker. Patch versions/lockfiles, Compass version và phân công sprint thực hiện khi bootstrap/team lập kế hoạch; không được tự cài hoặc triển khai ở phase02.
 
 Nguồn sự thật: requirement mới → AGENTS/architecture → database-schema (meaning) + validators (shape) → business-rules (behavior) → feature docs (contracts). Nếu artifacts và meaning mâu thuẫn phải sửa đồng bộ trước code, không có hai spec song song. Candidate indexes và aggregation canonical ở database/; ADR giải thích lựa chọn, không copy spec đầy đủ.
+
+
+Extension20/10/2026 theo ADR015: discount không còn cố định0 khi áp NOVA25 tại Cart. Revenue vẫn COMPLETED+PAID/completedAt/không shipping; Top/category trừ discountAllocated snapshot. SHIPPING_FEE_VND không đổi. Không thêm collection/index, client không chọn mức giảm.

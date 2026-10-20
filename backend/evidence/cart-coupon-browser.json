@@ -1,0 +1,155 @@
+{
+  "checks": [
+    {
+      "name": "Reject invalid coupon without changing totals",
+      "status": "PASS"
+    },
+    {
+      "name": "Apply capped campaign at Cart",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop and mobile Cart have no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Quantity below threshold blocks checkout; remove coupon restores eligibility",
+      "status": "PASS"
+    },
+    {
+      "name": "Reload retains server-owned coupon",
+      "status": "PASS"
+    },
+    {
+      "name": "Checkout COD/VNPAY show the same net total; no payment coupon input",
+      "status": "PASS"
+    },
+    {
+      "name": "Place real discounted COD Order and display immutable discount in detail",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser exceptions or unexpected API failures",
+      "status": "PASS"
+    }
+  ],
+  "http": [
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/cart/coupon",
+      "status": 422
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/cart/coupon",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/cart/items/cc2ea9ce6470476104c0be78bc2926b07a145a7aeb206fdc2ed4b8a7cc443191",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/cart/coupon",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/cart/items/cc2ea9ce6470476104c0be78bc2926b07a145a7aeb206fdc2ed4b8a7cc443191",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/cart/coupon",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/orders/6ad7762d5b785564e2c2c904",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    }
+  ],
+  "pageErrors": [],
+  "views": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false
+    },
+    {
+      "name": "mobile",
+      "width": 375,
+      "height": 812,
+      "overflow": false
+    }
+  ],
+  "lastAction": "coupon removed",
+  "status": "PASS"
+}

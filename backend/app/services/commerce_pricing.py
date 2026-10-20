@@ -7,6 +7,7 @@ from app.services.product_selection import resolve_selection
 from bson.int64 import Int64
 from app.repositories.product_repository import ProductRepository
 from app.repositories.category_repository import CategoryRepository
+from app.services.coupon_service import coupon_pricing
 
 
 def canonical_hash(value):
@@ -73,6 +74,9 @@ def resolve_cart(cart, session=None):
             subtotal += total
     response = {'version': cart['version'] if cart else 0, 'items': lines, 'subtotal': subtotal,
                 'currency': 'VND', 'issues': issues, 'checkoutAllowed': bool(items) and not issues}
+    response.update(coupon_pricing(cart.get('couponCode') if cart else None, subtotal, bool(items) and not issues))
+    if response['couponIssue']:
+        response['checkoutAllowed'] = False
     return response, products, categories, quantities
 
 

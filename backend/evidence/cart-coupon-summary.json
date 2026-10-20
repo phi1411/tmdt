@@ -1,0 +1,29 @@
+{
+  "methodPaths": 55,
+  "duplicates": [],
+  "consistentPrefix": true,
+  "cart-coupon-pytest.xml": {
+    "tests": "737",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "227.028"
+  },
+  "cart-coupon-focused.xml": {
+    "tests": "56",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "14.318"
+  },
+  "browser": {
+    "status": "PASS",
+    "checks": 8,
+    "http": 20,
+    "statuses": {
+      "200": 18,
+      "422": 1,
+      "201": 1
+    }
+  }
+}

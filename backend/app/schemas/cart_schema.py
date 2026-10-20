@@ -17,3 +17,6 @@ ADD_SCHEMA = object_schema({'productId': {'type': 'string'}, 'quantity': QUANTIT
 UPDATE_SCHEMA = object_schema({'quantity': QUANTITY, 'cartVersion': CART_VERSION},
                              ['quantity', 'cartVersion'])
 VERSION_SCHEMA = object_schema({'cartVersion': CART_VERSION}, ['cartVersion'])
+COUPON_SCHEMA = object_schema({'cartVersion': CART_VERSION,
+                               'code': {'type': 'string', 'maxLength': 32,
+                                        'pattern': '^[ A-Za-z0-9]*$'}}, ['cartVersion', 'code'])

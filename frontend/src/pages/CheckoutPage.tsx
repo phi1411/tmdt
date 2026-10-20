@@ -92,7 +92,7 @@ export const CheckoutPage: React.FC = () => {
           toastWarning('Giỏ hàng đang trống.');
           navigate('/cart');
         } else {
-          setQuoteError(err.message || 'Không thể tạo báo giá cho giỏ hàng hiện tại.');
+          setQuoteError(err.details[0]?.reason || err.message || 'Không thể tạo báo giá cho giỏ hàng hiện tại.');
         }
       } else {
         setQuoteError('Lỗi kết nối khi lấy báo giá từ máy chủ.');
@@ -212,7 +212,7 @@ export const CheckoutPage: React.FC = () => {
           toastError('Tồn kho sản phẩm không đủ. Vui lòng kiểm tra lại giỏ hàng.');
           navigate('/cart');
         } else {
-          toastError(err.message || 'Không thể tạo đơn hàng.');
+          toastError(err.details[0]?.reason || err.message || 'Không thể tạo đơn hàng.');
         }
       } else {
         toastError('Lỗi máy chủ khi tạo đơn hàng.');
@@ -425,8 +425,8 @@ export const CheckoutPage: React.FC = () => {
                   <span className="font-semibold text-slate-900">{formatVND(quote.shippingFee)}</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
-                  <span>Giảm giá:</span>
-                  <span className="font-semibold text-slate-900">0 ₫</span>
+                  <span>Giảm giá{quote.coupon ? ` (${quote.coupon.code})` : ''}:</span>
+                  <span className="font-semibold text-emerald-700">{quote.discount ? '−' : ''}{formatVND(quote.discount)}</span>
                 </div>
               </div>
 

@@ -71,3 +71,8 @@ MongoDB thật trả fixture450 revenue/8units/Top5, đủ4required stages, no l
 - [x] Timezone/range/leap/boundaries/ties/Top5 limit/authorization/query allowlists.
 - [x] Mongo executionStats, named-index/natural equal results, real HTTP và COD completion delta.
 - [ ] Frontend/Web rehearsal/full benchmark chưa triển khai.
+
+
+## Cập nhật mã giảm giá20/10/2026
+
+[Coupons](coupons.md) và [ADR015](../decisions/015-cart-coupons.md) bổ sung mã tại Cart, thay baseline discount=0. Quote/checkout tính và ký discount/coupon từ Cart; total=subtotal-discount+shippingFee. Không đổi request tạo Order, lifecycle hoặc replay. Dữ liệu Order giữ giá gốc và phân bổ giảm theo dòng; Top Product/Category dùng doanh thu sau giảm, fallback0 cho đơn cũ. Validation/ACL/CAS giữ nguyên. Cần migration carts/orders trước runtime mới; không tự reset/reseed.
