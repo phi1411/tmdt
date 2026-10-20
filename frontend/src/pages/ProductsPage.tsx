@@ -50,10 +50,13 @@ export const ProductsPage: React.FC = () => {
     }
   }, [searchParams, setSearchParams]);
 
-  // Load categories list for filter sidebar
+  // Load categories list for filter sidebar (keep standard categories only)
   useEffect(() => {
     catalogApi.getCategories().then((res) => {
-      setCategories(res.categories);
+      const standardCategories = res.categories.filter(
+        (c) => !c.name.toLowerCase().includes('demo') && !c.name.toLowerCase().includes('bảo vệ')
+      );
+      setCategories(standardCategories);
     }).catch(console.error);
   }, []);
 

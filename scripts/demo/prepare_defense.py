@@ -24,10 +24,10 @@ EVIDENCE = ROOT / 'database/evidence'
 BASE = 'http://127.0.0.1:5001/api/v1'
 EMAIL = 'defense07c@example.test'
 PRODUCTS = [
-    {'sku': 'DEFENSE-07C-ELE', 'name': 'Điện thoại bảo vệ 07C', 'slug': 'defense-07c-dien-thoai',
+    {'sku': 'DEFENSE-07C-ELE', 'name': 'Điện thoại Apple iPhone 5s', 'slug': 'dien-thoai-apple-iphone-5s',
      'productType': 'ELECTRONICS', 'price': 10000000, 'attributes': {'ram': '8GB', 'storage': '256GB', 'chip': 'Demo CPU 07C'},
      'images': ['https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/1.webp', 'https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/2.webp']},
-    {'sku': 'DEFENSE-07C-FAS', 'name': 'Áo thun bảo vệ 07C', 'slug': 'defense-07c-ao-thun',
+    {'sku': 'DEFENSE-07C-FAS', 'name': 'Áo thun nam Gigabyte Aorus', 'slug': 'ao-thun-nam-gigabyte-aorus',
      'productType': 'FASHION', 'price': 200000, 'attributes': {'sizes': ['M', 'L'], 'colors': ['Black'], 'material': 'Cotton'},
      'images': ['https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/1.webp', 'https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/2.webp']},
 ]

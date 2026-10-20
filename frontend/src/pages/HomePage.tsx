@@ -30,7 +30,10 @@ export const HomePage: React.FC = () => {
           catalogApi.getProducts({ productType: 'FASHION', pageSize: 4, sort: 'latest' }),
           catalogApi.getProducts({ productType: 'HOME_APPLIANCE', pageSize: 4, sort: 'latest' }),
         ]);
-        setCategories(catsRes.categories);
+        const standardCategories = catsRes.categories.filter(
+          (c) => !c.name.toLowerCase().includes('demo') && !c.name.toLowerCase().includes('bảo vệ')
+        );
+        setCategories(standardCategories);
         setElectronics(elecsRes.products);
         setFashion(fasRes.products);
         setAppliances(appRes.products);

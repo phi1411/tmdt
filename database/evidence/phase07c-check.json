@@ -1,7 +1,7 @@
 {
   "phase": "07C",
   "mode": "check",
-  "timestampUtc": "2026-10-14T06:54:03.024691+00:00",
+  "timestampUtc": "2026-10-14T08:11:34.376265+00:00",
   "replicaSet": "rs0",
   "primary": true,
   "database": "ecommerce_dev",
@@ -20,7 +20,7 @@
     }
   ],
   "before": {
-    "digest": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+    "digest": "461bf6d1c25b73255edfbd1517b257438c25d42b583bdb7859b7796d9b40eb36",
     "counts": {
       "users": 41,
       "categories": 3,
@@ -31,7 +31,7 @@
     }
   },
   "after": {
-    "digest": "c526acf3e22d27355a14a876656ffb3377ed3fda69a116b7947e07616094ac5d",
+    "digest": "9df03c4e3446cb983eec55eb08fab603e2c723517b9eade1a9e47c3ffc1db4a9",
     "counts": {
       "users": 42,
       "categories": 5,
@@ -41,7 +41,7 @@
       "payment_attempts": 30
     }
   },
-  "originalDigestAfterExcludingOwnedFixtures": "f8c36f1872e7de3b42ae7e949e16e6f2a81fbdca20a24eeb3789033c358b50ce",
+  "originalDigestAfterExcludingOwnedFixtures": "461bf6d1c25b73255edfbd1517b257438c25d42b583bdb7859b7796d9b40eb36",
   "originalDataUnchanged": true,
   "ownedFixture": {
     "customerEmail": "defense07c@example.test",
@@ -53,8 +53,8 @@
     "products": [
       {
         "sku": "DEFENSE-07C-ELE",
-        "name": "Điện thoại bảo vệ 07C",
-        "slug": "defense-07c-dien-thoai",
+        "name": "Điện thoại Apple iPhone 5s",
+        "slug": "dien-thoai-apple-iphone-5s",
         "productType": "ELECTRONICS",
         "price": 10000000,
         "attributes": {
@@ -66,8 +66,8 @@
       },
       {
         "sku": "DEFENSE-07C-FAS",
-        "name": "Áo thun bảo vệ 07C",
-        "slug": "defense-07c-ao-thun",
+        "name": "Áo thun nam Gigabyte Aorus",
+        "slug": "ao-thun-nam-gigabyte-aorus",
         "productType": "FASHION",
         "price": 200000,
         "attributes": {
