@@ -35,6 +35,30 @@ def test_boundaries(subtotal, discount):
     assert subtotal - discount >= 0
 
 
+@pytest.mark.parametrize('code,subtotal,discount,eligible', [
+    ('DEMO10',99999,0,False), ('DEMO10',100000,10000,True), ('DEMO10',160000,16000,True),
+    ('DEMO10',999999,20000,True), ('DEMO15',299999,0,False), ('DEMO15',300000,40000,True),
+    ('DEMO15',999999,40000,True),
+])
+def test_demo_code_thresholds_and_caps(code, subtotal, discount, eligible):
+    result = coupon_pricing(code.lower(), subtotal)
+    assert result['discount'] == discount
+    assert (result['couponIssue'] is None) == eligible
+    assert result['coupon']['code'] == code
+
+
+@pytest.mark.parametrize('code,price,discount', [('DEMO10',160000,16000), ('DEMO15',420000,40000)])
+def test_demo_codes_persist_snapshot_and_survive_cancel(commerce, database, code, price, discount):
+    c=commerce; c['add'](c['product'](price=price)); apply(c,code)
+    order=c['checkout']().json['data']['order']
+    assert order['coupon']['code']==code and order['discount']==discount
+    assert order['total']==price-discount+30000
+    assert sum(i['discountAllocated'] for i in order['items'])==discount
+    c['call']('post','/orders/'+order['id']+'/cancel',{'expectedVersion':order['version']})
+    saved=database.orders.find_one({'_id':ObjectId(order['id'])})
+    assert saved['coupon']['code']==code and saved['discount']==discount and saved['orderStatus']=='CANCELLED'
+
+
 @pytest.mark.parametrize('values,discount', [([1, 1, 1], 2), ([250001, 249999], 50000),
                                           ([7, 11, 13], 30), ([1, 1, 1], 3)])
 def test_allocation_exact_integer(values, discount):

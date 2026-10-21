@@ -81,7 +81,9 @@
       "couponCode": {
         "bsonType": "string",
         "enum": [
-          "NOVA25"
+          "NOVA25",
+          "DEMO10",
+          "DEMO15"
         ]
       }
     }

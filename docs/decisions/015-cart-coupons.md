@@ -20,3 +20,8 @@ Chiến dịch duy nhất NOVA25: tiền hàng hợp lệ từ 500.000 VND, gi�
 ## Kiểm tra bắt buộc
 
 Ngưỡng 499.999/500.000, mã sai, cap, tiền nguyên, phân bổ chính xác, CAS/ownership, stale quote, payload tampering, COD và VNPAY amount/IPN, snapshot, hủy/retry, báo cáo doanh thu đồng nhất; full backend suite và frontend build. Test DB riêng rs0; không sửa dữ liệu development/Atlas.
+
+
+## Extension21/10/2026 — deploy và mã demo được người dùng giao
+
+Bổ sung DEMO10(10%,min100k,max20k), DEMO15(15%,min300k,max40k); giữ NOVA25. Mỗi code có policy cố định trong allowlist server; validator coupon snapshot oneOf ràng buộc đúng bộ code/percent/min/max, Cart enum ba code. Không thay phân bổ hoặc revenue. Theo yêu cầu deploy hiện hành, đã được phép mở rộng hai validators Atlas sau backup/compatibility; không đổi documents/indexes trong migration. Giữ có chủ đích Customer/Cart/3CODCANCELLEDOrders để demo, không payment thật hoặc cộng doanh thu. Các đoạn giới hạn chỉlocal phía trên thuộc task trước, đã được yêu cầu mới này mở rộng.

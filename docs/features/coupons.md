@@ -20,7 +20,7 @@ Cart.couponCode tùy chọn; Order.coupon snapshot tùy chọn; items.discountAl
 
 ## Validation / Edge Cases / Security
 
-Code tối đa 32 ký tự, ASCII chữ/số, trim/uppercase; allowlist đúng NOVA25. Backend tính min(subtotal*25//100, 50000), integer và không vượt subtotal. Mã chỉ apply nếu mọi dòng đang hợp lệ. Giảm số lượng dưới ngưỡng sau apply: hiện lý do, giảm 0, chặn quote cho đến khi bỏ mã hoặc tăng lại. Không tự đổi tiền đơn lịch sử. Quote bind snapshot và Cart.version; retry cùng intent không áp mã hai lần; hủy không tạo credit/voucher tự động.
+Code tối đa 32 ký tự, ASCII chữ/số, trim/uppercase; allowlist đúng NOVA25, DEMO10, DEMO15. Backend tính min(subtotal*25//100, 50000), integer và không vượt subtotal. Mã chỉ apply nếu mọi dòng đang hợp lệ. Giảm số lượng dưới ngưỡng sau apply: hiện lý do, giảm 0, chặn quote cho đến khi bỏ mã hoặc tăng lại. Không tự đổi tiền đơn lịch sử. Quote bind snapshot và Cart.version; retry cùng intent không áp mã hai lần; hủy không tạo credit/voucher tự động.
 
 ## UI Behavior
 
@@ -33,3 +33,8 @@ Chỉ Cart có ô nhập và nút Áp dụng/Bỏ mã, hiện rõ ngưỡng/tỷ
 - COD/VNPAY cùng totals; attempt amount/signature/IPN dùng total sau giảm.
 - Snapshot/discount allocation bất biến; tổng doanh thu theo sản phẩm/danh mục khớp tổng doanh thu.
 - Validator legacy và mới đều hợp lệ; migration không sửa documents/indexes; full backend và strict production build pass.
+
+
+## Deploy/demo21/10/2026
+
+Người dùng yêu cầu deploy và thêm mã để nhìn thấy trên Compass. Bổ sung DEMO10: từ100k,10%,max20k; DEMO15: từ300k,15%,max40k; NOVA25 giữ nguyên. Một mã/đơn, không ship. Allowlist server và validators snapshot theo đúng từng mã, giữ lịch sử cũ; không thêm collection. Giữ có chủ đích3CODCANCELLEDOrders và1Customer/Cart demo quaAPI, stock trả đúng một lần, không fakepaid hoặc cộng doanh thu. Trạng thái deploy/nghiệm thu phải có receipt mới; các ghi chú chưadeploy trước đây là lịch sử.

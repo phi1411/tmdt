@@ -1,0 +1,12 @@
+{
+  "database": "novamart_demo",
+  "compatible": true,
+  "applied": true,
+  "documentsAndIndexesUnchanged": true,
+  "fingerprint": "4d35e8120fcb2b9c621d52bb6e042c0bfd01ebdca62fa1c2a1baff4b04e77a3a",
+  "codes": [
+    "NOVA25",
+    "DEMO10",
+    "DEMO15"
+  ]
+}

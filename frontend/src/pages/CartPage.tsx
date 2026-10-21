@@ -254,7 +254,12 @@ export const CartPage: React.FC = () => {
 
           <form onSubmit={(e) => { e.preventDefault(); void handleCoupon(couponCode); }} className="space-y-2">
             <label htmlFor="cart-coupon" className="text-sm font-semibold text-slate-800">Mã giảm giá của sàn</label>
-            <p className="text-xs text-slate-500">NOVA25: giảm 25% tiền hàng từ 500.000đ, tối đa 50.000đ. Không áp dụng phí giao hàng.</p>
+            <ul className="space-y-1 text-xs text-slate-500">
+              <li>DEMO10: từ 100.000đ, giảm 10%, tối đa 20.000đ.</li>
+              <li>DEMO15: từ 300.000đ, giảm 15%, tối đa 40.000đ.</li>
+              <li>NOVA25: từ 500.000đ, giảm 25%, tối đa 50.000đ.</li>
+            </ul>
+            <p className="text-xs text-slate-500">Chọn một mã mỗi đơn, không giảm phí giao hàng.</p>
             <div className="flex gap-2">
               <input id="cart-coupon" value={couponCode} onChange={(e) => setCouponCode(e.target.value)}
                 maxLength={32} autoComplete="off" placeholder="Nhập mã giảm giá"

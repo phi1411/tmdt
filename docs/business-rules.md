@@ -85,3 +85,6 @@ SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integratio
 Theo yêu cầu20/10/2026, bổ sung NOVA25: từ500.000đ tiền hàng hợp lệ giảm25%, tối đa50.000đ/đơn, không giảm phí giao hàng. Không cộng dồn mã, chưa giới hạn lượt hoặc quản trị chiến dịch. Chưa biết giá vốn nên chỉ giới hạn mức giảm, không bảo đảm lợi nhuận. Ô mã trên cổng VNPAY do provider quản lý; mã Novamart nhập tại Cart, dùng được cả COD/VNPAY.
 
 Cart lưu couponCode tùy chọn, mutation CAS tăngversion; quote/checkout tính lại và ký pricing snapshot. Giỏ không còn đủ điều kiện phải bỏ mã hoặc điều chỉnh, không âm thầm đặt giá khác. Order lưu coupon snapshot và item.discountAllocated; chia theo lineTotal bằng phần nguyên/largest remainder, tổng chính xác bằng discount, không float. Top Product/Category tính lineTotal-discountAllocated, fallback0 cho lịch sử; Summary/ngày/tháng vẫn subtotal-discount. Phí giao hàng không là doanh thu hàng hóa. Clear/checkout bỏ mã cùng transaction/CAS, replay không áp giảm thêm lần nữa. Các phát biểu discount0 ở evidence trước đây chỉ mô tả baseline lúc đó.
+
+
+BR-COUPON extension21/10/2026: DEMO10 từ100k giảm10%max20k, DEMO15 từ300k giảm15%max40k; NOVA25 giữ nguyên. Một mã/đơn, mỗi policy snapshot immutable; giữ đơn demoCANCELLED cóchủđích, không nhận revenue hoặc giảm kho vĩnhviễn.

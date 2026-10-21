@@ -473,28 +473,110 @@
           "code": {
             "bsonType": "string",
             "enum": [
-              "NOVA25"
+              "NOVA25",
+              "DEMO10",
+              "DEMO15"
             ]
           },
           "percent": {
             "bsonType": "int",
             "enum": [
-              25
+              25,
+              10,
+              15
             ]
           },
           "minSubtotal": {
             "bsonType": "long",
             "enum": [
-              500000
+              500000,
+              100000,
+              300000
             ]
           },
           "maxDiscount": {
             "bsonType": "long",
             "enum": [
-              50000
+              50000,
+              20000,
+              40000
             ]
           }
-        }
+        },
+        "oneOf": [
+          {
+            "properties": {
+              "code": {
+                "enum": [
+                  "NOVA25"
+                ]
+              },
+              "percent": {
+                "enum": [
+                  25
+                ]
+              },
+              "minSubtotal": {
+                "enum": [
+                  500000
+                ]
+              },
+              "maxDiscount": {
+                "enum": [
+                  50000
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "code": {
+                "enum": [
+                  "DEMO10"
+                ]
+              },
+              "percent": {
+                "enum": [
+                  10
+                ]
+              },
+              "minSubtotal": {
+                "enum": [
+                  100000
+                ]
+              },
+              "maxDiscount": {
+                "enum": [
+                  20000
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "code": {
+                "enum": [
+                  "DEMO15"
+                ]
+              },
+              "percent": {
+                "enum": [
+                  15
+                ]
+              },
+              "minSubtotal": {
+                "enum": [
+                  300000
+                ]
+              },
+              "maxDiscount": {
+                "enum": [
+                  40000
+                ]
+              }
+            }
+          }
+        ]
       }
     },
     "allOf": [
