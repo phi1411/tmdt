@@ -117,3 +117,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 43 | Nguyen Ngoc Phi | Tổng hợp báo cáo/barem/checklist nộp; đồng bộ feature status, kiểm tra links/JSON và runtime chỉ đọc | `docs(report): consolidate submission evidence and completion status` |
 | 44 | Nguyen Ngoc Phi | Làm rõ giá theo phân loại trong Admin/Catalog/modal, kiểm chứng Web và dữ liệu demo | `feat(catalog): clarify variant pricing and verify admin purchase flow` |
 | 45 | Nguyen Ngoc Phi | Thêm ba mã demo, kiểm tra policy snapshot và chuẩn bị dữ liệu coupon qua API để deploy Render | `feat(coupons): add demo campaigns and retained demo preparation` |
+| 46 | Nguyen Ngoc Phi | Xác minh hai Render Live, 746 tests và ba đơn coupon demo giữ lại cho Compass | `docs(deploy): record live coupon campaigns and retained examples` |

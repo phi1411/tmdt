@@ -1,0 +1,146 @@
+{
+  "applicationCommit": "b5f3daef9d6d591042fc7f2e8569540182e6cf0f",
+  "backendDeploy": "dep-dbc4h7vavr4c73er5m60",
+  "frontendDeploy": "dep-dbc4i3jncjis738bf5a0",
+  "backendTests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "746",
+    "time": "214.801",
+    "timestamp": "2026-10-21T12:02:36.575480+07:00",
+    "hostname": "DESKTOP-KMNS09Q"
+  },
+  "checks": [
+    {
+      "name": "public health",
+      "pass": true
+    },
+    {
+      "name": "exact CORS",
+      "pass": true
+    },
+    {
+      "name": "coupon route registered and guest denied",
+      "pass": true
+    },
+    {
+      "name": "public catalog",
+      "pass": true
+    },
+    {
+      "name": "users validator canonical",
+      "pass": true
+    },
+    {
+      "name": "users valid documents",
+      "pass": true
+    },
+    {
+      "name": "categories validator canonical",
+      "pass": true
+    },
+    {
+      "name": "categories valid documents",
+      "pass": true
+    },
+    {
+      "name": "products validator canonical",
+      "pass": true
+    },
+    {
+      "name": "products valid documents",
+      "pass": true
+    },
+    {
+      "name": "carts validator canonical",
+      "pass": true
+    },
+    {
+      "name": "carts valid documents",
+      "pass": true
+    },
+    {
+      "name": "orders validator canonical",
+      "pass": true
+    },
+    {
+      "name": "orders valid documents",
+      "pass": true
+    },
+    {
+      "name": "payment_attempts validator canonical",
+      "pass": true
+    },
+    {
+      "name": "payment_attempts valid documents",
+      "pass": true
+    },
+    {
+      "name": "reviews validator canonical",
+      "pass": true
+    },
+    {
+      "name": "reviews valid documents",
+      "pass": true
+    },
+    {
+      "name": "no attempts for retained COD orders",
+      "pass": true
+    },
+    {
+      "name": "three retained coupon snapshots",
+      "pass": true
+    },
+    {
+      "name": "retained cart coupon",
+      "pass": true
+    },
+    {
+      "name": "carts userId references",
+      "pass": true
+    },
+    {
+      "name": "orders userId references",
+      "pass": true
+    },
+    {
+      "name": "payment_attempts orderId references",
+      "pass": true
+    }
+  ],
+  "databaseCounts": {
+    "products": 184,
+    "users": 46,
+    "payment_attempts": 34,
+    "reviews": 215,
+    "orders": 109,
+    "categories": 3,
+    "carts": 5
+  },
+  "limitations": [
+    "VNPAY totals verified by quote; no new bank/OTP coupon transaction",
+    "Retained demo orders intentionally CANCELLED and UNPAID"
+  ],
+  "verifiedAt": "2026-10-21T05:12:25.207053+00:00",
+  "backendLive": true,
+  "frontendLive": true,
+  "frontendAsset": "/assets/index-BE38IaRD.js",
+  "frontendPoliciesPresent": true,
+  "frontendBuild": "PASS (existing chunk size warning)",
+  "frontendUnitTests": {
+    "passed": 10
+  },
+  "browser": {
+    "login": "PASS",
+    "cart": "PASS",
+    "coupon": "NOVA25",
+    "subtotal": 560000,
+    "discount": 50000,
+    "preShippingTotal": 510000,
+    "capturedConsoleErrors": 0,
+    "capturedConsoleWarnings": 0,
+    "screenshot": "backend/evidence/coupon-public-cart.png"
+  }
+}

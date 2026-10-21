@@ -6,7 +6,7 @@ Customer nhập hoặc bỏ mã tại Cart trước checkout. Guest phải đăn
 
 ## Functional Requirements / Business Rules
 
-NOVA25 giảm 25% tiền hàng từ 500.000 VND, tối đa 50.000 VND/đơn; không giảm phí vận chuyển. Một mã mỗi giỏ/đơn. Điều kiện tính trên các dòng hợp lệ, không dựa vào số tiền client gửi. Chưa có giá vốn, hạn lượt sử dụng, chiến dịch theo sản phẩm riêng hoặc quản trị mã; không cam kết lợi nhuận. Xem ADR015.
+NOVA25 giảm 25% tiền hàng từ 500.000 VND, tối đa 50.000 VND/đơn. DEMO10 giảm 10% từ 100.000 VND, tối đa 20.000 VND; DEMO15 giảm 15% từ 300.000 VND, tối đa 40.000 VND. Không giảm phí vận chuyển. Một mã mỗi giỏ/đơn. Điều kiện tính trên các dòng hợp lệ, không dựa vào số tiền client gửi. Chưa có giá vốn, hạn lượt sử dụng, chiến dịch theo sản phẩm riêng hoặc quản trị mã; không cam kết lợi nhuận. Xem ADR015.
 
 ## Permission / API
 
@@ -20,7 +20,7 @@ Cart.couponCode tùy chọn; Order.coupon snapshot tùy chọn; items.discountAl
 
 ## Validation / Edge Cases / Security
 
-Code tối đa 32 ký tự, ASCII chữ/số, trim/uppercase; allowlist đúng NOVA25, DEMO10, DEMO15. Backend tính min(subtotal*25//100, 50000), integer và không vượt subtotal. Mã chỉ apply nếu mọi dòng đang hợp lệ. Giảm số lượng dưới ngưỡng sau apply: hiện lý do, giảm 0, chặn quote cho đến khi bỏ mã hoặc tăng lại. Không tự đổi tiền đơn lịch sử. Quote bind snapshot và Cart.version; retry cùng intent không áp mã hai lần; hủy không tạo credit/voucher tự động.
+Code tối đa 32 ký tự, ASCII chữ/số, trim/uppercase; allowlist đúng NOVA25, DEMO10, DEMO15. Backend tính min(subtotal * percent // 100, maxDiscount, subtotal) theo chính sách của mã, bằng số nguyên. Mã chỉ apply nếu mọi dòng đang hợp lệ. Giảm số lượng dưới ngưỡng sau apply: hiện lý do, giảm 0, chặn quote cho đến khi bỏ mã hoặc tăng lại. Không tự đổi tiền đơn lịch sử. Quote bind snapshot và Cart.version; retry cùng intent không áp mã hai lần; hủy không tạo credit/voucher tự động.
 
 ## UI Behavior
 

@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "purpose": "Intentionally retained coupon demo, user-authorized",
+  "userId": "6ad84914cc278e2c97ce5df1",
+  "orders": [
+    {
+      "orderCode": "ORD-6AD84918CC278E2C97CE5DF4",
+      "subtotal": 160000,
+      "discount": 16000,
+      "shippingFee": 30000,
+      "total": 174000,
+      "orderStatus": "CANCELLED",
+      "paymentStatus": "UNPAID",
+      "id": "6ad84918cc278e2c97ce5df4",
+      "code": "DEMO10"
+    },
+    {
+      "orderCode": "ORD-6AD8491BCC278E2C97CE5DF6",
+      "subtotal": 420000,
+      "discount": 40000,
+      "shippingFee": 30000,
+      "total": 410000,
+      "orderStatus": "CANCELLED",
+      "paymentStatus": "UNPAID",
+      "id": "6ad8491bcc278e2c97ce5df6",
+      "code": "DEMO15"
+    },
+    {
+      "orderCode": "ORD-6AD8491ECC278E2C97CE5DF8",
+      "subtotal": 560000,
+      "discount": 50000,
+      "shippingFee": 30000,
+      "total": 540000,
+      "orderStatus": "CANCELLED",
+      "paymentStatus": "UNPAID",
+      "id": "6ad8491ecc278e2c97ce5df8",
+      "code": "NOVA25"
+    }
+  ],
+  "cart": {
+    "couponCode": "NOVA25",
+    "discount": 50000,
+    "subtotal": 560000,
+    "version": 18
+  },
+  "oldOrdersUnchanged": true,
+  "stockRestored": true,
+  "paymentAttemptsForDemo": 0,
+  "counts": {
+    "products": 184,
+    "users": 46,
+    "payment_attempts": 34,
+    "reviews": 215,
+    "orders": 109,
+    "categories": 3,
+    "carts": 5
+  }
+}
