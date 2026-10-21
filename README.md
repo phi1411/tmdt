@@ -115,3 +115,4 @@ Bảng nhật ký theo dõi chi tiết toàn bộ commit của dự án, cập n
 | 41 | Nguyen Ngoc Phi | Hoàn tất6ca SIT chính thức, xác minh state/stock và exact cleanup Sandbox | `docs(payment): record six official sandbox SIT cases passing` |
 | 42 | Nguyen Ngoc Phi | Chuẩn bị demoSKU/review/snapshot, canonicalcopylocal và20checks COD; cập nhật hướng dẫn/gate người thật | `test(demo): prepare retained fixtures and verified local fallback` |
 | 43 | Nguyen Ngoc Phi | Tổng hợp báo cáo/barem/checklist nộp; đồng bộ feature status, kiểm tra links/JSON và runtime chỉ đọc | `docs(report): consolidate submission evidence and completion status` |
+| 44 | Nguyen Ngoc Phi | Làm rõ giá theo phân loại trong Admin/Catalog/modal, kiểm chứng Web và dữ liệu demo | `feat(catalog): clarify variant pricing and verify admin purchase flow` |

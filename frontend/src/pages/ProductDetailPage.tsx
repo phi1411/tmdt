@@ -17,7 +17,7 @@ import { ProductReviews } from '../components/reviews/ProductReviews';
 import { Skeleton } from '../components/ui/Skeleton';
 import { ErrorState } from '../components/ui/ErrorState';
 import { ProductPurchaseModal, PurchaseIntent } from '../components/common/ProductPurchaseModal';
-import { hasPurchasableStock } from '../utils/productSelection';
+import { hasPurchasableStock, hasVariantPriceRange } from '../utils/productSelection';
 
 export const ProductDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -194,7 +194,7 @@ export const ProductDetailPage: React.FC = () => {
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-              <span className="text-3xl font-bold text-rose-600">{formatVND(currentPrice)}</span>
+              <span className="text-3xl font-bold text-rose-600">{hasVariantPriceRange(product) ? 'Từ ' : ''}{formatVND(currentPrice)}</span>
             </div>
 
             {/* Shopee Shipping Info */}

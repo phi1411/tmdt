@@ -1,9 +1,13 @@
-import { Product, SkuItem } from '../types/product';
+import type { Product, SkuItem } from '../types/product';
 
 export interface PurchaseOption {
   key: string;
   label: string;
   values: string[];
+}
+
+export function hasVariantPriceRange(product: Product): boolean {
+  return !!product.tierVariations?.length && new Set(product.skus?.map(sku => sku.price)).size > 1;
 }
 
 export function purchaseOptions(product: Product): PurchaseOption[] {

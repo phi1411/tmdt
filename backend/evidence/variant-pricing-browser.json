@@ -1,0 +1,160 @@
+{
+  "checks": [
+    {
+      "name": "Admin creates Product with separate prices and stock for M/XL through form",
+      "status": "PASS"
+    },
+    {
+      "name": "Customer sees starting price then exact selected SKU price",
+      "status": "PASS"
+    },
+    {
+      "name": "Cart and signed quote preserve each selected SKU price",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin edits each SKU price while historical Order keeps original values",
+      "status": "PASS"
+    },
+    {
+      "name": "No unexpected API failures or browser exceptions",
+      "status": "PASS"
+    }
+  ],
+  "http": [
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/products",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/products",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/products/a",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/products/6ad7aaaaa3e3541d369548af/reviews",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/cart/items",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/cart/items",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/checkout/quote",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/products/6ad7aaaaa3e3541d369548af",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/admin/products/6ad7aaaaa3e3541d369548af",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/categories",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/products",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/orders/6ad7aaada3e3541d369548b1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/cart",
+      "status": 200
+    }
+  ],
+  "pageErrors": [],
+  "productId": "6ad7aaaaa3e3541d369548af",
+  "orderId": "6ad7aaada3e3541d369548b1",
+  "status": "PASS"
+}

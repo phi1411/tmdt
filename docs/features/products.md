@@ -71,3 +71,6 @@ Ba nhóm cùng collection browse/detail đúng fields; status/category filter đ
 ## Cập nhật19/10/2026 — ADR013
 
 SKU/reviews đã được người dùng yêu cầu hoàn thiện sau integration review. Product optional tierVariations/skus, root price=minSKUprice/stock=sumSKUstock; legacy không matrix giữ behavior cũ. Exact selection/SKU binding, stock reservation/restore theo SKU và Product trong cùng transaction; snapshot selectedAttributes.skuId/price immutable. Admin CRUD hỗ trợ ma trận, guard SKU_IN_USE khi đổi identity có đơn giữ kho. Reviews là collection thứ7, unique User/Order/Product, verified COMPLETED+PAID và atomic ratingSummary; public privacy/pagination/filter. Nguồn cập nhật: decisions/013-sku-review-hardening.md, features/reviews.md và mục SKU/Reviews của api-contract.md; các ghi chú DEFERRED hoặc pool Product-only trước đó là lịch sử v1, không phủ định extension này. Không đổi doanh thu/canonical pipelines hoặc Order snapshot cũ. VNPAY disabled theo lựa chọn hiện hành.
+
+
+Cập nhật21/10/2026: SKU có nhiều mức giá thì Card/Detail/modal chưa chọn hiển thị Từ + giá nhỏ nhất; chọn đủ tổ hợp thì modal hiển thị giá SKU chính xác. Admin nhập giá từng dòng qua bảng Phân loại, giá bán và tồn kho; attributes không tự tính giá. Không đổi API/schema, không tự chuyển sản phẩm legacy thành matrix. Kiểm chứng tại docs/variant-pricing-review.md.

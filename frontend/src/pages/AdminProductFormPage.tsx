@@ -370,14 +370,14 @@ export const AdminProductFormPage: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
-              label="Giá bán (VND)"
+              label={tiers.length ? 'Giá thấp nhất (VND)' : 'Giá bán (VND)'}
               type="number"
               required
               min={0}
               disabled={tiers.length > 0}
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
-              helperText="Số nguyên VND lưu trữ dưới dạng BSON Int64."
+              helperText={tiers.length ? 'Tự tính từ giá từng phân loại ở bảng bên dưới.' : 'Giá chung khi sản phẩm không có bảng phân loại.'}
             />
 
             <Input
@@ -388,7 +388,7 @@ export const AdminProductFormPage: React.FC = () => {
               disabled={tiers.length > 0}
               value={stock}
               onChange={(e) => setStock(Number(e.target.value))}
-              helperText="Kiểm soát trừ kho đồng thời bằng Conditional Update & OCC."
+              helperText={tiers.length ? 'Tổng tồn kho của tất cả phân loại ở bảng bên dưới.' : 'Số lượng có thể bán của sản phẩm.'}
             />
           </div>
 

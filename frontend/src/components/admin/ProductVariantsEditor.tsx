@@ -32,8 +32,9 @@ export const ProductVariantsEditor: React.FC<Props> = ({ tiers, skus, basePrice,
   };
   const updateSku = (index: number, key: 'price' | 'stock', value: number) => onChange(tiers,skus.map((sku,i)=>i===index?{...sku,[key]:value}:sku));
   return <section className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-    <h2 className="font-bold text-slate-900">Phân loại và tồn kho</h2>
-    <p className="text-sm text-slate-500">Ví dụ: Kích cỡ S, M, L, XL và Màu sắc Đen, Trắng. Giá và kho tổng được tính từ bảng bên dưới.</p>
+    <h2 className="font-bold text-slate-900">Phân loại, giá bán và tồn kho</h2>
+    <p className="text-sm text-slate-500">Thêm nhóm như Kích cỡ hoặc Dung lượng, nhập các lựa chọn rồi bấm Cập nhật bảng phân loại. Nhập giá bán và tồn kho riêng cho từng dòng trong bảng.</p>
+    <p className="text-xs text-slate-500">Ví dụ: áo M giá 100.000đ, XL giá 120.000đ; điện thoại 128GB và 256GB cũng có thể khác giá. Thông số mô tả không tự thay đổi giá bán.</p>
     {draft.map((tier,index)=><div key={index} className="grid gap-3 sm:grid-cols-[1fr_2fr_auto]">
       <Input label={`Tên phân loại ${index+1}`} value={tier.name} onChange={e=>changeDraft(draft.map((x,i)=>i===index?{...x,name:e.target.value}:x))} maxLength={100} />
       <Input label={`Các lựa chọn ${index+1}`} value={tier.values} onChange={e=>changeDraft(draft.map((x,i)=>i===index?{...x,values:e.target.value}:x))} placeholder="S, M, L, XL" />

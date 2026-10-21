@@ -1,0 +1,25 @@
+{
+  "readOnly": true,
+  "productsOnPage": 100,
+  "variantsOnPage": [
+    {
+      "id": "6ad71660ec77ac8c719daf00",
+      "name": "Áo demo SKU — chọn M hoặc XL",
+      "slug": "ao-demo-sku-m-xl",
+      "price": 100000,
+      "tiers": [
+        {
+          "name": "Size",
+          "options": [
+            "M",
+            "XL"
+          ]
+        }
+      ],
+      "prices": [
+        100000,
+        120000
+      ]
+    }
+  ]
+}

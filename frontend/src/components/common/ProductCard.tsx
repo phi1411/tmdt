@@ -5,7 +5,7 @@ import { Product } from '../../types/product';
 import { formatVND } from '../../utils/formatters';
 import { Badge } from '../ui/Badge';
 import { ProductPurchaseModal } from './ProductPurchaseModal';
-import { hasPurchasableStock, purchaseOptions } from '../../utils/productSelection';
+import { hasPurchasableStock, purchaseOptions, hasVariantPriceRange } from '../../utils/productSelection';
 
 export interface ProductCardProps {
   product: Product;
@@ -125,7 +125,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
           <div>
             <div className="text-base sm:text-lg font-bold text-brand-700 tracking-tight">
-              {formatVND(product.price)}
+              {hasVariantPriceRange(product) ? 'Từ ' : ''}{formatVND(product.price)}
             </div>
           </div>
 

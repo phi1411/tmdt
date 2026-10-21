@@ -1,0 +1,3157 @@
+{
+  "target": "Atlas/novamart_demo",
+  "priceRule": "Existing base +5% per size step +2% per color step; premium rounded up to1000VND; total stock preserved",
+  "updated": [
+    {
+      "id": "01fa472e82a56a0fbae38ec4",
+      "name": "White Faux Leather Backpack",
+      "slug": "white-faux-leather-backpack-090",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 999750,
+      "totalStock": 99,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 999750,
+          "stock": 50
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 1019750,
+          "stock": 49
+        }
+      ]
+    },
+    {
+      "id": "0de5fcadf126b914afcfff55",
+      "name": "Dress Pea",
+      "slug": "dress-pea-095",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 1249750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 1249750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 1274750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 1299750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 1312750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 1337750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 1362750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 1374750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 1399750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 1424750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 1437750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 1462750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 1487750,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "1205be0a9dfd8d408d4b8d32",
+      "name": "Black Women's Gown",
+      "slug": "black-women-s-gown-092",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 3249750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 3249750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 3314750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 3379750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 3412750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 3477750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 3542750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 3574750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 3639750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 3704750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 3737750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 3802750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 3867750,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "377db9b2950b71bc77b83985",
+      "name": "Heshe Women's Leather Bag",
+      "slug": "heshe-women-s-leather-bag-088",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 3249750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 3249750,
+          "stock": 50
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 3314750,
+          "stock": 50
+        }
+      ]
+    },
+    {
+      "id": "386ac4a7435e06894d2b5852",
+      "name": "Gray Dress",
+      "slug": "gray-dress-084",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 874750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 874750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 892750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 909750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 918750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 936750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 953750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 962750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 979750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 997750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 1006750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 1023750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 1041750,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "410c1b74c50cad0a64f91922",
+      "name": "Red Shoes",
+      "slug": "red-shoes-101",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 874750,
+      "totalStock": 98,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 874750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 892750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 918750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 936750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 962750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 979750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 1006750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 1023750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 1049750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 1067750,
+          "stock": 9
+        }
+      ]
+    },
+    {
+      "id": "4c79ee79780bb6a452d0d2c6",
+      "name": "Short Frock",
+      "slug": "short-frock-085",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 624750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 624750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 637750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 649750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 656750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 668750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 681750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 687750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 699750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 712750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 718750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 731750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 743750,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "5e33433c60dfbc7a278d1627",
+      "name": "Gigabyte Aorus Men Tshirt",
+      "slug": "gigabyte-aorus-men-tshirt-108",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 655988,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 655988,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 669988,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 682988,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 688988,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 701988,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 715988,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 721988,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 734988,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 747988,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 754988,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 767988,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 780988,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "6b5d0a5d6d04daccb68a6bfd",
+      "name": "Brown Leather Belt Watch",
+      "slug": "brown-leather-belt-watch-071",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 2249750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 2249750,
+          "stock": 49
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 2294750,
+          "stock": 48
+        }
+      ]
+    },
+    {
+      "id": "6b7893aab99a395951dfdf2b",
+      "name": "Puma Future Rider Trainers",
+      "slug": "puma-future-rider-trainers-114",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 2362238,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 2362238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 2410238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 2481238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 2528238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 2599238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 2646238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 2717238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 2764238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 2835238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 2882238,
+          "stock": 10
+        }
+      ]
+    },
+    {
+      "id": "729879bcfedbcb5d9d4d2c96",
+      "name": "Sports Sneakers Off White & Red",
+      "slug": "sports-sneakers-off-white-red-069",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 2999750,
+      "totalStock": 99,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 2999750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 3059750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 3149750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 3209750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 3299750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 3359750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 3449750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 3509750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 3599750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 3659750,
+          "stock": 9
+        }
+      ]
+    },
+    {
+      "id": "772ba51229f4d9d2e51790bb",
+      "name": "Corset Leather With Skirt",
+      "slug": "corset-leather-with-skirt-093",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 2249750,
+      "totalStock": 95,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 2249750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 2294750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 2339750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 2362750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 2407750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 2452750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 2474750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 2519750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 2564750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 2587750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 2632750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 2677750,
+          "stock": 7
+        }
+      ]
+    },
+    {
+      "id": "7f8886562f903a81f2ae1236",
+      "name": "Man Short Sleeve Shirt",
+      "slug": "man-short-sleeve-shirt-110",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 524738,
+      "totalStock": 94,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 524738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 535738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 545738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 551738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 561738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 572738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 577738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 587738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 598738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 603738,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 614738,
+          "stock": 7
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 624738,
+          "stock": 7
+        }
+      ]
+    },
+    {
+      "id": "8032f9e8d9b7e1ae6ada25f3",
+      "name": "Rolex Cellini Moonphase",
+      "slug": "rolex-cellini-moonphase-103",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 399999750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 399999750,
+          "stock": 50
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 407999750,
+          "stock": 50
+        }
+      ]
+    },
+    {
+      "id": "80ebdee6dde0e62f90bede26",
+      "name": "Sports Sneakers Off White Red",
+      "slug": "sports-sneakers-off-white-red-070",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 2749750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 2749750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 2804750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 2887750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 2942750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 3024750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 3079750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 3162750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 3217750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 3299750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 3354750,
+          "stock": 9
+        }
+      ]
+    },
+    {
+      "id": "8a381af2210cb235de50a8ba",
+      "name": "Women Handbag Black",
+      "slug": "women-handbag-black-091",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 1499750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 1499750,
+          "stock": 49
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 1529750,
+          "stock": 48
+        }
+      ]
+    },
+    {
+      "id": "8e8f6b74b69cc6e9e82a394e",
+      "name": "Rolex Cellini Moonphase",
+      "slug": "rolex-cellini-moonphase-074",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 324999750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 324999750,
+          "stock": 49
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 331499750,
+          "stock": 48
+        }
+      ]
+    },
+    {
+      "id": "989a012c7b19a75f9a857b78",
+      "name": "Blue & Black Check Shirt",
+      "slug": "blue-black-check-shirt-061",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 749750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 749750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 764750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 779750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 787750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 802750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 817750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 824750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 839750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 854750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 862750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 877750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 892750,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "a450c90863a010584dd20b01",
+      "name": "Black Sun Glasses",
+      "slug": "black-sun-glasses-077",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 749750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 749750,
+          "stock": 49
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 764750,
+          "stock": 48
+        }
+      ]
+    },
+    {
+      "id": "a87391c65982d774dcce82d3",
+      "name": "Man Plaid Shirt",
+      "slug": "man-plaid-shirt-109",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 918488,
+      "totalStock": 98,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 918488,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 937488,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 955488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 964488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 983488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 1001488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 1010488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 1029488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 1047488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 1056488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 1075488,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 1093488,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "b2bf44f3a28b240fd2e53b01",
+      "name": "Green and Black Glasses",
+      "slug": "green-and-black-glasses-079",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 874750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 874750,
+          "stock": 50
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 892750,
+          "stock": 50
+        }
+      ]
+    },
+    {
+      "id": "b35effef5cb88b309f621979",
+      "name": "Marni Red & Black Suit",
+      "slug": "marni-red-black-suit-096",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 4499750,
+      "totalStock": 98,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 4499750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 4589750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 4679750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 4724750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 4814750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 4904750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 4949750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 5039750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 5129750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 5174750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 5264750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 5354750,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "b72b5f84d29949cb3f4674d0",
+      "name": "Sports Sneakers Off White & Red",
+      "slug": "sports-sneakers-off-white-red-115",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 3149738,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 3149738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 3212738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 3307738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 3370738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 3464738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 3527738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 3622738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 3685738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 3779738,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 3842738,
+          "stock": 10
+        }
+      ]
+    },
+    {
+      "id": "bbdf89639447c117c8b71d04",
+      "name": "Golden Shoes Woman",
+      "slug": "golden-shoes-woman-099",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 1249750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 1249750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 1274750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 1312750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 1337750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 1374750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 1399750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 1437750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 1462750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 1499750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 1524750,
+          "stock": 9
+        }
+      ]
+    },
+    {
+      "id": "ceb156335783a595611ac708",
+      "name": "Rolex Cellini Date Black Dial",
+      "slug": "rolex-cellini-date-black-dial-073",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 224999750,
+      "totalStock": 98,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 224999750,
+          "stock": 49
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 229499750,
+          "stock": 49
+        }
+      ]
+    },
+    {
+      "id": "d181d96f6d6b796f7e843394",
+      "name": "Women's Wrist Watch",
+      "slug": "women-s-wrist-watch-106",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 3249750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 3249750,
+          "stock": 49
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 3314750,
+          "stock": 48
+        }
+      ]
+    },
+    {
+      "id": "d35583a7866b6b578100b218",
+      "name": "Rolex Datejust",
+      "slug": "rolex-datejust-075",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 274999750,
+      "totalStock": 99,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 274999750,
+          "stock": 50
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 280499750,
+          "stock": 49
+        }
+      ]
+    },
+    {
+      "id": "d65125f3de4da569cc89e21a",
+      "name": "Black & Brown Slipper",
+      "slug": "black-brown-slipper-097",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 499750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 499750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 509750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 524750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 534750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 549750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 559750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 574750,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 584750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 599750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 609750,
+          "stock": 9
+        }
+      ]
+    },
+    {
+      "id": "da67cb61bd3abfbc481f1e82",
+      "name": "Rolex Submariner Watch",
+      "slug": "rolex-submariner-watch-076",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 349999750,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 349999750,
+          "stock": 49
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 356999750,
+          "stock": 48
+        }
+      ]
+    },
+    {
+      "id": "dabfc094cf33d19bea30666f",
+      "name": "Corset With Black Skirt",
+      "slug": "corset-with-black-skirt-094",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 1999750,
+      "totalStock": 93,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 1999750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 2039750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 2079750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 2099750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 2139750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 2179750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 2199750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 2239750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 2279750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 2299750,
+          "stock": 7
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 2339750,
+          "stock": 7
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 2379750,
+          "stock": 7
+        }
+      ]
+    },
+    {
+      "id": "dc96c65f96283c5be18dd3a9",
+      "name": "Rolex Datejust Women",
+      "slug": "rolex-datejust-women-104",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 274999750,
+      "totalStock": 96,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 274999750,
+          "stock": 48
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 280499750,
+          "stock": 48
+        }
+      ]
+    },
+    {
+      "id": "e32e00d1357cc61f34b431e0",
+      "name": "Longines Master Collection",
+      "slug": "longines-master-collection-072",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "Brown"
+          ]
+        }
+      ],
+      "basePrice": 37499750,
+      "totalStock": 100,
+      "variants": [
+        {
+          "selection": [
+            "Black"
+          ],
+          "price": 37499750,
+          "stock": 50
+        },
+        {
+          "selection": [
+            "Brown"
+          ],
+          "price": 38249750,
+          "stock": 50
+        }
+      ]
+    },
+    {
+      "id": "ea137ad0b5bea1744b85f32b",
+      "name": "Sports Sneakers Off White Red",
+      "slug": "sports-sneakers-off-white-red-116",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Black",
+            "White"
+          ]
+        }
+      ],
+      "basePrice": 2887238,
+      "totalStock": 97,
+      "variants": [
+        {
+          "selection": [
+            "38",
+            "Black"
+          ],
+          "price": 2887238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "38",
+            "White"
+          ],
+          "price": 2945238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "Black"
+          ],
+          "price": 3032238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "39",
+            "White"
+          ],
+          "price": 3090238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "Black"
+          ],
+          "price": 3176238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "40",
+            "White"
+          ],
+          "price": 3234238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "Black"
+          ],
+          "price": 3321238,
+          "stock": 10
+        },
+        {
+          "selection": [
+            "41",
+            "White"
+          ],
+          "price": 3378238,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "Black"
+          ],
+          "price": 3465238,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "42",
+            "White"
+          ],
+          "price": 3523238,
+          "stock": 9
+        }
+      ]
+    },
+    {
+      "id": "ecde95869bc766037973f00b",
+      "name": "Man Plaid Shirt",
+      "slug": "man-plaid-shirt-063",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 874750,
+      "totalStock": 98,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 874750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 892750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 909750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 918750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 936750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 953750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 962750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 979750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 997750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 1006750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 1023750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 1041750,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "f33d46cd5683dafe3b055346",
+      "name": "Blue Frock",
+      "slug": "blue-frock-082",
+      "types": [
+        {
+          "tier": 1,
+          "name": "Kích cỡ",
+          "options": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        },
+        {
+          "tier": 2,
+          "name": "Màu sắc",
+          "options": [
+            "Blue",
+            "White",
+            "Black"
+          ]
+        }
+      ],
+      "basePrice": 749750,
+      "totalStock": 99,
+      "variants": [
+        {
+          "selection": [
+            "S",
+            "Blue"
+          ],
+          "price": 749750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "White"
+          ],
+          "price": 764750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "S",
+            "Black"
+          ],
+          "price": 779750,
+          "stock": 9
+        },
+        {
+          "selection": [
+            "M",
+            "Blue"
+          ],
+          "price": 787750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "White"
+          ],
+          "price": 802750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "M",
+            "Black"
+          ],
+          "price": 817750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Blue"
+          ],
+          "price": 824750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "White"
+          ],
+          "price": 839750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "L",
+            "Black"
+          ],
+          "price": 854750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Blue"
+          ],
+          "price": 862750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "White"
+          ],
+          "price": 877750,
+          "stock": 8
+        },
+        {
+          "selection": [
+            "XL",
+            "Black"
+          ],
+          "price": 892750,
+          "stock": 8
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "id": "0cc3820b77eb6c6c0e5d07f4",
+      "name": "Party Glasses",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "0f40834671a9902f9b8a40fc",
+      "name": "Rolex Cellini Moonphase",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "1a8f18c13e22ef80dd1dd1c1",
+      "name": "IWC Ingenieur Automatic Steel",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "20dec60018249f26fa485d1d",
+      "name": "Watch Gold for Women",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "2330f5079ec25c9fcfac0f8b",
+      "name": "Puma Future Rider Trainers",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "2abea3134f3ba57fae422e5d",
+      "name": "Men Check Shirt",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "2db768da385e92ff56f35f50",
+      "name": "Man Short Sleeve Shirt",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "2faee80f50eb185b67138170",
+      "name": "Prada Women Bag",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "33263c6eabd6c01daa5bf927",
+      "name": "Blue Women's Handbag",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "338020203e2fd7a49010be04",
+      "name": "Gigabyte Aorus Men Tshirt",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "59e75ef2900978c9ef26a662",
+      "name": "Tartan Dress",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "6ac7a52f87e692850a155386",
+      "name": "Áo thun nam Gigabyte Aorus",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "7a9f481a5f9aae34cb1d12ea",
+      "name": "Nike Baseball Cleats",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "85c31ad101f42ee6240a372b",
+      "name": "Classic Sun Glasses",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "9e796d9029c0224b6211f1c3",
+      "name": "Blue & Black Check Shirt",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "a8ea32a3d77ed0036f35c0b6",
+      "name": "Pampi Shoes",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "abad559fd0224165ab63e69f",
+      "name": "Brown Leather Belt Watch",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "c4dde47e513d4ec13c937970",
+      "name": "Calvin Klein Heel Shoes",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "c6779522181565e6024b50be",
+      "name": "Girl Summer Dress",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "ceca2b73336c86e9b402bbf6",
+      "name": "Sunglasses",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "d2cc5ce306533940c844d5b5",
+      "name": "Men Check Shirt",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "e0a4fffb151df51903e6ef62",
+      "name": "Nike Air Jordan 1 Red And Black",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "e48e6624f28b1ca780d6cf1c",
+      "name": "Rolex Cellini Date Black Dial",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "f289cf75b48de99d416e2384",
+      "name": "Longines Master Collection",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "f7d13f85186bb55fac3347b8",
+      "name": "Nike Baseball Cleats",
+      "reason": "ORDER_HOLD"
+    },
+    {
+      "id": "fda49b55b5e6e97b9ba9ea69",
+      "name": "Nike Air Jordan 1 Red And Black",
+      "reason": "ORDER_HOLD"
+    }
+  ],
+  "existingMatrixUnchanged": [
+    {
+      "id": "6ad71660ec77ac8c719daf00",
+      "name": "Áo demo SKU — chọn M hoặc XL",
+      "prices": [
+        100000,
+        120000
+      ]
+    }
+  ],
+  "countsBefore": {
+    "products": 184,
+    "users": 45,
+    "payment_attempts": 34,
+    "reviews": 215,
+    "orders": 106,
+    "categories": 3,
+    "carts": 4
+  },
+  "countsAfter": {
+    "products": 184,
+    "users": 45,
+    "payment_attempts": 34,
+    "reviews": 215,
+    "orders": 106,
+    "categories": 3,
+    "carts": 4
+  },
+  "ordersBeforeHash": "be36be3726cef9ecb1937b121a0dd809114b13342a582d63ea16bb2bf2c015f3",
+  "ordersAfterHash": "be36be3726cef9ecb1937b121a0dd809114b13342a582d63ea16bb2bf2c015f3",
+  "schemaAndIndexesUnchanged": true,
+  "invalidProducts": 0,
+  "publicVerified": [
+    "white-faux-leather-backpack-090",
+    "dress-pea-095",
+    "black-women-s-gown-092"
+  ],
+  "status": "PASS",
+  "verificationNote": "Initial detail check used id; verified successfully with slug as required by public detail API."
+}

@@ -5,7 +5,7 @@ import { Check, ImageOff, Minus, Plus, X } from 'lucide-react';
 import { Product } from '../../types/product';
 import { useCart } from '../../contexts/CartContext';
 import { formatVND } from '../../utils/formatters';
-import { purchaseOptions, skuMatches } from '../../utils/productSelection';
+import { purchaseOptions, skuMatches, hasVariantPriceRange } from '../../utils/productSelection';
 import { Button } from '../ui/Button';
 
 export type PurchaseIntent = 'cart' | 'buy';
@@ -125,7 +125,7 @@ export const ProductPurchaseModal: React.FC<Props> = ({ product, intent, onClose
               </div>
               <div className="min-w-0 space-y-1">
                 <p className="break-words text-sm font-semibold text-slate-900">{product.name}</p>
-                <p className="text-xl font-bold text-rose-600" aria-live="polite">{formatVND(price)}</p>
+                <p className="text-xl font-bold text-rose-600" aria-live="polite">{!matchedSku && hasVariantPriceRange(product) ? 'Từ ' : ''}{formatVND(price)}</p>
                 <p className="text-xs text-slate-500" aria-live="polite">
                   {missing.length ? `Vui lòng chọn ${missing.map((option) => option.label.toLowerCase()).join(', ')}`
                     : stock > 0 ? `Còn ${stock} sản phẩm` : 'Phân loại này đã hết hàng'}
